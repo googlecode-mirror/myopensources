@@ -1,0 +1,22 @@
+; $Id$
+name = tnvacation
+description = tnvacation theme
+version = 1.0
+core = 6.x
+engine = phptemplate
+regions[right] = Right sidebar
+regions[left] = Left Sidebar
+regions[header] = Header
+regions[footer] = Footer
+regions[content] = Content
+regions[lang] = LangSwitch
+stylesheets[all][] = main.css
+
+
+
+; Information added by drupal.org packaging script on 2008-12-08
+version = "6.x"
+core = "6.x"
+project = "arzen"
+datestamp = "1228702506"
+
