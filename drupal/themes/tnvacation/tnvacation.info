@@ -1,6 +1,6 @@
 ; $Id$
-name = tnvacation
-description = tnvacation theme
+name = Tnvacation
+description = tnvacation theme, reference to http://winter.tnvacation.com/
 version = 1.0
 core = 6.x
 engine = phptemplate
