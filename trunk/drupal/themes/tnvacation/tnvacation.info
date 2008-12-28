@@ -11,7 +11,10 @@ regions[footer] = Footer
 regions[content] = Content
 regions[lang] = LangSwitch
 stylesheets[all][] = main.css
-
+stylesheets[all][] = jquery.jcarousel.css
+scripts[] = js/jquery.jcarousel.pack.js
+scripts[] = js/ajax.js
+scripts[] = js/jquery.jcarousel.pack.js
 
 
 ; Information added by drupal.org packaging script on 2008-12-08
