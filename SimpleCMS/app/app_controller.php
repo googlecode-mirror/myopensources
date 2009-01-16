@@ -36,18 +36,55 @@
  */
 class AppController extends Controller {
 	
-	public $helpers = array('Html', 'Form', 'Javascript', 'Time');
+	var $helpers = array('Html', 'Form', 'Javascript', 'Time');
+	var $components = array('Auth');
+	var $isAuthorized = false;
+ 	
+    function beforeFilter() {
+        // Admin area requires authentification
+        if ($this->isAdminAction()) {
+        	
+            $this->assertAdminLoggedIn();
+        	
+        	$this->layout = 'admin_default';
+        	
+        } else {
+        	
+			$this->layout = 'default';
+			
+        }
+    	
+    }
+    	
 	
 	function beforeRender() {
 		
-		if (!empty( $this->params['admin'] )) {
-			$this->layout = 'admin_default';
-		}
-		else {
-			$this->layout = 'default';
-		}
 		
 	}
+	
+	/**
+	 * If admin is not logged in redirect to login screen and exit
+	 *
+	 */
+	function assertAdminLoggedIn() {
+	    if ($this->isAuthorized) {
+	        return;
+	    }
+	    
+	    $currentUrl = 'http://' . getenv('SERVER_NAME') . $this->here;
+        $this->Session->write('afterLoginRedirectTo', $currentUrl);
+        $this->redirect('/login', null, true);
+	}
+	
+	
+    /**
+     * Tell wheather the current action should be protected
+     *
+     * @return bool
+     */
+    function isAdminAction() {
+        return (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') or isset($this->params['admin']);
+    }
 	
 }
 ?>
