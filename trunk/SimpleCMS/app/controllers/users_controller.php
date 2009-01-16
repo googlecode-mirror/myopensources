@@ -6,7 +6,7 @@ class UsersController extends AppController {
     function beforeFilter() {
         $this->Auth->fields = array(
             'username' => 'username', 
-            'password' => 'secretword'
+            'password' => 'password'
             );
     }
 	
