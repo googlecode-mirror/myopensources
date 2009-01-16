@@ -61,6 +61,10 @@ class ArticleCategoriesController extends AppController {
 
 	function admin_index() {
 		$this->ArticleCategory->recursive = 0;
+		
+		$categories = $this->_getCategories();
+		$this->set("categories", $categories);
+		
 		$this->set('articleCategories', $this->paginate());
 	}
 
@@ -69,6 +73,10 @@ class ArticleCategoriesController extends AppController {
 			$this->Session->setFlash(__('Invalid ArticleCategory.', true));
 			$this->redirect(array('action'=>'index'));
 		}
+		
+		$categories = $this->_getCategories();
+		$this->set("categories", $categories);
+		
 		$this->set('articleCategory', $this->ArticleCategory->read(null, $id));
 	}
 
@@ -82,6 +90,9 @@ class ArticleCategoriesController extends AppController {
 				$this->Session->setFlash(__('The ArticleCategory could not be saved. Please, try again.', true));
 			}
 		}
+		$categories = $this->_getCategories();
+		$this->set("categories", $categories);
+		
 	}
 
 	function admin_edit($id = null) {
@@ -100,6 +111,8 @@ class ArticleCategoriesController extends AppController {
 		if (empty($this->data)) {
 			$this->data = $this->ArticleCategory->read(null, $id);
 		}
+		$categories = $this->_getCategories();
+		$this->set("categories", $categories);
 	}
 
 	function admin_delete($id = null) {
@@ -112,6 +125,13 @@ class ArticleCategoriesController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
+	
+	function _getCategories() {
+		$tree_data = $this->ArticleCategory->generatetreelist(null, null, null, '--');
+//		debug($tree_data);
+		return array( 0=>__("None", true) ) + $tree_data;
+	}
+	
 
 }
 ?>

@@ -6,9 +6,9 @@
 			<?php echo $articleCategory['ArticleCategory']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Pid'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('parent_id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $articleCategory['ArticleCategory']['pid']; ?>
+			<?php echo $articleCategory['ArticleCategory']['parent_id']; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Name'); ?></dt>

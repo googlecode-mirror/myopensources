@@ -4,7 +4,7 @@
  		<legend><?php __('Edit ArticleCategory');?></legend>
 	<?php
 		echo $form->input('id');
-		echo $form->input('pid');
+		echo $form->input('parent_id');
 		echo $form->input('name');
 	?>
 	</fieldset>

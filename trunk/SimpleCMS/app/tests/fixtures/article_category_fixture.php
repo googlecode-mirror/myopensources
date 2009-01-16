@@ -7,7 +7,7 @@ class ArticleCategoryFixture extends CakeTestFixture {
 	var $table = 'article_categories';
 	var $fields = array(
 			'id' => array('type'=>'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
-			'pid' => array('type'=>'integer', 'null' => true, 'default' => NULL),
+			'parent_id' => array('type'=>'integer', 'null' => true, 'default' => NULL),
 			'name' => array('type'=>'string', 'null' => true, 'default' => NULL, 'length' => 45),
 			'created' => array('type'=>'integer', 'null' => true, 'default' => NULL),
 			'modified' => array('type'=>'integer', 'null' => true, 'default' => NULL),
@@ -15,7 +15,7 @@ class ArticleCategoryFixture extends CakeTestFixture {
 			);
 	var $records = array(array(
 			'id'  => 1,
-			'pid'  => 1,
+			'parent_id'  => 1,
 			'name'  => 'Lorem ipsum dolor sit amet',
 			'created'  => 1,
 			'modified'  => 1
