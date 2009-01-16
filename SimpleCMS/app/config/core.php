@@ -66,6 +66,9 @@
  */
 	Configure::write('Routing.admin', 'admin');
 
+	// set default language
+	Configure::write('Config.language', "zh-CN");
+	
 /**
  * Turn off all caching application-wide.
  *

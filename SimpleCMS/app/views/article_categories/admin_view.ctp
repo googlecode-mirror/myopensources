@@ -6,9 +6,9 @@
 			<?php echo $articleCategory['ArticleCategory']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Pid'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Parent'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $articleCategory['ArticleCategory']['pid']; ?>
+			<?php echo $categories[ $articleCategory['ArticleCategory']['parent_id'] ]; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Name'); ?></dt>
@@ -18,12 +18,12 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $articleCategory['ArticleCategory']['created']; ?>
+			<?php echo $time->format('Y-m-d H:i', $articleCategory['ArticleCategory']['created'] ); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $articleCategory['ArticleCategory']['modified']; ?>
+			<?php echo $time->format('Y-m-d H:i', $articleCategory['ArticleCategory']['modified'] ); ?>
 			&nbsp;
 		</dd>
 	</dl>

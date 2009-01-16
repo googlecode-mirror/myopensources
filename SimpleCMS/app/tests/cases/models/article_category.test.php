@@ -22,7 +22,7 @@ class ArticleCategoryTestCase extends CakeTestCase {
 
 		$expected = array('ArticleCategory' => array(
 			'id'  => 1,
-			'pid'  => 1,
+			'parent_id'  => 1,
 			'name'  => 'Lorem ipsum dolor sit amet',
 			'created'  => 1,
 			'modified'  => 1

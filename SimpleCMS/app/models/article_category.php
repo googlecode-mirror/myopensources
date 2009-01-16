@@ -2,9 +2,19 @@
 class ArticleCategory extends AppModel {
 
 	var $name = 'ArticleCategory';
+	var $actsAs = array('Tree');
 	var $validate = array(
-		'pid' => array('notempty'),
-		'name' => array('notempty')
+		'parent_id' => array('notempty'),
+	
+		'name' => array(
+						'notEmpty'  => array(
+							 'rule'   => 'notEmpty',
+									),			
+						'maxlength' => array(
+							'rule'    => array('maxlength', 12),
+									),
+				),
+	
 	);
 
 }

@@ -3,7 +3,7 @@
 	<fieldset>
  		<legend><?php __('Add ArticleCategory');?></legend>
 	<?php
-		echo $form->input('pid');
+		echo $form->input('parent_id');
 		echo $form->input('name');
 	?>
 	</fieldset>

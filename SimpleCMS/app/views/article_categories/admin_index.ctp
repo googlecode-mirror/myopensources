@@ -9,7 +9,7 @@ echo $paginator->counter(array(
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo $paginator->sort('id');?></th>
-	<th><?php echo $paginator->sort('pid');?></th>
+	<th><?php echo $paginator->sort('parent_id');?></th>
 	<th><?php echo $paginator->sort('name');?></th>
 	<th><?php echo $paginator->sort('created');?></th>
 	<th><?php echo $paginator->sort('modified');?></th>
@@ -27,17 +27,17 @@ foreach ($articleCategories as $articleCategory):
 		<td>
 			<?php echo $articleCategory['ArticleCategory']['id']; ?>
 		</td>
-		<td>
-			<?php echo $articleCategory['ArticleCategory']['pid']; ?>
+		<td style="text-align:left;" >
+			<?php echo $categories[ $articleCategory['ArticleCategory']['parent_id'] ]; ?>
 		</td>
-		<td>
+		<td style="text-align:left;" >
 			<?php echo $articleCategory['ArticleCategory']['name']; ?>
 		</td>
 		<td>
-			<?php echo $articleCategory['ArticleCategory']['created']; ?>
+			<?php echo $time->format('Y-m-d H:i', $articleCategory['ArticleCategory']['created']); ?>
 		</td>
 		<td>
-			<?php echo $articleCategory['ArticleCategory']['modified']; ?>
+			<?php echo $time->format('Y-m-d H:i', $articleCategory['ArticleCategory']['modified']); ?>
 		</td>
 		<td class="actions">
 			<?php echo $html->link(__('View', true), array('action'=>'view', $articleCategory['ArticleCategory']['id'])); ?>

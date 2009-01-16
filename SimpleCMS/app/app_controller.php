@@ -35,5 +35,19 @@
  * @subpackage    cake.app
  */
 class AppController extends Controller {
+	
+	public $helpers = array('Html', 'Form', 'Javascript', 'Time');
+	
+	function beforeRender() {
+		
+		if (!empty( $this->params['admin'] )) {
+			$this->layout = 'admin_default';
+		}
+		else {
+			$this->layout = 'default';
+		}
+		
+	}
+	
 }
 ?>

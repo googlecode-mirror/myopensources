@@ -9,7 +9,7 @@ echo $paginator->counter(array(
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo $paginator->sort('id');?></th>
-	<th><?php echo $paginator->sort('pid');?></th>
+	<th><?php echo $paginator->sort('parent_id');?></th>
 	<th><?php echo $paginator->sort('name');?></th>
 	<th><?php echo $paginator->sort('created');?></th>
 	<th><?php echo $paginator->sort('modified');?></th>
@@ -28,7 +28,7 @@ foreach ($articleCategories as $articleCategory):
 			<?php echo $articleCategory['ArticleCategory']['id']; ?>
 		</td>
 		<td>
-			<?php echo $articleCategory['ArticleCategory']['pid']; ?>
+			<?php echo $articleCategory['ArticleCategory']['parent_id']; ?>
 		</td>
 		<td>
 			<?php echo $articleCategory['ArticleCategory']['name']; ?>
