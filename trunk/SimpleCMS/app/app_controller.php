@@ -43,6 +43,7 @@ class AppController extends Controller {
     function beforeFilter() {
         // Admin area requires authentification
         if ($this->isAdminAction()) {
+			Security::setHash('md5');
         	
             $this->__withLoggedIn();
         	
@@ -69,9 +70,11 @@ class AppController extends Controller {
 	 *
 	 */
 	function __withLoggedIn() {
+		
         $this->Auth->loginAction = array(Configure::read('Routing.admin') => false, 'controller' => 'users', 'action' => 'login');
         $this->Auth->loginRedirect = array(Configure::read('Routing.admin') => true, 'controller' => 'article_categories', 'action' => 'index');
         $this->Auth->logoutRedirect = array(Configure::read('Routing.admin') => false, 'controller' => 'users', 'action' => 'logout');
+//        $this->Auth->hash = "md5";
 		
 	}
 	
