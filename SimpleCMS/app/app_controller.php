@@ -44,11 +44,13 @@ class AppController extends Controller {
         // Admin area requires authentification
         if ($this->isAdminAction()) {
         	
-            $this->assertAdminLoggedIn();
+            $this->__withLoggedIn();
         	
         	$this->layout = 'admin_default';
         	
         } else {
+        	
+        	$this->__withoutLogin();
         	
 			$this->layout = 'default';
 			
@@ -66,14 +68,15 @@ class AppController extends Controller {
 	 * If admin is not logged in redirect to login screen and exit
 	 *
 	 */
-	function assertAdminLoggedIn() {
-	    if ($this->isAuthorized) {
-	        return;
-	    }
-	    
-	    $currentUrl = 'http://' . getenv('SERVER_NAME') . $this->here;
-        $this->Session->write('afterLoginRedirectTo', $currentUrl);
-        $this->redirect('/login', null, true);
+	function __withLoggedIn() {
+        $this->Auth->loginAction = array(Configure::read('Routing.admin') => false, 'controller' => 'users', 'action' => 'login');
+        $this->Auth->loginRedirect = array(Configure::read('Routing.admin') => true, 'controller' => 'article_categories', 'action' => 'index');
+        $this->Auth->logoutRedirect = array(Configure::read('Routing.admin') => false, 'controller' => 'users', 'action' => 'logout');
+		
+	}
+	
+	function __withoutLogin() {
+		$this->Auth->allow("*");
 	}
 	
 	
