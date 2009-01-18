@@ -9,3 +9,15 @@
 	margin-left: 150px;
 	margin-top: 80px;
 }
+
+#left-text {
+	font-size: 22px;
+	font-weight: bolder;
+	color: #FFFFFF;
+	text-decoration: none;
+	width: 180px;
+}
+
+#right-text {
+	width: 120px;
+}
