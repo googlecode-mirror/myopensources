@@ -3,14 +3,8 @@ class UsersController extends AppController {
 
 	var $name = 'Users';
 	
-//    function beforeFilter() {
-//        $this->Auth->fields = array(
-//            'username' => 'username', 
-//            'password' => 'password'
-//            );
-//    }
-	
     function login() {
+    	$this->layout = 'admin_login';
     }
 
     function logout() {
