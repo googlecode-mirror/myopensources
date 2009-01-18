@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+
+#login-contain  {
+	background-image: url(../img/login_bg.png);
+	background-repeat: no-repeat;
+	height: 358px;
+	width: 483px;
+	margin-left: 150px;
+	margin-top: 80px;
+}
