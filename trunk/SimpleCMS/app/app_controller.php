@@ -37,13 +37,12 @@
 class AppController extends Controller {
 	
 	var $helpers = array('Html', 'Form', 'Javascript', 'Time');
-	var $components = array('Auth');
+	var $components = array('Auths');
 	var $isAuthorized = false;
  	
     function beforeFilter() {
         // Admin area requires authentification
-        if ($this->isAdminAction()) {
-			Security::setHash('md5');
+    	if ($this->isAdminAction()) {
         	
             $this->__withLoggedIn();
         	
@@ -71,15 +70,14 @@ class AppController extends Controller {
 	 */
 	function __withLoggedIn() {
 		
-        $this->Auth->loginAction = array(Configure::read('Routing.admin') => false, 'controller' => 'users', 'action' => 'login');
-        $this->Auth->loginRedirect = array(Configure::read('Routing.admin') => true, 'controller' => 'article_categories', 'action' => 'index');
-        $this->Auth->logoutRedirect = array(Configure::read('Routing.admin') => false, 'controller' => 'users', 'action' => 'logout');
-//        $this->Auth->hash = "md5";
+        $this->Auths->loginAction = array(Configure::read('Routing.admin') => false, 'controller' => 'users', 'action' => 'login');
+        $this->Auths->loginRedirect = array(Configure::read('Routing.admin') => true, 'controller' => 'article_categories', 'action' => 'index');
+        $this->Auths->logoutRedirect = array(Configure::read('Routing.admin') => false, 'controller' => 'users', 'action' => 'logout');
 		
 	}
 	
 	function __withoutLogin() {
-		$this->Auth->allow("*");
+		$this->Auths->allow("*");
 	}
 	
 	
