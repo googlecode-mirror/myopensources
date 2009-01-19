@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-16 14:29+0800\n"
-"PO-Revision-Date: 2009-01-16 14:33+0800\n"
+"POT-Creation-Date: 2009-01-19 10:43+0800\n"
+"PO-Revision-Date: 2009-01-19 10:46+0800\n"
 "Last-Translator: John\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,14 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../../..\n"
 
+#: ../../../app_controller.php:76
+msgid "Login failed. Invalid username or password."
+msgstr "用户名或密码有误"
+
+#: ../../../app_controller.php:77
+msgid "You are not authorized to access that location."
+msgstr ""
+
 #: ../../../controllers/article_categories_controller.php:14
 #: ../../../controllers/article_categories_controller.php:73
 msgid "Invalid ArticleCategory."
@@ -20,34 +28,34 @@ msgstr ""
 
 #: ../../../controllers/article_categories_controller.php:24
 #: ../../../controllers/article_categories_controller.php:39
-#: ../../../controllers/article_categories_controller.php:83
-#: ../../../controllers/article_categories_controller.php:101
+#: ../../../controllers/article_categories_controller.php:87
+#: ../../../controllers/article_categories_controller.php:105
 msgid "The ArticleCategory has been saved"
 msgstr ""
 
 #: ../../../controllers/article_categories_controller.php:27
 #: ../../../controllers/article_categories_controller.php:42
-#: ../../../controllers/article_categories_controller.php:86
-#: ../../../controllers/article_categories_controller.php:104
+#: ../../../controllers/article_categories_controller.php:90
+#: ../../../controllers/article_categories_controller.php:108
 msgid "The ArticleCategory could not be saved. Please, try again."
 msgstr ""
 
 #: ../../../controllers/article_categories_controller.php:34
-#: ../../../controllers/article_categories_controller.php:96
+#: ../../../controllers/article_categories_controller.php:100
 msgid "Invalid ArticleCategory"
 msgstr ""
 
 #: ../../../controllers/article_categories_controller.php:52
-#: ../../../controllers/article_categories_controller.php:116
+#: ../../../controllers/article_categories_controller.php:120
 msgid "Invalid id for ArticleCategory"
 msgstr ""
 
 #: ../../../controllers/article_categories_controller.php:56
-#: ../../../controllers/article_categories_controller.php:120
+#: ../../../controllers/article_categories_controller.php:124
 msgid "ArticleCategory deleted"
 msgstr ""
 
-#: ../../../controllers/article_categories_controller.php:128
+#: ../../../controllers/article_categories_controller.php:132
 msgid "None"
 msgstr "无"
 
