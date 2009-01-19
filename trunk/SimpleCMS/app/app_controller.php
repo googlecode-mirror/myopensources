@@ -73,7 +73,9 @@ class AppController extends Controller {
         $this->Auths->loginAction = array(Configure::read('Routing.admin') => false, 'controller' => 'users', 'action' => 'login');
         $this->Auths->loginRedirect = array(Configure::read('Routing.admin') => true, 'controller' => 'article_categories', 'action' => 'index');
         $this->Auths->logoutRedirect = array(Configure::read('Routing.admin') => false, 'controller' => 'users', 'action' => 'logout');
-		
+        $this->Auths->loginError = __('Login failed. Invalid username or password.', true);
+        $this->Auths->authError = __('You are not authorized to access that location.', true);
+        
 	}
 	
 	function __withoutLogin() {

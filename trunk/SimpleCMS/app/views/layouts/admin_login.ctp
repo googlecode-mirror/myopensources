@@ -14,10 +14,23 @@
 <body>
 
 <div id="wrap">
-    <div id="content">
-        <?php echo $content_for_layout ?>
-        <span class="cleaner"></span>
+  <div id="content">
+    <div id="login-contain">
+    
+   	  <div id="top-container">
+      	<div id="left-text">Testing System</div>
+      	<div id="right-text">User Login</div>
+      </div>
+      
+      <div id="system-name">Testing Manage System V 1.0.0</div>
+	  
+	  <div id="login-container">
+	  	<?php echo $content_for_layout ?>
+	  
+	  </div>
+	  
     </div>
+    <span class="cleaner"></span> </div>
 </div>
 
 
