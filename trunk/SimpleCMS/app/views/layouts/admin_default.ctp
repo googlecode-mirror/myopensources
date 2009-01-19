@@ -6,7 +6,7 @@
 	<title><?php echo $title_for_layout; ?></title>
 	<meta name="description" content="" />
     <?php 
-	    echo $html->css( array("admin_style") ); 
+	    echo $html->css( array("admin_style", 'debug') ); 
 	    echo $scripts_for_layout;
 	    echo $javascript->link( array('jquery', 'jquery.form') );
     ?>
