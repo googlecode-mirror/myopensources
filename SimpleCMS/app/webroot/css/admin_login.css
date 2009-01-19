@@ -18,12 +18,13 @@ img {
 	margin: 0;
 }
 
+/*
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td
 	{
 	margin: 0pt;
 	padding: 0pt;
 }
-
+*/
 div#login-contain  {
 	background-image: url(../img/login_bg.png);
 	background-repeat: no-repeat;
@@ -83,4 +84,14 @@ div#login-container {
 	line-height: 21px;
 	width: 62px;
 
+}
+
+div.submit {
+	width: 62px;
+	float: left;
+	padding-left: 20px;
+}
+
+div.message {
+	color: #F00;
 }
