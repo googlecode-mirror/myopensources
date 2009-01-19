@@ -1,7 +1,30 @@
-@charset "utf-8";
 /* CSS Document */
 
-#login-contain  {
+body {
+	MARGIN-RIGHT: auto;
+	MARGIN-LEFT: auto;
+	font-size: 12px;
+	color: #333333;
+	background-attachment: scroll;
+	background-color: #006666;
+	background-image: none;
+	background-repeat: repeat;
+	background-position: 0%;
+}
+
+img {
+	padding: 0;
+	border: 0;
+	margin: 0;
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td
+	{
+	margin: 0pt;
+	padding: 0pt;
+}
+
+div#login-contain  {
 	background-image: url(../img/login_bg.png);
 	background-repeat: no-repeat;
 	height: 358px;
@@ -10,14 +33,54 @@
 	margin-top: 80px;
 }
 
-#left-text {
+div#top-container {
+	width: 420px;
+	clear: both;
+}
+
+div#left-text {
 	font-size: 22px;
 	font-weight: bolder;
 	color: #FFFFFF;
 	text-decoration: none;
-	width: 180px;
+	padding-top: 22px;
+	padding-left: 6px;
+	width: 280px;
+	float: left;
 }
 
-#right-text {
+div#right-text {
 	width: 120px;
+	font-size: 12px;
+	float: right;
+	padding-top: 35px;
+	letter-spacing: 1px;
+}
+
+div#system-name {
+	padding-top: 70px;
+	padding-left: 80px;
+	font-size: 12px;
+	color: #999999;
+	text-decoration: none;
+}
+
+div#login-container {
+	padding-top: 75px;
+	padding-left: 150px;
+	width: 220px;
+}
+
+.login-btn {
+	background: transparent url(../img/mis_btn.png) no-repeat scroll 0%;
+}
+
+.login-btn {
+	background-position: -1px -1px;
+	border: 0pt none;
+	color: #464646;
+	height: 26px;
+	line-height: 21px;
+	width: 62px;
+
 }
