@@ -19,7 +19,7 @@ class DashboardController extends AppController {
 	}
 
 	function admin_left() {
-//		$html->css( array("red-treeview"));
+	
 	}
 	
 	function admin_main() {

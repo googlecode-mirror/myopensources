@@ -107,6 +107,25 @@ div#top-main li em {
 	display: block;
 
 }
+/*--- tree ----*/
+
+.folder {
+	height: 18px;
+	background-image: url(../img/folder.gif);
+	background-repeat: no-repeat;
+	display: block;
+	width: 19px;
+	float: left;
+}
+
+.file {
+	height: 18px;
+	background-image: url(../img/file.gif);
+	background-repeat: no-repeat;
+	display: block;
+	width: 19px;
+	float: left;
+}
 
 /*------- left ------------ */
 div#left-container  #left-top{
