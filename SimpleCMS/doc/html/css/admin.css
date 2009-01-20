@@ -64,7 +64,7 @@ div#top-main li em {
 }
 
 /*~~~~ menu icons ~~~~~*/
-.article-icon, .users-icon, .system-icon {
+.article-icon, .users-icon, .system-icon , .logout-icon{
 	background: transparent url(../img/menu_icons.png) no-repeat scroll 0%;
 }
 
@@ -98,6 +98,16 @@ div#top-main li em {
 
 }
 
+.logout-icon {
+	background-position: -5px -114px;
+	border: 0pt none;
+	height: 36px;
+	line-height: 48px;
+	width: 48px;
+	display: block;
+
+}
+
 /*------- left ------------ */
 div#left-container  #left-top{
 	background-image: url(../img/l_t_bg.png);
@@ -110,7 +120,7 @@ div#left-container  #left-top{
 div#left-container  #left-main{
 	background-color: #FFFFFF;
 	display: block;
-	height: 400px;
+	height: 800px;
 	width: 160px;
 	margin-left: 1px;
 	border-top-width: 1px;
@@ -124,6 +134,21 @@ div#left-container  #left-main{
 	border-right-color: #333333;
 	border-bottom-color: #333333;
 	border-left-color: #333333;
+}
+
+div#left-container #left-text {
+	padding-left: 30px;
+	padding-top: 8px;
+	float:left;
+}
+
+div#left-container #left-flag {
+	padding-right: 10px;
+	float: right;
+	padding-top: 8px;
+	font-weight: bold;
+	color: #999999;
+	text-decoration: none;
 }
 
 /*------- footer ------------ */

@@ -64,7 +64,7 @@ div#top-main li em {
 }
 
 /*~~~~ menu icons ~~~~~*/
-.article-icon, .users-icon, .system-icon {
+.article-icon, .users-icon, .system-icon , .logout-icon{
 	background: transparent url(../img/menu_icons.png) no-repeat scroll 0%;
 }
 
@@ -96,6 +96,59 @@ div#top-main li em {
 	width: 48px;
 	display: block;
 
+}
+
+.logout-icon {
+	background-position: -5px -114px;
+	border: 0pt none;
+	height: 36px;
+	line-height: 48px;
+	width: 48px;
+	display: block;
+
+}
+
+/*------- left ------------ */
+div#left-container  #left-top{
+	background-image: url(../img/l_t_bg.png);
+	background-repeat: no-repeat;
+	display: block;
+	height: 25px;
+	width: 162px;
+}
+
+div#left-container  #left-main{
+	background-color: #FFFFFF;
+	display: block;
+	height: 800px;
+	width: 160px;
+	margin-left: 1px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+
+div#left-container #left-text {
+	padding-left: 30px;
+	padding-top: 8px;
+	float:left;
+}
+
+div#left-container #left-flag {
+	padding-right: 10px;
+	float: right;
+	padding-top: 8px;
+	font-weight: bold;
+	color: #999999;
+	text-decoration: none;
 }
 
 /*------- footer ------------ */
