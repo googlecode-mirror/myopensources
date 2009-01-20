@@ -1,4 +1,5 @@
 /* Tables */
+/*
 table {
 	background: #fff;
 	border:1px solid #ccc;
@@ -46,6 +47,7 @@ td.actions {
 td.actions a {
 	margin: 0px 6px;
 }
+*/
 .cake-sql-log table {
 	background: #f4f4f4;
 }
