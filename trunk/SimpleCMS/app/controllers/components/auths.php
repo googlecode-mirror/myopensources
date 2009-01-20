@@ -6,7 +6,7 @@ class AuthsComponent extends AuthComponent {
 	
 	function setSuccessRedirect($value) {
 		$this->successedRedirect = $value;
-		debug($this->successedRedirec);
+//		debug($this->successedRedirec);
 	}
 	
 	function redirect($url = null) {
@@ -23,8 +23,8 @@ class AuthsComponent extends AuthComponent {
 //		} else {
 //			$redir = $this->loginRedirect;
 //		}
-//		$this->successedRedirect = array(Configure::read('Routing.admin') => true, 'controller' => 'dashboard', 'action' => 'index');
-		var_dump($this->successedRedirect);
+		$this->successedRedirect = array(Configure::read('Routing.admin') => true, 'controller' => 'dashboard', 'action' => 'index');
+//		var_dump($this->successedRedirect);
 		return Router::normalize($this->successedRedirect);
 	}
 	

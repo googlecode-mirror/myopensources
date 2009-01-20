@@ -1,0 +1,53 @@
+body {
+	background-color: #545454;
+	margin: 0px;
+	padding: 0px;
+}
+
+div#footer {
+	background-image: url(../img/footer_bg.png);
+	background-repeat: repeat-x;
+	height: 27px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+	font-size: 12px;
+	color: #CCCCCC;
+	text-decoration: none;
+}
+
+div#footer-user {
+	float: left;
+	padding-right: 3px;
+	padding-left: 16px;
+	padding-top: 6px;
+}
+
+#footer span {
+	background-image: url(../img/footer_spliter.png);
+	background-repeat: no-repeat;
+	width: 4px;
+	height: 26px;
+	display: block;
+	float: left;
+	margin-right: 5px;
+	margin-left: 10px;
+}
+
+div#footer-time {
+	float: right;
+	background-image: url(../img/footer_time.png);
+	background-repeat: repeat-x;
+	height: 28px;
+	padding-top: 6px;
+	padding-right: 8px;
+	color: #000000;
+	padding-left: 10px;
+}
