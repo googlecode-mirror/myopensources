@@ -13,25 +13,7 @@
 </head>
 <body>
 
-<div id="wrap">
-    <div id="header">
-        
-    </div>
-
-    <div id="sidebar">
-        
-    </div>
-    
-    <div id="content">
-        <?php echo $content_for_layout ?>
-        <span class="cleaner"></span>
-    </div>
-    <div id="push"></div>
-</div>
-
-<p id="footer">
-
-</p>
+<?php echo $content_for_layout ?>
 
 </body>
 </html>

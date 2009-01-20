@@ -23,6 +23,7 @@ class DashboardController extends AppController {
 	}
 	
 	function admin_main() {
+		$this->layout = 'admin_default';
 		
 	}
 
