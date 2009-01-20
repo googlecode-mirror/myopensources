@@ -5,7 +5,7 @@
     <frame src="<?php echo $html->url("/admin/dashboard/left"); ?>" name="leftFrame" scrolling="No" noresize="noresize" id="leftFrame" title="leftFrame" />
     <frame src="<?php echo $html->url("/admin/dashboard/main"); ?>" name="mainFrame" id="mainFrame" title="mainFrame" />
   </frameset>
-  <frame src="<?php echo $html->url("/admin/dashboard/footer"); ?>">
+  <frame src="<?php echo $html->url("/admin/dashboard/footer"); ?>" scrolling="No" noresize="noresize" >
 </frameset>
 <noframes>
 <body>
