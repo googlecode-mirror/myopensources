@@ -1,6 +1,18 @@
+<?php 
+echo $javascript->link( array('jquery','jquery.treeview') );
+echo $html->css( array("jquery.treeview") );
+
+$inline_script = <<<EOD
+		$(function() {
+			$("#browser").treeview();
+		});
+
+EOD;
+echo $javascript->codeBlock($inline_script);
+?>
     <div id="left-container">
    	  <div id="left-top">
-      	<div id="left-text">管理菜单</div>
+      	<div id="left-text"><?php echo __("Main Menu"); ?></div>
       	<div id="left-flag">&gt;&gt;</div>
       </div>
       
@@ -8,28 +20,28 @@
       
   		<!-- TREE START -->    
 		<ul id="browser" class="filetree">
-			<li><img src="../images/folder.gif" /> 123</span>
+			<li><em class="folder"></em> 123</span>
 				<ul>
-					<li>blabla <img src="../images/file.gif" /></li>
+					<li><em class="file"></em>blabla </li>
 				</ul>
 			</li>
-			<li><img src="../images/folder.gif" />
+			<li><em class="folder"></em>
 				<ul>
-					<li><img src="../images/folder.gif" />
+					<li><em class="folder"></em>
 						<ul id="folder21">
-							<li><img src="../images/file.gif" /> more text</li>
-							<li>and here, too<img src="../images/file.gif" /></li>
+							<li><em class="file"></em> more text</li>
+							<li><em class="file"></em>and here, too</li>
 						</ul>
 					</li>
-					<li><img src="../images/file.gif" /></li>
+					<li><em class="file"></em></li>
 				</ul>
 			</li>
-			<li class="closed">this is closed! <img src="../images/folder.gif" />
+			<li class="closed"><em class="folder"></em>this is closed! 
 				<ul>
-					<li><img src="../images/file.gif" /></li>
+					<li><em class="file"></em></li>
 				</ul>
 			</li>
-			<li><img src="../images/file.gif" /></li>
+			<li><em class="file"></em></li>
 		</ul>
       	<!-- TREE END -->
       	
