@@ -98,6 +98,34 @@ div#top-main li em {
 
 }
 
+/*------- left ------------ */
+div#left-container  #left-top{
+	background-image: url(../img/l_t_bg.png);
+	background-repeat: no-repeat;
+	display: block;
+	height: 25px;
+	width: 162px;
+}
+
+div#left-container  #left-main{
+	background-color: #FFFFFF;
+	display: block;
+	height: 400px;
+	width: 160px;
+	margin-left: 1px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+
 /*------- footer ------------ */
 div#footer {
 	background-image: url(../img/footer_bg.png);
