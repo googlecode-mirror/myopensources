@@ -20,28 +20,34 @@ echo $javascript->codeBlock($inline_script);
       
   		<!-- TREE START -->    
 		<ul id="browser" class="filetree">
-			<li><em class="folder"></em> 123</span>
+			<li><em class="folder"></em> <?php echo __("Article"); ?></span>
 				<ul>
-					<li><em class="file"></em>blabla </li>
+					<li><a href="<?php echo $html->url("/admin/article_categories"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Categories"); ?></a> </li>
+					<li><em class="file"></em><?php echo __("Listing"); ?> </li>
 				</ul>
 			</li>
-			<li><em class="folder"></em>
+			
+			<li><em class="folder"></em> <?php echo __("Products"); ?></span>
 				<ul>
-					<li><em class="folder"></em>
-						<ul id="folder21">
-							<li><em class="file"></em> more text</li>
-							<li><em class="file"></em>and here, too</li>
-						</ul>
-					</li>
-					<li><em class="file"></em></li>
+					<li><em class="file"></em><?php echo __("Categories"); ?> </li>
+					<li><em class="file"></em><?php echo __("Listing"); ?> </li>
 				</ul>
 			</li>
-			<li class="closed"><em class="folder"></em>this is closed! 
+			
+			<li><em class="folder"></em> <?php echo __("Users"); ?></span>
 				<ul>
-					<li><em class="file"></em></li>
+					<li><em class="file"></em><?php echo __("Categories"); ?> </li>
+					<li><em class="file"></em><?php echo __("Listing"); ?> </li>
 				</ul>
 			</li>
-			<li><em class="file"></em></li>
+
+			<li><em class="folder"></em> <?php echo __("System"); ?></span>
+				<ul>
+					<li><em class="file"></em><?php echo __("Backup/Restore"); ?> </li>
+					<li><a href="<?php echo $html->url("/users/logout"); ?>" target="_parent"><em class="file"></em><?php echo __("Logout"); ?></a> </li>
+				</ul>
+			</li>
+
 		</ul>
       	<!-- TREE END -->
       	

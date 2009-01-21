@@ -12,8 +12,11 @@
     ?>
 </head>
 <body>
-
-<?php echo $content_for_layout ?>
+<?php echo $this->element('breakcrumb'); ?>
+<!--listing -->
+<div id="main-content">
+	<?php echo $content_for_layout ?>
+</div>
 
 </body>
 </html>

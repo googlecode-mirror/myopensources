@@ -5,9 +5,8 @@
 
 /* General Style Info */
 body {
-	color: #fff;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
-	font-size:90%;
+	font-size:12px;
 	margin: 0;
 }
 a {
@@ -28,13 +27,11 @@ h1, h2, h3, h4 {
 	font-weight: normal;
 }
 h1 {
-	background:#fff;
 	color: #003d4c;
 	font-size: 100%;
 	margin: 0.1em 0;
 }
 h2 {
-	background:#fff;
 	color: #e32;
 	font-family:'Gill Sans','lucida grande',helvetica, arial, sans-serif;
 	font-size: 190%;
@@ -299,10 +296,11 @@ div#main-content {
 	padding-left: 2px;
 }
 
-table#listing {
+table#listing, div#main-content table {
 	border:1px solid #999999;
+	width: 100%; 
 }
-table#listing th {
+table#listing th, div#main-content table th {
 	text-align: center;
 	background-image: url(../img/listing-h-bg.png);
 	background-repeat: repeat-x;
