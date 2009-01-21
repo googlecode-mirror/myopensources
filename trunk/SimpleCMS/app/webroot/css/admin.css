@@ -197,7 +197,7 @@ div#footer-user {
 	padding-top: 6px;
 }
 
-#footer span {
+#footer em {
 	background-image: url(../img/footer_spliter.png);
 	background-repeat: no-repeat;
 	width: 4px;

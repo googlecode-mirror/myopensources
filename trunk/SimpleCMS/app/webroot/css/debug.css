@@ -9,7 +9,8 @@ table {
 	margin-bottom: 10px;
 	width: 100%;
 }
-th {
+ */
+.cake-sql-log th {
 	border:1px solid #bbb;
 	border-top: 1px solid #fff;
 	border-left: 1px solid #fff;
@@ -17,18 +18,18 @@ th {
 	background-color: #6666CC;
 	color: #FFFFFF;
 }
-th a {
+.cake-sql-log th a {
 	background:#f2f2f2;
 	display: block;
 	padding: 2px 4px;
 	text-decoration: none;
 }
-th a:hover {
+.cake-sql-log th a:hover {
 	background: #ccc;
 	color: #333;
 	text-decoration: none;
 }
-table tr td {
+.cake-sql-log tr td {
 	background: #fff;
 	padding: 4px;
 	text-align: center;
@@ -36,20 +37,30 @@ table tr td {
 	border-right-width: thin;
 	border-right-style: dashed;
 	border-right-color: #ccc;
+	
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #ccc;
 }
-table tr.altrow td {
+.cake-sql-log tr.altrow td {
 	background: #f4f4f4;
 }
-td.actions {
+.cake-sql-log td.actions {
 	text-align: center;
 	white-space: nowrap;
 }
-td.actions a {
+.cake-sql-log td.actions a {
 	margin: 0px 6px;
 }
-*/
-.cake-sql-log table {
+
+.cake-sql-log {
 	background: #f4f4f4;
+	border:1px solid #ccc;
+	border-right:0;
+	clear: both;
+	color: #333;
+	margin-bottom: 10px;
+	width: 100%;
 }
 .cake-sql-log td {
 	padding: 4px 8px;
