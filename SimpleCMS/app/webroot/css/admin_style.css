@@ -5,19 +5,16 @@
 
 /* General Style Info */
 body {
-	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:12px;
 	margin: 0;
+	color: #333333;
 }
 a {
-	/*background:#fff;*/
-	color: #003d4c;
-	text-decoration: underline;
-	font-weight: bold;
+	text-decoration:none;
+	color: #333333;
 }
 a:hover {
-	/*background:#fff;*/
-	color: #003d4c;
+	color: #F00;
 	text-decoration:none;
 }
 a img {
@@ -294,11 +291,13 @@ td.actions a {
 div#main-content {
 	padding-right: 2px;
 	padding-left: 2px;
+	font-size: 12px;
 }
 
 table#listing, div#main-content table {
 	border:1px solid #999999;
 	width: 100%; 
+	font-size: 12px;
 }
 table#listing th, div#main-content table th {
 	text-align: center;
@@ -310,8 +309,32 @@ table#listing th, div#main-content table th {
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
 	border-bottom-color: #999999;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CCCCCC;
 }
 
+div#main-content table td {
+	height: 28px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CCCCCC;
+}
+
+.tr_swap {
+	background-color: #BCBCE9;
+}
+
+.tr_swap2 {
+	background-color: #BFFFFF;
+}
+
+.tr_hover {
+	background-color: pink;
+}
 
 /* Paging */
 div.paging {
