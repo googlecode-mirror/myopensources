@@ -44,7 +44,7 @@ echo $javascript->codeBlock($inline_script);
 			<li><em class="folder"></em> <?php echo __("System"); ?></span>
 				<ul>
 					<li><em class="file"></em><?php echo __("Backup/Restore"); ?> </li>
-					<li><a href="<?php echo $html->url("/users/logout"); ?>" target="_parent"><em class="file"></em><?php echo __("Logout"); ?></a> </li>
+					<li><em class="file"></em><?php echo $html->link(__('Logout', true), "/users/logout", array('target'=>'_parent'), __('Are you sure want to logout?', true) ); ?> </li>
 				</ul>
 			</li>
 

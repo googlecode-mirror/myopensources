@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-19 10:43+0800\n"
-"PO-Revision-Date: 2009-01-19 10:46+0800\n"
-"Last-Translator: John\n"
+"POT-Creation-Date: 2009-01-21 17:43+0800\n"
+"PO-Revision-Date: 2009-01-21 17:43+0800\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,11 +13,11 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../../..\n"
 
-#: ../../../app_controller.php:76
+#: ../../../app_controller.php:75
 msgid "Login failed. Invalid username or password."
 msgstr "用户名或密码有误"
 
-#: ../../../app_controller.php:77
+#: ../../../app_controller.php:76
 msgid "You are not authorized to access that location."
 msgstr ""
 
@@ -64,16 +64,10 @@ msgid "Debug setting does not allow access to this url."
 msgstr ""
 
 #: ../../../views/article_categories/add.ctp:4
-#: ../../../views/article_categories/admin_add.ctp:4
 msgid "Add ArticleCategory"
 msgstr "新增文章分类"
 
 #: ../../../views/article_categories/add.ctp:14
-#: ../../../views/article_categories/admin_add.ctp:22
-#: ../../../views/article_categories/admin_edit.ctp:16
-#: ../../../views/article_categories/admin_view.ctp:35
-#: ../../../views/article_categories/edit.ctp:16
-#: ../../../views/article_categories/view.ctp:35
 msgid "List ArticleCategories"
 msgstr "文章分类列表"
 
@@ -121,7 +115,7 @@ msgstr "文章分类"
 #: ../../../views/article_categories/admin_index.ctp:6
 #: ../../../views/article_categories/index.ctp:6
 msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
-msgstr ""
+msgstr "第 %page% / %pages% 页, 显示 %start% ~ %end% 共有 %count% 条记录"
 
 #: ../../../views/article_categories/admin_index.ctp:16
 #: ../../../views/article_categories/index.ctp:16
@@ -193,6 +187,52 @@ msgstr "删除文章分类"
 msgid "parent_id"
 msgstr "父类"
 
+#: ../../../views/dashboard/admin_left.ctp:15
+msgid "Main Menu"
+msgstr "管理菜单"
+
+#: ../../../views/dashboard/admin_left.ctp:23
+msgid "Article"
+msgstr "文章"
+
+#: ../../../views/dashboard/admin_left.ctp:25
+#: ../../../views/dashboard/admin_left.ctp:32
+#: ../../../views/dashboard/admin_left.ctp:39
+msgid "Categories"
+msgstr "分类"
+
+#: ../../../views/dashboard/admin_left.ctp:26
+#: ../../../views/dashboard/admin_left.ctp:33
+#: ../../../views/dashboard/admin_left.ctp:40
+msgid "Listing"
+msgstr "列表"
+
+#: ../../../views/dashboard/admin_left.ctp:30
+msgid "Products"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:37
+msgid "Users"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:44
+msgid "System"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:46
+msgid "Backup/Restore"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:47
+#: ../../../views/dashboard/admin_top.ctp:9
+msgid "Logout"
+msgstr "退出"
+
+#: ../../../views/dashboard/admin_left.ctp:47
+#: ../../../views/dashboard/admin_top.ctp:9
+msgid "Are you sure want to logout?"
+msgstr "确实要退出系统吗?"
+
 #: ../../../views/layouts/default.ctp:30
 msgid "CakePHP: the rapid development php framework:"
 msgstr ""
@@ -250,4 +290,12 @@ msgid ""
 "\t\tTo change its layout, edit: %s\n"
 "\t\tYou can also add some CSS styles for your pages at: %s"
 msgstr ""
+
+#: ../../../views/users/login.ctp:22
+msgid "Login"
+msgstr "登录"
+
+#: ../../../views/users/login.ctp:23
+msgid "Reset"
+msgstr "重置"
 
