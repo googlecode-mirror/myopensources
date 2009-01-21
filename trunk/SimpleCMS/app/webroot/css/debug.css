@@ -58,9 +58,10 @@ table {
 	border:1px solid #ccc;
 	border-right:0;
 	clear: both;
-	color: #333;
+	color: #666666;
 	margin-bottom: 10px;
 	width: 100%;
+	font-size: 11px;
 }
 .cake-sql-log td {
 	padding: 4px 8px;

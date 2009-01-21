@@ -1,5 +1,5 @@
 <div class="articleCategories index">
-<h2><?php __('ArticleCategories');?></h2>
+<?php __('ArticleCategories');?>
 <p>
 <?php
 echo $paginator->counter(array(

@@ -8,7 +8,7 @@
     <?php 
 	    echo $html->css( array("admin_style", 'debug') ); 
 	    echo $scripts_for_layout;
-	    echo $javascript->link( array('jquery', 'jquery.form') );
+	    echo $javascript->link( array('jquery', 'jquery.form', 'admin.common') );
     ?>
 </head>
 <body>
