@@ -12,9 +12,10 @@
     ?>
 </head>
 <body>
-<?php echo $this->element('breakcrumb'); ?>
 <!--listing -->
 <div id="main-content">
+<?php echo $this->element('breakcrumb', isset($breakcrumb) ? $breakcrumb : array() ); ?>
+
 	<?php echo $content_for_layout ?>
 </div>
 

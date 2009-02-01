@@ -95,7 +95,21 @@ ol,ul {
 }
 
 /*~~~~ menu icons ~~~~~*/
-.act-new, .act-del, .act-find {
+input[type=submit] {
+	background: transparent url(../img/mis_btn.png) no-repeat scroll 0%;
+}
+
+input[type=submit] {
+	background-position: -1px -1px;
+	border: 0pt none;
+	color: #464646;
+	height: 26px;
+	line-height: 21px;
+	width: 62px;
+
+}
+
+.act-new, .act-del, .act-find, .act-list, .act-edit{
 	background: transparent url(../img/menu_icons.png) no-repeat scroll 0%;
 }
 
@@ -123,6 +137,28 @@ ol,ul {
 
 .act-find {
 	background-position: -3px -176px;
+	border: 0pt none;
+	height: 17px;
+	width: 18px;
+	display: block;
+	float:left;
+	margin: 0px;
+	padding: 0px;
+}
+
+.act-edit {
+	background-position: -4px -195px;
+	border: 0pt none;
+	height: 17px;
+	width: 18px;
+	display: block;
+	float:left;
+	margin: 0px;
+	padding: 0px;
+}
+
+.act-list {
+	background-position: -22px -174px;
 	border: 0pt none;
 	height: 17px;
 	width: 18px;
@@ -175,7 +211,7 @@ div#breakcrumb #b-main #b-actions {
 	font-size: 12px;
 	color: #000000;
 	text-decoration: none;
-	width: 220px;
+	width: 300px;
 }
 
 div#breakcrumb #b-main #b-actions #act-left {
@@ -213,7 +249,7 @@ div#breakcrumb #b-main #b-actions ul {
 div#breakcrumb #b-main #b-actions li {
 	float: left;
 	width: 100%;
-	width: 50px;
+	width: 60px;
 	text-decoration: none;
 	margin: 0px;
 	padding: 0px;
@@ -379,7 +415,7 @@ form {
 	clear: both;
 	margin-right: 20px;
 	padding: 0;
-	width: 80%;
+	width: auto;
 }
 fieldset {
 	border: 1px solid #ccc;
@@ -431,11 +467,9 @@ label {
 }
 input, textarea {
 	clear: both;
-	font-size: 140%;
-	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
 	padding: 2px;
-	width: 100%;
 }
+
 select {
 	clear: both;
 	font-size: 120%;
@@ -466,7 +500,7 @@ input[type=submit] {
 	display: inline;
 	font-size: 110%;
 	padding: 2px 5px;
-	width: auto;
+	width: 62px;
 	vertical-align: bottom;
 }
 
