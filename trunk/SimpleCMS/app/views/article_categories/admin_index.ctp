@@ -1,13 +1,15 @@
+
 <div class="articleCategories index">
-<?php __('ArticleCategories');?>
 <p>
 <?php
 echo $paginator->counter(array(
 'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
 ));
 ?></p>
+<form id='list-form' action='<?php echo $html->url("/admin/article_categories/delSelected");?>' method='POST'>
 <table cellpadding="0" cellspacing="0">
 <tr>
+	<th width="40px"><input id="select_all" type="checkbox" /></th>
 	<th><?php echo $paginator->sort('id');?></th>
 	<th><?php echo $paginator->sort('parent_id');?></th>
 	<th><?php echo $paginator->sort('name');?></th>
@@ -16,14 +18,12 @@ echo $paginator->counter(array(
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
-$i = 0;
 foreach ($articleCategories as $articleCategory):
-	$class = null;
-	if ($i++ % 2 == 0) {
-		$class = ' class="altrow"';
-	}
 ?>
-	<tr<?php echo $class;?>>
+	<tr>
+		<td>
+			<input id="all[]" type="checkbox" value="<?php echo $articleCategory['ArticleCategory']['id']; ?>" name="all[]"/>
+		</td>
 		<td>
 			<?php echo $articleCategory['ArticleCategory']['id']; ?>
 		</td>
@@ -47,14 +47,10 @@ foreach ($articleCategories as $articleCategory):
 	</tr>
 <?php endforeach; ?>
 </table>
+</form>
 </div>
 <div class="paging">
 	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
  | 	<?php echo $paginator->numbers();?>
 	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
-</div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('New ArticleCategory', true), array('action'=>'add')); ?></li>
-	</ul>
 </div>

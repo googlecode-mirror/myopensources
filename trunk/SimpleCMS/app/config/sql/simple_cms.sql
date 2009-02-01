@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.8.1deb1
+-- version 3.1.1
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 01 月 16 日 17:58
--- 服务器版本: 5.1.22
--- PHP 版本: 5.2.6-2ubuntu4
+-- 生成日期: 2009 年 01 月 26 日 09:56
+-- 服务器版本: 5.1.30
+-- PHP 版本: 5.2.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `article_categories` (
   `created` int(11) DEFAULT NULL,
   `modified` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- 导出表中的数据 `article_categories`
@@ -57,9 +57,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` char(50) DEFAULT NULL,
   `password` char(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- 导出表中的数据 `users`
 --
 
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3');

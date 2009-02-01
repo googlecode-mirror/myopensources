@@ -2,16 +2,29 @@
 <div id="breakcrumb">
   <div id="b-left"></div>
   <div id="b-main">
-  	<span>当前位置: 首页－文章分类－列表</span>
+  	<span>当前位置: 首页
+  	<?php if( isset($nav) ):?>
+  		<?php foreach($nav as $item):?>
+  			-&gt;
+  			<?php if( isset($item['url']) && $item['url'] ): ?>
+  				<?php echo $html->link($item['text'], $item['url'] ); ?>
+  			<?php else: ?>
+  				<?php echo $item['text'] ; ?>
+  			<?php endif; ?>
+  		<?php endforeach;?>
+  	<?php endif;?>
+  	</span>
+    <?php if(isset($actions) ):?>
   	<div id="b-actions">
     	<div id="act-left"></div>
     	<div id="act-main">
         	<ul>
-            	<li><a href="#"><em class="act-new"></em>新增</a></li>
-            	<li><a href="#"><em class="act-del"></em>删除</a></li>
-            	<li><a href="#"><em class="act-find"></em>查找</a></li>
+        		<?php foreach($actions as $action):?>
+            	<li><?php echo $html->link('<em class="'.$action['class'].'"></em>' . $action['text'], $action['url'], null, isset($action['js']) ? $action['js'] : null, false); ?></li>
+            	<?php endforeach;?>
             </ul>
       </div>
+	<?php endif;?>      
     	<div id="act-right"></div>
     </div>
   </div>

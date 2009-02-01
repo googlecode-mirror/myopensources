@@ -6,7 +6,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'test1234',
+		'password' => '',
 		'database' => 'dev_simple_cms',
 		'prefix' => '',
 		'encoding' => 'utf8',

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-21 17:43+0800\n"
-"PO-Revision-Date: 2009-01-21 17:43+0800\n"
+"POT-Creation-Date: 2009-01-26 17:45+0800\n"
+"PO-Revision-Date: 2009-01-26 18:04+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,41 +21,87 @@ msgstr "用户名或密码有误"
 msgid "You are not authorized to access that location."
 msgstr ""
 
-#: ../../../controllers/article_categories_controller.php:14
-#: ../../../controllers/article_categories_controller.php:73
+#: ../../../controllers/article_categories_controller.php:17
+#: ../../../controllers/article_categories_controller.php:91
 msgid "Invalid ArticleCategory."
-msgstr ""
-
-#: ../../../controllers/article_categories_controller.php:24
-#: ../../../controllers/article_categories_controller.php:39
-#: ../../../controllers/article_categories_controller.php:87
-#: ../../../controllers/article_categories_controller.php:105
-msgid "The ArticleCategory has been saved"
 msgstr ""
 
 #: ../../../controllers/article_categories_controller.php:27
 #: ../../../controllers/article_categories_controller.php:42
-#: ../../../controllers/article_categories_controller.php:90
-#: ../../../controllers/article_categories_controller.php:108
+#: ../../../controllers/article_categories_controller.php:121
+#: ../../../controllers/article_categories_controller.php:151
+msgid "The ArticleCategory has been saved"
+msgstr ""
+
+#: ../../../controllers/article_categories_controller.php:30
+#: ../../../controllers/article_categories_controller.php:45
+#: ../../../controllers/article_categories_controller.php:124
+#: ../../../controllers/article_categories_controller.php:154
 msgid "The ArticleCategory could not be saved. Please, try again."
 msgstr ""
 
-#: ../../../controllers/article_categories_controller.php:34
-#: ../../../controllers/article_categories_controller.php:100
+#: ../../../controllers/article_categories_controller.php:37
+#: ../../../controllers/article_categories_controller.php:146
 msgid "Invalid ArticleCategory"
 msgstr ""
 
-#: ../../../controllers/article_categories_controller.php:52
-#: ../../../controllers/article_categories_controller.php:120
+#: ../../../controllers/article_categories_controller.php:55
+#: ../../../controllers/article_categories_controller.php:181
 msgid "Invalid id for ArticleCategory"
 msgstr ""
 
-#: ../../../controllers/article_categories_controller.php:56
-#: ../../../controllers/article_categories_controller.php:124
+#: ../../../controllers/article_categories_controller.php:59
+#: ../../../controllers/article_categories_controller.php:185
 msgid "ArticleCategory deleted"
 msgstr ""
 
+#: ../../../controllers/article_categories_controller.php:75
+#: ../../../controllers/article_categories_controller.php:103
 #: ../../../controllers/article_categories_controller.php:132
+#: ../../../controllers/article_categories_controller.php:166
+msgid "ArticleCategory"
+msgstr "文章分类"
+
+#: ../../../controllers/article_categories_controller.php:76
+#: ../../../controllers/article_categories_controller.php:108
+#: ../../../controllers/article_categories_controller.php:137
+#: ../../../controllers/article_categories_controller.php:171
+msgid "Listing"
+msgstr "列表"
+
+#: ../../../controllers/article_categories_controller.php:80
+#: ../../../controllers/article_categories_controller.php:109
+#: ../../../controllers/article_categories_controller.php:133
+msgid "New"
+msgstr "新增"
+
+#: ../../../controllers/article_categories_controller.php:81
+#: ../../../controllers/article_categories_controller.php:111
+#: ../../../controllers/article_categories_controller.php:172
+msgid "Delete"
+msgstr "删除"
+
+#: ../../../controllers/article_categories_controller.php:104
+msgid "View"
+msgstr "查看"
+
+#: ../../../controllers/article_categories_controller.php:110
+#: ../../../controllers/article_categories_controller.php:167
+msgid "Edit"
+msgstr "编辑"
+
+#: ../../../controllers/article_categories_controller.php:111
+#: ../../../controllers/article_categories_controller.php:172
+#, php-format
+msgid "Are you sure you want to delete # %s?"
+msgstr "确实要删除记录 # %s 吗?"
+
+#: ../../../controllers/article_categories_controller.php:192
+#, fuzzy
+msgid "Deleted select records"
+msgstr "请选择分类"
+
+#: ../../../controllers/article_categories_controller.php:199
 msgid "None"
 msgstr "无"
 
@@ -84,75 +130,34 @@ msgid "Fill up too long"
 msgstr "输入内容太长"
 
 #: ../../../views/article_categories/admin_edit.ctp:4
-#: ../../../views/article_categories/admin_view.ctp:33
 #: ../../../views/article_categories/edit.ctp:4
 #: ../../../views/article_categories/view.ctp:33
 msgid "Edit ArticleCategory"
 msgstr "编辑文章分类"
 
-#: ../../../views/article_categories/admin_edit.ctp:15
-#: ../../../views/article_categories/admin_index.ctp:45
-#: ../../../views/article_categories/edit.ctp:15
-#: ../../../views/article_categories/index.ctp:45
-msgid "Delete"
-msgstr "删除"
-
-#: ../../../views/article_categories/admin_edit.ctp:15
-#: ../../../views/article_categories/admin_index.ctp:45
-#: ../../../views/article_categories/admin_view.ctp:34
-#: ../../../views/article_categories/edit.ctp:15
-#: ../../../views/article_categories/index.ctp:45
-#: ../../../views/article_categories/view.ctp:34
-#, php-format
-msgid "Are you sure you want to delete # %s?"
-msgstr "确实要删除记录 # %s 吗?"
-
-#: ../../../views/article_categories/admin_index.ctp:2
-#: ../../../views/article_categories/index.ctp:2
-msgid "ArticleCategories"
-msgstr "文章分类"
+#: ../../../views/article_categories/admin_edit.ctp:11
+msgid "Submit"
+msgstr "提交"
 
 #: ../../../views/article_categories/admin_index.ctp:6
 #: ../../../views/article_categories/index.ctp:6
 msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
 msgstr "第 %page% / %pages% 页, 显示 %start% ~ %end% 共有 %count% 条记录"
 
-#: ../../../views/article_categories/admin_index.ctp:16
+#: ../../../views/article_categories/admin_index.ctp:18
 #: ../../../views/article_categories/index.ctp:16
 msgid "Actions"
 msgstr "操作"
 
-#: ../../../views/article_categories/admin_index.ctp:43
-#: ../../../views/article_categories/index.ctp:43
-msgid "View"
-msgstr "查看"
-
-#: ../../../views/article_categories/admin_index.ctp:44
-#: ../../../views/article_categories/index.ctp:44
-msgid "Edit"
-msgstr "编辑"
-
-#: ../../../views/article_categories/admin_index.ctp:52
+#: ../../../views/article_categories/admin_index.ctp:53
 #: ../../../views/article_categories/index.ctp:52
 msgid "previous"
 msgstr "上页"
 
-#: ../../../views/article_categories/admin_index.ctp:54
+#: ../../../views/article_categories/admin_index.ctp:55
 #: ../../../views/article_categories/index.ctp:54
 msgid "next"
 msgstr "下页"
-
-#: ../../../views/article_categories/admin_index.ctp:58
-#: ../../../views/article_categories/admin_view.ctp:36
-#: ../../../views/article_categories/index.ctp:58
-#: ../../../views/article_categories/view.ctp:36
-msgid "New ArticleCategory"
-msgstr "新增文章分类"
-
-#: ../../../views/article_categories/admin_view.ctp:2
-#: ../../../views/article_categories/view.ctp:2
-msgid "ArticleCategory"
-msgstr "文章分类"
 
 #: ../../../views/article_categories/admin_view.ctp:4
 #: ../../../views/article_categories/view.ctp:4
@@ -178,14 +183,22 @@ msgstr "创建日期"
 msgid "Modified"
 msgstr "修改日期"
 
-#: ../../../views/article_categories/admin_view.ctp:34
-#: ../../../views/article_categories/view.ctp:34
-msgid "Delete ArticleCategory"
-msgstr "删除文章分类"
+#: ../../../views/article_categories/index.ctp:2
+msgid "ArticleCategories"
+msgstr "文章分类"
+
+#: ../../../views/article_categories/index.ctp:58
+#: ../../../views/article_categories/view.ctp:36
+msgid "New ArticleCategory"
+msgstr "新增文章分类"
 
 #: ../../../views/article_categories/view.ctp:9
 msgid "parent_id"
 msgstr "父类"
+
+#: ../../../views/article_categories/view.ctp:34
+msgid "Delete ArticleCategory"
+msgstr "删除文章分类"
 
 #: ../../../views/dashboard/admin_left.ctp:15
 msgid "Main Menu"
@@ -200,12 +213,6 @@ msgstr "文章"
 #: ../../../views/dashboard/admin_left.ctp:39
 msgid "Categories"
 msgstr "分类"
-
-#: ../../../views/dashboard/admin_left.ctp:26
-#: ../../../views/dashboard/admin_left.ctp:33
-#: ../../../views/dashboard/admin_left.ctp:40
-msgid "Listing"
-msgstr "列表"
 
 #: ../../../views/dashboard/admin_left.ctp:30
 msgid "Products"
@@ -298,4 +305,7 @@ msgstr "登录"
 #: ../../../views/users/login.ctp:23
 msgid "Reset"
 msgstr "重置"
+
+#~ msgid "Search"
+#~ msgstr "查找"
 

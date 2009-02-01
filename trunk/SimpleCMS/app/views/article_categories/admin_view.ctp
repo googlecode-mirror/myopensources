@@ -28,11 +28,3 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('Edit ArticleCategory', true), array('action'=>'edit', $articleCategory['ArticleCategory']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete ArticleCategory', true), array('action'=>'delete', $articleCategory['ArticleCategory']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $articleCategory['ArticleCategory']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List ArticleCategories', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New ArticleCategory', true), array('action'=>'add')); ?> </li>
-	</ul>
-</div>
