@@ -8,7 +8,7 @@
     <?php 
 	    echo $html->css( array("admin_style", 'debug') ); 
 	    echo $scripts_for_layout;
-	    echo $javascript->link( array('jquery', 'jquery.form', 'admin.common') );
+	    echo $javascript->link( array('jquery', 'jquery.i18n', 'lang-zh-cn', 'jquery.form', 'admin.common', 'jquery.hotkeys', 'shotcut') );
     ?>
 </head>
 <body>
@@ -18,6 +18,8 @@
 
 	<?php echo $content_for_layout ?>
 </div>
+
+<input type="hidden" name="logout-link" value="<?php echo $html->url("/users/logout"); ?>">
 
 </body>
 </html>

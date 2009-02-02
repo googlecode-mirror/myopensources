@@ -20,7 +20,7 @@ $(document).ready(function(){
 	
 	$(".act-del").parent().click(
 			function(){
-				if (confirm('Are you sure delete selected ?')) {
+				if ( confirm( $.i18n._('Are you sure delete selected ?') ) ) {
 					$("form").submit();
 					
 				}
@@ -29,5 +29,4 @@ $(document).ready(function(){
 			}
 	);
 	
-
 });
