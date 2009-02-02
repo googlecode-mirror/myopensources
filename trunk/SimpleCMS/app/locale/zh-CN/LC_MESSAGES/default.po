@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 17:45+0800\n"
-"PO-Revision-Date: 2009-01-26 18:04+0800\n"
+"POT-Creation-Date: 2009-02-02 17:13+0800\n"
+"PO-Revision-Date: 2009-02-02 17:13+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,14 @@ msgstr "用户名或密码有误"
 #: ../../../app_controller.php:76
 msgid "You are not authorized to access that location."
 msgstr ""
+
+#: ../../../webroot/test.php:99
+msgid "Debug setting does not allow access to this url."
+msgstr ""
+
+#: ../../../controllers/dashboard_controller.php:14
+msgid "System name"
+msgstr "简易CMS管理系统"
 
 #: ../../../controllers/article_categories_controller.php:17
 #: ../../../controllers/article_categories_controller.php:91
@@ -105,150 +113,6 @@ msgstr "请选择分类"
 msgid "None"
 msgstr "无"
 
-#: ../../../webroot/test.php:99
-msgid "Debug setting does not allow access to this url."
-msgstr ""
-
-#: ../../../views/article_categories/add.ctp:4
-msgid "Add ArticleCategory"
-msgstr "新增文章分类"
-
-#: ../../../views/article_categories/add.ctp:14
-msgid "List ArticleCategories"
-msgstr "文章分类列表"
-
-#: ../../../views/article_categories/admin_add.ctp:9
-msgid "Please select category"
-msgstr "请选择分类"
-
-#: ../../../views/article_categories/admin_add.ctp:13
-msgid "Not allow blank"
-msgstr "不允许为空"
-
-#: ../../../views/article_categories/admin_add.ctp:14
-msgid "Fill up too long"
-msgstr "输入内容太长"
-
-#: ../../../views/article_categories/admin_edit.ctp:4
-#: ../../../views/article_categories/edit.ctp:4
-#: ../../../views/article_categories/view.ctp:33
-msgid "Edit ArticleCategory"
-msgstr "编辑文章分类"
-
-#: ../../../views/article_categories/admin_edit.ctp:11
-msgid "Submit"
-msgstr "提交"
-
-#: ../../../views/article_categories/admin_index.ctp:6
-#: ../../../views/article_categories/index.ctp:6
-msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
-msgstr "第 %page% / %pages% 页, 显示 %start% ~ %end% 共有 %count% 条记录"
-
-#: ../../../views/article_categories/admin_index.ctp:18
-#: ../../../views/article_categories/index.ctp:16
-msgid "Actions"
-msgstr "操作"
-
-#: ../../../views/article_categories/admin_index.ctp:53
-#: ../../../views/article_categories/index.ctp:52
-msgid "previous"
-msgstr "上页"
-
-#: ../../../views/article_categories/admin_index.ctp:55
-#: ../../../views/article_categories/index.ctp:54
-msgid "next"
-msgstr "下页"
-
-#: ../../../views/article_categories/admin_view.ctp:4
-#: ../../../views/article_categories/view.ctp:4
-msgid "Id"
-msgstr "编号"
-
-#: ../../../views/article_categories/admin_view.ctp:9
-msgid "Parent"
-msgstr "父类"
-
-#: ../../../views/article_categories/admin_view.ctp:14
-#: ../../../views/article_categories/view.ctp:14
-msgid "Name"
-msgstr "名称"
-
-#: ../../../views/article_categories/admin_view.ctp:19
-#: ../../../views/article_categories/view.ctp:19
-msgid "Created"
-msgstr "创建日期"
-
-#: ../../../views/article_categories/admin_view.ctp:24
-#: ../../../views/article_categories/view.ctp:24
-msgid "Modified"
-msgstr "修改日期"
-
-#: ../../../views/article_categories/index.ctp:2
-msgid "ArticleCategories"
-msgstr "文章分类"
-
-#: ../../../views/article_categories/index.ctp:58
-#: ../../../views/article_categories/view.ctp:36
-msgid "New ArticleCategory"
-msgstr "新增文章分类"
-
-#: ../../../views/article_categories/view.ctp:9
-msgid "parent_id"
-msgstr "父类"
-
-#: ../../../views/article_categories/view.ctp:34
-msgid "Delete ArticleCategory"
-msgstr "删除文章分类"
-
-#: ../../../views/dashboard/admin_left.ctp:15
-msgid "Main Menu"
-msgstr "管理菜单"
-
-#: ../../../views/dashboard/admin_left.ctp:23
-msgid "Article"
-msgstr "文章"
-
-#: ../../../views/dashboard/admin_left.ctp:25
-#: ../../../views/dashboard/admin_left.ctp:32
-#: ../../../views/dashboard/admin_left.ctp:39
-msgid "Categories"
-msgstr "分类"
-
-#: ../../../views/dashboard/admin_left.ctp:30
-msgid "Products"
-msgstr ""
-
-#: ../../../views/dashboard/admin_left.ctp:37
-msgid "Users"
-msgstr ""
-
-#: ../../../views/dashboard/admin_left.ctp:44
-msgid "System"
-msgstr ""
-
-#: ../../../views/dashboard/admin_left.ctp:46
-msgid "Backup/Restore"
-msgstr ""
-
-#: ../../../views/dashboard/admin_left.ctp:47
-#: ../../../views/dashboard/admin_top.ctp:9
-msgid "Logout"
-msgstr "退出"
-
-#: ../../../views/dashboard/admin_left.ctp:47
-#: ../../../views/dashboard/admin_top.ctp:9
-msgid "Are you sure want to logout?"
-msgstr "确实要退出系统吗?"
-
-#: ../../../views/layouts/default.ctp:30
-msgid "CakePHP: the rapid development php framework:"
-msgstr ""
-
-#: ../../../views/layouts/default.ctp:44
-#: ../../../views/layouts/default.ctp:55
-msgid "CakePHP: the rapid development php framework"
-msgstr ""
-
 #: ../../../views/pages/home.ctp:12
 msgid "Your tmp directory is writable."
 msgstr ""
@@ -298,6 +162,15 @@ msgid ""
 "\t\tYou can also add some CSS styles for your pages at: %s"
 msgstr ""
 
+#: ../../../views/layouts/default.ctp:30
+msgid "CakePHP: the rapid development php framework:"
+msgstr ""
+
+#: ../../../views/layouts/default.ctp:44
+#: ../../../views/layouts/default.ctp:55
+msgid "CakePHP: the rapid development php framework"
+msgstr ""
+
 #: ../../../views/users/login.ctp:22
 msgid "Login"
 msgstr "登录"
@@ -305,6 +178,131 @@ msgstr "登录"
 #: ../../../views/users/login.ctp:23
 msgid "Reset"
 msgstr "重置"
+
+#: ../../../views/article_categories/view.ctp:4
+msgid "Id"
+msgstr "编号"
+
+#: ../../../views/article_categories/view.ctp:9
+msgid "parent_id"
+msgstr "父类"
+
+#: ../../../views/article_categories/view.ctp:14
+msgid "Name"
+msgstr "名称"
+
+#: ../../../views/article_categories/view.ctp:19
+msgid "Created"
+msgstr "创建日期"
+
+#: ../../../views/article_categories/view.ctp:24
+msgid "Modified"
+msgstr "修改日期"
+
+#: ../../../views/article_categories/view.ctp:33
+#: ../../../views/article_categories/edit.ctp:4
+msgid "Edit ArticleCategory"
+msgstr "编辑文章分类"
+
+#: ../../../views/article_categories/view.ctp:34
+msgid "Delete ArticleCategory"
+msgstr "删除文章分类"
+
+#: ../../../views/article_categories/view.ctp:35
+#: ../../../views/article_categories/edit.ctp:16
+#: ../../../views/article_categories/add.ctp:14
+msgid "List ArticleCategories"
+msgstr "文章分类列表"
+
+#: ../../../views/article_categories/view.ctp:36
+#: ../../../views/article_categories/index.ctp:58
+msgid "New ArticleCategory"
+msgstr "新增文章分类"
+
+#: ../../../views/article_categories/index.ctp:2
+msgid "ArticleCategories"
+msgstr "文章分类"
+
+#: ../../../views/article_categories/index.ctp:6
+msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
+msgstr "第 %page% / %pages% 页, 显示 %start% ~ %end% 共有 %count% 条记录"
+
+#: ../../../views/article_categories/index.ctp:16
+msgid "Actions"
+msgstr "操作"
+
+#: ../../../views/article_categories/index.ctp:52
+msgid "previous"
+msgstr "上页"
+
+#: ../../../views/article_categories/index.ctp:54
+msgid "next"
+msgstr "下页"
+
+#: ../../../views/article_categories/add.ctp:4
+msgid "Add ArticleCategory"
+msgstr "新增文章分类"
+
+#: ../../../views/article_categories/admin_edit.ctp:11
+#: ../../../views/article_categories/admin_add.ctp:18
+msgid "Submit"
+msgstr "提交"
+
+#: ../../../views/article_categories/admin_add.ctp:9
+msgid "Please select category"
+msgstr "请选择分类"
+
+#: ../../../views/article_categories/admin_add.ctp:13
+msgid "Not allow blank"
+msgstr "不允许为空"
+
+#: ../../../views/article_categories/admin_add.ctp:14
+msgid "Fill up too long"
+msgstr "输入内容太长"
+
+#: ../../../views/article_categories/admin_view.ctp:9
+msgid "Parent"
+msgstr "父类"
+
+#: ../../../views/dashboard/admin_left.ctp:15
+msgid "Main Menu"
+msgstr "管理菜单"
+
+#: ../../../views/dashboard/admin_left.ctp:23
+msgid "Article"
+msgstr "文章"
+
+#: ../../../views/dashboard/admin_left.ctp:25
+#: ../../../views/dashboard/admin_left.ctp:32
+#: ../../../views/dashboard/admin_left.ctp:39
+msgid "Categories"
+msgstr "分类"
+
+#: ../../../views/dashboard/admin_left.ctp:30
+msgid "Products"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:37
+msgid "Users"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:44
+msgid "System"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:46
+msgid "Backup/Restore"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:47
+#: ../../../views/dashboard/admin_top.ctp:9
+msgid "Logout"
+msgstr "退出"
+
+#: ../../../views/dashboard/admin_left.ctp:47
+#: ../../../views/dashboard/admin_top.ctp:9
+msgid "Are you sure want to logout?"
+msgstr "确实要退出系统吗?"
 
 #~ msgid "Search"
 #~ msgstr "查找"

@@ -7,11 +7,12 @@ class DashboardController extends AppController {
 	function beforeFilter() {
 		parent::beforeFilter();
 		$this->layout = 'simple_layout';
+		$this->pageTitle = __("System name", true);
 	}
 	
 	
 	function admin_index() {
-
+		
 	}
 	
 	function admin_top() {
