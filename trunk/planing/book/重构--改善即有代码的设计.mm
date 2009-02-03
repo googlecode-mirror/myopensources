@@ -10,6 +10,7 @@
 <node CREATED="1233591887375" ID="Freemind_Link_424272678" MODIFIED="1233591891156" TEXT="Rental"/>
 <node CREATED="1233591892031" ID="Freemind_Link_910812470" MODIFIED="1233591895875" TEXT="Customer"/>
 </node>
+<node CREATED="1233624463703" ID="Freemind_Link_241695178" MODIFIED="1233624513093" TEXT="&#x91cd;&#x6784;&#x672c;&#x8d28;&#xff1a;&#x5c0f;&#x6b65;&#x66f4;&#x6539;&#xff0c;&#x5faa;&#x73af;&#x6d4b;&#x8bd5;"/>
 </node>
 </node>
 </map>
