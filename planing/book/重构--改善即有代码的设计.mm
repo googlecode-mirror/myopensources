@@ -1,7 +1,7 @@
 <map version="0.8.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node BACKGROUND_COLOR="#009966" CREATED="1233590838968" ID="Freemind_Link_1396694536" MODIFIED="1233591657187" TEXT="&#x91cd;&#x6784;--&#x6539;&#x5584;&#x5373;&#x6709;&#x4ee3;&#x7801;&#x7684;&#x8bbe;&#x8ba1;">
-<font BOLD="true" NAME="SansSerif" SIZE="12"/>
+<node BACKGROUND_COLOR="#009966" CREATED="1233590838968" ID="Freemind_Link_1396694536" MODIFIED="1233730933780" TEXT="&#x91cd;&#x6784;--&#x6539;&#x5584;&#x5373;&#x6709;&#x4ee3;&#x7801;&#x7684;&#x8bbe;&#x8ba1;">
+<font BOLD="true" NAME="&#x5b8b;&#x4f53;" SIZE="12"/>
 <icon BUILTIN="gohome"/>
 <node CREATED="1233591447906" ID="_" MODIFIED="1233591756625" POSITION="right" TEXT="1&#x7ae0;:&#x91cd;&#x6784;&#xff0d;&#x7b2c;&#x4e00;&#x4e2a;&#x6848;&#x4f8b;">
 <node CREATED="1233591756609" ID="Freemind_Link_1441713710" MODIFIED="1233591830359" TEXT="&#x5f71;&#x7247;&#x51fa;&#x79df;&#x5e97;&#x7cfb;&#x7edf;">
