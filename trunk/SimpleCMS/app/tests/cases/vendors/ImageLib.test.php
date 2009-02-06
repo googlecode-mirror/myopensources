@@ -3,7 +3,7 @@
 /* User Test cases generated on: 2008-12-31 11:12:37 : 1230693577*/
 App::import("Vendor", "Image_Lib", array('file' => 'Image'.DS.'Lib.php') );
 
-class StoreTestCase extends CakeTestCase {
+class ImageLibTestCase extends CakeTestCase {
 
 	function startTest() {
 
