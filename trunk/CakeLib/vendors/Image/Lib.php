@@ -61,6 +61,7 @@ class Image_Lib {
 	var $wm_use_truetype	= FALSE;
 
 	var $dir_write_mode 	= 0777;
+	var $iswindows			= FALSE;
 	
 	/**
 	 * Constructor
@@ -112,6 +113,8 @@ class Image_Lib {
 	 */	
 	function initialize($props = array())
 	{
+		$this->iswindows = (bool) (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN');
+		
 		/*
 		 * Convert array elements into class variables
 		 */
@@ -191,10 +194,12 @@ class Image_Lib {
 		{
 			$this->dest_image = $this->source_image;
 			$this->dest_folder = $this->source_folder;
+			
 		}
 		else
 		{
-			if (strpos($this->new_image, '/') === FALSE)
+			$pattern = $this->iswindows ? "^[A-Z]:" : "^/";
+			if ( eregi($pattern, $this->new_image) === FALSE )//strpos($this->new_image, '/') === FALSE fix for windows
 			{
 				$this->dest_folder = $this->source_folder;
 				$this->dest_image = $this->new_image;
@@ -209,7 +214,6 @@ class Image_Lib {
 				{
 					$full_dest_path = $this->new_image;
 				}
-				
 				// Is there a file name?
 				if ( ! preg_match("#\.(jpg|jpeg|gif|png)$#i", $full_dest_path))
 				{
@@ -222,9 +226,11 @@ class Image_Lib {
 					$this->dest_image = end($x);
 					$this->dest_folder = str_replace($this->dest_image, '', $full_dest_path);
 				}
+				
 			}
+			
 		}
-
+		
 		/*
 		 * Compile the finalized filenames/paths
 		 *
@@ -433,6 +439,7 @@ class Image_Lib {
 	function image_process_gd($action = 'resize')
 	{	
 		$v2_override = FALSE;
+		
 
 		// If the target width/height match the source, AND if the new file name is not equal to the old file name
 		// we'll simply make a copy of the original with the new name... assuming dynamic rendering is off.
