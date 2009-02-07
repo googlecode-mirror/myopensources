@@ -12,15 +12,16 @@ class ImageLibTestCase extends CakeTestCase {
 
 	function testResize() {
 		$config = array();
-		$config['image_library'] = 'magickwand';
-		$config['source_image'] = '/tmp/cache-apc-vs-memcache.png';
-		$config['new_image'] = '/tmp/cache-apc-vs-memcache-resize.png';
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = dirname( dirname(__FILE__) ) . DS. 'files'. DS . "hot_topic081218.jpg";
 		$config['create_thumb'] = TRUE;
 		$config['maintain_ratio'] = TRUE;
 		$config['width'] = 180;
 		$config['height'] = 180;
 		$img = new Image_Lib($config);
 		$img->resize();
+		
+		
 	}
 }
 ?>

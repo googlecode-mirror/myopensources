@@ -15,17 +15,20 @@ class ImageLibComponentTestCase extends CakeTestCase {
 
 class FakeImageLibController {
 	
-	var $data = array(
-					'Image' => array(
-								'thumbnail'	=> array(
-									'type' => 'image/png',
-									'size' => 10,
-									'tmp_name' => '/tmp/cache-apc-vs-memcache.png',
-	
-								),
-							
-					),
-		);
+	var $data ;
+	function FakeImageLibController() {
+		$this->data = array(
+						'Image' => array(
+									'thumbnail'	=> array(
+										'type' => 'image/jpeg',
+										'size' => 10,
+										'tmp_name' => dirname( dirname(__FILE__) ) . DS. 'files'. DS . "hot_topic081218.jpg",
+		
+									),
+								
+						),
+			);
+	}
 }
 
 ?>
