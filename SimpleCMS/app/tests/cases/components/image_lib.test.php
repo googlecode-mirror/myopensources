@@ -23,6 +23,7 @@ class FakeImageLibController {
 										'type' => 'image/jpeg',
 										'size' => 10,
 										'tmp_name' => dirname( dirname(__FILE__) ) . DS. 'files'. DS . "hot_topic081218.jpg",
+										'name'	=> 'test.jpg',
 		
 									),
 								

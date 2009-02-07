@@ -14,6 +14,7 @@ class ImageLibTestCase extends CakeTestCase {
 		$config = array();
 		$config['image_library'] = 'gd2';
 		$config['source_image'] = dirname( dirname(__FILE__) ) . DS. 'files'. DS . "hot_topic081218.jpg";
+		$config['new_image'] = dirname( dirname(__FILE__) ) . DS. 'files'. DS . "test.jpg";
 		$config['create_thumb'] = TRUE;
 		$config['maintain_ratio'] = TRUE;
 		$config['width'] = 180;
