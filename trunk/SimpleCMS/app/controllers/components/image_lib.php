@@ -93,14 +93,14 @@ class ImageLibComponent extends Object {
 		$config = array();
 		$config['image_library'] = 'gd2';
 		$config['source_image'] = $this->file['tmp_name'];
-		$config['dest_folder'] = $upload_dir;
+		$config['new_image'] = $upload_dir . DS. $this->file['name'];
 		
 		$config['create_thumb'] = TRUE;
 		$config['maintain_ratio'] = TRUE;
 		$config['width'] = $this->width;
 		$config['height'] = $this->height;
 		
-        debug($config);
+//        debug($config);
         
 		$img_lib = new Image_Lib($config);
 		$img_lib->resize();

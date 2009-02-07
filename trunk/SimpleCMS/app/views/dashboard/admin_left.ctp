@@ -23,7 +23,7 @@ echo $javascript->codeBlock($inline_script);
 			<li><em class="folder"></em> <?php echo __("Article"); ?></span>
 				<ul>
 					<li><a href="<?php echo $html->url("/admin/article_categories"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Categories"); ?></a> </li>
-					<li><em class="file"></em><?php echo __("Listing"); ?> </li>
+					<li><a href="<?php echo $html->url("/admin/articles"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Listing"); ?></a> </li>
 				</ul>
 			</li>
 			
