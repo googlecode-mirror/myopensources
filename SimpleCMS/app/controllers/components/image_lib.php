@@ -76,7 +76,7 @@ class ImageLibComponent extends Object {
         }
         // verify that the filesystem is writable, if not add an error to the object
         // dont fail if not and let phpThumb try anyway
-        $upload_dir = WWW_ROOT.DS.$this->image_location;
+        $upload_dir = WWW_ROOT . $this->image_location;
         
         if (!file_exists($upload_dir) ) {
         	mkdir($upload_dir, 0755);
@@ -91,9 +91,9 @@ class ImageLibComponent extends Object {
         
         
 		$config = array();
-		$config['image_library'] = 'magickwand';
+		$config['image_library'] = 'gd2';
 		$config['source_image'] = $this->file['tmp_name'];
-		$config['new_image'] = '/tmp/testing.png';
+		$config['dest_folder'] = $upload_dir;
 		
 		$config['create_thumb'] = TRUE;
 		$config['maintain_ratio'] = TRUE;
