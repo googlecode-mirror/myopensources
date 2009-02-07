@@ -58,7 +58,9 @@ class Image_Lib {
 	var $copy_fnc			= 'imagecopyresampled';
 	var $error_msg			= array();
 	var $wm_use_drop_shadow	= FALSE;
-	var $wm_use_truetype	= FALSE;		
+	var $wm_use_truetype	= FALSE;
+
+	var $dir_write_mode 	= 0777;
 	
 	/**
 	 * Constructor
@@ -442,7 +444,7 @@ class Image_Lib {
  				{
 					if (@copy($this->full_src_path, $this->full_dst_path))
 					{
-						@chmod($this->full_dst_path, DIR_WRITE_MODE);
+						@chmod($this->full_dst_path, $this->dir_write_mode);
 					}
 				}
 				
@@ -517,7 +519,7 @@ class Image_Lib {
 		imagedestroy($src_img);
 		
 		// Set the file to 777
-		@chmod($this->full_dst_path, DIR_WRITE_MODE);
+		@chmod($this->full_dst_path, $this->dir_write_mode);
 		
 		return TRUE;
 	}
@@ -542,9 +544,8 @@ class Image_Lib {
 		}
 		
 		if ( file_exists($this->full_dst_path) ) {
-			@unlink($this->full_dst_path);
+			@unlink("{$this->full_dst_path}");
 		}
-		
 		$magick_wand = NewMagickWand();
 		
 		MagickRemoveImageProfiles($magick_wand);
@@ -565,7 +566,7 @@ class Image_Lib {
 		DestroymagickWand($magick_wand);
 			
 		// Set the file to 777
-		@chmod($this->full_dst_path, DIR_WRITE_MODE);
+		@chmod($this->full_dst_path, $this->dir_write_mode);
 		
 		return TRUE;
 		
@@ -636,7 +637,7 @@ class Image_Lib {
 		}
 		
 		// Set the file to 777
-		@chmod($this->full_dst_path, DIR_WRITE_MODE);
+		@chmod($this->full_dst_path, $this->dir_write_mode);
 		
 		return TRUE;
 	}
@@ -722,7 +723,7 @@ class Image_Lib {
 		// we have to rename the temp file.
 		copy ($this->dest_folder.'netpbm.tmp', $this->full_dst_path);
 		unlink ($this->dest_folder.'netpbm.tmp');
-		@chmod($this->full_dst_path, DIR_WRITE_MODE);
+		@chmod($this->full_dst_path, $this->dir_write_mode);
 		
 		return TRUE;
 	}
@@ -781,7 +782,7 @@ class Image_Lib {
 		
 		// Set the file to 777
 		
-		@chmod($this->full_dst_path, DIR_WRITE_MODE);
+		@chmod($this->full_dst_path, $this->dir_write_mode);
 		
 		return true;
 	}
@@ -865,7 +866,7 @@ class Image_Lib {
 		imagedestroy($src_img);
 		
 		// Set the file to 777
-		@chmod($this->full_dst_path, DIR_WRITE_MODE);
+		@chmod($this->full_dst_path, $this->dir_write_mode);
 		
 		return TRUE;
 	}
@@ -1167,13 +1168,12 @@ class Image_Lib {
 		if ($image_type == '')
 			$image_type = $this->image_type;
 	
-		
 		switch ($image_type)
 		{
 			case	 1 :
 						if ( ! function_exists('imagecreatefromgif'))
 						{
-							$this->set_error(array('imglib_unsupported_imagecreate', 'imglib_gif_not_supported'));
+							$this->set_error("array('imglib_unsupported_imagecreate', 'imglib_gif_not_supported')");
 							return FALSE;
 						}
 					
@@ -1182,7 +1182,7 @@ class Image_Lib {
 			case 2 :
 						if ( ! function_exists('imagecreatefromjpeg'))
 						{
-							$this->set_error(array('imglib_unsupported_imagecreate', 'imglib_jpg_not_supported'));
+							$this->set_error("array('imglib_unsupported_imagecreate', 'imglib_jpg_not_supported')");
 							return FALSE;
 						}
 					
@@ -1191,7 +1191,7 @@ class Image_Lib {
 			case 3 :
 						if ( ! function_exists('imagecreatefrompng'))
 						{
-							$this->set_error(array('imglib_unsupported_imagecreate', 'imglib_png_not_supported'));				
+							$this->set_error("array('imglib_unsupported_imagecreate', 'imglib_png_not_supported')");				
 							return FALSE;
 						}
 					
@@ -1362,7 +1362,6 @@ class Image_Lib {
 		}
 		
 		$vals = @getimagesize($path);
-		
 		$types = array(1 => 'gif', 2 => 'jpeg', 3 => 'png');
 		
 		$mime = (isset($types[$vals['2']])) ? 'image/'.$types[$vals['2']] : 'image/jpg';
@@ -1547,6 +1546,9 @@ class Image_Lib {
 		$str = '';
 		foreach ($this->error_msg as $val)
 		{
+			if (is_array($val)) {
+				$val = implode(",\t", $val);
+			}
 			$str .= $open.$val.$close;
 		}
 	
