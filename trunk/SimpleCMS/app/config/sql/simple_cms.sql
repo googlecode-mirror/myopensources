@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 3.1.1
+-- version 3.0.0
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 01 月 26 日 09:56
+-- 生成日期: 2009 年 02 月 08 日 02:34
 -- 服务器版本: 5.1.30
 -- PHP 版本: 5.2.8
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `article_categories` (
   `created` int(11) DEFAULT NULL,
   `modified` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- 导出表中的数据 `article_categories`
@@ -64,4 +64,4 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3');
+(1, 'admin', '098f6bcd4621d373cade4e832627b4f6');
