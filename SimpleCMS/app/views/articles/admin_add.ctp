@@ -6,7 +6,7 @@
 		echo $form->input('article_categories_id');
 		echo $form->input('title');
 		echo $form->input('contents');
-		echo $form->file('photo');
+		echo $form->input('photo', array('label'=>__("Image", true), 'type'=>'file' ));
 	?>
 	</fieldset>
 <?php echo $form->end('Submit');?>

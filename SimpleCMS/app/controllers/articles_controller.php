@@ -79,10 +79,11 @@ class ArticlesController extends AppController {
 
 	function admin_add() {
 		if (!empty($this->data)) {
-			if ( $this->data['Article']['photo']['size'] ) {
+			$this->Article->create();
+			debug( $this->Article->invalidFields() );
+			if ( $this->Article->validates() ) {
 				$this->ImageLib->resize('photo', 'Article');
 			}
-			$this->Article->create();
 			if ($this->Article->save($this->data)) {
 				$this->Session->setFlash(__('The Article has been saved', true));
 				$this->redirect(array('action'=>'index'));
