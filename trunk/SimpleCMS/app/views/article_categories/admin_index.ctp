@@ -1,4 +1,3 @@
-
 <div class="articleCategories index">
 <p>
 <?php

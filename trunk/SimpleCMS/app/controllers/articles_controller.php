@@ -2,7 +2,11 @@
 class ArticlesController extends AppController {
 
 	var $name = 'Articles';
-	var $components = array('ImageLib'); 
+	var $components = array( 
+		'ImageLib'=>array(
+			'image_library'=>'gd2',
+		) 
+	); 
 	var $helpers = array('Html', 'Form');
 
 	function index() {
@@ -67,6 +71,21 @@ class ArticlesController extends AppController {
 	function admin_index() {
 		$this->Article->recursive = 0;
 		$this->set('articles', $this->paginate());
+		
+		$this->breakcrumb = array(
+			'nav' => array(
+				array('text'=> __("ArticleCategory", true), 'url'=>'/admin/article_categories' ),
+				array('text'=>__("Listing", true) ),
+				
+			),
+			'actions' => array(
+				array('text'=> __("New", true), 'url'=>'/admin/articles/add', 'class'=>'act-new' ),
+				array('text'=> __("Delete", true), 'url'=>'###', 'class'=>'act-del' ),
+				//array('text'=> __("Search", true), 'url'=>'/admin/article_categories/add', 'class'=>'act-find' ),
+				
+			)
+		);
+		
 	}
 
 	function admin_view($id = null) {
@@ -79,17 +98,27 @@ class ArticlesController extends AppController {
 
 	function admin_add() {
 		if (!empty($this->data)) {
-			$this->Article->create();
-			debug( $this->Article->invalidFields() );
+
+			// do validate
+			$this->Article->set($this->data);
 			if ( $this->Article->validates() ) {
-				$this->ImageLib->resize('photo', 'Article');
+				
+				if ($this->data['Article']['photo']['size'] > 0 ) {
+					$this->ImageLib->resize('photo', 'Article');
+				} else {
+					$this->data['Article']['photo'] = "";
+				}
+				
+				$this->Article->create();
+				if ( $this->Article->save($this->data, FALSE) ) {
+					$this->Session->setFlash(__('The Article has been saved', true));
+					$this->redirect(array('action'=>'index'));
+				} else {
+					$this->Session->setFlash(__('The Article could not be saved. Please, try again.', true));
+				}
+				
 			}
-			if ($this->Article->save($this->data)) {
-				$this->Session->setFlash(__('The Article has been saved', true));
-				$this->redirect(array('action'=>'index'));
-			} else {
-				$this->Session->setFlash(__('The Article could not be saved. Please, try again.', true));
-			}
+			
 		}
 		$articleCategories = $this->Article->ArticleCategory->find('list');
 		$this->set(compact('articleCategories'));
@@ -126,5 +155,11 @@ class ArticlesController extends AppController {
 		}
 	}
 
+	function beforeRender() {
+		if (!empty($this->breakcrumb) ) {
+			$this->set("breakcrumb", $this->breakcrumb);
+		}
+	}
+	
 }
 ?>

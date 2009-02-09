@@ -29,14 +29,33 @@ class Article extends AppModel {
 	function beforeValidate($options = array()) {
 		
 		$this->validate = array(
+		
 			'title' => array('notempty'),
+		
 			'contents' => array('notempty'),
+		
 			'photo' => array(
-				'rule' => array("fileMaxsize", 2097152),
-				'message' => __("Too large", true),
-			)
+		            'fileNotEmpty' => array(
+		                      'rule' =>'fileNotEmpty',
+		                      'message' => __("Please upload an image file", true),
+		             ),
+		             
+		            'fileMaxsize' => array(
+		                      'rule' =>array("fileMaxsize", 1024*1024*2),
+		                      'message' => __("Upload file size too large", true),
+		             ),
+		             
+		            'fileMimeType' => array(
+		                      'rule' =>array("fileMimeType", array('image/jpeg','image/pjpeg','image/gif','image/png') ),
+		                      'message' => __("Upload file format incorrect ,please upload an image", true),
+		             ),
+		             
+             ),
+		             
 		);
 		
-	}	
+	}
+
+	
 }
 ?>
