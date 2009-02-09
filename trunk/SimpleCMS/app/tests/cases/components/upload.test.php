@@ -9,8 +9,10 @@ class UploadComponentTestCase extends CakeTestCase {
 			'image_library'	=> 'gd2',
 			'encrypt_name'	=> FALSE,
 			'encrypt_name' 	=> TRUE,
-			'operate' 		=> 'none',	
-			'upload_type' 		=> 'article',	
+			'operate' 		=> 'resize',	
+			'upload_type' 	=> 'article',
+			'width'			=> 120,
+			'height'		=> 120,
 		);
 		
 		$this->UploadComponentTest = new UploadComponent();
