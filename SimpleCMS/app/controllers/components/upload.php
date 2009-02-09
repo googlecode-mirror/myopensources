@@ -108,7 +108,7 @@ class UploadComponent extends Object {
 		
         // verify that the filesystem is writable, if not add an error to the object
         // dont fail if not and let phpThumb try anyway
-        $real_path 	= WWW_ROOT . $this->upload_path;
+        $real_path 	= WWW_ROOT . IMAGES_URL . $this->upload_path;
 		$web_path	= $this->upload_path;
 		$web_splitor = "/";
 		$this->_createFolder($real_path);
