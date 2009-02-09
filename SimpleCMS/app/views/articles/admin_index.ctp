@@ -1,11 +1,11 @@
-<div class="articles index">
-<h2><?php __('Articles');?></h2>
+<div class="articleCategories index">
 <p>
 <?php
 echo $paginator->counter(array(
 'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
 ));
 ?></p>
+<form id='list-form' action='<?php echo $html->url("/admin/article_categories/delSelected");?>' method='POST'>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo $paginator->sort('id');?></th>
@@ -20,12 +20,8 @@ echo $paginator->counter(array(
 <?php
 $i = 0;
 foreach ($articles as $article):
-	$class = null;
-	if ($i++ % 2 == 0) {
-		$class = ' class="altrow"';
-	}
 ?>
-	<tr<?php echo $class;?>>
+	<tr>
 		<td>
 			<?php echo $article['Article']['id']; ?>
 		</td>
@@ -55,14 +51,10 @@ foreach ($articles as $article):
 	</tr>
 <?php endforeach; ?>
 </table>
+</form>
 </div>
 <div class="paging">
 	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
  | 	<?php echo $paginator->numbers();?>
 	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
-</div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('New Article', true), array('action'=>'add')); ?></li>
-	</ul>
 </div>
