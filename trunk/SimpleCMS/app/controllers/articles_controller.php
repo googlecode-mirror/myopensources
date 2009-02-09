@@ -3,9 +3,15 @@ class ArticlesController extends AppController {
 
 	var $name = 'Articles';
 	var $components = array( 
-		'ImageLib'=>array(
-			'image_library'=>'gd2',
-		) 
+		'Upload'=>array(
+			'image_library'	=> 'gd2',
+			'encrypt_name'	=> FALSE,
+			'encrypt_name' 	=> TRUE,
+			'operate' 		=> 'resize',	
+			'upload_type' 	=> 'article',
+			'width'			=> 120,
+			'height'		=> 120,
+	) 
 	); 
 	var $helpers = array('Html', 'Form');
 
@@ -104,7 +110,7 @@ class ArticlesController extends AppController {
 			if ( $this->Article->validates() ) {
 				
 				if ($this->data['Article']['photo']['size'] > 0 ) {
-					$this->ImageLib->resize('photo', 'Article');
+					$this->Upload->upload('photo', 'Article');
 				} else {
 					$this->data['Article']['photo'] = "";
 				}

@@ -35,13 +35,13 @@ foreach ($articles as $article):
 			<?php echo $article['Article']['contents']; ?>
 		</td>
 		<td>
-			<?php echo $article['Article']['photo']; ?>
+			<?php echo $html->image($article['Article']['photo']); ?>
 		</td>
 		<td>
-			<?php echo $article['Article']['created']; ?>
+			<?php echo $time->format('Y-m-d H:i', $article['Article']['created']); ?>
 		</td>
 		<td>
-			<?php echo $article['Article']['modified']; ?>
+			<?php echo $time->format('Y-m-d H:i', $article['Article']['modified']); ?>
 		</td>
 		<td class="actions">
 			<?php echo $html->link(__('View', true), array('action'=>'view', $article['Article']['id'])); ?>
