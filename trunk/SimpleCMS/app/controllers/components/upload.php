@@ -43,14 +43,36 @@ class UploadComponent extends Object {
      */
     var $file;
     
-    var $dest_file;
+    var $dest_absolute_file;
+    var $dest_web_file;
     var $encrypt_name 	= TRUE;	// if set TRUE the file name is random by unixtime, else keep original name
     var $date_folder 	= TRUE;	// if TRUE folder such as: 2009/0209 , else place in $upload_path
     var $upload_type 	= "";	// set upload file category name
     
     var $image_library 	= "gd2";//gd, gd2, magickwand
     var $maintain_ratio	= TRUE;
-      
+	var $rotation_angle		= '90';
+	var $x_axis				= '20';
+	var	$y_axis				= '10';
+    
+	// Watermark Vars
+	var $wm_text			= '';			// Watermark text if graphic is not used
+	var $wm_type			= 'text';		// Type of watermarking.  Options:  text/overlay
+	var $wm_x_transp		= 4;
+	var $wm_y_transp		= 4;
+	var $wm_overlay_path	= '';			// Watermark image path
+	var $wm_font_path		= '';			// TT font
+	var $wm_font_size		= 17;			// Font size (different versions of GD will either use points or pixels)
+	var $wm_vrt_alignment	= 'B';			// Vertical alignment:   T M B
+	var $wm_hor_alignment	= 'C';			// Horizontal alignment: L R C
+	var $wm_padding			= 0;			// Padding around text
+	var $wm_hor_offset		= 0;			// Lets you push text to the right
+	var $wm_vrt_offset		= 0;			 // Lets you push  text down
+	var $wm_font_color		= '#ffffff';	// Text color
+	var $wm_shadow_color	= '';			// Dropshadow color
+	var $wm_shadow_distance	= 2;			// Dropshadow distance
+	var $wm_opacity			= 50; 			// Image opacity: 1 - 100  Only works with image
+	
 	var $controller;
 	var $model; 
 	
@@ -71,29 +93,62 @@ class UploadComponent extends Object {
             return false;
         }
         // save the file to the object
-        $this->file = &$this->controller->data[$model][$filename];
+        $this->file = $this->controller->data[$model][$filename];
         
-        
-        // Load phpThumb
+        // populate file absolute/web path
         $file_name = $this->_getFileName();
         $folder_path = $this->_getFilePath();
-        $this->dest_file = $real_file_path = $folder_path['real_path'] . $file_name;
-        $web_file_path = $folder_path['web_path'] . $file_name;
-        
-        switch ( strtolower($this->operate) ) {
-        	case 'resize':
-        		$this->_resize();
-        	break;
-        	
-        	case 'none':
-        	default:
-        		$this->_copy();
-        		break;
-        }
-        
-        
-        $this->file = $web_file_path;
+		$this->dest_absolute_file = $folder_path['real_path'] . $file_name;
+		$this->dest_web_file = $folder_path['web_path'] . $file_name;
 		
+		$operate = strtolower($this->operate);
+		if (($operate != 'none') ) {
+			
+			$function_name = sprintf("_%s", $operate);
+			if ( method_exists($this, $function_name) ) {
+				$this->$function_name();
+			}
+			
+		}
+		else 
+			$this->_copy();
+        
+        
+        $this->controller->data[$model][$filename] = $this->dest_web_file;
+		
+	}
+	/**
+	 * Get upload file absolute path
+	 *
+	 * @author	John Meng 2009-2-10
+	 * @access	public
+	 * @param	void
+	 * @return	string
+	 */
+	function getFileAbsolutePath() {
+		if ( empty($this->dest_absolute_file) ) {
+	        return FALSE;
+		}
+        return $this->dest_absolute_file;
+	
+	}
+	
+	/**
+	 * Get upload file web show path
+	 *
+	 * @author	John Meng 2009-2-10
+	 * @access	public
+	 * @param	void
+	 * @return	string
+	 */
+	function getFileWebPath() {
+		
+		if ( empty($this->dest_web_file) ) {
+			
+	        return FALSE;
+			
+		}
+		return $this->dest_web_file;
 	}
 	
 	/**
@@ -181,7 +236,7 @@ class UploadComponent extends Object {
 	
 	
 	function _copy() {
-		if ( move_uploaded_file($this->file['tmp_name'], $this->dest_file) ) {
+		if ( copy($this->file['tmp_name'], $this->dest_absolute_file) ) {
 			return TRUE;
 		}
 		return FALSE;
@@ -191,7 +246,7 @@ class UploadComponent extends Object {
 		$config = array();
 		$config['image_library'] = $this->image_library;
 		$config['source_image'] = $this->file['tmp_name'];
-		$config['new_image'] = $this->dest_file;
+		$config['new_image'] = $this->dest_absolute_file;
 		
 		$config['maintain_ratio'] = $this->maintain_ratio;
 		$config['width'] = $this->width;
@@ -202,6 +257,64 @@ class UploadComponent extends Object {
 		
 	}
 	
+	function _crop() {
+		$config = array();
+		$config['image_library'] = $this->image_library;
+		$config['source_image'] = $this->file['tmp_name'];
+		$config['new_image'] = $this->dest_absolute_file;
+		
+		$config['maintain_ratio'] = FALSE;
+		$config['width'] = $this->width;
+		$config['height'] = $this->height;
+		$config['x_axis'] = $this->x_axis;
+		$config['y_axis'] = $this->y_axis;
+		
+		$img_lib = new Image_Lib($config);
+		$img_lib->crop();
+		
+	}
+
+	function _rotate() {
+		$config = array();
+		$config['image_library'] = $this->image_library;
+		$config['source_image'] = $this->file['tmp_name'];
+		$config['new_image'] = $this->dest_absolute_file;
+		
+		$config['rotation_angle'] = $this->rotation_angle;
+		
+		$img_lib = new Image_Lib($config);
+		$img_lib->rotate();
+		
+	}
+	
+	function _watermark() {
+		$config = array();
+		$config['image_library']	= $this->image_library;
+		$config['source_image']		= $this->file['tmp_name'];
+		$config['new_image'] 		= $this->dest_absolute_file;
+		
+		$config['wm_text'] 			= $this->wm_text;
+		$config['wm_type'] 			= $this->wm_type;
+		$config['wm_x_transp'] 		= $this->wm_x_transp;
+		$config['wm_y_transp'] 		= $this->wm_y_transp;
+		$config['wm_overlay_path'] 	= $this->wm_overlay_path;	
+		$config['wm_font_path'] 	= $this->wm_font_path;
+		$config['wm_font_size'] 	= $this->wm_font_size;
+		$config['wm_vrt_alignment'] = $this->wm_vrt_alignment;	
+		$config['wm_hor_alignment'] = $this->wm_hor_alignment;	
+		$config['wm_padding'] 		= $this->wm_padding;
+		$config['wm_hor_offset'] 	= $this->wm_hor_offset;
+		$config['wm_vrt_offset'] 	= $this->wm_vrt_offset;
+		$config['wm_font_color'] 	= $this->wm_font_color;
+		$config['wm_shadow_color'] 	= $this->wm_shadow_color;	
+		$config['wm_shadow_distance'] = $this->wm_shadow_distance;	
+		$config['wm_opacity'] 		= $this->wm_opacity;
+		
+		
+		$img_lib = new Image_Lib($config);
+		$img_lib->watermark();
+		
+	}
 	
     function addError($msg){
         $this->errors[] = $msg;
