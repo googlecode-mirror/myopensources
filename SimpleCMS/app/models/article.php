@@ -1,8 +1,8 @@
 <?php
 /**
  *
- * File description
- *
+ * Article model
+ * File: /app/models/article.php
  * @package    App
  * @subpackage Model
  * @author  John Meng (孟远螓) arzen1013@gmail.com 2009-2-8
