@@ -1,13 +1,23 @@
 <?php
+/**
+ *
+ * Article controller, 
+ * File: /app/controllers/articles_controller.php
+ *
+ * @package    App
+ * @subpackage Controller
+ * @author  John Meng (孟远螓) arzen1013@gmail.com 2009-2-11
+ * @version 1.0.0 $id$
+ */
+
 class ArticlesController extends AppController {
 
 	var $name = 'Articles';
 	var $components = array( 
 		'Upload'=>array(
-			'image_library'	=> 'gd2',
-			'encrypt_name'	=> FALSE,
+			'image_library'	=> 'gd2',//gd, gd2, magickwand
 			'encrypt_name' 	=> TRUE,
-			'operate' 		=> 'resize',	
+			'operate' 		=> 'resize',//[none, resize, crop, rotate, watermark]	
 			'upload_type' 	=> 'article',
 			'width'			=> 120,
 			'height'		=> 120,

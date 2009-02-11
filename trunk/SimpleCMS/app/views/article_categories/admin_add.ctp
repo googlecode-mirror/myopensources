@@ -1,4 +1,5 @@
 <div class="articleCategories form">
+<?php echo $test_data?>
 <?php echo $form->create('ArticleCategory');?>
 	<fieldset>
  		<legend><?php __('Add ArticleCategory');?></legend>
