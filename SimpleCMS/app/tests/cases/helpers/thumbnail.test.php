@@ -8,18 +8,35 @@ class ThumbnailHelperTestCase extends CakeTestCase {
 
 	function setUp() {
 		$this->ThumbnailHelper = new ThumbnailHelper();
-		$this->config = array();
+		$this->config = array(
+			'width'			=> 60,
+			'height'		=> 60,
+		);
 	}
 	
 	function testLocalThumbnail() {
-		$image_file = "uploads/article/2009/0210/355edbe4f9889103e0735903aeb393a0.png";
-		$this->ThumbnailHelper->show($image_file, $this->config);
+		$file_name = "hot_topic081218.jpg";
+		$org_file = dirname( dirname(__FILE__) ) . DS. 'files'. DS . $file_name;
+		$tmp_file = WWW_ROOT . IMAGES_URL . $file_name;
+		if ( !file_exists($tmp_file) ) {
+			copy($org_file, $tmp_file);
+		}
+		
+		$this->ThumbnailHelper->thumb($file_name, $this->config);
+		unlink($tmp_file);
+		
+		$dest_file = $this->ThumbnailHelper->getFileAbsolutePath();
+		$this->assertTrue( file_exists( $dest_file ) );
+		
 	}
 	
 	function testRemoteThumbnail() {
 		
 		$image_file = "http://www.35vt.com/public/images/he-zhou/logo.gif";
-		$this->ThumbnailHelper->show($image_file, $this->config);
+		$this->ThumbnailHelper->thumb($image_file, $this->config);
+		
+		$dest_file = $this->ThumbnailHelper->getFileAbsolutePath();
+		$this->assertTrue( file_exists( $dest_file ) );
 	}
 	
 	
