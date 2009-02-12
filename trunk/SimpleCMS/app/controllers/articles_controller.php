@@ -23,7 +23,7 @@ class ArticlesController extends AppController {
 			'height'		=> 120,
 	) 
 	); 
-	var $helpers = array('Html', 'Form');
+	var $helpers = array('Html', 'Form', 'Thumbnail');
 
 	function index() {
 		$this->Article->recursive = 0;

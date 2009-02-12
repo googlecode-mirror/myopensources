@@ -35,7 +35,7 @@ foreach ($articles as $article):
 			<?php echo $article['Article']['contents']; ?>
 		</td>
 		<td>
-			<?php echo $html->image($article['Article']['photo']); ?>
+			<?php echo $thumbnail->show($article['Article']['photo'], array('width'	=> 60, 'height'=> 60) ); ?>
 		</td>
 		<td>
 			<?php echo $time->format('Y-m-d H:i', $article['Article']['created']); ?>
