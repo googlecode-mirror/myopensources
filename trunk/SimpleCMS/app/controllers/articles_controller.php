@@ -113,6 +113,7 @@ class ArticlesController extends AppController {
 	}
 
 	function admin_add() {
+		$this->layout = 'ajax';
 		if (!empty($this->data)) {
 
 			// do validate
@@ -170,7 +171,7 @@ class ArticlesController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
-
+	
 	function beforeRender() {
 		if (!empty($this->breakcrumb) ) {
 			$this->set("breakcrumb", $this->breakcrumb);
