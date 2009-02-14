@@ -20,7 +20,7 @@ class ArticlesController extends AppController {
 			'operate' 		=> 'resize',//[none, resize, crop, rotate, watermark]	
 			'upload_type' 	=> 'article',
 			'width'			=> 480,
-			'height'		=> 480,
+			'height'		=> 800,
 	) 
 	); 
 	var $helpers = array('Html', 'Form', 'Thumbnail');
