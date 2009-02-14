@@ -95,7 +95,7 @@ class ArticlesController extends AppController {
 				
 			),
 			'actions' => array(
-				array('text'=> __("New", true), 'url'=>'/admin/articles/add', 'class'=>'act-new', 'attr' =>array('class'=>'ex4Trigger', 'title'=>__("New Article", true) ) ),
+				array('text'=> __("New", true), 'url'=>'/admin/articles/add', 'class'=>'act-new', 'attr' =>array('title'=>__("New Article", true) ) ),
 				array('text'=> __("Delete", true), 'url'=>'###', 'class'=>'act-del' ),
 				//array('text'=> __("Search", true), 'url'=>'/admin/article_categories/add', 'class'=>'act-find' ),
 				
@@ -105,6 +105,7 @@ class ArticlesController extends AppController {
 	}
 
 	function admin_view($id = null) {
+		$this->layout = 'ajax';
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid Article.', true));
 			$this->redirect(array('action'=>'index'));
@@ -113,7 +114,7 @@ class ArticlesController extends AppController {
 	}
 
 	function admin_add() {
-		$this->layout = 'ajax';
+//		$this->layout = 'ajax';
 		if (!empty($this->data)) {
 
 			// do validate

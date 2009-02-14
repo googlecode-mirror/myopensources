@@ -1,5 +1,5 @@
 <div class="articles form">
-<?php echo $form->create('Article', array('enctype' => 'multipart/form-data') );?>
+<?php echo $form->create('Article', array('enctype' => 'multipart/form-data', 'id'=>'AddForm' ) );?>
 	<fieldset>
  		<legend><?php __('Add Article');?></legend>
 	<?php

@@ -1,12 +1,13 @@
 <?php 
-echo $javascript->link( array('jquery.lightbox-0.5.min') );
+echo $javascript->link( array('jquery.lightbox-0.5.min' ) );
 echo $html->css( array("jquery.lightbox-0.5") );
 
 $inline_script = <<<EOD
-    $(function() {
+    $(document).ready(function() { 
         $('a[@rel*=lightbox]').lightBox();
+        
     });
-
+    
 EOD;
 echo $javascript->codeBlock($inline_script);
 echo $modal->init('ex4');
@@ -60,7 +61,7 @@ foreach ($articles as $article):
 			<?php echo $time->format('Y-m-d H:i', $article['Article']['modified']); ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $article['Article']['id'])); ?>
+			<?php echo $html->link(__('View', true), array('action'=>'view', $article['Article']['id']), array('class'=>'ex4Trigger', 'title' => __('View', true) . " :: ". $article['Article']['title'] ) ); ?>
 			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $article['Article']['id'])); ?>
 			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $article['Article']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $article['Article']['id'])); ?>
 		</td>
