@@ -84,7 +84,7 @@ div.jqmdBC {
   overflow: auto;
 }
 div.jqmdBL { background: url(../img/dialog/bl.gif) no-repeat left bottom; padding-left: 7px; }
-div.jqmdBR { background: url(../img/dialog/br.gif) no-repeat right bottom; padding-right: 7px; * zoom: 1 }
+div.jqmdBR { background: #FFF url(../img/dialog/br.gif) no-repeat right bottom; padding-right: 17px; * zoom: 1 }
 
 div.jqmdMSG { color: #317895; }
 
