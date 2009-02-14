@@ -20,7 +20,7 @@
     	<div id="act-main">
         	<ul>
         		<?php foreach($actions as $action):?>
-            	<li><?php echo $html->link('<em class="'.$action['class'].'"></em>' . $action['text'], $action['url'], null, isset($action['js']) ? $action['js'] : null, false); ?></li>
+            	<li><?php echo $html->link('<em class="'.$action['class'].'"></em>' . $action['text'], $action['url'], isset($action['attr']) ? $action['attr'] : null, isset($action['js']) ? $action['js'] : null, false); ?></li>
             	<?php endforeach;?>
             </ul>
       </div>

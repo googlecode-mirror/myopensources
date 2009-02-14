@@ -23,7 +23,7 @@ class ArticlesController extends AppController {
 			'height'		=> 800,
 	) 
 	); 
-	var $helpers = array('Html', 'Form', 'Thumbnail');
+	var $helpers = array('Html', 'Form', 'Thumbnail', 'Modal');
 
 	function index() {
 		$this->Article->recursive = 0;
@@ -95,7 +95,7 @@ class ArticlesController extends AppController {
 				
 			),
 			'actions' => array(
-				array('text'=> __("New", true), 'url'=>'/admin/articles/add', 'class'=>'act-new' ),
+				array('text'=> __("New", true), 'url'=>'/admin/articles/add', 'class'=>'act-new', 'attr' =>array('class'=>'ex4Trigger', 'title'=>__("New Article", true) ) ),
 				array('text'=> __("Delete", true), 'url'=>'###', 'class'=>'act-del' ),
 				//array('text'=> __("Search", true), 'url'=>'/admin/article_categories/add', 'class'=>'act-find' ),
 				
