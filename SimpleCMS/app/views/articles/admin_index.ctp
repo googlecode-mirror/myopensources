@@ -9,6 +9,7 @@ $inline_script = <<<EOD
 
 EOD;
 echo $javascript->codeBlock($inline_script);
+echo $modal->init('ex4');
 ?>
 
 <div class="articleCategories index">
