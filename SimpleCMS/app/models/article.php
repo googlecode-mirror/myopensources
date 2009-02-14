@@ -41,7 +41,7 @@ class Article extends AppModel {
 		             ),
 		             
 		            'fileMaxsize' => array(
-		                      'rule' =>array("fileMaxsize", 1024*1024*2),
+		                      'rule' =>array("fileMaxsize", 1024*1024*8),
 		                      'message' => __("Upload file size too large", true),
 		             ),
 		             

@@ -1,3 +1,16 @@
+<?php 
+echo $javascript->link( array('jquery.lightbox-0.5.min') );
+echo $html->css( array("jquery.lightbox-0.5") );
+
+$inline_script = <<<EOD
+    $(function() {
+        $('a[@rel*=lightbox]').lightBox();
+    });
+
+EOD;
+echo $javascript->codeBlock($inline_script);
+?>
+
 <div class="articleCategories index">
 <p>
 <?php
@@ -35,7 +48,9 @@ foreach ($articles as $article):
 			<?php echo $article['Article']['contents']; ?>
 		</td>
 		<td>
+			<a rel="lightbox" href="<?php echo $html->webroot( IMAGES_URL . $article['Article']['photo'] ); ?>" title="<?php echo $article['Article']['title']; ?>">
 			<?php echo $thumbnail->show($article['Article']['photo'], array('width'	=> 60, 'height'=> 60) ); ?>
+			</a>
 		</td>
 		<td>
 			<?php echo $time->format('Y-m-d H:i', $article['Article']['created']); ?>

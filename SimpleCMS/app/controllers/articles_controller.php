@@ -15,12 +15,12 @@ class ArticlesController extends AppController {
 	var $name = 'Articles';
 	var $components = array( 
 		'Upload'=>array(
-			'image_library'	=> 'gd2',//gd, gd2, magickwand
+			'image_library'	=> 'magickwand',//gd, gd2, magickwand
 			'encrypt_name' 	=> TRUE,
 			'operate' 		=> 'resize',//[none, resize, crop, rotate, watermark]	
 			'upload_type' 	=> 'article',
-			'width'			=> 120,
-			'height'		=> 120,
+			'width'			=> 480,
+			'height'		=> 480,
 	) 
 	); 
 	var $helpers = array('Html', 'Form', 'Thumbnail');
