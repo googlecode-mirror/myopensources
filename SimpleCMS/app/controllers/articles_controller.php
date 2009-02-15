@@ -116,7 +116,6 @@ class ArticlesController extends AppController {
 	function admin_add() {
 		$this->layout = 'ajax';
 		if (!empty($this->data)) {
-
 			// do validate
 			$this->Article->set($this->data);
 			if ( $this->Article->validates() ) {
