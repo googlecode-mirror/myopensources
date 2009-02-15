@@ -1,5 +1,5 @@
 <?php 
-echo $javascript->link( array('jquery.lightbox-0.5.min' ) );
+echo $javascript->link( array('jquery.lightbox-0.5.min', 'jquery.form' ) );
 echo $html->css( array("jquery.lightbox-0.5") );
 
 $inline_script = <<<EOD
