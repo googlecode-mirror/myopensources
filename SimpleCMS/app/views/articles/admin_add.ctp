@@ -2,7 +2,7 @@
 $inline_script = <<<EOD
 $().ready(function() {
     var options = { 
-        target:        '.jqmdBC',   // target element(s) to be updated with server response 
+        target:        '.jqmdMSG',   // target element(s) to be updated with server response 
         //beforeSubmit:  showRequest,  // pre-submit callback 
         success:       showResponse  // post-submit callback 
  
@@ -21,8 +21,14 @@ function showRequest(formData, jqForm, options) {
 } 
  
 // post-submit callback 
-function showResponse(responseText, statusText)  { 
- 	alert(statusText);
+function showResponse(responseText, statusText)  {
+	var patrn=/done/;
+	if ( patrn.exec(responseText) ) {
+		$('#ex4').jqmHide();
+		location.reload();		
+		
+	}
+ 	
     //alert('status: ' + statusText + '\\n\\nresponseText: \\n' + responseText + 
     //    '\\n\\nThe output div should have already been updated with the responseText.'); 
 } 	
