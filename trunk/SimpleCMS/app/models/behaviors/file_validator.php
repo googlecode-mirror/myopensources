@@ -24,24 +24,34 @@ class FileValidatorBehavior extends ModelBehavior {
 	}
 	
 	function fileMaxsize($model, $data, $maxsize=2097152 ) {
+		if (!is_array($data) ) {
+			return false;
+		}
+		
 		$file_data = $data[key($data)];
-		return ($file_data['size'] < $maxsize );
+		return (isset($file_data['size']) && ($file_data['size'] < $maxsize) );
 	}
 	
 	function fileNotEmpty($model, $data) {
+		if (!is_array($data) ) {
+			return false;
+		}
 		$file_data = $data[key($data)];
-		return ($file_data['size'] > 0 );
+		return (isset($file_data['size']) && ($file_data['size'] > 0) );
 	}
 	
 	function fileMimeType($model, $data, $mime_type = array()) {
+		if (!is_array($data) ) {
+			return false;
+		}
 		if ( empty($mime_type) ) {
 			$mime_type = $this->allowed_mime_types;
 		}
 		$file_data = $data[key($data)];
-		if ($file_data['size'] ==0) {
+		if (isset($file_data['size']) && ($file_data['size'] ==0) ) {
 			return true;
 		}
-		return in_array($file_data['type'], $mime_type);
+		return ( isset($file_data['type']) && in_array($file_data['type'], $mime_type) );
 	}
 	
 	
