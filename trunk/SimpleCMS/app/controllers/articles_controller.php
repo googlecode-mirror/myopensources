@@ -129,7 +129,9 @@ class ArticlesController extends AppController {
 				$this->Article->create();
 				if ( $this->Article->save($this->data, FALSE) ) {
 					$this->Session->setFlash(__('The Article has been saved', true));
-					$this->redirect(array('action'=>'index'));
+//					$this->redirect(array('action'=>'index'));
+					echo "done";
+					exit;
 				} else {
 					$this->Session->setFlash(__('The Article could not be saved. Please, try again.', true));
 				}
