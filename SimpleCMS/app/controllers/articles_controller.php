@@ -120,7 +120,7 @@ class ArticlesController extends AppController {
 			$this->Article->set($this->data);
 			if ( $this->Article->validates() ) {
 				
-				if ($this->data['Article']['photo']['size'] > 0 ) {
+				if (isset($this->data['Article']['photo']['size']) && ($this->data['Article']['photo']['size'] > 0) ) {
 					$this->Upload->upload('photo', 'Article');
 				} else {
 					$this->data['Article']['photo'] = "";
