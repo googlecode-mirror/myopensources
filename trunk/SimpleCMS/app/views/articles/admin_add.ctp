@@ -22,15 +22,13 @@ function showRequest(formData, jqForm, options) {
  
 // post-submit callback 
 function showResponse(responseText, statusText)  {
-	var patrn=/done/;
-	if ( patrn.exec(responseText) ) {
+	var patrn=/^done/;
+	if ( patrn.test(responseText) ) {
 		$('#ex4').jqmHide();
 		location.reload();		
 		
 	}
  	
-    //alert('status: ' + statusText + '\\n\\nresponseText: \\n' + responseText + 
-    //    '\\n\\nThe output div should have already been updated with the responseText.'); 
 } 	
 
 EOD;
