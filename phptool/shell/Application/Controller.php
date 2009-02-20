@@ -1,10 +1,12 @@
 <?php
+include_once 'Console/Ui.php';
+
 /**
  *
- * File description
+ * Migration tool application controller
  *
- * @package    Core
- * @subpackage Core
+ * @package    App
+ * @subpackage Controller
  * @author  John Meng (孟远螓) arzen1013@gmail.com 2009-2-20
  * @version 1.0.0 $id$
  */

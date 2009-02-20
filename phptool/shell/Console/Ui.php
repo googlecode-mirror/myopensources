@@ -1,10 +1,10 @@
 <?php
 /**
  *
- * File description
+ * PHP Console UI widgets
  *
  * @package    Core
- * @subpackage Core
+ * @subpackage Console
  * @author  John Meng (孟远螓) arzen1013@gmail.com 2009-2-19
  * @version 1.0.0 $id$
  */
