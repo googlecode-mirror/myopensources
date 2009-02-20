@@ -95,7 +95,7 @@ class Console_Ui {
 	 */
 	public static function clearScreen()
 	{
-		echo chr(033), "cm";
+		echo chr(033), "c";
 	}
 
 
@@ -171,6 +171,24 @@ class Console_Ui {
 				return $input;
 			}
 		}
+	}
+	
+	public static function hr($newline = false) {
+		if ($newline) {
+			print("\n");
+		}
+		print('---------------------------------------------------------------');
+		if ($newline) {
+			print("\n");
+		}
+	}
+	
+	public static function message($mesage, $align='left', $lenght = 40) {
+		$align_flag = "-";
+		if (strtolower($align) == "right") {
+			$align_flag =" ";
+		}
+		printf("%{$align_flag}{$lenght}s", $mesage);
 	}
 
 }
