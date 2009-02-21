@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!-- ====================================================================== 
+     2007-12-18 下午07:02:56                                                        
+
+     FTPAuto    
+     description
+                   
+     achievo                                                                
+     ====================================================================== -->
+<project name="CakePHPApplicationSuite" >
+	<description>
+            Auto Tool For CakePHP
+    </description>
+	<property file="build.properties" />
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  <classpath>
+	    <pathelement location="${ant.library.dir}/ant-contrib-1.0b3.jar"/>
+	  </classpath>
+	</taskdef>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: MakeDir                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="MakeDir">
+    	<echo>Create ${dir_name}</echo>
+    	<mkdir dir="${dir_name}"/>  
+    </target>
+
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: MakePlugin                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="MakePlugin">
+    	  <input
+    	    message="Please input plugin name"
+    	    addproperty="cake.plugin.name"
+    	  />
+    	<property name="cake.plugin.dir" value="app/plugins/${cake.plugin.name}"/>
+        <foreach 
+        	list="${cake.plugin.dir},${cake.plugin.dir}/controllers,${cake.plugin.dir}/models,${cake.plugin.dir}/views,${cake.plugin.dir}/sql,${cake.plugin.dir}/locale" 
+        	param="dir_name" 
+        	target="MakeDir" />
+    	<touch file="${cake.plugin.dir}/readme.txt"/>
+    	<touch file="${cake.plugin.dir}/${cake.plugin.name}_app_controller.php"/>
+    	<touch file="${cake.plugin.dir}/${cake.plugin.name}_app_model.php"/>
+			
+    </target>
+
+	
+	
+</project>
