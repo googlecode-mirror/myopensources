@@ -34,7 +34,6 @@ echo $javascript->codeBlock($inline_script);
 	<?php
 		echo $form->input('category_name');
 		echo $form->input('active');
-		echo $form->input('add_ip');
 	?>
 	</fieldset>
 <?php echo $form->end('Submit');?>

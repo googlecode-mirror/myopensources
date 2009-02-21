@@ -10,8 +10,10 @@ echo $paginator->counter(array(
 'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
 ));
 ?></p>
+<form id='list-form' action='<?php echo $html->url("/admin/finance/finance_categories/delSelected");?>' method='POST'>
 <table cellpadding="0" cellspacing="0">
 <tr>
+	<th width="40px"><input id="select_all" type="checkbox" /></th>
 	<th><?php echo $paginator->sort('id');?></th>
 	<th><?php echo $paginator->sort('category_name');?></th>
 	<th><?php echo $paginator->sort('active');?></th>
@@ -23,12 +25,11 @@ echo $paginator->counter(array(
 <?php
 $i = 0;
 foreach ($financeCategories as $financeCategory):
-	$class = null;
-	if ($i++ % 2 == 0) {
-		$class = ' class="altrow"';
-	}
 ?>
-	<tr<?php echo $class;?>>
+	<tr>
+		<td>
+			<input id="all[]" type="checkbox" value="<?php echo $financeCategory['FinanceCategory']['id']; ?>" name="all[]"/>
+		</td>
 		<td>
 			<?php echo $financeCategory['FinanceCategory']['id']; ?>
 		</td>
@@ -55,6 +56,7 @@ foreach ($financeCategories as $financeCategory):
 	</tr>
 <?php endforeach; ?>
 </table>
+</form>
 </div>
 <div class="paging">
 	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
