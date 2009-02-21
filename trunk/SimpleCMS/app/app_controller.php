@@ -39,7 +39,8 @@ class AppController extends Controller {
 	var $helpers = array('Html', 'Form', 'Javascript', 'Time');
 	var $components = array('Auths');
 	var $isAuthorized = false;
- 	
+	var $breakcrumb = null;
+	
     function beforeFilter() {
         // Admin area requires authentification
     	if ($this->isAdminAction()) {
