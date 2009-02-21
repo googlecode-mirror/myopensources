@@ -1,12 +1,22 @@
 <?php
 class FinanceCategoriesController extends FinanceAppController {
 
-	var $name = 'FinanceCategories';
-	var $helpers = array('Html', 'Form', 'Modal');
+	var $name 			= 'FinanceCategories';
+	var $helpers	 	= array('Html', 'Form', 'Modal');
+	var $active_options = null;
+	
+	function beforeFilter() {
+		parent::beforeFilter();
+		// populate active options
+		Configure::load("common");
+		$this->active_options = Configure::read('active_options');
+	}
+	
 
 	function admin_index() {
 		$this->FinanceCategory->recursive = 0;
 		$this->set('financeCategories', $this->paginate());
+		$this->set("active_options", $this->active_options);
 		
 		$this->breakcrumb = array(
 			'nav' => array(
@@ -36,6 +46,8 @@ class FinanceCategoriesController extends FinanceAppController {
 	function admin_add() {
 		$this->layout = 'ajax';
 		
+		$this->set("active_options", $this->active_options);
+		
 		if (!empty($this->data)) {
 			$this->FinanceCategory->create();
 			if ($this->FinanceCategory->save($this->data)) {
@@ -50,6 +62,10 @@ class FinanceCategoriesController extends FinanceAppController {
 	}
 
 	function admin_edit($id = null) {
+		
+		$this->layout = 'ajax';
+		$this->set("active_options", $this->active_options);
+		
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid FinanceCategory', true));
 			$this->redirect(array('action'=>'index'));

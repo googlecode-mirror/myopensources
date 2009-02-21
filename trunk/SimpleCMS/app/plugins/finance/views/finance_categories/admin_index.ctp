@@ -37,20 +37,19 @@ foreach ($financeCategories as $financeCategory):
 			<?php echo $financeCategory['FinanceCategory']['category_name']; ?>
 		</td>
 		<td>
-			<?php echo $financeCategory['FinanceCategory']['active']; ?>
+			<?php echo $active_options[ $financeCategory['FinanceCategory']['active'] ]; ?>
 		</td>
 		<td>
 			<?php echo $financeCategory['FinanceCategory']['add_ip']; ?>
 		</td>
 		<td>
-			<?php echo $financeCategory['FinanceCategory']['created']; ?>
+			<?php echo $time->format('Y-m-d H:i', $financeCategory['FinanceCategory']['created']); ?>
 		</td>
 		<td>
-			<?php echo $financeCategory['FinanceCategory']['modified']; ?>
+			<?php echo $time->format('Y-m-d H:i', $financeCategory['FinanceCategory']['modified']); ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $financeCategory['FinanceCategory']['id'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $financeCategory['FinanceCategory']['id'])); ?>
+			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $financeCategory['FinanceCategory']['id']) , array('class'=>'ex4Trigger', 'title' => __('Edit', true) . " :: ". $financeCategory['FinanceCategory']['category_name'] )  ); ?>
 			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $financeCategory['FinanceCategory']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $financeCategory['FinanceCategory']['id'])); ?>
 		</td>
 	</tr>
