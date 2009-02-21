@@ -65,4 +65,35 @@ EOD;
 		        
         ';
 	}
+	
+	function modalForm($name='ex4', $form_id="AddForm") {
+		$inline_script = <<<EOD
+		$().ready(function() {
+		    var options = { 
+		        target:        '.jqmdMSG',   // target element(s) to be updated with server response 
+		        success:       showResponse  // post-submit callback 
+		 
+		    }; 
+		 
+		    // bind form using 'ajaxForm' 
+		    $('#{$form_id}').ajaxForm(options); 
+		
+		});
+		
+		// post-submit callback 
+		function showResponse(responseText, statusText)  {
+			var patrn=/^done/;
+			if ( patrn.test(responseText) ) {
+				$('#{$name}').jqmHide();
+				location.reload();		
+				
+			}
+		 	
+		} 	
+
+EOD;
+		return $this->Javascript->codeBlock($inline_script);
+		
+	}
+	
 }
