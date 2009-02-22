@@ -37,7 +37,7 @@ echo $javascript->codeBlock($inline_script);
 			<li><em class="folder"></em> <?php echo __("Finance"); ?></span>
 				<ul>
 					<li><a href="<?php echo $html->url("/admin/finance/finance_categories"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Categories"); ?></a> </li>
-					<li><em class="file"></em><?php echo __("Listing"); ?> </li>
+					<li><a href="<?php echo $html->url("/admin/finance/financies"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Listing"); ?></a> </li>
 				</ul>
 			</li>
 			
