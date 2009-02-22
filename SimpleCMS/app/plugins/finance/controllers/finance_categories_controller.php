@@ -73,7 +73,9 @@ class FinanceCategoriesController extends FinanceAppController {
 		if (!empty($this->data)) {
 			if ($this->FinanceCategory->save($this->data)) {
 				$this->Session->setFlash(__('The FinanceCategory has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				echo "done";
+				exit;
+//				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The FinanceCategory could not be saved. Please, try again.', true));
 			}
