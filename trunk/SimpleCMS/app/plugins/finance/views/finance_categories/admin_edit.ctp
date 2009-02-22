@@ -1,5 +1,9 @@
+<?php 
+echo $modal->modalForm('ex4', "AddForm");
+?>
+
 <div class="financeCategories form">
-<?php echo $form->create('FinanceCategory');?>
+<?php echo $form->create('FinanceCategory', array('id'=>'AddForm' ) );?>
 	<fieldset>
  		<legend><?php __('Edit FinanceCategory');?></legend>
 	<?php
