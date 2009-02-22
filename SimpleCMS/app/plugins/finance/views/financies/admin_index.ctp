@@ -1,5 +1,8 @@
+<?php
+echo $modal->init('ex4');
+?>
+
 <div class="financies index">
-<h2><?php __('Financies');?></h2>
 <p>
 <?php
 echo $paginator->counter(array(
@@ -27,12 +30,8 @@ echo $paginator->counter(array(
 <?php
 $i = 0;
 foreach ($financies as $financy):
-	$class = null;
-	if ($i++ % 2 == 0) {
-		$class = ' class="altrow"';
-	}
 ?>
-	<tr<?php echo $class;?>>
+	<tr>
 		<td>
 			<?php echo $financy['Financy']['id']; ?>
 		</td>
@@ -88,9 +87,4 @@ foreach ($financies as $financy):
 	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
  | 	<?php echo $paginator->numbers();?>
 	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
-</div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('New Financy', true), array('action'=>'add')); ?></li>
-	</ul>
 </div>
