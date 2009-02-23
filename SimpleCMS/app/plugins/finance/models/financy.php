@@ -3,7 +3,7 @@ class Financy extends FinanceAppModel {
 
 	var $name = 'Financy';
 	var $validate = array(
-		'finance_category_id' => array('notempty'),
+		'finance_categories_id' => array('notempty'),
 		'create_date' => array('notempty'),
 		'amount' => array('notempty'),
 		'debit' => array('notempty'),
@@ -15,10 +15,10 @@ class Financy extends FinanceAppModel {
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
-			'FinanceCategory' => array('className' => 'FinanceCategory',
-								'foreignKey' => 'finance_category_id',
-								'conditions' => '',
-								'fields' => '',
+			'FinanceCategory' => array('className' => 'Finance.FinanceCategory',
+								'foreignKey' => 'finance_categories_id',
+								'conditions' => array('FinanceCategory.id = Financy.finance_categories_id'),
+								'fields' => 'category_name',
 								'order' => ''
 			)
 	);

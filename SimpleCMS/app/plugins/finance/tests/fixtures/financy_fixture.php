@@ -1,13 +1,13 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Financy Fixture generated on: 2009-02-22 14:02:26 : 1235313746*/
+/* Financy Fixture generated on: 2009-02-23 21:02:33 : 1235397573*/
 
 class FinancyFixture extends CakeTestFixture {
 	var $name = 'Financy';
 	var $table = 'financies';
 	var $fields = array(
 			'id' => array('type'=>'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
-			'finance_category_id' => array('type'=>'integer', 'null' => true, 'default' => NULL, 'length' => 5),
+			'finance_categories_id' => array('type'=>'integer', 'null' => true, 'default' => NULL, 'length' => 5),
 			'create_date' => array('type'=>'date', 'null' => true, 'default' => NULL),
 			'amount' => array('type'=>'integer', 'null' => true, 'default' => NULL, 'length' => 4),
 			'debit' => array('type'=>'string', 'null' => true, 'default' => NULL, 'length' => 4),
@@ -24,8 +24,8 @@ class FinancyFixture extends CakeTestFixture {
 			);
 	var $records = array(array(
 			'id'  => 1,
-			'finance_category_id'  => 1,
-			'create_date'  => '2009-02-22',
+			'finance_categories_id'  => 1,
+			'create_date'  => '2009-02-23',
 			'amount'  => 1,
 			'debit'  => 'Lo',
 			'money'  => 'Lo',

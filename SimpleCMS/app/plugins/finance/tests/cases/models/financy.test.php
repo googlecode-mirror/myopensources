@@ -1,11 +1,11 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* Financy Test cases generated on: 2009-02-22 14:02:26 : 1235313746*/
+/* Financy Test cases generated on: 2009-02-23 21:02:41 : 1235397581*/
 App::import('Model', 'Finance.Financy');
 
 class FinancyTestCase extends CakeTestCase {
 	var $Financy = null;
-	var $fixtures = array('plugin.finance.financy', 'plugin.finance.finance_category');
+	var $fixtures = array('plugin.finance.financy', 'plugin.finance.finance_categories');
 
 	function startTest() {
 		$this->Financy =& ClassRegistry::init('Financy');
@@ -22,8 +22,8 @@ class FinancyTestCase extends CakeTestCase {
 
 		$expected = array('Financy' => array(
 			'id'  => 1,
-			'finance_category_id'  => 1,
-			'create_date'  => '2009-02-22',
+			'finance_categories_id'  => 1,
+			'create_date'  => '2009-02-23',
 			'amount'  => 1,
 			'debit'  => 'Lo',
 			'money'  => 'Lo',

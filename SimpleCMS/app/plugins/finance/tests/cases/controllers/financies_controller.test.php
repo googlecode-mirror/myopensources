@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* FinanciesController Test cases generated on: 2009-02-22 15:02:06 : 1235316186*/
+/* FinanciesController Test cases generated on: 2009-02-23 22:02:50 : 1235397710*/
 App::import('Controller', 'Finance.Financies');
 
 class TestFinancies extends FinanciesController {
