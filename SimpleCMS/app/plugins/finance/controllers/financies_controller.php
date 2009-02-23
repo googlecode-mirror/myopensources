@@ -19,6 +19,9 @@ class FinanciesController extends FinanceAppController {
 				
 			)
 		);
+		$financeCategories = $this->Financy->FinanceCategory->find('list', array('fields'=>array('FinanceCategory.id', 'FinanceCategory.category_name')) );
+		$this->set(compact('financeCategories'));
+		
 	}
 
 	function admin_view($id = null) {
