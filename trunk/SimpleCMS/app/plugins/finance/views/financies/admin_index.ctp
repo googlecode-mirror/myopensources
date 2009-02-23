@@ -23,7 +23,6 @@ echo $paginator->counter(array(
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
-$i = 0;
 foreach ($financies as $financy):
 ?>
 	<tr>
@@ -31,7 +30,7 @@ foreach ($financies as $financy):
 			<?php echo $financy['Financy']['id']; ?>
 		</td>
 		<td>
-			<?php echo $financy['Financy']['finance_categories_id']; ?>
+			<?php echo $financeCategories[ $financy['Financy']['finance_categories_id'] ]; ?>
 		</td>
 		<td>
 			<?php echo $financy['Financy']['create_date']; ?>
