@@ -6,9 +6,9 @@
 			<?php echo $financy['Financy']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Finance Category Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Finance Categories Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $financy['Financy']['finance_category_id']; ?>
+			<?php echo $financy['Financy']['finance_categories_id']; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Create Date'); ?></dt>

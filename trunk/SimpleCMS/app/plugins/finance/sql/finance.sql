@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 3.1.1
+-- version 3.0.0
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 02 月 22 日 14:50
+-- 生成日期: 2009 年 02 月 23 日 15:18
 -- 服务器版本: 5.1.30
 -- PHP 版本: 5.2.8
 
@@ -33,12 +33,16 @@ CREATE TABLE IF NOT EXISTS `finance_categories` (
   `created` int(11) NOT NULL,
   `modified` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=14 ;
 
 --
 -- 导出表中的数据 `finance_categories`
 --
 
+INSERT INTO `finance_categories` (`id`, `category_name`, `active`, `add_ip`, `created`, `modified`) VALUES
+(11, '不错呀', 'live', '127.0.0.1', 1235219288, 1235219288),
+(10, '还行dddddd', 'new', '127.0.0.1', 1235214232, 1235260554),
+(9, '太好了', 'new', '127.0.0.1', 1235214157, 1235214157);
 
 -- --------------------------------------------------------
 
@@ -48,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `finance_categories` (
 
 CREATE TABLE IF NOT EXISTS `financies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `finance_category_id` int(5) DEFAULT NULL,
+  `finance_categories_id` int(5) DEFAULT NULL,
   `create_date` date DEFAULT NULL,
   `amount` tinyint(4) DEFAULT NULL,
   `debit` varchar(4) DEFAULT NULL,

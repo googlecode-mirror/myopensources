@@ -19,7 +19,6 @@ class FinanciesController extends FinanceAppController {
 				
 			)
 		);
-		
 	}
 
 	function admin_view($id = null) {
@@ -37,12 +36,14 @@ class FinanciesController extends FinanceAppController {
 			$this->Financy->create();
 			if ($this->Financy->save($this->data)) {
 				$this->Session->setFlash(__('The Financy has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				echo "done";
+				exit;
+//				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Financy could not be saved. Please, try again.', true));
 			}
 		}
-		$financeCategories = $this->Financy->FinanceCategory->find('list');
+		$financeCategories = $this->Financy->FinanceCategory->find('list', array('fields'=>array('FinanceCategory.id', 'FinanceCategory.category_name')) );
 		$this->set(compact('financeCategories'));
 	}
 

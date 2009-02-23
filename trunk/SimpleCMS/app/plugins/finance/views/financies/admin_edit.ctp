@@ -4,7 +4,7 @@
  		<legend><?php __('Edit Financy');?></legend>
 	<?php
 		echo $form->input('id');
-		echo $form->input('finance_category_id');
+		echo $form->input('finance_categories_id');
 		echo $form->input('create_date');
 		echo $form->input('amount');
 		echo $form->input('debit');
