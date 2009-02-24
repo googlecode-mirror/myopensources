@@ -1,5 +1,6 @@
 <?php
 include_once 'Console/Ui.php';
+include_once 'Loging/Log.php';
 include_once 'Application/Config.php';
 include_once 'Database/OracleDriver.php';
 include_once 'Database/MysqlDriver.php';
@@ -17,6 +18,7 @@ include_once 'Database/MysqlDriver.php';
 class Application_Controller {
 	
 	private static $instances = null;
+	private $logger;
 	
 	private function __construct() {
 		
@@ -30,6 +32,7 @@ class Application_Controller {
 	}
 	
 	public function main() {
+		$this->initLog();
 		
 	    /**
 	    * Main loop of program show the menu
@@ -115,9 +118,17 @@ class Application_Controller {
 		$connections = Application_Config::getInstance()->getConnections();
 		if (is_array($connections)) {
 			foreach ($connections as $name=>$item){
-				$source = $item['source'];
-				$target = $item['target'];
-				call_user_func(array(self::$instances, $callback), $source, $target);
+				if ($name) {
+					$mesg = "Migrate schema {$name}, please wait... ";
+					echo $mesg . "\n";
+					$this->logger->log($mesg);
+					$source = $item['source'];
+					$target = $item['target'];
+					call_user_func(array(self::$instances, $callback), $source, $target);
+					Console_Ui::message("\nWill do the next, please press enter to continue... [Enter]");
+					Console_Ui::pause();
+				}
+				
 			}
 		}
 		
@@ -125,26 +136,50 @@ class Application_Controller {
 	
 	private function doMoveStruct($source, $target) {
 		Console_Ui::clearScreen();
+		echo "Migrate struct only\n";
 		$source_obj = $this->getDriver($source);
 		$target_obj = $this->getDriver($target);
 		
 		$src_tables = $source_obj->getTables();
+		
 		if ( count($src_tables) > 0 ) {
 			foreach ($src_tables as $table_name) {
-				echo "Create {$table_name} table, wait...";
+				
+				$mesg = "Create {$table_name} table, wait...";
 				if ( $target_obj->execMulti( $source_obj->toMysqlScript( $table_name ) ) ) {
-					echo "[Done]";
+					$mesg .= "[Done]";
 				}
 				else 
-					echo "[*False]";
-				echo "\n";
+					$mesg .= "[*False]";
+				echo $mesg . "\n";
+				$this->logger->log($mesg);
+				
 			}
 			
 		}
+		$target_tables = $target_obj->getTables();
 		
-//		$create_sql = $source_obj->toMysqlScript('ad');
-//		$target_obj->getTables();
+		if ( ($src_total = count($src_tables)) != ($target_total = count($target_tables)) ) {
+			$lost_tables = array_diff($src_tables, $target_tables);
+			$mesg = "Source tables total: {$src_total} ";
+			Console_Ui::message("\n{$mesg}\n");
+			$this->logger->log($mesg);
+			
+			$mesg = "Target tables total: {$target_total} ";
+			Console_Ui::message("\n{$mesg}\n");
+			$this->logger->log($mesg);
+			
+			$mesg = "Lost some tables:\n". implode(",", $lost_tables );
+			Console_Ui::message("\n{$mesg}\n");
+			$this->logger->log($mesg);
+			
+		}else{
+			$mesg = "~~~~ Congratulation, all tables done. ~~~~";
+			Console_Ui::message("\n{$mesg}\n");
+			$this->logger->log($mesg);
+		}
 		
+//		$create_sql = $source_obj->toMysqlScript('FUNCTIONS');
 //		print $create_sql;
 //		print_r($src_tables);
 //		print_r($target);
@@ -167,6 +202,16 @@ class Application_Controller {
 		}
 		return $instance;
 		
+	}
+	
+	private function initLog() {
+		$conf = array('mode' => 0600, 'timeFormat' => '%X %x');
+		$output_folder = dirname( dirname(__FILE__) ) .DIRECTORY_SEPARATOR.'output';
+		if (!file_exists($output_folder)) {
+			mkdir($output_folder, 0755);
+		}
+		
+		$this->logger = Loging_Log::singleton('file', $output_folder.DIRECTORY_SEPARATOR.date("Y_m_d_").'database_migration.log', "\t", $conf);
 	}
 	
 	

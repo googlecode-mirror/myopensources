@@ -38,7 +38,12 @@ class Database_MysqlDriver extends Database_Abstract  {
 	
 	public function getTables() {
 		$sql = "SHOW TABLES";
-		return $this->fetchData($sql);
+		$tables = array();
+		$result = $this->fetchData($sql);
+		foreach ($result as $key=>$value){
+			$tables[] = $value[ key($value) ];
+		}
+		return $tables;
 	}
 	
 }

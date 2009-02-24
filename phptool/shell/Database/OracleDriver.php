@@ -106,7 +106,7 @@ EOD;
 	private function colum2MysqlMapping($field, $primaries) {
 		$type = $field['type'];
 		$null_able = ($field['null_able'] == 'Y') ? "" : "NOT NULL";
-		$default = ($field['default']) ? "DEFAULT '{$field['default']}'" : "";
+		$default = ($field['default']) ? "DEFAULT {$field['default']}" : "";
 		$auto_increment = "";
 		switch ($type) {
 			case 'NUMBER':
@@ -119,12 +119,24 @@ EOD;
 				
 			case 'VARCHAR2':
 				$new_type = ($field['length']> 255) ? "text" : "VARCHAR({$field['length']})";
+				if ( in_array($field['name'], $primaries) && $field['length']> 255 ) {
+					$new_type = "VARCHAR(255)";
+				}
+								
 				break;
 				
 			case 'CHAR':				
 				$new_type = ($field['length']> 255) ? "text" : "{$type}({$field['length']})";
 				break;
 				
+			case 'DATE':				
+				$new_type = "{$type}";
+				break;
+				
+		}
+		
+		if ($new_type == "text"){
+			$null_able = $default = $auto_increment = "";
 		}
 		
 		return sprintf("`%s` %s %s %s %s", $field['name'], $new_type, $null_able, $default, $auto_increment);
