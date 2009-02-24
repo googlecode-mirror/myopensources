@@ -1,5 +1,7 @@
 <?php
 include_once 'Console/Ui.php';
+include_once 'Application/Config.php';
+include_once 'Database/OracleDriver.php';
 
 /**
  *
@@ -62,7 +64,11 @@ class Application_Controller {
 	}
 	
 	public function moveStruct() {
+		
 		Console_Ui::message("\nInit database struct, please wait...\n");
+		
+		$this->fetchServers("doMoveStruct");
+		
 		Console_Ui::message("\nPlease press enter to continue... [Enter]");
 		Console_Ui::pause();
 	}
@@ -103,5 +109,47 @@ class Application_Controller {
 		Console_Ui::message("\nPlease press enter to continue... [Enter]");
 		Console_Ui::pause();
 	}
+	
+	private function fetchServers($callback="") {
+		$connections = Application_Config::getInstance()->getConnections();
+		if (is_array($connections)) {
+			foreach ($connections as $name=>$item){
+				$source = $item['source'];
+				$target = $item['target'];
+				call_user_func(array(self::$instances, $callback), $source, $target);
+			}
+		}
+		
+	}
+	
+	private function doMoveStruct($source, $target) {
+		Console_Ui::clearScreen();
+		$source_obj = $this->getDriver($source);
+		$src_tables = $source_obj->getTables();
+		$source_obj->getTableDesc('ad');
+//		print_r($src_tables);
+//		print_r($target);
+	}
+	
+	private function getDriver($db_config) {
+		$connect_type = strtolower( $db_config['type'] );
+		if (empty($connect_type)) {
+			return false;
+		}
+		$instance = null;
+		switch ($connect_type){
+			case 'oracle':
+				$instance = new Database_OracleDriver($db_config);
+				break;
+			case 'mysql':
+				$instance = new Database_MysqlDriver($db_config);
+				break;
+				
+		}
+		return $instance;
+		
+	}
+	
+	
 	
 }
