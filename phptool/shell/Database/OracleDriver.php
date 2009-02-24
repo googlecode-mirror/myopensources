@@ -112,6 +112,7 @@ EOD;
 			case 'NUMBER':
 				$new_type = ( $field['length'] && ($field['length']> 0) ) ? "INT({$field['length']})" : "INT";
 				if ( in_array($field['name'], $primaries) ) {
+					$default = "";
 					$auto_increment = "AUTO_INCREMENT";
 				}
 				
@@ -132,6 +133,11 @@ EOD;
 			case 'DATE':				
 				$new_type = "{$type}";
 				break;
+				
+			default:				
+				$new_type = ( $field['length'] && ($field['length']> 0) ) ? "{$type}({$field['length']})" : "{$type}";
+				break;
+				
 				
 		}
 		

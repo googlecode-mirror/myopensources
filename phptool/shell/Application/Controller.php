@@ -179,7 +179,7 @@ class Application_Controller {
 			$this->logger->log($mesg);
 		}
 		
-//		$create_sql = $source_obj->toMysqlScript('FUNCTIONS');
+//		$create_sql = $source_obj->toMysqlScript('MARQUEES');
 //		print $create_sql;
 //		print_r($src_tables);
 //		print_r($target);
