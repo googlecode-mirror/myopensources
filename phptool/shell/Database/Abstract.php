@@ -6,7 +6,7 @@ abstract class Database_Abstract {
 		$this->dbh = $this->connect($db_config);
 	}
 	
-	private function connect($db_config) {
+	protected function connect($db_config) {
 		$connect_type = strtolower( $db_config['type'] );
 		if (empty($connect_type)) {
 			return false;
@@ -36,6 +36,23 @@ abstract class Database_Abstract {
 		   die();
 		}
 	
+	}
+	
+	protected function fetchData($sql) {
+		$result = array();
+		$stmt = $this->dbh->prepare($sql);
+		try {
+			$stmt->execute();
+			while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
+				$result[] = $row;
+				
+			}
+			return $result;
+		}catch (Exception $e){
+		   print "Error!: " . $e->getMessage() . "\n";
+		   die();
+			
+		}
 	}
 	
 }

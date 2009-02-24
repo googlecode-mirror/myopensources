@@ -2,6 +2,7 @@
 include_once 'Console/Ui.php';
 include_once 'Application/Config.php';
 include_once 'Database/OracleDriver.php';
+include_once 'Database/MysqlDriver.php';
 
 /**
  *
@@ -38,7 +39,7 @@ class Application_Controller {
 	    	$this->welcome();
 	        $id = Console_Ui::showMenu( $this->mainMenu() );
 	        
-	        if ($id == '7') {
+	        if (in_array(strtolower($id), array( '7', 'q') ) ) {
 	            exit;
 	        }
 	    }
@@ -125,8 +126,26 @@ class Application_Controller {
 	private function doMoveStruct($source, $target) {
 		Console_Ui::clearScreen();
 		$source_obj = $this->getDriver($source);
+		$target_obj = $this->getDriver($target);
+		
 		$src_tables = $source_obj->getTables();
-		$source_obj->getTableDesc('ad');
+		if ( count($src_tables) > 0 ) {
+			foreach ($src_tables as $table_name) {
+				echo "Create {$table_name} table, wait...";
+				if ( $target_obj->execMulti( $source_obj->toMysqlScript( $table_name ) ) ) {
+					echo "[Done]";
+				}
+				else 
+					echo "[*False]";
+				echo "\n";
+			}
+			
+		}
+		
+//		$create_sql = $source_obj->toMysqlScript('ad');
+//		$target_obj->getTables();
+		
+//		print $create_sql;
 //		print_r($src_tables);
 //		print_r($target);
 	}
