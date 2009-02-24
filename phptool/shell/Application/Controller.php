@@ -50,7 +50,7 @@ class Application_Controller {
 	
 	private function welcome() {
 		Console_Ui::hr(true);
-        Console_Ui::message("  ** Wellcome to EMOME database migration tool **  ");
+        Console_Ui::message("  ** Wellcome to database migration tool **  ");
         Console_Ui::hr(true);
 	}
 	
