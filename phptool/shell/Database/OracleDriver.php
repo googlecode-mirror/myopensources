@@ -13,6 +13,46 @@ require_once 'Abstract.php';
 
 class Database_OracleDriver extends Database_Abstract {
 	
+	protected function connect($db_config) {
+		$conn = oci_connect($db_config['user'], $db_config['passwod'], "//{$db_config['host']}/{$db_config['db']}", $db_config['charset']);
+		if (is_resource($conn)) {
+			return $conn;
+		}else {
+			$e = oci_error();
+			print "Error!: " . $e['message'] . "\n";
+			die();
+		}
+	}
+	
+	protected function query($sql) {
+		$stid = oci_parse ($this->dbh, $sql);
+		oci_execute($stid, OCI_DEFAULT);
+		
+	}
+	
+	public function fetchData($sql) {
+		$result = array();
+		
+		$stid = oci_parse($this->dbh, $sql);
+		if (!$stid) {
+		  $e = oci_error($this->dbh);
+		  print $e['message']."\n";
+		  exit;
+		}
+		
+		$r = oci_execute($stid, OCI_DEFAULT);
+		if(!$r) {
+		  $e = oci_error($stid);
+		  echo $e['message']."\n";
+		  exit;
+		}
+		
+		while($row = oci_fetch_array($stid, OCI_ASSOC)) {
+			$result[] = $row;
+		}
+		return $result;
+	}
+	
 	public function getTables() {
 		return $this->getUserTables();
 	}
@@ -20,24 +60,13 @@ class Database_OracleDriver extends Database_Abstract {
 	private function getUserTables() {
 		$tables = array();
 		$sql = "SELECT table_name FROM user_tables";
-		$stmt = $this->dbh->prepare($sql);
-		try {
-			$stmt->execute();
-			while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
+		$result = $this->fetchData($sql);
+		if (is_array($result) && (count($result) > 0) ) {
+			foreach ($result as $row) {
 				$tables[] = $row['TABLE_NAME'];
-				
 			}
 			return $tables;
-		}catch (Exception $e){
-		   print "Error!: " . $e->getMessage() . "\n";
-		   die();
-			
 		}
-		
-		
-	}
-	
-	public function getTableDesc($table_name) {
 		
 	}
 	
@@ -86,11 +115,6 @@ class Database_OracleDriver extends Database_Abstract {
 			}
 		}
 
-//		print_r($fields);
-//		print_r($constraints);
-//		print_r($indeies);
-//		print_r($sql);
-		
 		return <<<EOD
 DROP TABLE IF EXISTS `{$table_name}`;
 CREATE TABLE IF NOT EXISTS `{$table_name}` (
@@ -212,10 +236,9 @@ EOD;
 		$sql = "SELECT COLUMN_NAME, DATA_TYPE, DATA_LENGTH, NULLABLE, DATA_DEFAULT  
 				FROM USER_TAB_COLUMNS 
 				WHERE TABLE_NAME = UPPER('{$table_name}') ";
-		$stmt = $this->dbh->prepare($sql);
-		try {
-			$stmt->execute();
-			while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
+		$result = $this->fetchData($sql);
+		if (is_array($result) && (count($result) > 0) ) {
+			foreach ($result as $row) {
 				$tmp_row = array(
 					'name' 		=> $row['COLUMN_NAME'],
 					'type' 		=> $row['DATA_TYPE'],
@@ -224,15 +247,9 @@ EOD;
 					'default' 	=> $row['DATA_DEFAULT'],
 				);
 				$colums[] = $tmp_row;
-				
 			}
 			return $colums;
-		}catch (Exception $e){
-		   print "Error!: " . $e->getMessage() . "\n";
-		   die();
-			
 		}
-		
 	}
 	
 }

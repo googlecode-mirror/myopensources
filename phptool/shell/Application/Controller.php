@@ -42,7 +42,7 @@ class Application_Controller {
 	    	$this->welcome();
 	        $id = Console_Ui::showMenu( $this->mainMenu() );
 	        
-	        if (in_array(strtolower($id), array( '7', 'q') ) ) {
+	        if ( strtolower($id) == 0 ) {
 	            exit;
 	        }
 	    }
@@ -63,7 +63,7 @@ class Application_Controller {
 	    $items[] = array('identifier' => 4, 'text' => 'Drop all target database tables', 'callback' => array(self::$instances, 'dropTables'));
 	    $items[] = array('identifier' => 5, 'text' => 'Clear target tables data', 'callback' => array(self::$instances, 'clearData'));
 	    $items[] = array('identifier' => 6, 'text' => 'Optimize target database', 'callback' => array(self::$instances, 'optimizeDatabase'));
-	    $items[] = array('identifier' => 7, 'text' => 'Quit');
+	    $items[] = array('identifier' => 0, 'text' => 'Quit');
 	    return $items;
 	}
 	
