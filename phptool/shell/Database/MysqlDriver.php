@@ -75,6 +75,10 @@ class Database_MysqlDriver extends Database_Abstract  {
 	public function dropTable($table_name ) {
 		$sql = "DROP TABLE {$table_name}";
 		return $this->doQuery($sql);
-	}	
+	}
+	
+	function __destruct() {
+		mysql_close($this->dbh);
+	}
 	
 }

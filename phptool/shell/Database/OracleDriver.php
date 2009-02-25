@@ -252,4 +252,9 @@ EOD;
 		}
 	}
 	
+	function __destruct() {
+		oci_close($this->dbh);
+	}
+	
+	
 }
