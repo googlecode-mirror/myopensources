@@ -13,18 +13,9 @@ require_once 'Abstract.php';
 
 class Database_MysqlDriver extends Database_Abstract  {
 	
-	private function doQuery($sql) {
-		if ( !empty($sql) ) {
-			try {
-				$this->dbh->exec($sql);
-				return true;
-			}catch (Exception $e){
-			   print "Error!: " . $e->getMessage() . "\n";
-			   return false;
-				
-			}
-		}
-		
+	function __construct($db_config) {
+		parent::__construct($db_config);
+		$this->setCharset('UTF8');
 	}
 	
 	public function execMulti($sql) {
@@ -45,5 +36,20 @@ class Database_MysqlDriver extends Database_Abstract  {
 		}
 		return $tables;
 	}
+	
+	public function setCharset($charset='UTF8') {
+		$sql = "SET NAMES {$charset}";
+		$this->doQuery($sql);
+	}
+	
+	public function truncateTable($table_name ) {
+		$sql = "TRUNCATE TABLE {$table_name}";
+		return $this->doQuery($sql);
+	}	
+	
+	public function dropTable($table_name ) {
+		$sql = "DROP TABLE {$table_name}";
+		return $this->doQuery($sql);
+	}	
 	
 }

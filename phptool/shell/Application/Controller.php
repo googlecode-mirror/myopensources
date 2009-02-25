@@ -79,12 +79,19 @@ class Application_Controller {
 
 	public function moveData() {
 		Console_Ui::message("\nMigrate data, please wait...\n");
+		
+		$this->fetchServers("doMoveData");
+		
 		Console_Ui::message("\nPlease press enter to continue... [Enter]");
 		Console_Ui::pause();
 	}
 	
 	public function moveStructAndData() {
 		Console_Ui::message("\nMigrate struct and data, please wait...\n");
+		
+		$this->fetchServers("doMoveStruct");
+		$this->fetchServers("doMoveData");
+		
 		Console_Ui::message("\nPlease press enter to continue... [Enter]");
 		Console_Ui::pause();
 	}
@@ -94,6 +101,9 @@ class Application_Controller {
 		$question = "Are you sure drop all tables ?";
 		if ( Console_Ui::confirm($question, TRUE) ) {
 			Console_Ui::message("\nDrop all tables, please wait...\n");
+		
+			$this->fetchServers("doDropTables");
+			
 			Console_Ui::message("\nPlease press enter to continue... [Enter]");
 			Console_Ui::pause();
 		}
@@ -103,6 +113,9 @@ class Application_Controller {
 		$question = "Are you sure clear all data ?";
 		if ( Console_Ui::confirm($question, FALSE) ) {
 			Console_Ui::message("\nClear all tables data, please wait...\n");
+		
+			$this->fetchServers("doClearData");
+			
 			Console_Ui::message("\nPlease press enter to continue... [Enter]");
 			Console_Ui::pause();
 		}
@@ -110,6 +123,7 @@ class Application_Controller {
 	
 	public function optimizeDatabase() {
 		Console_Ui::message("\nOptimize database, please wait...\n");
+		Console_Ui::message("\n~~~ TO BE DONE LATER ~~~\n");
 		Console_Ui::message("\nPlease press enter to continue... [Enter]");
 		Console_Ui::pause();
 	}
@@ -125,8 +139,6 @@ class Application_Controller {
 					$source = $item['source'];
 					$target = $item['target'];
 					call_user_func(array(self::$instances, $callback), $source, $target);
-					Console_Ui::message("\nWill do the next, please press enter to continue... [Enter]");
-					Console_Ui::pause();
 				}
 				
 			}
@@ -150,7 +162,7 @@ class Application_Controller {
 					$mesg .= "[Done]";
 				}
 				else 
-					$mesg .= "[*False]";
+					$mesg .= "[*Fail]";
 				echo $mesg . "\n";
 				$this->logger->log($mesg);
 				
@@ -181,9 +193,119 @@ class Application_Controller {
 		
 //		$create_sql = $source_obj->toMysqlScript('MARQUEES');
 //		print $create_sql;
-//		print_r($src_tables);
-//		print_r($target);
 	}
+	
+	private function doMoveData($source, $target) {
+		$source_obj = $this->getDriver($source);
+		$target_obj = $this->getDriver($target);
+		
+		$src_tables = $source_obj->getTables();
+		$target_tables = $target_obj->getTables();
+		
+		if ( ($src_total = count($src_tables)) != ($target_total = count($target_tables)) ) {
+			// if target tables not equal source tables, then break data moving 
+			$lost_tables = array_diff($src_tables, $target_tables);
+			$mesg = "~~~ Target & Source tables not match , so skip data moving ~~~ ";
+			Console_Ui::message("\n{$mesg}\n");
+			$mesg = "Source tables total: {$src_total} ";
+			Console_Ui::message("\n{$mesg}\n");
+			$mesg = "Target tables total: {$target_total} ";
+			Console_Ui::message("\n{$mesg}\n");
+			
+			$mesg = "Lost some tables:\n". implode(",", $lost_tables );
+			Console_Ui::message("\n{$mesg}\n");
+			
+		}else {
+			// do data moving
+			foreach ($src_tables as $table_name) {
+				$source_obj->moveTableRecords($table_name, $target_obj, $this->logger);
+			}
+			
+		}
+	}
+	
+	private function doClearData($source, $target) {
+		
+		$mesg = "~~~~ Will be clear target server tables data ~~~~";
+		Console_Ui::message("\n{$mesg}\n");
+		$this->logger->log($mesg);
+		
+		$target_obj = $this->getDriver($target);
+		$target_tables = $target_obj->getTables();
+		if (($target_total = count($target_tables)) > 0) {
+			
+			$i = 0;
+			$success = 0;
+			$fail = 0;
+			
+			foreach ($target_tables as $table_name) {
+				$result = "";
+				if ( $target_obj->truncateTable($table_name) ) {
+					$result = "Done";
+					$success +=1;
+				}else {
+					$result = "Fail";
+					$fail +=1;
+				}
+				$mesg = "Clear data for: {$table_name} [{$result}].";
+				Console_Ui::message("\n{$mesg}\n");
+				$this->logger->log($mesg);
+				$i++;
+				
+			}
+			$mesg = "~~~~ Total: [{$i}]. Success: [{$success}]. Fail: [{$fail}] ~~~~";
+			Console_Ui::message("\n{$mesg}\n");
+			$this->logger->log($mesg);
+			
+		}else {
+			$mesg = "~~~~ NONE TABLE NEED TO BE CLEAR ~~~~";
+			Console_Ui::message("\n{$mesg}\n");
+			
+		}
+		
+	}
+	
+	private function doDropTables($source, $target) {
+		$mesg = "~~~~ Will be drop target server tables ~~~~";
+		Console_Ui::message("\n{$mesg}\n");
+		$this->logger->log($mesg);
+		
+		$target_obj = $this->getDriver($target);
+		$target_tables = $target_obj->getTables();
+		if (($target_total = count($target_tables)) > 0) {
+			
+			$i = 0;
+			$success = 0;
+			$fail = 0;
+			
+			foreach ($target_tables as $table_name) {
+				$result = "";
+				if ( $target_obj->dropTable($table_name) ) {
+					$result = "Done";
+					$success +=1;
+				}else {
+					$result = "Fail";
+					$fail +=1;
+				}
+				$mesg = "Drop for: {$table_name} [{$result}].";
+				Console_Ui::message("\n{$mesg}\n");
+				$this->logger->log($mesg);
+				$i++;
+				
+			}
+			$mesg = "~~~~ Total: [{$i}]. Success: [{$success}]. Fail: [{$fail}] ~~~~";
+			Console_Ui::message("\n{$mesg}\n");
+			$this->logger->log($mesg);
+			
+		}else {
+			$mesg = "~~~~ NONE TABLE NEED TO BE DROP ~~~~";
+			Console_Ui::message("\n{$mesg}\n");
+			
+		}
+	}
+	
+	
+	
 	
 	private function getDriver($db_config) {
 		$connect_type = strtolower( $db_config['type'] );
