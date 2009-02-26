@@ -135,7 +135,7 @@ class Database_OracleDriver extends Database_Abstract {
 		foreach ($fields as $field){
 			$colums_sql .= sprintf("\t%s %s \n", 
 									$spliter, 
-									$this->colum2MysqlMapping($field, array_keys($constraints['primarys']) ) 
+									$this->colum2MysqlMapping($table_name, $field, array_keys($constraints['primarys']) ) 
 							);
 			$spliter = ",";
 		}
@@ -180,7 +180,7 @@ EOD;
 		
 	}
 	
-	private function colum2MysqlMapping($field, $primaries) {
+	private function colum2MysqlMapping($table_name, $field, $primaries) {
 		$type = $field['type'];
 		$null_able = ($field['null_able'] == 'Y') ? "" : "NOT NULL";
 		$default = ($field['default']) ? "DEFAULT {$field['default']}" : "";
@@ -188,7 +188,7 @@ EOD;
 		switch ($type) {
 			case 'NUMBER':
 				$new_type = ( $field['length'] && ($field['length']> 0) ) ? "INT({$field['length']})" : "INT";
-				if ( in_array($field['name'], $primaries) ) {
+				if ( in_array($field['name'], $primaries) && (!in_array(strtolower($table_name), array('mr_code_ratedatastatus') )) ) {
 					$default = "";
 					$auto_increment = "AUTO_INCREMENT";
 				}
