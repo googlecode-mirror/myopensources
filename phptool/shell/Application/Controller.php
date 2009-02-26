@@ -100,8 +100,9 @@ class Application_Controller {
 		Console_Ui::message("\nMigrate struct and data, please wait...\n");
 		
 		$this->fetchServers("doMoveStruct");
-		Console_Ui::message("\nPlease press enter to continue... [Enter]");
-		Console_Ui::pause();
+//		Console_Ui::message("\nPlease press enter to continue... [Enter]");
+//		Console_Ui::pause();
+		$this->fetchServers("doMoveViews");
 		$this->fetchServers("doMoveData");
 		
 		Console_Ui::message("\nPlease press enter to continue... [Enter]");
@@ -151,8 +152,8 @@ class Application_Controller {
 					$source = $item['source'];
 					$target = $item['target'];
 					call_user_func(array(self::$instances, $callback), $source, $target);
-					Console_Ui::message("\nPlease press enter to continue... [Enter]");
-					Console_Ui::pause();
+//					Console_Ui::message("\nPlease press enter to continue... [Enter]");
+//					Console_Ui::pause();
 				}
 				
 			}
@@ -234,7 +235,7 @@ class Application_Controller {
 			foreach ($src_tables as $table_name) {
 				$source_obj->moveTableRecords($table_name, $target_obj, $this->logger);
 			}
-//			$table_name = "PREVIEW_THUMBS";
+//			$table_name = "USERAGENT_MAP";
 //			$source_obj->moveTableRecords($table_name, $target_obj, $this->logger);
 			
 		}
@@ -259,7 +260,7 @@ class Application_Controller {
 			foreach ($src_views as $view) {
 				$view_name = $view['VIEW_NAME'];
 				$view_text = $view['TEXT'];
-				$mysql_view_sql = sprintf("DROP VIEW IF EXISTS `%s`.`%s`;\nCREATE VIEW `%s` AS %s ", $target['db'], $view_name, $view_name, strtoupper($view_text) );
+				$mysql_view_sql = sprintf("DROP VIEW IF EXISTS `%s`.`%s`;\nCREATE VIEW `%s`.`%s` AS %s ", $target['db'], $view_name, $target['db'], $view_name, strtoupper($view_text) );
 				if ( in_array(strtolower($view_name), array('mobilehsdpa', 'mobile3g', 'mobile2g') ) ) {
 					$mesg = "[Skip]:[{$view_name}] view..\n";
 					$mesg .= "SQL:\n{$mysql_view_sql}\n";

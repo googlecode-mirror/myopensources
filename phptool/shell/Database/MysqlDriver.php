@@ -30,7 +30,11 @@ class Database_MysqlDriver extends Database_Abstract  {
 	}
 	
 	protected function query($sql) {
-		return mysql_query($sql, $this->dbh) or die('Query failed: ' . mysql_error(). "\n SQL: {$sql}\n");
+		$res = mysql_query($sql, $this->dbh);
+		if ( !$res ) {
+			return false;
+		}
+		return true;
 	}
 	
 	public function fetchData($sql) {

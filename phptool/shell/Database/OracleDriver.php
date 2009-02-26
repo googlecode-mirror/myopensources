@@ -74,12 +74,18 @@ class Database_OracleDriver extends Database_Abstract {
 		$logger->log($mesg);
 		
 		// populate fields string
+		$mysql_date_format = "YYYY-MM-DD";
 		$fields = $this->getFields($table_name);
 		$field_list = "";
 		$insert_field_list = "";
 		$spliter = "";
 		foreach ($fields as $key => $item){
-			$field_list .= $spliter . $item['name'];
+			$field_name = $item['name'];
+			if ( strtolower($item['type']) == 'date' ) {
+				$field_name = "TO_CHAR({$item['name']}, '{$mysql_date_format}') as {$item['name']}";
+			}
+			
+			$field_list .= $spliter . $field_name;
 			$insert_field_list .= $spliter . "`{$item['name']}`";
 			$spliter = ",";
 		}
@@ -130,7 +136,8 @@ class Database_OracleDriver extends Database_Abstract {
 				$result = "Done";
 				$success +=1;
 			}else {
-				$result = "Fail";
+				$e_msg = 'Query failed: ' . mysql_error(). "\n SQL: {$insert_sql}\n";
+				$result = "Fail -> {$e_msg}";
 				$fail +=1;
 			}
 			$first= array_shift($row);
@@ -229,7 +236,16 @@ EOD;
 		switch ($type) {
 			case 'NUMBER':
 				$new_type = ( $field['length'] && ($field['length']> 0) ) ? "INT({$field['length']})" : "INT";
-				if ( in_array($field['name'], $primaries) && (!in_array(strtolower($table_name), array('mr_code_ratedatastatus', 'navigations') )) ) {
+				if ( in_array($field['name'], $primaries) && 
+						(!in_array(strtolower($table_name), 
+								array('mr_code_ratedatastatus', 
+								'navigations',
+								'navigation_visions',
+								) 
+							)
+						) 
+					) 
+				{
 					$default = "";
 					$auto_increment = "AUTO_INCREMENT";
 				}
