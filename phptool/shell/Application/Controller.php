@@ -217,20 +217,20 @@ class Application_Controller {
 		$src_tables = $source_obj->getTables();
 		$target_tables = $target_obj->getTables();
 		
-		if ( ($src_total = count($src_tables)) != ($target_total = count($target_tables)) ) {
-			// if target tables not equal source tables, then break data moving 
-			$lost_tables = array_diff($src_tables, $target_tables);
-			$mesg = "~~~ Target & Source tables not match , so skip data moving ~~~ ";
-			Console_Ui::message("\n{$mesg}\n");
-			$mesg = "Source tables total: {$src_total} ";
-			Console_Ui::message("\n{$mesg}\n");
-			$mesg = "Target tables total: {$target_total} ";
-			Console_Ui::message("\n{$mesg}\n");
-			
-			$mesg = "Lost some tables:\n". implode(",", $lost_tables );
-			Console_Ui::message("\n{$mesg}\n");
-			
-		}else {
+//		if ( ($src_total = count($src_tables)) != ($target_total = count($target_tables)) ) {
+//			// if target tables not equal source tables, then break data moving 
+//			$lost_tables = array_diff($src_tables, $target_tables);
+//			$mesg = "~~~ Target & Source tables not match , so skip data moving ~~~ ";
+//			Console_Ui::message("\n{$mesg}\n");
+//			$mesg = "Source tables total: {$src_total} ";
+//			Console_Ui::message("\n{$mesg}\n");
+//			$mesg = "Target tables total: {$target_total} ";
+//			Console_Ui::message("\n{$mesg}\n");
+//			
+//			$mesg = "Lost some tables:\n". implode(",", $lost_tables );
+//			Console_Ui::message("\n{$mesg}\n");
+//			
+//		}else {
 			// do data moving
 			foreach ($src_tables as $table_name) {
 				$source_obj->moveTableRecords($table_name, $target_obj, $this->logger);
@@ -238,7 +238,7 @@ class Application_Controller {
 //			$table_name = "USERAGENT_MAP";
 //			$source_obj->moveTableRecords($table_name, $target_obj, $this->logger);
 			
-		}
+//		}
 	}
 	
 	private function doMoveViews($source, $target) {
