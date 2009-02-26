@@ -207,6 +207,10 @@ EOD;
 				$new_type = ($field['length']> 255) ? "text" : "{$type}({$field['length']})";
 				break;
 				
+			case 'CLOB':				
+				$new_type = "longtext";
+				break;
+				
 			case 'DATE':				
 				$new_type = "{$type}";
 				break;
