@@ -14,7 +14,7 @@ require_once 'Abstract.php';
 class Database_OracleDriver extends Database_Abstract {
 	
 	protected function connect($db_config) {
-		$conn = oci_connect($db_config['user'], $db_config['passwod'], "//{$db_config['host']}/{$db_config['db']}", $db_config['charset']);
+		$conn = oci_new_connect($db_config['user'], $db_config['passwod'], "//{$db_config['host']}/{$db_config['db']}", $db_config['charset']);
 		if (is_resource($conn)) {
 			return $conn;
 		}else {
@@ -53,11 +53,52 @@ class Database_OracleDriver extends Database_Abstract {
 		return $result;
 	}
 	
+	public function getViews() {
+		$sql = "
+		  SELECT VIEW_NAME,TEXT
+	      FROM USER_VIEWS
+      	";
+		$result = $this->fetchData($sql);
+		if (is_array($result) && (count($result) > 0) ) {
+			foreach ($result as $row) {
+				$tables[] = $row;
+			}
+			return $tables;
+		}
+	}
+	
+	
 	public function moveTableRecords($table_name, Database_Abstract $target_obj, $logger) {
 		$mesg = "~~~~ Will be import table [{$table_name}] data ~~~~";
 		print "{$mesg}\n";
 		$logger->log($mesg);
-		$sql = "SELECT * FROM {$table_name}";
+		
+		// populate fields string
+		$fields = $this->getFields($table_name);
+		$field_list = "";
+		$insert_field_list = "";
+		$spliter = "";
+		foreach ($fields as $key => $item){
+			$field_list .= $spliter . $item['name'];
+			$insert_field_list .= $spliter . "`{$item['name']}`";
+			$spliter = ",";
+		}
+		
+		// populate order by sql
+		$constraints = $this->getPrimaryForeignUniqueKeys($table_name);
+		$order_by_sql = "";
+		if ( count($constraints['primarys']) > 0 ) {
+			$order_by_sql = " ORDER BY ";
+			$spliter = "";
+			foreach ($constraints['primarys'] as $key=>$values){
+				$order_by_sql	.= $spliter . $key;
+				$spliter 		 = ",";
+			}
+			$order_by_sql .= " ASC ";
+		}
+		
+		
+		$sql = "SELECT {$field_list} FROM {$table_name} {$order_by_sql} ";
 		$stid = oci_parse($this->dbh, $sql);
 		if (!$stid) {
 		  $e = oci_error($this->dbh);
@@ -76,7 +117,7 @@ class Database_OracleDriver extends Database_Abstract {
 		$success = 0;
 		$fail = 0;
 		while($row = oci_fetch_array($stid, OCI_ASSOC|OCI_RETURN_NULLS|OCI_RETURN_LOBS)) {//|OCI_RETURN_LOBS
-			$insert_sql = "INSERT INTO `{$table_name}` VALUES (";
+			$insert_sql = "INSERT INTO `{$table_name}` ({$insert_field_list}) VALUES (";
 			$spliter = "";
 			foreach ($row as $key=>$value){
 				$field_value = is_integer($value) ? $value : "'".mysql_escape_string($value)."'";
@@ -188,7 +229,7 @@ EOD;
 		switch ($type) {
 			case 'NUMBER':
 				$new_type = ( $field['length'] && ($field['length']> 0) ) ? "INT({$field['length']})" : "INT";
-				if ( in_array($field['name'], $primaries) && (!in_array(strtolower($table_name), array('mr_code_ratedatastatus') )) ) {
+				if ( in_array($field['name'], $primaries) && (!in_array(strtolower($table_name), array('mr_code_ratedatastatus', 'navigations') )) ) {
 					$default = "";
 					$auto_increment = "AUTO_INCREMENT";
 				}
@@ -292,7 +333,7 @@ EOD;
 		$colums = array();
 		$sql = "SELECT COLUMN_NAME, DATA_TYPE, DATA_LENGTH, NULLABLE, DATA_DEFAULT  
 				FROM USER_TAB_COLUMNS 
-				WHERE TABLE_NAME = UPPER('{$table_name}') ";
+				WHERE TABLE_NAME = UPPER('{$table_name}') ORDER BY column_id ASC ";
 		$result = $this->fetchData($sql);
 		if (is_array($result) && (count($result) > 0) ) {
 			foreach ($result as $row) {

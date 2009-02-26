@@ -59,10 +59,11 @@ class Application_Controller {
 		$items = array();
 	    $items[] = array('identifier' => 1, 'text' => 'Migrate database struct only', 'callback' => array(self::$instances, 'moveStruct'));
 	    $items[] = array('identifier' => 2, 'text' => 'Migrate data only', 'callback' => array(self::$instances, 'moveData'));
-	    $items[] = array('identifier' => 3, 'text' => 'Migrate struct and data', 'callback' => array(self::$instances, 'moveStructAndData'));
-	    $items[] = array('identifier' => 4, 'text' => 'Drop all target database tables', 'callback' => array(self::$instances, 'dropTables'));
-	    $items[] = array('identifier' => 5, 'text' => 'Clear target tables data', 'callback' => array(self::$instances, 'clearData'));
-	    $items[] = array('identifier' => 6, 'text' => 'Optimize target database', 'callback' => array(self::$instances, 'optimizeDatabase'));
+	    $items[] = array('identifier' => 3, 'text' => 'Migrate views only', 'callback' => array(self::$instances, 'moveViews'));
+	    $items[] = array('identifier' => 4, 'text' => 'Migrate struct and data', 'callback' => array(self::$instances, 'moveStructAndData'));
+	    $items[] = array('identifier' => 5, 'text' => 'Drop all target database tables', 'callback' => array(self::$instances, 'dropTables'));
+	    $items[] = array('identifier' => 6, 'text' => 'Clear target tables data', 'callback' => array(self::$instances, 'clearData'));
+	    $items[] = array('identifier' => 7, 'text' => 'Optimize target database', 'callback' => array(self::$instances, 'optimizeDatabase'));
 	    $items[] = array('identifier' => 0, 'text' => 'Quit');
 	    return $items;
 	}
@@ -86,10 +87,21 @@ class Application_Controller {
 		Console_Ui::pause();
 	}
 	
+	public function moveViews() {
+		Console_Ui::message("\nMigrate views, please wait...\n");
+		
+		$this->fetchServers("doMoveViews");
+		
+		Console_Ui::message("\nPlease press enter to continue... [Enter]");
+		Console_Ui::pause();
+	}
+	
 	public function moveStructAndData() {
 		Console_Ui::message("\nMigrate struct and data, please wait...\n");
 		
 		$this->fetchServers("doMoveStruct");
+		Console_Ui::message("\nPlease press enter to continue... [Enter]");
+		Console_Ui::pause();
 		$this->fetchServers("doMoveData");
 		
 		Console_Ui::message("\nPlease press enter to continue... [Enter]");
@@ -139,6 +151,8 @@ class Application_Controller {
 					$source = $item['source'];
 					$target = $item['target'];
 					call_user_func(array(self::$instances, $callback), $source, $target);
+					Console_Ui::message("\nPlease press enter to continue... [Enter]");
+					Console_Ui::pause();
 				}
 				
 			}
@@ -162,7 +176,7 @@ class Application_Controller {
 					$mesg .= "[Done]";
 				}
 				else 
-					$mesg .= "[*Fail]";
+					$mesg .= "[Fail]";
 				echo $mesg . "\n";
 				$this->logger->log($mesg);
 				
@@ -220,9 +234,66 @@ class Application_Controller {
 			foreach ($src_tables as $table_name) {
 				$source_obj->moveTableRecords($table_name, $target_obj, $this->logger);
 			}
+//			$table_name = "PREVIEW_THUMBS";
+//			$source_obj->moveTableRecords($table_name, $target_obj, $this->logger);
 			
 		}
 	}
+	
+	private function doMoveViews($source, $target) {
+		
+		$mesg = "~~~~ Will be migrate view to target server ~~~~";
+		Console_Ui::message("\n{$mesg}\n");
+		$this->logger->log($mesg);
+		
+		$source_obj = $this->getDriver($source);
+		$target_obj = $this->getDriver($target);
+		
+		$src_views = $source_obj->getViews();
+		if (is_array($src_views) && (count($src_views) >  0 ) ) {
+			
+			$i = 0;
+			$success = 0;
+			$fail = 0;
+			
+			foreach ($src_views as $view) {
+				$view_name = $view['VIEW_NAME'];
+				$view_text = $view['TEXT'];
+				$mysql_view_sql = sprintf("DROP VIEW IF EXISTS `%s`.`%s`;\nCREATE VIEW `%s` AS %s ", $target['db'], $view_name, $view_name, strtoupper($view_text) );
+				if ( in_array(strtolower($view_name), array('mobilehsdpa', 'mobile3g', 'mobile2g') ) ) {
+					$mesg = "[Skip]:[{$view_name}] view..\n";
+					$mesg .= "SQL:\n{$mysql_view_sql}\n";
+					$fail +=1;
+					echo $mesg . "\n";
+					$this->logger->log($mesg);
+					continue;
+				}
+				
+				$mesg = "Create {$view_name} view, wait...";
+				if ( $target_obj->execMulti( $mysql_view_sql ) ) {
+					$mesg .= "[Done]";
+					$success +=1;
+				}
+				else {
+					$mesg .= "[Fail]";
+					$fail +=1; 
+				}
+				echo $mesg . "\n";
+				$this->logger->log($mesg);
+				$i++;
+			}
+			$mesg = "~~~~ Total: [{$i}]. Success: [{$success}]. Fail: [{$fail}] ~~~~";
+			Console_Ui::message("\n{$mesg}\n");
+			$this->logger->log($mesg);
+			
+		}else {
+			$mesg = "~~~~ NONE VIEW TO BE MIGRATE ~~~~";
+			Console_Ui::message("\n{$mesg}\n");
+			$this->logger->log($mesg);
+		}
+					
+	}
+	
 	
 	private function doClearData($source, $target) {
 		
@@ -260,7 +331,7 @@ class Application_Controller {
 		}else {
 			$mesg = "~~~~ NONE TABLE NEED TO BE CLEAR ~~~~";
 			Console_Ui::message("\n{$mesg}\n");
-			
+			$this->logger->log($mesg);
 		}
 		
 	}

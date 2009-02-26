@@ -30,7 +30,7 @@ class Database_MysqlDriver extends Database_Abstract  {
 	}
 	
 	protected function query($sql) {
-		return mysql_query($sql, $this->dbh) or die('Query failed: ' . mysql_error());
+		return mysql_query($sql, $this->dbh) or die('Query failed: ' . mysql_error(). "\n SQL: {$sql}\n");
 	}
 	
 	public function fetchData($sql) {
@@ -74,6 +74,11 @@ class Database_MysqlDriver extends Database_Abstract  {
 	
 	public function dropTable($table_name ) {
 		$sql = "DROP TABLE {$table_name}";
+		return $this->doQuery($sql);
+	}
+	
+	public function dropView($name ) {
+		$sql = "DROP VIEW IF EXISTS {$name}";
 		return $this->doQuery($sql);
 	}
 	
