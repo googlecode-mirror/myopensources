@@ -170,16 +170,22 @@ class Application_Controller {
 		$src_tables = $source_obj->getTables();
 		
 		if ( count($src_tables) > 0 ) {
+			$log_flag = FALSE;
 			foreach ($src_tables as $table_name) {
 				
 				$mesg = "Create {$table_name} table, wait...";
 				if ( $target_obj->execMulti( $source_obj->toMysqlScript( $table_name ) ) ) {
 					$mesg .= "[Done]";
+					$log_flag = FALSE;
 				}
-				else 
+				else {
 					$mesg .= "[Fail]";
+					$log_flag = TRUE;
+				}
 				echo $mesg . "\n";
-				$this->logger->log($mesg);
+				if (Application_Config::getInstance()->isLogginSuccess() || $log_flag ) {
+					$this->logger->log($mesg);
+				}
 				
 			}
 			
@@ -217,20 +223,20 @@ class Application_Controller {
 		$src_tables = $source_obj->getTables();
 		$target_tables = $target_obj->getTables();
 		
-//		if ( ($src_total = count($src_tables)) != ($target_total = count($target_tables)) ) {
-//			// if target tables not equal source tables, then break data moving 
-//			$lost_tables = array_diff($src_tables, $target_tables);
-//			$mesg = "~~~ Target & Source tables not match , so skip data moving ~~~ ";
-//			Console_Ui::message("\n{$mesg}\n");
-//			$mesg = "Source tables total: {$src_total} ";
-//			Console_Ui::message("\n{$mesg}\n");
-//			$mesg = "Target tables total: {$target_total} ";
-//			Console_Ui::message("\n{$mesg}\n");
-//			
-//			$mesg = "Lost some tables:\n". implode(",", $lost_tables );
-//			Console_Ui::message("\n{$mesg}\n");
-//			
-//		}else {
+		if ( ($src_total = count($src_tables)) > ($target_total = count($target_tables)) ) {
+			// if target tables not equal source tables, then break data moving 
+			$lost_tables = array_diff($src_tables, $target_tables);
+			$mesg = "~~~ Target & Source tables not match , so skip data moving ~~~ ";
+			Console_Ui::message("\n{$mesg}\n");
+			$mesg = "Source tables total: {$src_total} ";
+			Console_Ui::message("\n{$mesg}\n");
+			$mesg = "Target tables total: {$target_total} ";
+			Console_Ui::message("\n{$mesg}\n");
+			
+			$mesg = "Lost some tables:\n". implode(",", $lost_tables );
+			Console_Ui::message("\n{$mesg}\n");
+			
+		}else {
 			// do data moving
 			foreach ($src_tables as $table_name) {
 				$source_obj->moveTableRecords($table_name, $target_obj, $this->logger);
@@ -238,7 +244,7 @@ class Application_Controller {
 //			$table_name = "USERAGENT_MAP";
 //			$source_obj->moveTableRecords($table_name, $target_obj, $this->logger);
 			
-//		}
+		}
 	}
 	
 	private function doMoveViews($source, $target) {
@@ -256,7 +262,7 @@ class Application_Controller {
 			$i = 0;
 			$success = 0;
 			$fail = 0;
-			
+			$log_flag = FALSE;
 			foreach ($src_views as $view) {
 				$view_name = $view['VIEW_NAME'];
 				$view_text = $view['TEXT'];
@@ -274,13 +280,17 @@ class Application_Controller {
 				if ( $target_obj->execMulti( $mysql_view_sql ) ) {
 					$mesg .= "[Done]";
 					$success +=1;
+					$log_flag = FALSE;
 				}
 				else {
 					$mesg .= "[Fail]";
 					$fail +=1; 
+					$log_flag = TRUE;
 				}
 				echo $mesg . "\n";
-				$this->logger->log($mesg);
+				if (Application_Config::getInstance()->isLogginSuccess() || $log_flag ) {
+					$this->logger->log($mesg);
+				}
 				$i++;
 			}
 			$mesg = "~~~~ Total: [{$i}]. Success: [{$success}]. Fail: [{$fail}] ~~~~";

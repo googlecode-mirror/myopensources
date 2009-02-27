@@ -1,5 +1,6 @@
 <?php
 require_once 'Abstract.php';
+include_once 'Application/Config.php';
 
 /**
  *
@@ -122,6 +123,7 @@ class Database_OracleDriver extends Database_Abstract {
 		$i = 0;
 		$success = 0;
 		$fail = 0;
+		$log_flag = FALSE;
 		while($row = oci_fetch_array($stid, OCI_ASSOC|OCI_RETURN_NULLS|OCI_RETURN_LOBS)) {//|OCI_RETURN_LOBS
 			$insert_sql = "INSERT INTO `{$table_name}` ({$insert_field_list}) VALUES (";
 			$spliter = "";
@@ -135,15 +137,20 @@ class Database_OracleDriver extends Database_Abstract {
 			if ( $target_obj->doQuery($insert_sql) ) {
 				$result = "Done";
 				$success +=1;
+				$log_flag = FALSE;
 			}else {
 				$e_msg = 'Query failed: ' . mysql_error(). "\n SQL: {$insert_sql}\n";
 				$result = "Fail -> {$e_msg}";
 				$fail +=1;
+				$log_flag = TRUE;
 			}
 			$first= array_shift($row);
 			$mesg = "Import: ".print_r($first, true)." [{$result}].";
 			print "{$mesg}\n";
-			$logger->log($mesg);
+			if (Application_Config::getInstance()->isLogginSuccess() || $log_flag ) {
+				$logger->log($mesg);
+			}
+			
 			$i++;
 		}
 		
