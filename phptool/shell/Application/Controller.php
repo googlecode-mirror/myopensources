@@ -354,6 +354,12 @@ class Application_Controller {
 		
 		$target_obj = $this->getDriver($target);
 		$target_tables = $target_obj->getTables();
+		$target_views = $target_obj->getViews();
+		if ( is_array($target_tables) && is_array($target_views) ) {
+			$target_tables = array_diff($target_tables, $target_views);
+		}
+		
+		
 		if (($target_total = count($target_tables)) > 0) {
 			
 			$i = 0;
@@ -375,6 +381,7 @@ class Application_Controller {
 				$i++;
 				
 			}
+			
 			$mesg = "~~~~ Total: [{$i}]. Success: [{$success}]. Fail: [{$fail}] ~~~~";
 			Console_Ui::message("\n{$mesg}\n");
 			$this->logger->log($mesg);
@@ -384,6 +391,7 @@ class Application_Controller {
 			Console_Ui::message("\n{$mesg}\n");
 			
 		}
+
 	}
 	
 	

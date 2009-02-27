@@ -60,11 +60,36 @@ class Database_MysqlDriver extends Database_Abstract  {
 		$sql = "SHOW TABLES";
 		$tables = array();
 		$result = $this->fetchData($sql);
+		if (empty($result)) {
+			return;
+		}
+		
 		foreach ($result as $key=>$value){
 			$tables[] = $value[ key($value) ];
 		}
 		return $tables;
 	}
+	
+	public function getViews() {
+		$schema = $this->db_config['db'];
+		$sql = "SELECT TABLE_NAME as name
+			FROM information_schema.tables
+			WHERE table_schema = '{$schema}'
+			AND table_type = 'view'
+			";
+		$views = array();
+		$result = $this->fetchData($sql);
+		
+		if (empty($result)) {
+			return;
+		}
+		
+		foreach ($result as $key=>$value){
+			$views[] = $value[ 'name'];
+		}
+		return $views;
+	}
+	
 	
 	public function setCharset($charset='UTF8') {
 		$sql = "SET NAMES {$charset}";

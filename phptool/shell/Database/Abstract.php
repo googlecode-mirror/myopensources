@@ -1,8 +1,10 @@
 <?php
 abstract class Database_Abstract {
 	protected $dbh = null;
+	protected $db_config = null;
 	
 	function __construct($db_config) {
+		$this->db_config = $db_config;
 		$this->dbh = $this->connect($db_config);
 	}
 	
