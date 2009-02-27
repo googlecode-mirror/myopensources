@@ -1,0 +1,14 @@
+#!/bin/bash
+################################################################################
+#
+# Database migration tools
+# Author: John Meng (孟远螓) arzen1013@gmail.com 2009-2-20
+#
+################################################################################
+clear
+PHPEXE=`which php`
+APP=`pwd`
+
+exec $PHPEXE -q run.php -working "${APP}" "$@"
+
+exit;
