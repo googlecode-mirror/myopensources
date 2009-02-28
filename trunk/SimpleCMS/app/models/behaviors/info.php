@@ -22,6 +22,7 @@ class InfoBehavior extends ModelBehavior {
 		$model_name = (string) $model->name;
 		$data = &$model->data[$model_name];
 		$data['add_ip'] = Environment_Client::getClientIP();
+		$data['user_id'] = $model->AuthUser['User']['id'];
 	}
 	
 }
