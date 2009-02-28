@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-02 17:13+0800\n"
-"PO-Revision-Date: 2009-02-02 17:13+0800\n"
+"POT-Creation-Date: 2009-02-28 20:01+0800\n"
+"PO-Revision-Date: 2009-02-28 20:10+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,19 +13,140 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../../..\n"
 
-#: ../../../app_controller.php:75
+#: ../../../app_controller.php:76
 msgid "Login failed. Invalid username or password."
 msgstr "用户名或密码有误"
 
-#: ../../../app_controller.php:76
+#: ../../../app_controller.php:77
 msgid "You are not authorized to access that location."
+msgstr ""
+
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:14
+msgid "FinanceCategory"
+msgstr "帐务类别"
+
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:15
+#: ../../../plugins/finance/controllers/financies_controller.php:25
+msgid "Listing"
+msgstr "列表"
+
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:19
+#: ../../../plugins/finance/controllers/financies_controller.php:29
+msgid "New"
+msgstr "新增"
+
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:19
+#, fuzzy
+msgid "New Finance Category"
+msgstr "新增文章分类"
+
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:20
+#: ../../../plugins/finance/controllers/financies_controller.php:30
+msgid "Delete"
+msgstr "删除"
+
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:30
+#, fuzzy
+msgid "Invalid FinanceCategory."
+msgstr "新增文章分类"
+
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:45
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:66
+msgid "The FinanceCategory has been saved"
+msgstr ""
+
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:50
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:71
+msgid "The FinanceCategory could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:61
+#, fuzzy
+msgid "Invalid FinanceCategory"
+msgstr "新增文章分类"
+
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:81
+#, fuzzy
+msgid "Invalid id for FinanceCategory"
+msgstr "新增文章分类"
+
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:85
+msgid "FinanceCategory deleted"
+msgstr ""
+
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:92
+#: ../../../plugins/finance/controllers/financies_controller.php:98
+#, fuzzy
+msgid "Deleted select records"
+msgstr "请选择分类"
+
+#: ../../../plugins/finance/controllers/financies_controller.php:24
+msgid "Finance"
+msgstr "帐务"
+
+#: ../../../plugins/finance/controllers/financies_controller.php:29
+msgid "New Finance"
+msgstr "新增帐目"
+
+#: ../../../plugins/finance/controllers/financies_controller.php:41
+msgid "Invalid Financy."
+msgstr ""
+
+#: ../../../plugins/finance/controllers/financies_controller.php:53
+#: ../../../plugins/finance/controllers/financies_controller.php:73
+msgid "The Financy has been saved"
+msgstr ""
+
+#: ../../../plugins/finance/controllers/financies_controller.php:58
+#: ../../../plugins/finance/controllers/financies_controller.php:76
+msgid "The Financy could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/finance/controllers/financies_controller.php:68
+msgid "Invalid Financy"
+msgstr ""
+
+#: ../../../plugins/finance/controllers/financies_controller.php:87
+msgid "Invalid id for Financy"
+msgstr ""
+
+#: ../../../plugins/finance/controllers/financies_controller.php:91
+msgid "Financy deleted"
 msgstr ""
 
 #: ../../../webroot/test.php:99
 msgid "Debug setting does not allow access to this url."
 msgstr ""
 
-#: ../../../controllers/dashboard_controller.php:14
+#: ../../../models/article.php:40
+msgid "Please upload an image file"
+msgstr ""
+
+#: ../../../models/article.php:45
+msgid "Upload file size too large"
+msgstr ""
+
+#: ../../../models/article.php:50
+msgid "Upload file format incorrect ,please upload an image"
+msgstr ""
+
+#: ../../../config/common.php:5
+msgid "Live"
+msgstr "发布"
+
+#: ../../../config/common.php:6
+msgid "Deleted"
+msgstr "已删除"
+
+#: ../../../config/common.php:10
+msgid "Income"
+msgstr "收入"
+
+#: ../../../config/common.php:11
+msgid "PayOut"
+msgstr "支出"
+
+#: ../../../controllers/dashboard_controller.php:10
 msgid "System name"
 msgstr "简易CMS管理系统"
 
@@ -67,51 +188,204 @@ msgstr ""
 #: ../../../controllers/article_categories_controller.php:103
 #: ../../../controllers/article_categories_controller.php:132
 #: ../../../controllers/article_categories_controller.php:166
+#: ../../../controllers/articles_controller.php:93
 msgid "ArticleCategory"
 msgstr "文章分类"
 
-#: ../../../controllers/article_categories_controller.php:76
-#: ../../../controllers/article_categories_controller.php:108
-#: ../../../controllers/article_categories_controller.php:137
-#: ../../../controllers/article_categories_controller.php:171
-msgid "Listing"
-msgstr "列表"
-
-#: ../../../controllers/article_categories_controller.php:80
-#: ../../../controllers/article_categories_controller.php:109
-#: ../../../controllers/article_categories_controller.php:133
-msgid "New"
-msgstr "新增"
-
-#: ../../../controllers/article_categories_controller.php:81
-#: ../../../controllers/article_categories_controller.php:111
-#: ../../../controllers/article_categories_controller.php:172
-msgid "Delete"
-msgstr "删除"
-
 #: ../../../controllers/article_categories_controller.php:104
+#: ../../../plugins/finance/views/financies/admin_index.ctp:62
+#: ../../../plugins/finance/views/financies/admin_index.ctp:63
 msgid "View"
 msgstr "查看"
 
 #: ../../../controllers/article_categories_controller.php:110
 #: ../../../controllers/article_categories_controller.php:167
+#: ../../../plugins/finance/views/finance_categories/admin_index.ctp:52
+#: ../../../plugins/finance/views/financies/admin_index.ctp:63
 msgid "Edit"
 msgstr "编辑"
 
 #: ../../../controllers/article_categories_controller.php:111
 #: ../../../controllers/article_categories_controller.php:172
+#: ../../../plugins/finance/views/finance_categories/admin_index.ctp:53
+#: ../../../plugins/finance/views/finance_categories/admin_view.ctp:39
+#: ../../../plugins/finance/views/financies/admin_index.ctp:64
 #, php-format
 msgid "Are you sure you want to delete # %s?"
 msgstr "确实要删除记录 # %s 吗?"
 
-#: ../../../controllers/article_categories_controller.php:192
-#, fuzzy
-msgid "Deleted select records"
-msgstr "请选择分类"
-
 #: ../../../controllers/article_categories_controller.php:199
 msgid "None"
 msgstr "无"
+
+#: ../../../controllers/articles_controller.php:35
+#: ../../../controllers/articles_controller.php:110
+#, fuzzy
+msgid "Invalid Article."
+msgstr "文章"
+
+#: ../../../controllers/articles_controller.php:45
+#: ../../../controllers/articles_controller.php:62
+#: ../../../controllers/articles_controller.php:131
+#: ../../../controllers/articles_controller.php:153
+msgid "The Article has been saved"
+msgstr ""
+
+#: ../../../controllers/articles_controller.php:48
+#: ../../../controllers/articles_controller.php:65
+#: ../../../controllers/articles_controller.php:136
+#: ../../../controllers/articles_controller.php:156
+msgid "The Article could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../controllers/articles_controller.php:57
+#: ../../../controllers/articles_controller.php:148
+#, fuzzy
+msgid "Invalid Article"
+msgstr "文章"
+
+#: ../../../controllers/articles_controller.php:77
+#: ../../../controllers/articles_controller.php:168
+msgid "Invalid id for Article"
+msgstr ""
+
+#: ../../../controllers/articles_controller.php:81
+#: ../../../controllers/articles_controller.php:172
+#, fuzzy
+msgid "Article deleted"
+msgstr "文章"
+
+#: ../../../controllers/articles_controller.php:98
+#, fuzzy
+msgid "New Article"
+msgstr "文章"
+
+#: ../../../views/helpers/modal.php:21
+msgid "Please Wait..."
+msgstr ""
+
+#: ../../../views/helpers/modal.php:55
+msgid "Modal Dialog Title"
+msgstr ""
+
+#: ../../../plugins/finance/views/finance_categories/admin_index.ctp:10
+#: ../../../plugins/finance/views/financies/admin_index.ctp:9
+msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
+msgstr "第 %page% / %pages% 页, 显示 %start% ~ %end% 共有 %count% 条记录"
+
+#: ../../../plugins/finance/views/finance_categories/admin_index.ctp:23
+#: ../../../plugins/finance/views/financies/admin_index.ctp:25
+msgid "Actions"
+msgstr "操作"
+
+#: ../../../plugins/finance/views/finance_categories/admin_index.ctp:61
+#: ../../../plugins/finance/views/financies/admin_index.ctp:72
+msgid "previous"
+msgstr "上页"
+
+#: ../../../plugins/finance/views/finance_categories/admin_index.ctp:63
+#: ../../../plugins/finance/views/financies/admin_index.ctp:74
+msgid "next"
+msgstr "下页"
+
+#: ../../../plugins/finance/views/finance_categories/admin_view.ctp:4
+msgid "Id"
+msgstr "编号"
+
+#: ../../../plugins/finance/views/finance_categories/admin_view.ctp:9
+#, fuzzy
+msgid "Category Name"
+msgstr "分类"
+
+#: ../../../plugins/finance/views/finance_categories/admin_view.ctp:14
+msgid "Active"
+msgstr "状态"
+
+#: ../../../plugins/finance/views/finance_categories/admin_view.ctp:19
+msgid "Add Ip"
+msgstr "操作者IP"
+
+#: ../../../plugins/finance/views/finance_categories/admin_view.ctp:24
+msgid "Created"
+msgstr "创建日期"
+
+#: ../../../plugins/finance/views/finance_categories/admin_view.ctp:29
+msgid "Modified"
+msgstr "修改日期"
+
+#: ../../../plugins/finance/views/finance_categories/admin_view.ctp:38
+#: ../../../plugins/finance/views/finance_categories/admin_edit.ctp:8
+#, fuzzy
+msgid "Edit FinanceCategory"
+msgstr "编辑文章分类"
+
+#: ../../../plugins/finance/views/finance_categories/admin_view.ctp:39
+#, fuzzy
+msgid "Delete FinanceCategory"
+msgstr "删除文章分类"
+
+#: ../../../plugins/finance/views/finance_categories/admin_view.ctp:40
+#, fuzzy
+msgid "List FinanceCategories"
+msgstr "文章分类列表"
+
+#: ../../../plugins/finance/views/finance_categories/admin_view.ctp:41
+#, fuzzy
+msgid "New FinanceCategory"
+msgstr "新增文章分类"
+
+#: ../../../plugins/finance/views/finance_categories/admin_add.ctp:8
+#, fuzzy
+msgid "Add FinanceCategory"
+msgstr "新增文章分类"
+
+#: ../../../plugins/finance/views/financies/admin_edit.ctp:4
+msgid "Edit Financy"
+msgstr ""
+
+#: ../../../plugins/finance/views/financies/admin_add.ctp:8
+msgid "Add Financy"
+msgstr ""
+
+#: ../../../plugins/finance/views/financies/admin_view.ctp:2
+msgid "Financy"
+msgstr ""
+
+#: ../../../plugins/finance/views/financies/admin_view.ctp:9
+msgid "Categories"
+msgstr "分类"
+
+#: ../../../plugins/finance/views/financies/admin_view.ctp:14
+msgid "Create Date"
+msgstr "发生日期"
+
+#: ../../../plugins/finance/views/financies/admin_view.ctp:19
+msgid "Money"
+msgstr "金额"
+
+#: ../../../plugins/finance/views/financies/admin_view.ctp:24
+msgid "Debit"
+msgstr "借/贷"
+
+#: ../../../plugins/finance/views/financies/admin_view.ctp:29
+msgid "Memo"
+msgstr "备注"
+
+#: ../../../plugins/finance/views/financies/admin_view.ctp:34
+msgid "Amount"
+msgstr "数量"
+
+#: ../../../plugins/finance/views/financies/admin_view.ctp:44
+msgid "Access"
+msgstr ""
+
+#: ../../../plugins/finance/views/financies/admin_view.ctp:49
+msgid "Groupid"
+msgstr ""
+
+#: ../../../plugins/finance/views/financies/admin_view.ctp:54
+msgid "Userid"
+msgstr "所有者"
 
 #: ../../../views/pages/home.ctp:12
 msgid "Your tmp directory is writable."
@@ -179,10 +453,6 @@ msgstr "登录"
 msgid "Reset"
 msgstr "重置"
 
-#: ../../../views/article_categories/view.ctp:4
-msgid "Id"
-msgstr "编号"
-
 #: ../../../views/article_categories/view.ctp:9
 msgid "parent_id"
 msgstr "父类"
@@ -190,14 +460,6 @@ msgstr "父类"
 #: ../../../views/article_categories/view.ctp:14
 msgid "Name"
 msgstr "名称"
-
-#: ../../../views/article_categories/view.ctp:19
-msgid "Created"
-msgstr "创建日期"
-
-#: ../../../views/article_categories/view.ctp:24
-msgid "Modified"
-msgstr "修改日期"
 
 #: ../../../views/article_categories/view.ctp:33
 #: ../../../views/article_categories/edit.ctp:4
@@ -210,12 +472,10 @@ msgstr "删除文章分类"
 
 #: ../../../views/article_categories/view.ctp:35
 #: ../../../views/article_categories/edit.ctp:16
-#: ../../../views/article_categories/add.ctp:14
 msgid "List ArticleCategories"
 msgstr "文章分类列表"
 
 #: ../../../views/article_categories/view.ctp:36
-#: ../../../views/article_categories/index.ctp:58
 msgid "New ArticleCategory"
 msgstr "新增文章分类"
 
@@ -223,86 +483,115 @@ msgstr "新增文章分类"
 msgid "ArticleCategories"
 msgstr "文章分类"
 
-#: ../../../views/article_categories/index.ctp:6
-msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
-msgstr "第 %page% / %pages% 页, 显示 %start% ~ %end% 共有 %count% 条记录"
-
-#: ../../../views/article_categories/index.ctp:16
-msgid "Actions"
-msgstr "操作"
-
-#: ../../../views/article_categories/index.ctp:52
-msgid "previous"
-msgstr "上页"
-
-#: ../../../views/article_categories/index.ctp:54
-msgid "next"
-msgstr "下页"
-
 #: ../../../views/article_categories/add.ctp:4
+#: ../../../views/article_categories/admin_add.ctp:5
 msgid "Add ArticleCategory"
 msgstr "新增文章分类"
 
 #: ../../../views/article_categories/admin_edit.ctp:11
-#: ../../../views/article_categories/admin_add.ctp:18
+#: ../../../views/article_categories/admin_add.ctp:19
 msgid "Submit"
 msgstr "提交"
-
-#: ../../../views/article_categories/admin_add.ctp:9
-msgid "Please select category"
-msgstr "请选择分类"
-
-#: ../../../views/article_categories/admin_add.ctp:13
-msgid "Not allow blank"
-msgstr "不允许为空"
-
-#: ../../../views/article_categories/admin_add.ctp:14
-msgid "Fill up too long"
-msgstr "输入内容太长"
 
 #: ../../../views/article_categories/admin_view.ctp:9
 msgid "Parent"
 msgstr "父类"
+
+#: ../../../views/article_categories/admin_add.ctp:10
+msgid "Please select category"
+msgstr "请选择分类"
+
+#: ../../../views/article_categories/admin_add.ctp:14
+msgid "Not allow blank"
+msgstr "不允许为空"
+
+#: ../../../views/article_categories/admin_add.ctp:15
+msgid "Fill up too long"
+msgstr "输入内容太长"
+
+#: ../../../views/dashboard/admin_top.ctp:9
+#: ../../../views/dashboard/admin_left.ctp:54
+msgid "Logout"
+msgstr "退出"
+
+#: ../../../views/dashboard/admin_top.ctp:9
+#: ../../../views/dashboard/admin_left.ctp:54
+msgid "Are you sure want to logout?"
+msgstr "确实要退出系统吗?"
 
 #: ../../../views/dashboard/admin_left.ctp:15
 msgid "Main Menu"
 msgstr "管理菜单"
 
 #: ../../../views/dashboard/admin_left.ctp:23
+#: ../../../views/articles/view.ctp:2
 msgid "Article"
 msgstr "文章"
-
-#: ../../../views/dashboard/admin_left.ctp:25
-#: ../../../views/dashboard/admin_left.ctp:32
-#: ../../../views/dashboard/admin_left.ctp:39
-msgid "Categories"
-msgstr "分类"
 
 #: ../../../views/dashboard/admin_left.ctp:30
 msgid "Products"
 msgstr ""
 
-#: ../../../views/dashboard/admin_left.ctp:37
+#: ../../../views/dashboard/admin_left.ctp:44
 msgid "Users"
 msgstr ""
 
-#: ../../../views/dashboard/admin_left.ctp:44
+#: ../../../views/dashboard/admin_left.ctp:51
 msgid "System"
 msgstr ""
 
-#: ../../../views/dashboard/admin_left.ctp:46
+#: ../../../views/dashboard/admin_left.ctp:53
 msgid "Backup/Restore"
 msgstr ""
 
-#: ../../../views/dashboard/admin_left.ctp:47
-#: ../../../views/dashboard/admin_top.ctp:9
-msgid "Logout"
-msgstr "退出"
+#: ../../../views/articles/view.ctp:9
+#, fuzzy
+msgid "Article Categories Id"
+msgstr "文章分类"
 
-#: ../../../views/dashboard/admin_left.ctp:47
-#: ../../../views/dashboard/admin_top.ctp:9
-msgid "Are you sure want to logout?"
-msgstr "确实要退出系统吗?"
+#: ../../../views/articles/view.ctp:14
+msgid "Title"
+msgstr ""
+
+#: ../../../views/articles/view.ctp:19
+msgid "Contents"
+msgstr ""
+
+#: ../../../views/articles/view.ctp:24
+msgid "Photo"
+msgstr "图片"
+
+#: ../../../views/articles/view.ctp:43
+#: ../../../views/articles/admin_edit.ctp:4
+#, fuzzy
+msgid "Edit Article"
+msgstr "编辑文章分类"
+
+#: ../../../views/articles/view.ctp:44
+#, fuzzy
+msgid "Delete Article"
+msgstr "删除文章分类"
+
+#: ../../../views/articles/view.ctp:45
+#: ../../../views/articles/admin_edit.ctp:18
+#, fuzzy
+msgid "List Articles"
+msgstr "文章分类列表"
+
+#: ../../../views/articles/index.ctp:2
+#, fuzzy
+msgid "Articles"
+msgstr "文章"
+
+#: ../../../views/articles/add.ctp:4
+#: ../../../views/articles/admin_add.ctp:41
+#, fuzzy
+msgid "Add Article"
+msgstr "文章"
+
+#: ../../../views/articles/admin_add.ctp:46
+msgid "Image"
+msgstr "图片"
 
 #~ msgid "Search"
 #~ msgstr "查找"
