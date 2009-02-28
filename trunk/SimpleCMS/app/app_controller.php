@@ -48,6 +48,8 @@ class AppController extends Controller {
             $this->__withLoggedIn();
         	
         	$this->layout = 'admin_default';
+        	$this->{$this->modelClass}->AuthUser = $this->Auths->user(); 
+        	$this->set('authuser', $this->Auths->user());
         	
         } else {
         	
