@@ -2,11 +2,19 @@
 class FinanciesController extends FinanceAppController {
 
 	var $name = 'Financies';
-	var $helpers = array('Html', 'Form', 'Modal');
+	var $helpers = array('Html', 'Form', 'Number', 'Modal');
+	var $debit_options = null;
 
+	function beforeRender() {
+		parent::beforeRender();
+		$this->debit_options = Configure::read('debit_options');
+		$this->set("debit_options", $this->debit_options);
+	}
+	
 	function admin_index() {
 		$this->Financy->recursive = 0;
 		$this->set('financies', $this->paginate());
+		
 		$this->breakcrumb = array(
 			'nav' => array(
 				array('text'=> __("Finance", true), 'url'=>'/admin/finance/financies' ),
@@ -80,6 +88,13 @@ class FinanciesController extends FinanceAppController {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
-
+	
+	function admin_delSelected() {
+		if ( $this->Financy->delIds($this->params['form']['all']) ) {
+			$this->Session->setFlash(__('Deleted select records', true));
+			$this->redirect(array('action'=>'index'));
+		}
+	}
+	
 }
 ?>

@@ -10,10 +10,16 @@
  */
 class FinanceAppController extends AppController {
 	
+	var $active_options = null;
+	
 	function beforeRender() {
 		if (!empty($this->breakcrumb) ) {
 			$this->set("breakcrumb", $this->breakcrumb);
 		}
+		// populate active options
+		Configure::load("common");
+		$this->active_options = Configure::read('active_options');
+		$this->set("active_options", $this->active_options);
 	}
 	
 }

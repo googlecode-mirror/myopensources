@@ -9,8 +9,10 @@ echo $paginator->counter(array(
 'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
 ));
 ?></p>
+<form id='list-form' action='<?php echo $html->url("/admin/finance/financies/delSelected");?>' method='POST'>
 <table cellpadding="0" cellspacing="0">
 <tr>
+	<th width="40px"><input id="select_all" type="checkbox" /></th>
 	<th><?php echo $paginator->sort('id');?></th>
 	<th><?php echo $paginator->sort('finance_categories_id');?></th>
 	<th><?php echo $paginator->sort('create_date');?></th>
@@ -27,6 +29,9 @@ foreach ($financies as $financy):
 ?>
 	<tr>
 		<td>
+			<input id="all[]" type="checkbox" value="<?php echo $financy['Financy']['id']; ?>" name="all[]"/>
+		</td>
+		<td>
 			<?php echo $financy['Financy']['id']; ?>
 		</td>
 		<td>
@@ -39,13 +44,13 @@ foreach ($financies as $financy):
 			<?php echo $financy['Financy']['amount']; ?>
 		</td>
 		<td>
-			<?php echo $financy['Financy']['debit']; ?>
+			<?php echo $debit_options[ $financy['Financy']['debit'] ]; ?>
 		</td>
 		<td>
-			<?php echo $financy['Financy']['money']; ?>
+			<?php echo $number->currency($financy['Financy']['money'], 'USD', array('before' => Configure::read("currency_flag") ) ); ?>
 		</td>
 		<td>
-			<?php echo $financy['Financy']['active']; ?>
+			<?php echo $active_options[ $financy['Financy']['active'] ]; ?>
 		</td>
 		<td>
 			<?php echo $financy['Financy']['userid']; ?>
@@ -61,6 +66,7 @@ foreach ($financies as $financy):
 	</tr>
 <?php endforeach; ?>
 </table>
+</form>
 </div>
 <div class="paging">
 	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
