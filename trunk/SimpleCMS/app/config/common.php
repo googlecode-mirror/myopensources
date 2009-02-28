@@ -5,4 +5,12 @@ $config['active_options']= array(
 	'live' => __("Live", true),
 	'deleted' => __("Deleted", true),
 );
+
+$config['debit_options']= array(
+	'I' => __("Income", true),
+	'P' => __("PayOut", true),
+);
+
+$config['currency_flag']= "￥";
+
 ?>
