@@ -20,7 +20,7 @@ echo $paginator->counter(array(
 	<th><?php echo $paginator->sort('debit');?></th>
 	<th><?php echo $paginator->sort('money');?></th>
 	<th><?php echo $paginator->sort('active');?></th>
-	<th><?php echo $paginator->sort('userid');?></th>
+	<th><?php echo $paginator->sort('user_id');?></th>
 	<th><?php echo $paginator->sort('add_ip');?></th>
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
@@ -53,7 +53,7 @@ foreach ($financies as $financy):
 			<?php echo $active_options[ $financy['Financy']['active'] ]; ?>
 		</td>
 		<td>
-			<?php echo $financy['Financy']['userid']; ?>
+			<?php echo $financy['Financy']['user_id']; ?>
 		</td>
 		<td>
 			<?php echo $financy['Financy']['add_ip']; ?>
