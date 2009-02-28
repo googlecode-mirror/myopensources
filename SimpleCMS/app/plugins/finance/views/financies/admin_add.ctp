@@ -9,11 +9,11 @@ echo $modal->modalForm('ex4', "AddForm");
 	<?php
 		echo $form->input('finance_categories_id');
 		echo $form->input('create_date');
-		echo $form->input('amount');
-		echo $form->input('debit');
 		echo $form->input('money');
+		echo $form->radio('debit', $debit_options, array('separator'=> '', 'value'=> 'P'));
 		echo $form->input('memo');
-		echo $form->input('active');
+		echo $form->input('amount', array('value'=> '1') );
+		echo $form->radio('active', $active_options, array('separator'=> '', 'value'=> 'new'));
 	?>
 	</fieldset>
 <?php echo $form->end('Submit');?>

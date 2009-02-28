@@ -3,15 +3,6 @@ class FinanceCategoriesController extends FinanceAppController {
 
 	var $name 			= 'FinanceCategories';
 	var $helpers	 	= array('Html', 'Form', 'Modal');
-	var $active_options = null;
-	
-	function beforeFilter() {
-		parent::beforeFilter();
-		// populate active options
-		Configure::load("common");
-		$this->active_options = Configure::read('active_options');
-	}
-	
 
 	function admin_index() {
 		$this->FinanceCategory->recursive = 0;

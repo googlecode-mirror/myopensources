@@ -10,6 +10,8 @@
  */
 class FinanceAppModel extends AppModel {
 	
+	var $actsAs = array('Info');
+	
 	function delIds($id_data) {
 		if (empty($id_data)) {
 			return false;
