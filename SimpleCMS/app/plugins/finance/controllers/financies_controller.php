@@ -9,6 +9,10 @@ class FinanciesController extends FinanceAppController {
 		parent::beforeRender();
 		$this->debit_options = Configure::read('debit_options');
 		$this->set("debit_options", $this->debit_options);
+		
+		$financeCategories = $this->Financy->FinanceCategory->find('list', array('fields'=>array('FinanceCategory.id', 'FinanceCategory.category_name')) );
+		$this->set(compact('financeCategories'));
+		
 	}
 	
 	function admin_index() {
@@ -27,12 +31,12 @@ class FinanciesController extends FinanceAppController {
 				
 			)
 		);
-		$financeCategories = $this->Financy->FinanceCategory->find('list', array('fields'=>array('FinanceCategory.id', 'FinanceCategory.category_name')) );
-		$this->set(compact('financeCategories'));
 		
 	}
 
 	function admin_view($id = null) {
+		$this->layout = 'ajax';
+		
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid Financy.', true));
 			$this->redirect(array('action'=>'index'));
@@ -54,11 +58,12 @@ class FinanciesController extends FinanceAppController {
 				$this->Session->setFlash(__('The Financy could not be saved. Please, try again.', true));
 			}
 		}
-		$financeCategories = $this->Financy->FinanceCategory->find('list', array('fields'=>array('FinanceCategory.id', 'FinanceCategory.category_name')) );
-		$this->set(compact('financeCategories'));
+		
 	}
 
 	function admin_edit($id = null) {
+		$this->layout = 'ajax';
+		
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid Financy', true));
 			$this->redirect(array('action'=>'index'));
@@ -74,8 +79,7 @@ class FinanciesController extends FinanceAppController {
 		if (empty($this->data)) {
 			$this->data = $this->Financy->read(null, $id);
 		}
-		$financeCategories = $this->Financy->FinanceCategory->find('list');
-		$this->set(compact('financeCategories'));
+		
 	}
 
 	function admin_delete($id = null) {

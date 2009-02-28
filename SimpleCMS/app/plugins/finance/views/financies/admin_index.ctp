@@ -59,8 +59,8 @@ foreach ($financies as $financy):
 			<?php echo $financy['Financy']['add_ip']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $financy['Financy']['id'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $financy['Financy']['id'])); ?>
+			<?php echo $html->link(__('View', true), array('action'=>'view', $financy['Financy']['id']), array('class'=>'ex4Trigger', 'title' => __('View', true) ) ); ?>
+			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $financy['Financy']['id']), array('class'=>'ex4Trigger', 'title' => __('View', true) ) ); ?>
 			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $financy['Financy']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $financy['Financy']['id'])); ?>
 		</td>
 	</tr>
