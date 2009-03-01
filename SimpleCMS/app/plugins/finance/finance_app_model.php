@@ -12,16 +12,6 @@ class FinanceAppModel extends AppModel {
 	
 	var $actsAs = array('Info');
 	
-	function delIds($id_data) {
-		if (empty($id_data)) {
-			return false;
-		}
-		$ids = implode(",", $id_data);
-		$sql = "DELETE FROM ".$this->table." WHERE id IN ({$ids})";
-		$this->query($sql);
-		return true;
-	}
-	
 }
 
 ?>

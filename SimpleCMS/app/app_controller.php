@@ -39,7 +39,9 @@ class AppController extends Controller {
 	var $helpers = array('Html', 'Form', 'Javascript', 'Time');
 	var $components = array('Auths');
 	var $isAuthorized = false;
+	
 	var $breakcrumb = null;
+	var $active_options = null;
 	
     function beforeFilter() {
         // Admin area requires authentification
@@ -64,6 +66,13 @@ class AppController extends Controller {
 	
 	function beforeRender() {
 		
+		if (!empty($this->breakcrumb) ) {
+			$this->set("breakcrumb", $this->breakcrumb);
+		}
+		// populate active options
+		Configure::load("common");
+		$this->active_options = Configure::read('active_options');
+		$this->set("active_options", $this->active_options);
 		
 	}
 	
@@ -94,6 +103,14 @@ class AppController extends Controller {
     function isAdminAction() {
         return (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') or isset($this->params['admin']);
     }
+
+	function admin_delSelected() {
+		if ( $this->{$this->modelClass}->delIds($this->params['form']['all']) ) {
+			$this->Session->setFlash(__('Deleted select records', true));
+			$this->redirect(array('action'=>'index'));
+		}
+	}
 	
+    
 }
 ?>
