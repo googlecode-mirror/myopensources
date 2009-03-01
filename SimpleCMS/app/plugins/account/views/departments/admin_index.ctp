@@ -34,10 +34,10 @@ foreach ($departments as $department):
 			<?php echo $department['Department']['name']; ?>
 		</td>
 		<td>
-			<?php echo $department['Department']['created']; ?>
+			<?php echo $time->format('Y-m-d H:i', $department['Department']['created'] ); ?>
 		</td>
 		<td>
-			<?php echo $department['Department']['modified']; ?>
+			<?php echo $time->format('Y-m-d H:i', $department['Department']['modified'] ); ?>
 		</td>
 		<td class="actions">
 			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $department['Department']['id'])); ?>
