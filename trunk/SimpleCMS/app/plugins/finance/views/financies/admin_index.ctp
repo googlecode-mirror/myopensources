@@ -53,7 +53,7 @@ foreach ($financies as $financy):
 			<?php echo $active_options[ $financy['Financy']['active'] ]; ?>
 		</td>
 		<td>
-			<?php echo $financy['Financy']['user_id']; ?>
+			<?php if($financy['Financy']['user_id'] > 0) echo $financy['User']['username']; ?>
 		</td>
 		<td>
 			<?php echo $financy['Financy']['add_ip']; ?>

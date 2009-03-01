@@ -20,7 +20,15 @@ class Financy extends FinanceAppModel {
 								'conditions' => array('FinanceCategory.id = Financy.finance_categories_id'),
 								'fields' => 'category_name',
 								'order' => ''
-			)
+			),
+			
+			'User' => array('className' => 'User',
+								'foreignKey' => 'user_id',
+								'conditions' => array('User.id = Financy.user_id'),
+								'fields' => 'username',
+								'order' => ''
+			),
+			
 	);
 
 }
