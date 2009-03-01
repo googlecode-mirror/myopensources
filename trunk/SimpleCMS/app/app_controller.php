@@ -36,7 +36,7 @@
  */
 class AppController extends Controller {
 	
-	var $helpers = array('Html', 'Form', 'Javascript', 'Time');
+	var $helpers = array('Html', 'Form', 'Javascript', 'Time', 'Modal');
 	var $components = array('Auths');
 	var $isAuthorized = false;
 	
