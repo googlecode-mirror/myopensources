@@ -93,12 +93,5 @@ class FinanciesController extends FinanceAppController {
 		}
 	}
 	
-	function admin_delSelected() {
-		if ( $this->Financy->delIds($this->params['form']['all']) ) {
-			$this->Session->setFlash(__('Deleted select records', true));
-			$this->redirect(array('action'=>'index'));
-		}
-	}
-	
 }
 ?>

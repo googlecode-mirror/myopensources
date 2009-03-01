@@ -37,5 +37,17 @@
  * @subpackage    cake.app
  */
 class AppModel extends Model {
+	
+	function delIds($id_data) {
+		if (empty($id_data)) {
+			return false;
+		}
+		$ids = implode(",", $id_data);
+		$sql = "DELETE FROM ".$this->table." WHERE id IN ({$ids})";
+		$this->query($sql);
+		return true;
+	}
+	
+	
 }
 ?>

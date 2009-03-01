@@ -43,8 +43,8 @@ echo $javascript->codeBlock($inline_script);
 			
 			<li><em class="folder"></em> <?php echo __("Users"); ?></span>
 				<ul>
-					<li><em class="file"></em><?php echo __("Categories"); ?> </li>
-					<li><em class="file"></em><?php echo __("Listing"); ?> </li>
+					<li><a href="<?php echo $html->url("/admin/account/departments"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Categories"); ?></a> </li>
+					<li><a href="<?php echo $html->url("/admin/account/users"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Listing"); ?></a> </li>
 				</ul>
 			</li>
 
