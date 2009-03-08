@@ -15,7 +15,7 @@ include_once 'Application/Config.php';
 class Database_OracleDriver extends Database_Abstract {
 	
 	protected function connect($db_config) {
-		$conn = oci_new_connect($db_config['user'], $db_config['passwod'], "//{$db_config['host']}/{$db_config['db']}", $db_config['charset']);
+		$conn = oci_connect($db_config['user'], $db_config['passwod'], "//{$db_config['host']}/{$db_config['db']}", $db_config['charset']);
 		if (is_resource($conn)) {
 			return $conn;
 		}else {
@@ -48,7 +48,7 @@ class Database_OracleDriver extends Database_Abstract {
 		  exit;
 		}
 		
-		while($row = oci_fetch_array($stid, OCI_ASSOC)) {
+		while($row = oci_fetch_array($stid, OCI_ASSOC|OCI_RETURN_NULLS)) {
 			$result[] = $row;
 		}
 		return $result;
@@ -69,7 +69,7 @@ class Database_OracleDriver extends Database_Abstract {
 	}
 	
 	
-	public function moveTableRecords($table_name, Database_Abstract $target_obj, $logger) {
+	public function moveTableRecords($table_name, Database_Abstract $target_obj, $logger, $is_view=FALSE) {
 		$mesg = "~~~~ Will be import table [{$table_name}] data ~~~~";
 		print "{$mesg}\n";
 		$logger->log($mesg);
@@ -82,8 +82,15 @@ class Database_OracleDriver extends Database_Abstract {
 		$spliter = "";
 		foreach ($fields as $key => $item){
 			$field_name = $item['name'];
-			if ( strtolower($item['type']) == 'date' ) {
-				$field_name = "TO_CHAR({$item['name']}, '{$mysql_date_format}') as {$item['name']}";
+			$field_type = strtolower($item['type']);
+			switch ($field_type) {
+				case 'date':
+					$field_name = "TO_CHAR({$item['name']}, '{$mysql_date_format}') as {$item['name']}";
+					break;
+				case 'int':
+				case 'number':
+					$field_name = "NVL({$item['name']}, 0 ) as {$item['name']}";
+					break;
 			}
 			
 			$field_list .= $spliter . $field_name;
@@ -102,6 +109,12 @@ class Database_OracleDriver extends Database_Abstract {
 				$spliter 		 = ",";
 			}
 			$order_by_sql .= " ASC ";
+		}
+		//--- conver fields name to lower ---
+		if ( Application_Config::getInstance()->toLower() ) {
+			$field_list 		= strtolower( $field_list );
+			$insert_field_list 	= strtolower( $insert_field_list );
+			$order_by_sql 		= strtolower( $order_by_sql );
 		}
 		
 		
@@ -124,11 +137,23 @@ class Database_OracleDriver extends Database_Abstract {
 		$success = 0;
 		$fail = 0;
 		$log_flag = FALSE;
+		
+		$table_name = $is_view ? $table_name . "S" : $table_name ;
+		
 		while($row = oci_fetch_array($stid, OCI_ASSOC|OCI_RETURN_NULLS|OCI_RETURN_LOBS)) {//|OCI_RETURN_LOBS
 			$insert_sql = "INSERT INTO `{$table_name}` ({$insert_field_list}) VALUES (";
 			$spliter = "";
 			foreach ($row as $key=>$value){
-				$field_value = is_integer($value) ? $value : "'".mysql_escape_string($value)."'";
+				if ($value == "") {
+					$field_value = 'NULL';
+				}
+				elseif (is_integer($value)){
+					$field_value = $value;
+				}
+				else {
+					$field_value ="'".mysql_escape_string($value)."'";
+				}
+				
 				$insert_sql .= $spliter . "$field_value";
 				$spliter 	 = ",";
 			}
@@ -216,14 +241,24 @@ class Database_OracleDriver extends Database_Abstract {
 		}
 		
 		//-- indeies
+		$indeies = $this->getIndeies($table_name);
 		$indeies_sql = "";
-		if ( count($constraints['indeies']) > 0 ) {
-			foreach ($constraints['indeies'] as $key=>$values){
-				$indeies_sql	.= sprintf(", KEY `%s` (`%s`)\n", $values['CONSTRAINT_NAME'], $key );
+		if ( count($indeies) > 0 ) {
+			foreach ($indeies as $key=>$values){
+				$indeies_sql	.= sprintf(", INDEX `%s` (`%s`)\n", $key, implode("`,`", $values) );
 			}
 		}
+		
+		//--- conver fields name to lower ------- 
+		if (Application_Config::getInstance()->toLower() ) {
+			$colums_sql = strtolower($colums_sql);
+			$primarys_sql = strtolower($primarys_sql);
+			$uniques_sql = strtolower($uniques_sql);
+			$indeies_sql = strtolower($indeies_sql);
+		}
+		
 
-		return <<<EOD
+		$sql = <<<EOD
 DROP TABLE IF EXISTS `{$table_name}`;
 CREATE TABLE IF NOT EXISTS `{$table_name}` (
 {$colums_sql}
@@ -232,8 +267,100 @@ CREATE TABLE IF NOT EXISTS `{$table_name}` (
 {$indeies_sql}
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;		
 EOD;
-		
+		return $sql;
 	}
+	
+	public function tableAsView() {
+		$sql = <<<EOD
+CREATE TABLE IF NOT EXISTS `MOBILE2GS` (
+  `id` bigint(22) not null auto_increment,
+  `brand` varchar(100),
+  `brandid` integer,
+  `phonetype` varchar(200),
+  `phoneid` integer,
+  `imagepath` text,
+  `new` integer,
+  primary key (`id`),
+  index `mobile2gs_index` (`phoneid`, `brand`, `brandid`)
+)ENGINE=MyISAM DEFAULT CHARSET = utf8;
+ 
+
+CREATE TABLE IF NOT EXISTS `MOBILE3GS` (
+  `id` bigint(22) not null auto_increment,
+  `brand` varchar(100),
+  `brandid` integer,
+  `phonetype` varchar(200),
+  `phoneid` integer,
+  `imagepath` text,
+  `new` integer,
+  primary key (`id`),
+  index `mobile3gs_index` (`phoneid`, `brand`, `brandid`)
+)ENGINE=MyISAM DEFAULT CHARSET = utf8;
+ 
+
+CREATE TABLE IF NOT EXISTS `MOBILEALLS` (
+  `id` bigint(22) not null auto_increment,
+  `brand` varchar(100),
+  `brandid` integer,
+  `phonetype` varchar(200),
+  `phoneid` integer,
+  `imagepath` text,
+  `new` integer,
+  primary key (`id`),
+  index `mobilealls_index` (`phoneid`, `brand`, `brandid`)
+)ENGINE=MyISAM DEFAULT CHARSET = utf8;
+ 
+CREATE TABLE IF NOT EXISTS `MOBILEHSDPAS` (
+  `id` bigint(22) not null auto_increment,
+  `brand` varchar(100),
+  `brandid` integer,
+  `phonetype` varchar(200),
+  `phoneid` integer,
+  `imagepath` text,
+  `new` integer,
+  primary key (`id`),
+  index `mobilehsdpas_index` (`phoneid`, `brand`, `brandid`)
+)ENGINE=MyISAM DEFAULT CHARSET = utf8;
+ 
+CREATE TABLE IF NOT EXISTS `MOBILEONSALES` (
+  `id` bigint(22) not null auto_increment,
+  `phoneid`  integer,
+  `brand`  varchar(100),
+  `brandid` integer,
+  `phonetype` varchar(200),
+  `status` integer,
+  `seq` integer,
+  `imagepath` text,
+  `hot` integer,
+  `new` integer,
+  `no1` integer,
+  `salerating` integer,
+  `girl` integer,
+  `senior` integer,
+  `phoneintro` text,
+  `providestatus` text,
+  `entitylimit` text,
+  primary key (`id`),
+  index `mobileonsales_index` (`phoneid`, `brand`, `brandid`)
+)ENGINE=MyISAM DEFAULT CHARSET = utf8;
+ 
+
+CREATE TABLE IF NOT EXISTS `MOBILEPROMOTIONS` (
+  `id` bigint(22) not null auto_increment,
+  `phoneid` integer,
+  `groupid` integer,
+  `groupname` text,
+  `name` varchar(100),
+  `price` integer,
+  `shortname` varchar(100),
+  primary key (`id`),
+  index `mobilepromotions_index` (`phoneid`, `groupid`)
+)ENGINE=MyISAM DEFAULT CHARSET = utf8
+		
+EOD;
+		return $sql;
+	}
+	
 	
 	private function colum2MysqlMapping($table_name, $field, $primaries) {
 		$type = $field['type'];
@@ -242,7 +369,11 @@ EOD;
 		$auto_increment = "";
 		switch ($type) {
 			case 'NUMBER':
-				$new_type = ( $field['length'] && ($field['length']> 0) ) ? "INT({$field['length']})" : "INT";
+				if ( ( $field['length'] && ($field['length']> 10) ) ) {
+					$new_type = "BIGINT({$field['length']})";
+				}
+				else
+					$new_type = ( $field['length'] && ($field['length']> 0) ) ? "INT({$field['length']})" : "INT";
 				if ( in_array($field['name'], $primaries) && 
 						(!in_array(strtolower($table_name), 
 								array('mr_code_ratedatastatus', 
@@ -261,6 +392,7 @@ EOD;
 				
 			case 'VARCHAR2':
 				$new_type = ($field['length']> 255) ? "text" : "VARCHAR({$field['length']})";
+				$new_type = $this->specialFieldType($table_name, $field['name'], $new_type);
 				if ( in_array($field['name'], $primaries) && $field['length']> 255 ) {
 					$new_type = "VARCHAR(255)";
 				}
@@ -269,6 +401,7 @@ EOD;
 				
 			case 'CHAR':				
 				$new_type = ($field['length']> 255) ? "text" : "{$type}({$field['length']})";
+				$new_type = $this->specialFieldType($table_name, $field['name'], $new_type);
 				break;
 				
 			case 'CLOB':				
@@ -291,6 +424,30 @@ EOD;
 		}
 		
 		return sprintf("`%s` %s %s %s %s", $field['name'], $new_type, $null_able, $default, $auto_increment);
+	}
+	
+	private function specialFieldType($table, $field_name, $ori_type) {
+		$new_type = $ori_type;
+		switch ( strtolower($table) ) {
+			case 'tulinanimations':
+			case 'tulinpics':
+			case 'tulinrings':
+				if ( strtolower($field_name) == 'groupname' ) {
+					$new_type = "VARCHAR(20)";
+				}
+				
+				break;
+				
+			case 'smiles':
+				if ( strtolower($field_name) == 'smiles' ) {
+					$new_type = "VARCHAR(20)";
+				}
+				
+				break;
+			
+				
+		}
+		return $new_type;
 	}
 	
 	
@@ -351,6 +508,69 @@ EOD;
 		);
 	}
 	
+	function getIndeies($table_name) {
+		$sql = "
+		SELECT T.INDEX_NAME,T.COLUMN_NAME,I.INDEX_TYPE 
+		FROM USER_IND_COLUMNS T,USER_INDEXES I 
+		WHERE T.INDEX_NAME = I.INDEX_NAME AND T.TABLE_NAME = I.TABLE_NAME AND T.TABLE_NAME = UPPER('{$table_name}')
+        ";
+		$results = $this->fetchData($sql);
+		$indeies = array();
+		foreach ($results as $item){
+			if (!eregi("PK_|_PK|SYS_|_KEY|PRIMARY_", $item['INDEX_NAME'] )) {
+				$indeies[ $item['INDEX_NAME'] ][] = $item['COLUMN_NAME'];
+			}
+			
+		}
+		
+		// --- back list ---------
+		switch ( strtolower($table_name) ) {
+			case 'games':
+				unset($indeies['GAMES_INDEX1']);
+				$indeies['GAMES_INDEX1'] = array('GROUPNAME', 'ORDERS');
+				break;
+			
+			case 'mp_promotiongroup':
+				unset($indeies['MP_PROMOTIONGROUP_INDEX1']);
+				$indeies['MP_PROMOTIONGROUP_INDEX1'] = array('GROUPID', 'SEQ');
+				break;
+				
+			case 'smiles':
+				unset($indeies['SMILES_INDEX1']);
+				$indeies['SMILES_INDEX1'] = array('SMILES', 'TIME');
+				break;
+			
+			case 'tulinanimations':
+				unset($indeies['TULINANIMATION_INDEX1']);
+				$indeies['TULINANIMATION_INDEX1'] = array('GROUPNAME', 'ORDERS');
+				break;
+				
+			case 'tulinpics':
+				unset($indeies['TULINPIC_INDEX1']);
+				$indeies['TULINPIC_INDEX1'] = array('GROUPNAME', 'ORDERS');
+				break;
+				
+			case 'tulinrings':
+				unset($indeies['TULINRING_INDEX1']);
+				$indeies['TULINRING_INDEX1'] = array('GROUPNAME', 'ORDERS');
+				break;
+				
+			case 'groupings':
+				unset($indeies['GROUPS_LEVEL_ID']);
+				$indeies['GROUPING_INDEX1'] = array('ID', 'LEVEL_ID', 'PARENT_ID');
+				break;
+				
+			case 'navigation_visions':
+				unset($indeies['UK_NAVIGATION_VISION_KEY']);
+				$indeies['NAVIGATION_VISION_INDEX1'] = array('NAVIGATIONS_ID', 'ADENABLE', 'MARQUEEENABLE', 'MARQUEEMOTIONENABLE', 'ACTIVE');
+				break;
+				
+				
+		}
+		
+		return $indeies;
+		
+	}
 	
 	private function getFields($table_name) {
 		$colums = array();

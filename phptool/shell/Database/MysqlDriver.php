@@ -16,6 +16,7 @@ class Database_MysqlDriver extends Database_Abstract  {
 	function __construct($db_config) {
 		parent::__construct($db_config);
 		$this->setCharset($db_config['charset']);
+		$this->setVariables('auto_increment_increment', 2);
 	}
 	
 	protected function connect($db_config) {
@@ -96,6 +97,12 @@ class Database_MysqlDriver extends Database_Abstract  {
 		$this->doQuery($sql);
 	}
 	
+	private function setVariables($key='auto_increment_increment', $value=2) {
+		$sql = "SET @{$key}={$value}";
+		$this->doQuery($sql);
+	}
+	
+	
 	public function truncateTable($table_name ) {
 		$sql = "TRUNCATE TABLE {$table_name}";
 		return $this->doQuery($sql);
@@ -110,6 +117,12 @@ class Database_MysqlDriver extends Database_Abstract  {
 		$sql = "DROP VIEW IF EXISTS {$name}";
 		return $this->doQuery($sql);
 	}
+	
+	public function specialScripts() {
+		$sql = "ALTER TABLE `USERAGENT_MAP` DROP PRIMARY KEY, ADD PRIMARY KEY(`id`)";
+		return $this->doQuery($sql);
+	}
+	
 	
 	function __destruct() {
 		mysql_close($this->dbh);
