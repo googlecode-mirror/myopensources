@@ -28,6 +28,8 @@ class FinanciesController extends FinanceAppController {
 			'actions' => array(
 				array('text'=> __("New", true), 'url'=>'/admin/finance/financies/add', 'class'=>'act-new', 'attr' =>array('class'=>'ex4Trigger', 'title'=>__("New Finance", true) ) ),
 				array('text'=> __("Delete", true), 'url'=>'###', 'class'=>'act-del' ),
+				array('text'=> __("Export", true), 'url'=>'/admin/finance/financies/export', 'class'=>'act-new', 'attr' =>array('title'=>__("Export Finance", true) ) ),
+				array('text'=> __("Import", true), 'url'=>'/admin/finance/financies/import', 'class'=>'act-new', 'attr' =>array('title'=>__("Import Finance", true) ) ),
 				
 			)
 		);
@@ -43,6 +45,60 @@ class FinanciesController extends FinanceAppController {
 		}
 		$this->set('financy', $this->Financy->read(null, $id));
 	}
+	
+	function admin_export() {
+		$this->Financy->recursive = 0;
+		$raw_data = $this->paginate();
+		
+		App::import("Vendor", "PHPExcel_Handler", array('file' => 'PHPExcel'.DS.'Handler.php') );
+		$excelHandler = new PHPExcel_Handler("writer", "excel5");
+		
+		$objActSheet = $excelHandler->getExcel()->getActiveSheet();  
+		  
+		//设置当前活动sheet的名称  
+		$objActSheet->setTitle(date("Y-m-d"));  
+		  
+		//-- set contents   
+		$data = array();
+		$title_data = array(
+			__("Categories", true), 
+			__("Create Date", true), 
+			__("Debit", true), 
+			__("Money", true), 
+			__("Memo", true), 
+			
+		);
+		array_push($data, $title_data);
+		Configure::load("common");
+		$debit_options = Configure::read('debit_options');
+		foreach ($raw_data as $row){
+			$item = array(
+				$row['FinanceCategory']['category_name'],
+				$row['Financy']['create_date'],
+				$debit_options[ $row['Financy']['debit'] ],
+				$row['Financy']['money'],
+				$row['Financy']['memo'],
+				
+			);
+			array_push($data, $item);
+		}
+		$objActSheet->fromArray($data);
+		
+		$outputFileName = "output.xls";  
+		$excelHandler->saveOutput($outputFileName);  
+	}
+	
+	function admin_import() {
+		App::import("Vendor", "PHPExcel_Handler", array('file' => 'PHPExcel'.DS.'Handler.php') );
+		$excelHandler = new PHPExcel_Handler("reader", "excel5");
+		$excelReader = $excelHandler->getProcesser();
+		$outputFileName = "d:/output.xls";
+		$excelObj = $excelReader->load($outputFileName);
+		debug($excelObj->getActiveSheet()->toArray() );
+		$this->render("admin_export");
+		
+	}
+	
 
 	function admin_add() {
 		$this->layout = 'ajax';
