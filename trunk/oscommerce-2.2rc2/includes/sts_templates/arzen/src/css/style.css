@@ -1,8 +1,238 @@
+* {
+	margin:0;
+	padding:0;
+}
+
+body {
+	width: 935px;
+	margin: 0px;
+	padding: 0px;
+	font-size: 12px;
+	margin-right: auto;
+	margin-left: auto;	
+}
+ul, li {
+	margin: 0 12px;
+}
+ol,ul {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+}
+
 div#footer {
 	clear: both;
-	padding: 6px 10px;
 	text-align: right;
 	width: 100%;
 	height: 75px;
 	bgcolor: #3a3a3a;
+	background-color: #3A3A3A;
+}
+#doc #header #h-top {
+	background-image: url(../images/top-bg.png);
+	clear: both;
+	height: 99px;
+	width: 100%;
+}
+#doc #header #h-top #h-logo {
+	padding-top: 15px;
+	padding-left: 40px;
+	float: left;
+}
+#doc #header #h-top #h-search {
+	float: left;
+	width: 400px;
+	padding-top: 40px;
+	padding-left: 20px;
+}
+#doc #footer #f-pay {
+	width: 150px;
+	padding-top: 10px;
+	padding-left: 30px;
+	float: left;
+}
+#doc #footer #f-copyright {
+	color: #CCCCCC;
+	float: right;
+	padding-top: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+}
+#doc #footer #f-copyright a  {
+	color: #CCCCCC;
+	text-decoration: none;
+
+}
+#doc #header #menu {
+	background-image: url(../images/top-menu-m.png);
+	height: 45px;
+	width: 100%;
+}
+#doc #header #menu #menu-l {
+	background-image: url(../images/top-menu-l.png);
+	background-repeat: no-repeat;
+	height: 45px;
+	width: 16px;
+	float: left;
+}
+
+#doc #header #menu #menu-m {
+
+}
+
+#doc #header #menu #menu-r {
+	background-image: url(../images/top-menu-r.png);
+	background-repeat: no-repeat;
+	height: 45px;
+	width: 16px;
+	float: right;
+}
+#doc #header #menu #menu-m li {
+	display: block;
+	float: left;
+	width: 150px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 40px;
+	text-align: center;
+	height: 42px;
+}
+
+#doc #header #menu #menu-m li a {
+	color: #FFFFFF;
+	text-decoration: none;
+
+}
+.menu-splitor {
+	background-image: url(../images/top-menu-splitor.png);
+	background-repeat: no-repeat;
+	display: block;
+	height: 45px;
+	width: 16px;
+	float: left;
+}
+#doc #header #info-bar {
+	background-color: #E6E6E6;
+	height: 52px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#doc #header #info-bar #info-l {
+	background-image: url(../images/info-l.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 52px;
+	width: 10px;
+}
+#doc #header #info-bar #info-r {
+	background-image: url(../images/info-r.png);
+	float: right;
+	height: 52px;
+	width: 10px;
+}
+#doc #header #info-bar #info-m #info-block {
+	width: 210px;
+	float: left;
+	padding-top: 10px;
+	padding-left: 20px;
+	line-height: 40px;
+	text-align: center;
+}
+#doc #bd #block-left {
+	float: left;
+	width: 180px;
+}
+#doc #bd #block-right {
+	float: right;
+	width: 180px;
+}
+
+#blue-block {
+	border: 1px solid #CCCCCC;
+	margin-bottom: 10px;
+}
+#blue-block #title {
+	background-color: #6379A9;
+	height: 40px;
+	line-height: 40px;
+	text-decoration: none;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	width: 100%;
+	background-image: url(../images/blue-block-mid.png);
+	background-repeat: repeat-x;
+}
+#doc #bd #block-main {
+	width: 570px;
+	float: left;
+	margin-left: 3px;
+}
+
+#blue-block #title #left {
+	background-image: url(../images/blue-block-left.png);
+	display: block;
+	height: 40px;
+	width: 10px;
+	float: left;
+}
+#main-block #title #left {
+	background-image: url(../images/gray-block-left.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 42px;
+	width: 10px;
+}
+
+
+#main-block #title {
+	line-height: 40px;
+	background-color: #DEDFDE;
+	vertical-align: middle;
+	height: 40px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #666666;
+	text-decoration: none;
+}
+#main-block #title #right {
+	background-image: url(../images/gray-block-right.png);
+	background-repeat: no-repeat;
+	float: right;
+	height: 42px;
+	width: 10px;
+}
+
+
+#blue-block #title #right {
+	background-image: url(../images/blue-block-right.png);
+	display: block;
+	height: 42px;
+	width: 10px;
+	float: right;
+}
+#blue-block #block-body li {
+	background-image: url(../images/blue-block-li.png);
+	background-repeat: no-repeat;
+	text-align: left;
+	height: 20px;
+	padding-left: 20px;
+}
+#main-block #l-image {
+	background-color: #CCCCCC;
+	float: left;
+	width: 170px;
+}
+
+#blue-block #block-body {
+	padding-top: 10px;
+}
+#main-block li {
+	height: 220px;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #CCCCCC;
 }
