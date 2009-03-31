@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html $htmlparams>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Artist Store</title>
@@ -13,10 +13,7 @@
           	<div id="h-logo"><img src="$templatedir/images/top-logo.png" alt="logo" /></div>
             
             <div id="h-search">
-            <form action="" method="post">
-            	<input name="q" type="text" />
-            	<input name="submit" type="submit" value="Search" />
-            </form>
+            	<!-- $searchbox  -->
             </div>
           </div>
           
@@ -41,22 +38,15 @@
           <div id="info-bar">
           	<div id="info-l"></div>
           	<div id="info-m">
-           	  <div id="info-block">Currencies:
-                  <select name="">
-                    <option>www</option>
-                    <option>www</option>
-                  </select>
+           	  <div id="info-block">
+           	  	$currenciesbox
               </div>
            	  <div id="info-block">
-              Languages:
-              <img src="$templatedir/images/info-lang-icon.png" alt="language" width="110" height="26" align="middle" /> 
+           	  	$languagebox
               </div>
               
-           	  <div id="info-block">Currencies:
-                  <select name="">
-                    <option>www</option>
-                    <option>www</option>
-                  </select>
+           	  <div id="info-block">
+           	  	$manufacturerbox
               </div>
                         
           	</div>
@@ -70,47 +60,15 @@
         <!-- left block -->
           <div id="block-left">
           	<!-- category -->
-            <div id="blue-block">
-           	  <div id="title"><span id="right"></span><span id="left"></span>Category</div>
-              
-              <div id="block-body">
-              	$categorybox
-              	<ul>
-                	<li>Hardware</li>
-                    <li>Software</li>
-                    <li>DVD Movies</li>
-                </ul>
-              </div>
-            </div>
+            $categorybox
             <!-- category end -->
             
           	<!-- specials -->
-            <div id="blue-block">
-           	  <div id="title"><span id="right"></span><span id="left"></span>Specials</div>
-              
-              <div id="block-body">
-              	$specialbox
-              	<ul>
-                	<li>Hardware</li>
-                    <li>Software</li>
-                    <li>DVD Movies</li>
-                </ul>
-              </div>
-            </div>
+            $specialbox
             <!-- specials end-->
             
           	<!-- infomation -->
-            <div id="blue-block">
-           	  <div id="title"><span id="right"></span><span id="left"></span>Infomation</div>
-              
-              <div id="block-body">
-              	<ul>
-                	<li>Hardware</li>
-                    <li>Software</li>
-                    <li>DVD Movies</li>
-                </ul>
-              </div>
-            </div>
+			$informationbox
   			<!-- infomation end-->
             
           </div>
@@ -163,47 +121,25 @@
         <!-- right block -->
           <div id="block-right">
           
-          	<!-- category -->
-            <div id="blue-block">
-           	  <div id="title"><span id="right"></span><span id="left"></span>Category</div>
-              
-              <div id="block-body">
-              	<ul>
-                	<li>Hardware</li>
-                    <li>Software</li>
-                    <li>DVD Movies</li>
-                </ul>
-              </div>
-            </div>
-            <!-- category end -->
+          	<!-- cart -->
+				$cartbox
+            <!-- cart end -->
             
-          	<!-- specials -->
-            <div id="blue-block">
-           	  <div id="title"><span id="right"></span><span id="left"></span>Specials</div>
-              
-              <div id="block-body">
-              	<ul>
-                	<li>Hardware</li>
-                    <li>Software</li>
-                    <li>DVD Movies</li>
-                </ul>
-              </div>
-            </div>
-            <!-- specials end-->
+          	<!-- what's new box -->
+				$whatsnewbox
+            <!-- what's new box end-->
             
-          	<!-- infomation -->
-            <div id="blue-block">
-           	  <div id="title"><span id="right"></span><span id="left"></span>Infomation</div>
-              
-              <div id="block-body">
-              	<ul>
-                	<li>Hardware</li>
-                    <li>Software</li>
-                    <li>DVD Movies</li>
-                </ul>
-              </div>
-            </div>
-  			<!-- infomation end-->
+          	<!-- best sellers box -->
+            	$bestsellersbox
+  			<!-- best sellers box end-->
+  			
+  			<!-- reviews box -->
+  				$reviewsbox
+  			<!-- reviews box end -->
+          
+  			<!-- tell a friend box -->
+  				$tellafriendbox
+  			<!-- tell a friend box end -->
           
           </div>
            
