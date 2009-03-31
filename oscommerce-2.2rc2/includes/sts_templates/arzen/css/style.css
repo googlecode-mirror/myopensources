@@ -97,7 +97,7 @@ div#footer {
 	font-size: 14px;
 	line-height: 40px;
 	text-align: center;
-	height: 42px;
+	height: 40px;
 }
 
 #doc #header #menu #menu-m li a {
@@ -183,7 +183,7 @@ div#footer {
 	background-image: url(../images/gray-block-left.png);
 	background-repeat: no-repeat;
 	float: left;
-	height: 42px;
+	height: 40px;
 	width: 10px;
 }
 
@@ -202,7 +202,7 @@ div#footer {
 	background-image: url(../images/gray-block-right.png);
 	background-repeat: no-repeat;
 	float: right;
-	height: 42px;
+	height: 40px;
 	width: 10px;
 }
 
@@ -210,7 +210,7 @@ div#footer {
 #blue-block #title #right {
 	background-image: url(../images/blue-block-right.png);
 	display: block;
-	height: 42px;
+	height: 40px;
 	width: 10px;
 	float: right;
 }
@@ -218,9 +218,22 @@ div#footer {
 	background-image: url(../images/blue-block-li.png);
 	background-repeat: no-repeat;
 	text-align: left;
-	height: 20px;
 	padding-left: 20px;
+	line-height: 20px;
+	margin: 0 0px;
 }
+
+#blue-block #block-body li ul { /* second-level lists */
+	padding-left: 3px;
+	margin: 0 0px;
+}
+
+#blue-block #block-body li a, #blue-block #block-body li ul {
+	color: #333;
+	text-decoration: none;
+}
+
+
 #main-block #l-image {
 	background-color: #CCCCCC;
 	float: left;
@@ -268,4 +281,8 @@ div#h-box-content {
 	width: 100px;
 	float: left;
 
+}
+
+div#title #header {
+	width: 120px;
 }
