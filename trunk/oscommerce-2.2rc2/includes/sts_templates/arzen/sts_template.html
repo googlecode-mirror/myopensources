@@ -1,89 +1,118 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html $htmlparams>
 <head>
-<!--$headcontent-->
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Artist Store</title>
+<link href="$templatedir/css/style.css" rel="stylesheet" type="text/css" />
 </head>
-<body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
 
-<table border="0" width="100%" cellspacing="0" cellpadding="10">
-    <tr class="header">
-        <td valign="middle">
-            $banner_only
-        </td>
-        <td align=right>
-            <a href="$urlmyaccount">
-            <img border="0" src="images/header_account.gif"></a>
-            <a href="$urlcartcontents">
-            <img border="0" src="images/header_cart.gif"></a>
-            <a href="$urlcheckout">
-            <img border="0" src="images/header_checkout.gif"></a>
-        </td>
-    </tr>
-</table>
-
-<table border="0" width="100%" cellspacing="0" cellpadding="1">
-    <tr class="headerNavigation">
-        <td class="headerNavigation">
-            &nbsp;&nbsp;
-            $breadcrumbs
-        </td>
-        <td align="right" class="headerNavigation">
-            $myaccountlogoff | $cartcontents | $checkout
-            &nbsp;&nbsp;
-        </td>
-    </tr>
-</table>
-
-<table border="0" width="100%" cellspacing="3" cellpadding="3">
-  <tr>
-    <td valign="top" width="125">
-      <table border="0" width="125" cellspacing="0" cellpadding="2">
-        <tr><td>$catmenu</td></tr>
-        <tr><td>$categorybox</td></tr>
-        <tr><td>$manufacturerbox</td></tr>
-        <tr><td>$whatsnewbox</td></tr>
-        <tr><td>$specialbox</td></tr>
-        <tr><td>$searchbox</td></tr>
-        <tr><td>$informationbox</td></tr>
-      </table>
-    </td>
-    <td valign="top">
-      <p>This is the default template<br>
-&nbsp;</p>
-      <p>$content</p>
-      <p>&nbsp;</p>
-    </td>
-    <td valign="top" width="125">
-      <table border="0" width="125" cellspacing="0" cellpadding="2">
-        <tr><td>$cartbox</td></tr>
-        <tr><td>$maninfobox</td></tr>
-        <tr><td>$orderhistorybox</td></tr>
-        <tr><td>$bestsellersbox</td></tr>
-        <tr><td>$reviewsbox</td></tr>
-        <tr><td>$tellafriendbox</td></tr>
-        <tr><td>$languagebox</td></tr>
-        <tr><td>$currenciesbox</td></tr>
-      </table>
-    </td>
-  </tr>
-</table>
-
-<table border="0" width="100%" cellspacing="0" cellpadding="1">
-  <tr class="footer">
-    <td class="footer">&nbsp;&nbsp;$date&nbsp;&nbsp;</td>
-    <td align="right" class="footer">&nbsp;&nbsp;$numrequests&nbsp;&nbsp;</td>
-  </tr>
-</table>
-
-<br>
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-  <tr>
-    <td align="center" class="smallText">
-      $footer_text
-    </td>
-  </tr>
-</table>
-
+<body>
+	<div id="doc">
+		<div id="header">
+          <div id="h-top">
+          	<div id="h-logo"><img src="$templatedir/images/top-logo.png" alt="logo" /></div>
+            
+            <div id="h-search">
+            	<!-- $searchbox  -->
+            </div>
+          </div>
+          
+          <!-- menu -->
+          <div id="menu">
+          	<div id="menu-l"></div>
+          	<div id="menu-m">
+            	<ul>
+               	  <li ><a href="####">New Products</a></li>
+               	  <li ><span class="menu-splitor" ></span><a href="####" >Specials Products</a></li>
+                	<li ><span class="menu-splitor" ></span><a href="####">My Account</a></li>
+               	  <li ><span class="menu-splitor" ></span><a href="####">Cart Contents</a></li>
+               </ul>
+            </div>
+          	<div id="menu-r"></div>
+          </div>
+          
+           <!-- benner -->
+          <div><img src="$templatedir/images/benner.png" alt="banner" /></div>
+           
+           <!-- infomation bar -->
+          <div id="info-bar">
+          	<div id="info-l"></div>
+          	<div id="info-m">
+           	  <div id="info-block">
+           	  	$currenciesbox
+              </div>
+           	  <div id="info-block">
+           	  	$languagebox
+              </div>
+              
+           	  <div id="info-block">
+           	  	$manufacturerbox
+              </div>
+                        
+          	</div>
+          	<div id="info-r"></div>
+          </div>
+          
+        </div>
+        
+        
+	  <div id="bd"> 
+        <!-- left block -->
+          <div id="block-left">
+          	<!-- category -->
+            $categorybox
+            <!-- category end -->
+            
+          	<!-- specials -->
+            $specialbox
+            <!-- specials end-->
+            
+          	<!-- infomation -->
+			$informationbox
+  			<!-- infomation end-->
+            
+          </div>
+        <!-- main block -->
+          <div id="block-main">
+          	<!--what's new -->
+			$content
+          </div>      
+        <!-- right block -->
+          <div id="block-right">
+          
+          	<!-- cart -->
+				$cartbox
+            <!-- cart end -->
+            
+          	<!-- what's new box -->
+				$whatsnewbox
+            <!-- what's new box end-->
+            
+          	<!-- best sellers box -->
+            	$bestsellersbox
+  			<!-- best sellers box end-->
+  			
+  			<!-- reviews box -->
+  				$reviewsbox
+  			<!-- reviews box end -->
+          
+  			<!-- tell a friend box -->
+  				$tellafriendbox
+  			<!-- tell a friend box end -->
+          
+          </div>
+           
+      </div>
+      
+      
+    <div id="footer"> 
+          <div id="f-pay"><img src="$templatedir/images/footer-pay.png" alt="pay" /></div>
+          
+          <div id="f-copyright">
+          <a href="#">My Account</a> | <a href="#">Cart Contents</a> | <a href="#">Checkout</a>          <br/>
+          Copyright &copy; 2009 ShenZhen GuangDong China.</div>
+		</div>
+		
+</div>
 </body>
 </html>
