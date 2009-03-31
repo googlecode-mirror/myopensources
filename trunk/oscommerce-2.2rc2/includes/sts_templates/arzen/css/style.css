@@ -133,7 +133,7 @@ div#footer {
 	width: 10px;
 }
 #doc #header #info-bar #info-m #info-block {
-	width: 210px;
+	width: 260px;
 	float: left;
 	padding-top: 10px;
 	padding-left: 20px;
@@ -257,4 +257,15 @@ div#l-desc #l-summary {
 	line-height: 18px;
 	text-decoration: none;
 	letter-spacing: 0.8px;
+}
+
+div#h-box-label {
+	width: 100px;
+	float: left;
+}
+
+div#h-box-content {
+	width: 100px;
+	float: left;
+
 }
