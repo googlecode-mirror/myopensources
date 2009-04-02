@@ -65,20 +65,11 @@
                     maxSize: 400,
                     collapsible: true,
                     margins:'0 0 0 5',
-                    layout:'accordion',
-                    layoutConfig:{
-                        animate:true
-                    },
                     items: [{
                         contentEl: 'west',
                         title:'Navigation',
                         border:false,
                         iconCls:'nav'
-                    },{
-                        title:'Settings',
-                        html:'<p>Some settings in here.</p>',
-                        border:false,
-                        iconCls:'settings'
                     }]
                 },
                 new Ext.TabPanel({
@@ -98,11 +89,17 @@
 	
 </head>
 <body>
-  <div id="west">
-    <p>Hi. I'm the west panel.</p>
-  </div>
   <div id="north">
     <p><?php echo $html->link(__('CakePHP: the rapid development php framework', true), 'http://cakephp.org'); ?></p>
+  </div>
+  <div id="west">
+  	<p>
+	 	<ul>
+		 	<li><?php echo $html->link(__("Mail Templates", true), "/mail_template");?></li>
+		 	<li><?php echo $html->link(__("Customers", true), "/customer");?></li>
+		 	<li><?php echo $html->link(__("Mail Servers", true), "/mail_server");?></li>
+	 	</ul>
+ 	</p>
   </div>
   <div id="center1">
         <p>
@@ -112,10 +109,10 @@
 			<?php echo $cakeDebug; ?>
         
         </p>
+
   </div>
+
   <div id="props-panel" style="width:200px;height:200px;overflow:hidden;">
   </div>
-
-
 </body>
 </html>
