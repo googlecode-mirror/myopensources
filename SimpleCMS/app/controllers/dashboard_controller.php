@@ -20,7 +20,45 @@ class DashboardController extends AppController {
 	}
 
 	function admin_left() {
-	
+		$this->set("menus", array(
+			//-- article 
+			__("Article", true) => array(
+				array('label'=>__("Categories", true), 'url'=>"/admin/article_categories" ),
+				array('label'=>__("Listing", true), 'url'=>"/admin/articles" ),
+			),
+			
+			//-- Products 
+			__("Products", true) => array(
+				array('label'=>__("Categories", true), 'url'=>"/admin/article_categories" ),
+				array('label'=>__("Listing", true), 'url'=>"/admin/articles" ),
+			),
+			
+			//-- Products 
+			__("Products", true) => array(
+				array('label'=>__("Categories", true), 'url'=>"/admin/article_categories" ),
+				array('label'=>__("Listing", true), 'url'=>"/admin/articles" ),
+			),
+			
+			//-- WebMailler 
+			__("WebMailler", true) => array(
+				array('label'=>__("Categories", true), 'url'=>"/admin/finance/finance_categories" ),
+				array('label'=>__("Mail Server", true), 'url'=>"/admin/webmailler/mail_servers" ),
+			),
+			
+			//-- Finance 
+			__("Finance", true) => array(
+				array('label'=>__("Categories", true), 'url'=>"/admin/finance/finance_categories" ),
+				array('label'=>__("Listing", true), 'url'=>"/admin/finance/financies" ),
+			),
+			
+			//-- Users 
+			__("Users", true) => array(
+				array('label'=>__("Categories", true), 'url'=>"/admin/account/departments" ),
+				array('label'=>__("Listing", true), 'url'=>"/admin/account/users" ),
+			),
+			
+			
+		));
 	}
 	
 	function admin_main() {
