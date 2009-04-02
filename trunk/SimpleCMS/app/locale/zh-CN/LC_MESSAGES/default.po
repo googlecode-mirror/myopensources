@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-28 20:01+0800\n"
-"PO-Revision-Date: 2009-02-28 20:10+0800\n"
+"POT-Creation-Date: 2009-04-02 21:01+0800\n"
+"PO-Revision-Date: 2009-04-02 21:02+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,13 +13,19 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../../..\n"
 
-#: ../../../app_controller.php:76
+#: ../../../app_controller.php:87
 msgid "Login failed. Invalid username or password."
 msgstr "用户名或密码有误"
 
-#: ../../../app_controller.php:77
+#: ../../../app_controller.php:88
 msgid "You are not authorized to access that location."
 msgstr ""
+
+#: ../../../app_controller.php:109
+#: ../../../plugins/finance/controllers/finance_categories_controller.php:92
+#, fuzzy
+msgid "Deleted select records"
+msgstr "请选择分类"
 
 #: ../../../plugins/finance/controllers/finance_categories_controller.php:14
 msgid "FinanceCategory"
@@ -74,12 +80,6 @@ msgstr "新增文章分类"
 msgid "FinanceCategory deleted"
 msgstr ""
 
-#: ../../../plugins/finance/controllers/finance_categories_controller.php:92
-#: ../../../plugins/finance/controllers/financies_controller.php:98
-#, fuzzy
-msgid "Deleted select records"
-msgstr "请选择分类"
-
 #: ../../../plugins/finance/controllers/financies_controller.php:24
 msgid "Finance"
 msgstr "帐务"
@@ -88,31 +88,171 @@ msgstr "帐务"
 msgid "New Finance"
 msgstr "新增帐目"
 
-#: ../../../plugins/finance/controllers/financies_controller.php:41
+#: ../../../plugins/finance/controllers/financies_controller.php:31
+msgid "Export"
+msgstr "导出"
+
+#: ../../../plugins/finance/controllers/financies_controller.php:31
+#, fuzzy
+msgid "Export Finance"
+msgstr "帐务"
+
+#: ../../../plugins/finance/controllers/financies_controller.php:32
+msgid "Import"
+msgstr "导入"
+
+#: ../../../plugins/finance/controllers/financies_controller.php:32
+#, fuzzy
+msgid "Import Finance"
+msgstr "帐务"
+
+#: ../../../plugins/finance/controllers/financies_controller.php:43
 msgid "Invalid Financy."
 msgstr ""
 
-#: ../../../plugins/finance/controllers/financies_controller.php:53
-#: ../../../plugins/finance/controllers/financies_controller.php:73
+#: ../../../plugins/finance/controllers/financies_controller.php:64
+msgid "Categories"
+msgstr "分类"
+
+#: ../../../plugins/finance/controllers/financies_controller.php:65
+msgid "Create Date"
+msgstr "发生日期"
+
+#: ../../../plugins/finance/controllers/financies_controller.php:66
+msgid "Debit"
+msgstr "借/贷"
+
+#: ../../../plugins/finance/controllers/financies_controller.php:67
+msgid "Money"
+msgstr "金额"
+
+#: ../../../plugins/finance/controllers/financies_controller.php:68
+msgid "Memo"
+msgstr "备注"
+
+#: ../../../plugins/finance/controllers/financies_controller.php:109
+#: ../../../plugins/finance/controllers/financies_controller.php:129
 msgid "The Financy has been saved"
 msgstr ""
 
-#: ../../../plugins/finance/controllers/financies_controller.php:58
-#: ../../../plugins/finance/controllers/financies_controller.php:76
+#: ../../../plugins/finance/controllers/financies_controller.php:114
+#: ../../../plugins/finance/controllers/financies_controller.php:132
 msgid "The Financy could not be saved. Please, try again."
 msgstr ""
 
-#: ../../../plugins/finance/controllers/financies_controller.php:68
+#: ../../../plugins/finance/controllers/financies_controller.php:124
 msgid "Invalid Financy"
 msgstr ""
 
-#: ../../../plugins/finance/controllers/financies_controller.php:87
+#: ../../../plugins/finance/controllers/financies_controller.php:143
 msgid "Invalid id for Financy"
 msgstr ""
 
-#: ../../../plugins/finance/controllers/financies_controller.php:91
+#: ../../../plugins/finance/controllers/financies_controller.php:147
 msgid "Financy deleted"
 msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:13
+msgid "Department"
+msgstr "部门"
+
+#: ../../../plugins/account/controllers/departments_controller.php:18
+msgid "New Department"
+msgstr "新增部门"
+
+#: ../../../plugins/account/controllers/departments_controller.php:32
+#: ../../../plugins/account/controllers/departments_controller.php:51
+msgid "The Department has been saved"
+msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:37
+#: ../../../plugins/account/controllers/departments_controller.php:54
+msgid "The Department could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:46
+#, fuzzy
+msgid "Invalid Department"
+msgstr "文章"
+
+#: ../../../plugins/account/controllers/departments_controller.php:64
+#, fuzzy
+msgid "Invalid id for Department"
+msgstr "新增文章分类"
+
+#: ../../../plugins/account/controllers/departments_controller.php:68
+#, fuzzy
+msgid "Department deleted"
+msgstr "文章"
+
+#: ../../../plugins/account/controllers/users_controller.php:13
+msgid "Users"
+msgstr "系统用户"
+
+#: ../../../plugins/account/controllers/users_controller.php:18
+#, fuzzy
+msgid "New Users"
+msgstr "系统用户"
+
+#: ../../../plugins/account/controllers/users_controller.php:28
+#, fuzzy
+msgid "Invalid User."
+msgstr "文章"
+
+#: ../../../plugins/account/controllers/users_controller.php:40
+#: ../../../plugins/account/controllers/users_controller.php:57
+msgid "The User has been saved"
+msgstr ""
+
+#: ../../../plugins/account/controllers/users_controller.php:43
+#: ../../../plugins/account/controllers/users_controller.php:60
+msgid "The User could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/account/controllers/users_controller.php:52
+#, fuzzy
+msgid "Invalid User"
+msgstr "文章"
+
+#: ../../../plugins/account/controllers/users_controller.php:70
+#, fuzzy
+msgid "Invalid id for User"
+msgstr "新增文章分类"
+
+#: ../../../plugins/account/controllers/users_controller.php:74
+#, fuzzy
+msgid "User deleted"
+msgstr "文章"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:30
+#, fuzzy
+msgid "Invalid MailServer."
+msgstr "文章"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:40
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:55
+msgid "The MailServer has been saved"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:43
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:58
+msgid "The MailServer could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:50
+#, fuzzy
+msgid "Invalid MailServer"
+msgstr "文章"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:68
+#, fuzzy
+msgid "Invalid id for MailServer"
+msgstr "新增文章分类"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:72
+#, fuzzy
+msgid "MailServer deleted"
+msgstr "文章"
 
 #: ../../../webroot/test.php:99
 msgid "Debug setting does not allow access to this url."
@@ -149,6 +289,23 @@ msgstr "支出"
 #: ../../../controllers/dashboard_controller.php:10
 msgid "System name"
 msgstr "简易CMS管理系统"
+
+#: ../../../controllers/dashboard_controller.php:25
+msgid "Article"
+msgstr "文章"
+
+#: ../../../controllers/dashboard_controller.php:31
+#: ../../../controllers/dashboard_controller.php:37
+msgid "Products"
+msgstr ""
+
+#: ../../../controllers/dashboard_controller.php:43
+msgid "WebMailler"
+msgstr ""
+
+#: ../../../controllers/dashboard_controller.php:45
+msgid "Mail Server"
+msgstr ""
 
 #: ../../../controllers/article_categories_controller.php:17
 #: ../../../controllers/article_categories_controller.php:91
@@ -193,15 +350,12 @@ msgid "ArticleCategory"
 msgstr "文章分类"
 
 #: ../../../controllers/article_categories_controller.php:104
-#: ../../../plugins/finance/views/financies/admin_index.ctp:62
-#: ../../../plugins/finance/views/financies/admin_index.ctp:63
 msgid "View"
 msgstr "查看"
 
 #: ../../../controllers/article_categories_controller.php:110
 #: ../../../controllers/article_categories_controller.php:167
 #: ../../../plugins/finance/views/finance_categories/admin_index.ctp:52
-#: ../../../plugins/finance/views/financies/admin_index.ctp:63
 msgid "Edit"
 msgstr "编辑"
 
@@ -209,7 +363,6 @@ msgstr "编辑"
 #: ../../../controllers/article_categories_controller.php:172
 #: ../../../plugins/finance/views/finance_categories/admin_index.ctp:53
 #: ../../../plugins/finance/views/finance_categories/admin_view.ctp:39
-#: ../../../plugins/finance/views/financies/admin_index.ctp:64
 #, php-format
 msgid "Are you sure you want to delete # %s?"
 msgstr "确实要删除记录 # %s 吗?"
@@ -269,22 +422,18 @@ msgid "Modal Dialog Title"
 msgstr ""
 
 #: ../../../plugins/finance/views/finance_categories/admin_index.ctp:10
-#: ../../../plugins/finance/views/financies/admin_index.ctp:9
 msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
 msgstr "第 %page% / %pages% 页, 显示 %start% ~ %end% 共有 %count% 条记录"
 
 #: ../../../plugins/finance/views/finance_categories/admin_index.ctp:23
-#: ../../../plugins/finance/views/financies/admin_index.ctp:25
 msgid "Actions"
 msgstr "操作"
 
 #: ../../../plugins/finance/views/finance_categories/admin_index.ctp:61
-#: ../../../plugins/finance/views/financies/admin_index.ctp:72
 msgid "previous"
 msgstr "上页"
 
 #: ../../../plugins/finance/views/finance_categories/admin_index.ctp:63
-#: ../../../plugins/finance/views/financies/admin_index.ctp:74
 msgid "next"
 msgstr "下页"
 
@@ -351,26 +500,6 @@ msgstr ""
 msgid "Financy"
 msgstr ""
 
-#: ../../../plugins/finance/views/financies/admin_view.ctp:9
-msgid "Categories"
-msgstr "分类"
-
-#: ../../../plugins/finance/views/financies/admin_view.ctp:14
-msgid "Create Date"
-msgstr "发生日期"
-
-#: ../../../plugins/finance/views/financies/admin_view.ctp:19
-msgid "Money"
-msgstr "金额"
-
-#: ../../../plugins/finance/views/financies/admin_view.ctp:24
-msgid "Debit"
-msgstr "借/贷"
-
-#: ../../../plugins/finance/views/financies/admin_view.ctp:29
-msgid "Memo"
-msgstr "备注"
-
 #: ../../../plugins/finance/views/financies/admin_view.ctp:34
 msgid "Amount"
 msgstr "数量"
@@ -386,6 +515,151 @@ msgstr ""
 #: ../../../plugins/finance/views/financies/admin_view.ctp:54
 msgid "Userid"
 msgstr "所有者"
+
+#: ../../../plugins/account/views/departments/admin_add.ctp:8
+msgid "Add Department"
+msgstr "新增部门"
+
+#: ../../../plugins/account/views/departments/admin_edit.ctp:4
+msgid "Edit Department"
+msgstr "修改部门"
+
+#: ../../../plugins/account/views/departments/admin_edit.ctp:15
+#, fuzzy
+msgid "List Departments"
+msgstr "文章分类列表"
+
+#: ../../../plugins/account/views/users/admin_view.ctp:2
+#, fuzzy
+msgid "User"
+msgstr "系统用户"
+
+#: ../../../plugins/account/views/users/admin_view.ctp:9
+#, fuzzy
+msgid "Username"
+msgstr "简易CMS管理系统"
+
+#: ../../../plugins/account/views/users/admin_view.ctp:14
+msgid "Password"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:19
+msgid "Gender"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:24
+msgid "Realname"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:29
+msgid "Birthday"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:34
+msgid "Marriage"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:39
+msgid "Addrees"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:44
+#, fuzzy
+msgid "Phone"
+msgstr "无"
+
+#: ../../../plugins/account/views/users/admin_view.ctp:49
+msgid "Mobile"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:54
+msgid "Email"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:59
+msgid "Photo"
+msgstr "图片"
+
+#: ../../../plugins/account/views/users/admin_view.ctp:69
+#, fuzzy
+msgid "User Id"
+msgstr "所有者"
+
+#: ../../../plugins/account/views/users/admin_view.ctp:93
+#: ../../../plugins/account/views/users/admin_edit.ctp:4
+#, fuzzy
+msgid "Edit User"
+msgstr "编辑"
+
+#: ../../../plugins/account/views/users/admin_view.ctp:94
+#, fuzzy
+msgid "Delete User"
+msgstr "删除"
+
+#: ../../../plugins/account/views/users/admin_view.ctp:95
+#: ../../../plugins/account/views/users/admin_edit.ctp:28
+#, fuzzy
+msgid "List Users"
+msgstr "系统用户"
+
+#: ../../../plugins/account/views/users/admin_view.ctp:96
+#, fuzzy
+msgid "New User"
+msgstr "系统用户"
+
+#: ../../../plugins/account/views/users/admin_add.ctp:8
+#, fuzzy
+msgid "Add User"
+msgstr "系统用户"
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:2
+msgid "MailServer"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:9
+msgid "Host"
+msgstr "主机地址"
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:14
+msgid "Ssl"
+msgstr "SSL安全连接"
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:19
+msgid "Port"
+msgstr "端口号"
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:24
+msgid "Account"
+msgstr "帐号"
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:29
+msgid "Passwd"
+msgstr "密码"
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:43
+#: ../../../plugins/webmailler/views/mail_servers/admin_edit.ctp:4
+msgid "Edit MailServer"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:44
+#, fuzzy
+msgid "Delete MailServer"
+msgstr "删除文章分类"
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:45
+#: ../../../plugins/webmailler/views/mail_servers/admin_add.ctp:17
+#: ../../../plugins/webmailler/views/mail_servers/admin_edit.ctp:19
+#, fuzzy
+msgid "List MailServers"
+msgstr "文章分类列表"
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:46
+msgid "New MailServer"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_add.ctp:4
+msgid "Add MailServer"
+msgstr ""
 
 #: ../../../views/pages/home.ctp:12
 msgid "Your tmp directory is writable."
@@ -476,6 +750,7 @@ msgid "List ArticleCategories"
 msgstr "文章分类列表"
 
 #: ../../../views/article_categories/view.ctp:36
+#: ../../../views/article_categories/index.ctp:58
 msgid "New ArticleCategory"
 msgstr "新增文章分类"
 
@@ -510,12 +785,12 @@ msgid "Fill up too long"
 msgstr "输入内容太长"
 
 #: ../../../views/dashboard/admin_top.ctp:9
-#: ../../../views/dashboard/admin_left.ctp:54
+#: ../../../views/dashboard/admin_left.ctp:38
 msgid "Logout"
 msgstr "退出"
 
 #: ../../../views/dashboard/admin_top.ctp:9
-#: ../../../views/dashboard/admin_left.ctp:54
+#: ../../../views/dashboard/admin_left.ctp:38
 msgid "Are you sure want to logout?"
 msgstr "确实要退出系统吗?"
 
@@ -523,57 +798,46 @@ msgstr "确实要退出系统吗?"
 msgid "Main Menu"
 msgstr "管理菜单"
 
-#: ../../../views/dashboard/admin_left.ctp:23
-#: ../../../views/articles/view.ctp:2
-msgid "Article"
-msgstr "文章"
-
-#: ../../../views/dashboard/admin_left.ctp:30
-msgid "Products"
-msgstr ""
-
-#: ../../../views/dashboard/admin_left.ctp:44
-msgid "Users"
-msgstr ""
-
-#: ../../../views/dashboard/admin_left.ctp:51
+#: ../../../views/dashboard/admin_left.ctp:35
 msgid "System"
-msgstr ""
+msgstr "系统管理"
 
-#: ../../../views/dashboard/admin_left.ctp:53
+#: ../../../views/dashboard/admin_left.ctp:37
 msgid "Backup/Restore"
 msgstr ""
 
 #: ../../../views/articles/view.ctp:9
+#: ../../../views/articles/admin_view.ctp:9
 #, fuzzy
 msgid "Article Categories Id"
 msgstr "文章分类"
 
 #: ../../../views/articles/view.ctp:14
+#: ../../../views/articles/admin_view.ctp:14
 msgid "Title"
 msgstr ""
 
 #: ../../../views/articles/view.ctp:19
+#: ../../../views/articles/admin_view.ctp:19
 msgid "Contents"
 msgstr ""
 
-#: ../../../views/articles/view.ctp:24
-msgid "Photo"
-msgstr "图片"
-
 #: ../../../views/articles/view.ctp:43
 #: ../../../views/articles/admin_edit.ctp:4
+#: ../../../views/articles/admin_view.ctp:43
 #, fuzzy
 msgid "Edit Article"
 msgstr "编辑文章分类"
 
 #: ../../../views/articles/view.ctp:44
+#: ../../../views/articles/admin_view.ctp:44
 #, fuzzy
 msgid "Delete Article"
 msgstr "删除文章分类"
 
 #: ../../../views/articles/view.ctp:45
 #: ../../../views/articles/admin_edit.ctp:18
+#: ../../../views/articles/admin_view.ctp:45
 #, fuzzy
 msgid "List Articles"
 msgstr "文章分类列表"

@@ -20,34 +20,18 @@ echo $javascript->codeBlock($inline_script);
       
   		<!-- TREE START -->    
 		<ul id="browser" class="filetree">
-			<li><em class="folder"></em> <?php echo __("Article"); ?></span>
-				<ul>
-					<li><a href="<?php echo $html->url("/admin/article_categories"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Categories"); ?></a> </li>
-					<li><a href="<?php echo $html->url("/admin/articles"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Listing"); ?></a> </li>
-				</ul>
-			</li>
+		
+			<?php foreach ($menus as $category=>$items): ?>
 			
-			<li><em class="folder"></em> <?php echo __("Products"); ?></span>
+			<li><em class="folder"></em> <?php echo $category; ?></span>
 				<ul>
-					<li><em class="file"></em><?php echo __("Categories"); ?> </li>
-					<li><em class="file"></em><?php echo __("Listing"); ?> </li>
+					<?php foreach ($items as $item): ?>
+					<li><a href="<?php echo $html->url($item['url']); ?>" target="mainFrame"> <em class="file"></em><?php echo $item['label']; ?></a> </li>
+					<?php endforeach; ?>
 				</ul>
 			</li>
+			<?php endforeach; ?>
 			
-			<li><em class="folder"></em> <?php echo __("Finance"); ?></span>
-				<ul>
-					<li><a href="<?php echo $html->url("/admin/finance/finance_categories"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Categories"); ?></a> </li>
-					<li><a href="<?php echo $html->url("/admin/finance/financies"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Listing"); ?></a> </li>
-				</ul>
-			</li>
-			
-			<li><em class="folder"></em> <?php echo __("Users"); ?></span>
-				<ul>
-					<li><a href="<?php echo $html->url("/admin/account/departments"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Categories"); ?></a> </li>
-					<li><a href="<?php echo $html->url("/admin/account/users"); ?>" target="mainFrame"> <em class="file"></em><?php echo __("Listing"); ?></a> </li>
-				</ul>
-			</li>
-
 			<li><em class="folder"></em> <?php echo __("System"); ?></span>
 				<ul>
 					<li><em class="file"></em><?php echo __("Backup/Restore"); ?> </li>
