@@ -1,5 +1,9 @@
+<?php 
+echo $modal->modalForm('ex4', "AddForm");
+?>
+
 <div class="mailTemplates form">
-<?php echo $form->create('MailTemplate');?>
+<?php echo $form->create('MailTemplate', array('id'=>'AddForm' ) );?>
 	<fieldset>
  		<legend><?php __('Edit MailTemplate');?></legend>
 	<?php
@@ -7,14 +11,8 @@
 		echo $form->input('title');
 		echo $form->input('subject');
 		echo $form->input('content');
-		echo $form->input('plain_text');
+		echo $form->input('plain_text', array('type'=>'checkbox'));
 	?>
 	</fieldset>
 <?php echo $form->end('Submit');?>
-</div>
-<div class="actions">
-	<ul>
-		<li><?php echo $html->link(__('Delete', true), array('action'=>'delete', $form->value('MailTemplate.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('MailTemplate.id'))); ?></li>
-		<li><?php echo $html->link(__('List MailTemplates', true), array('action'=>'index'));?></li>
-	</ul>
 </div>
