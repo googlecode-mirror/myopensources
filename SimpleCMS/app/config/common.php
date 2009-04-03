@@ -11,6 +11,11 @@ $config['debit_options']= array(
 	'P' => __("PayOut", true),
 );
 
-$config['currency_flag']= "￥";
+$config['gender_options']= array(
+	'M' => __("Male", true),
+	'F' => __("Female", true),
+);
+
+$config['currency_flag'] = "￥";
 
 ?>
