@@ -52,7 +52,7 @@ foreach ($mailServers as $mailServer):
 			<?php echo $time->format('Y-m-d H:i', $mailServer['MailServer']['created']) ; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $mailServer['MailServer']['id']), array('class'=>'ex4Trigger', 'title' => __('View', true) ) ); ?>
+			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $mailServer['MailServer']['id']), array('class'=>'ex4Trigger', 'title' => __('Edit', true) ) ); ?>
 			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $mailServer['MailServer']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $mailServer['MailServer']['id'])); ?>
 		</td>
 	</tr>

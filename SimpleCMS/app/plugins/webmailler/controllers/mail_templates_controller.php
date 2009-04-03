@@ -38,7 +38,9 @@ class MailTemplatesController extends WebmaillerAppController {
 			$this->MailTemplate->create();
 			if ($this->MailTemplate->save($this->data)) {
 				$this->Session->setFlash(__('The MailTemplate has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				echo "done";
+				exit;
+//				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The MailTemplate could not be saved. Please, try again.', true));
 			}
@@ -46,6 +48,8 @@ class MailTemplatesController extends WebmaillerAppController {
 	}
 
 	function admin_edit($id = null) {
+		$this->layout = 'ajax';
+		
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid MailTemplate', true));
 			$this->redirect(array('action'=>'index'));
@@ -53,7 +57,9 @@ class MailTemplatesController extends WebmaillerAppController {
 		if (!empty($this->data)) {
 			if ($this->MailTemplate->save($this->data)) {
 				$this->Session->setFlash(__('The MailTemplate has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				echo "done";
+				exit;
+//				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The MailTemplate could not be saved. Please, try again.', true));
 			}

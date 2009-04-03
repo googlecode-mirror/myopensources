@@ -1,5 +1,9 @@
+<?php 
+echo $modal->modalForm('ex4', "AddForm");
+?>
+
 <div class="mailCustomers form">
-<?php echo $form->create('MailCustomer');?>
+<?php echo $form->create('MailCustomer', array('id'=>'AddForm' ) );?>
 	<fieldset>
  		<legend><?php __('Edit MailCustomer');?></legend>
 	<?php
