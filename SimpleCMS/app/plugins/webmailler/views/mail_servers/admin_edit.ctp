@@ -9,7 +9,7 @@ echo $modal->modalForm('ex4', "AddForm");
 	<?php
 		echo $form->input('id');
 		echo $form->input('host');
-		echo $form->input('ssl');
+		echo $form->input('ssl', array("type"=>"checkbox", 'value'=>1) );
 		echo $form->input('port');
 		echo $form->input('account');
 		echo $form->input('passwd');

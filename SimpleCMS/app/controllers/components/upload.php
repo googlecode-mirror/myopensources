@@ -115,7 +115,7 @@ class UploadComponent extends Object {
         
         
         $this->controller->data[$model][$filename] = $this->dest_web_file;
-		
+		return $this->dest_absolute_file;
 	}
 	/**
 	 * Get upload file absolute path
