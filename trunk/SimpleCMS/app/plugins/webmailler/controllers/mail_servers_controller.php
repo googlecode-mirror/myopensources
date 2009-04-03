@@ -89,7 +89,7 @@ class MailServersController extends WebmaillerAppController {
 		
 		$objActSheet = $excelHandler->getExcel()->getActiveSheet();  
 		  
-		//设置当前活动sheet的名称  
+		//-- set current sheet name --
 		$objActSheet->setTitle(date("Y-m-d"));  
 		  
 		//-- set contents   
@@ -122,6 +122,9 @@ class MailServersController extends WebmaillerAppController {
 	
 	function admin_import() {
 		$this->layout = 'ajax';
+		$this->set("current_model", $this->modelClass );
+		$this->set("current_controller", $this->params['controller'] );
+		$this->set("msg", __('Import MailServer', true) );
 		
 	}
 	
