@@ -9,6 +9,7 @@ echo $paginator->counter(array(
 'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
 ));
 ?></p>
+<form id='list-form' action='<?php echo $html->url("/admin/webmailler/mail_servers/delSelected");?>' method='POST'>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th width="40px"><input id="select_all" type="checkbox" /></th>
@@ -57,6 +58,7 @@ foreach ($mailServers as $mailServer):
 	</tr>
 <?php endforeach; ?>
 </table>
+</form>
 </div>
 <div class="paging">
 	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
