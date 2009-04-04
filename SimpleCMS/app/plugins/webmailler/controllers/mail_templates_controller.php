@@ -12,7 +12,7 @@
 class MailTemplatesController extends WebmaillerAppController {
 
 	var $name = 'MailTemplates';
-	var $helpers = array('Html', 'Form');
+	var $helpers = array('Html', 'Form', 'Tinymce');
 
 	function admin_index() {
 		$this->MailTemplate->recursive = 0;
@@ -25,7 +25,7 @@ class MailTemplatesController extends WebmaillerAppController {
 				
 			),
 			'actions' => array(
-				array('text'=> __("New", true), 'url'=>'/admin/webmailler/mail_templates/add', 'class'=>'act-new', 'attr' =>array('class'=>'ex4Trigger', 'title'=>__("New Template", true) ) ),
+				array('text'=> __("New", true), 'url'=>'/admin/webmailler/mail_templates/add', 'class'=>'act-new' ),
 				array('text'=> __("Delete", true), 'url'=>'###', 'class'=>'act-del' ),
 				
 			)
@@ -44,15 +44,13 @@ class MailTemplatesController extends WebmaillerAppController {
 	}
 
 	function admin_add() {
-		$this->layout = 'ajax';
+//		$this->layout = 'ajax';
 		
 		if (!empty($this->data)) {
 			$this->MailTemplate->create();
 			if ($this->MailTemplate->save($this->data)) {
 				$this->Session->setFlash(__('The MailTemplate has been saved', true));
-				echo "done";
-				exit;
-//				$this->redirect(array('action'=>'index'));
+				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The MailTemplate could not be saved. Please, try again.', true));
 			}
@@ -60,7 +58,7 @@ class MailTemplatesController extends WebmaillerAppController {
 	}
 
 	function admin_edit($id = null) {
-		$this->layout = 'ajax';
+//		$this->layout = 'ajax';
 		
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid MailTemplate', true));
@@ -69,9 +67,7 @@ class MailTemplatesController extends WebmaillerAppController {
 		if (!empty($this->data)) {
 			if ($this->MailTemplate->save($this->data)) {
 				$this->Session->setFlash(__('The MailTemplate has been saved', true));
-				echo "done";
-				exit;
-//				$this->redirect(array('action'=>'index'));
+				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The MailTemplate could not be saved. Please, try again.', true));
 			}
