@@ -1,4 +1,14 @@
 <?php
+/**
+ *
+ * Email template and send mail controller
+ * 
+ * @package    Core
+ * @subpackage Core
+ * @author  John Meng (孟远螓) arzen1013@gmail.com 2009-4-4
+ * @version 1.0.0 $id$
+ */
+ 
 class MailTemplatesController extends WebmaillerAppController {
 
 	var $name = 'MailTemplates';
@@ -24,6 +34,8 @@ class MailTemplatesController extends WebmaillerAppController {
 	}
 
 	function admin_view($id = null) {
+		$this->layout = 'ajax';
+		
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid MailTemplate.', true));
 			$this->redirect(array('action'=>'index'));
@@ -79,6 +91,22 @@ class MailTemplatesController extends WebmaillerAppController {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
-
+	
+	/**
+	 * Send email to all customers according provided template id
+	 *
+	 * @access	public
+	 * @author	John.Meng(孟远螓) arzen1013@gmail.com 2009-4-4
+	 * @param	int	$id 
+	 * @return	void
+	 */
+	function admin_send($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid id for MailTemplate', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		$this->MailTemplate->sendMail($id);
+	}
+		
 }
 ?>
