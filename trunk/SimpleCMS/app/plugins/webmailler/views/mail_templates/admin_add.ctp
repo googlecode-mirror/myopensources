@@ -1,15 +1,28 @@
-<?php 
-echo $modal->modalForm('ex4', "AddForm");
-?>
-
 <div class="mailTemplates form">
 <?php echo $form->create('MailTemplate', array('id'=>'AddForm' ) );?>
 	<fieldset>
  		<legend><?php __('Add MailTemplate');?></legend>
 	<?php
-		echo $form->input('title');
-		echo $form->input('subject');
-		echo $form->input('content');
+		echo $form->input('title', array('size'=>60));
+		echo $form->input('subject', array('size'=>60));
+//		echo $form->input('content', array('id'=>'content', 'cols'=>45, 'rows'=>20));
+		echo $tinymce->input (
+		    'content',
+		    array (
+		        'label' => false,
+		        'style' => 'height:350px; width:98%;',
+
+		    ),
+		    array (
+		        'mode' => 'textareas',
+		        'theme' => 'advanced',
+		        'theme_advanced_toolbar_location' => 'top',
+		        'theme_advanced_toolbar_align' => 'left',
+//		        'theme_advanced_statusbar_location' => 'bottom',
+		        //'theme_advanced_resizing' => true,
+		    )
+		);		
+		
 		echo $form->input('plain_text', array('type'=>'checkbox'));
 	?>
 	</fieldset>

@@ -330,12 +330,12 @@ div#main-content {
 	font-size: 12px;
 }
 
-table#listing, div#main-content table {
+table#listing, #list-form table {
 	border:1px solid #999999;
 	width: 100%; 
 	font-size: 12px;
 }
-table#listing th, div#main-content table th {
+table#listing th, #list-form th {
 	text-align: center;
 	background-image: url(../img/listing-h-bg.png);
 	background-repeat: repeat-x;
@@ -350,7 +350,7 @@ table#listing th, div#main-content table th {
 	border-right-color: #CCCCCC;
 }
 
-div#main-content table td {
+#list-form table td {
 	height: 28px;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
@@ -545,7 +545,9 @@ p.error em {
 	background: green;
 	color: #fff;
 }
-
+.red {
+	color: #f00;
+}
 /*  Actions  */
 div.actions ul {
 	margin: 0px 0;
