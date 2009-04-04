@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `mail_templates` (
   `subject` varchar(120) DEFAULT NULL,
   `content` text,
   `plain_text` int(1) DEFAULT NULL COMMENT '是否只為文本格式',
+  `attachments` text NOT NULL,
   `created` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`,`title`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
