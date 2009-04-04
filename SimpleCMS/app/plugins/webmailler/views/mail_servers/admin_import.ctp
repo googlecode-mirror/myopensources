@@ -3,7 +3,7 @@ echo $modal->modalForm('ex4', "AddForm");
 ?>
 
 <div class="mailServers form">
-<?php echo $form->create($current_model, array('url' => array('controller' => $current_controller, 'action'=>'import_data'), 'id'=>'AddForm' ) );?>
+<?php echo $form->create($current_model, array('enctype' => 'multipart/form-data', 'url' => array('controller' => $current_controller, 'action'=>'import_data'), 'id'=>'AddForm' ) );?>
 	<fieldset>
  		<legend><?php echo $msg;?></legend>
 	<?php

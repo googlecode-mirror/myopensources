@@ -1714,6 +1714,10 @@ class PHPMailer {
     preg_match_all("/(src|background)=\"(.*)\"/Ui", $message, $images);
     if(isset($images[2])) {
       foreach($images[2] as $i => $url) {
+      	if (eregi("^cid:", $url)) {
+      		continue;
+      	}
+      	
         // do not change urls for absolute images (thanks to corvuscorax)
         if (!preg_match('/^[A-z][A-z]*:\/\//',$url)) {
           $filename = basename($url);
@@ -1721,7 +1725,7 @@ class PHPMailer {
           ($directory == '.')?$directory='':'';
           $cid = 'cid:' . md5($filename);
           $fileParts = split("\.", $filename);
-          $ext = $fileParts[1];
+          $ext = isset($fileParts[1]) ? $fileParts[1] : "";
           $mimeType = $this->_mime_types($ext);
           if ( strlen($basedir) > 1 && substr($basedir,-1) != '/') { $basedir .= '/'; }
           if ( strlen($directory) > 1 && substr($directory,-1) != '/') { $directory .= '/'; }

@@ -88,12 +88,16 @@ class UploadComponent extends Object {
 	
 	function upload($filename, $model) {
         // Make sure we have the name of the uploaded file and that the Model is specified
-        if(empty($filename) || !$this->controller->data[$model][$filename]){
+        if (is_array($filename)) {
+        	$this->file = $this->controller->data[$model][$filename[0]][$filename[1]];
+        }else if(empty($filename) || !$this->controller->data[$model][$filename]){
             $this->addError('non-existant file'.$filename);
             return false;
+        }else {
+	        // save the file to the object
+	        $this->file = $this->controller->data[$model][$filename];
+        	
         }
-        // save the file to the object
-        $this->file = $this->controller->data[$model][$filename];
         
         // populate file absolute/web path
         $file_name = $this->_getFileName();
@@ -113,8 +117,12 @@ class UploadComponent extends Object {
 		else 
 			$this->_copy();
         
+        if (is_array($filename)) {
+        	$this->controller->data[$model][$filename[0]][$filename[1]] = $this->dest_web_file;
+        }else {
+        	$this->controller->data[$model][$filename] = $this->dest_web_file;
+        }
         
-        $this->controller->data[$model][$filename] = $this->dest_web_file;
 		return $this->dest_absolute_file;
 	}
 	/**
