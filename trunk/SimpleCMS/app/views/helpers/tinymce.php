@@ -17,10 +17,12 @@ class TinyMceHelper extends AppHelper {
             // We don't want to add this every time, it's only needed once
             $this->_script = true;
             $this->Javascript->link('/js/tiny_mce/tiny_mce.js', false);
+            $this->Javascript->link('/js/tiny_mce/plugins/tinybrowser/tb_tinymce.js.php', false);
         }
         // Ties the options to the field
         $tinyoptions['mode'] = 'exact';
         $tinyoptions['elements'] = $this->__name($fieldName);
+        $tinyoptions['file_browser_callback'] = 'tinyBrowser';
         return $this->Javascript->codeBlock('tinyMCE.init(' . $this->Javascript->object($tinyoptions) . ');');
     }
  
