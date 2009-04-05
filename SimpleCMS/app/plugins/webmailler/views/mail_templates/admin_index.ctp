@@ -44,7 +44,6 @@ foreach ($mailTemplates as $mailTemplate):
 		</td>
 		<td class="actions">
 			<?php echo $html->link(__('Send', true), array('action'=>'send', $mailTemplate['MailTemplate']['id']), array('class'=>'ex4Trigger', 'title' => __('Send Mail', true) )); ?>
-			<?php echo $html->link(__('View', true), array('action'=>'view', $mailTemplate['MailTemplate']['id']), array('class'=>'ex4Trigger', 'title' => __('View', true) )); ?>
 			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $mailTemplate['MailTemplate']['id']) ); ?>
 			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $mailTemplate['MailTemplate']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $mailTemplate['MailTemplate']['id'])); ?>
 		</td>
