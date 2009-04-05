@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 04 月 02 日 13:40
+-- 生成日期: 2009 年 04 月 05 日 05:18
 -- 服务器版本: 5.1.30
 -- PHP 版本: 5.2.8
 
@@ -28,6 +28,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 DROP TABLE IF EXISTS `mail_customers`;
 CREATE TABLE IF NOT EXISTS `mail_customers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mail_customer_categories_id` int(11) NOT NULL,
   `nickname` varchar(45) DEFAULT NULL,
   `gender` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
@@ -35,8 +36,26 @@ CREATE TABLE IF NOT EXISTS `mail_customers` (
   `memo` text,
   `created` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=1 ;
+  UNIQUE KEY `email` (`email`),
+  KEY `mail_customer_categories_id` (`mail_customer_categories_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=10 ;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `mail_customer_categories`
+--
+
+DROP TABLE IF EXISTS `mail_customer_categories`;
+CREATE TABLE IF NOT EXISTS `mail_customer_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) DEFAULT NULL,
+  `active` varchar(8) NOT NULL DEFAULT 'new',
+  `add_ip` varchar(24) DEFAULT NULL,
+  `created` int(11) NOT NULL,
+  `modified` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -55,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `mail_servers` (
   `created` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `host` (`host`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -73,4 +92,4 @@ CREATE TABLE IF NOT EXISTS `mail_templates` (
   `attachments` text NOT NULL,
   `created` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`,`title`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;

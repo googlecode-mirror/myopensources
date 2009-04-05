@@ -15,6 +15,7 @@ echo $paginator->counter(array(
 	<th width="40px"><input id="select_all" type="checkbox" /></th>
 	<th><?php echo $paginator->sort('id');?></th>
 	<th><?php echo $paginator->sort('nickname');?></th>
+	<th><?php echo $paginator->sort('Categories', 'mail_customer_categories_id');?></th>
 	<th><?php echo $paginator->sort('gender');?></th>
 	<th><?php echo $paginator->sort('email');?></th>
 	<th><?php echo $paginator->sort('tel');?></th>
@@ -33,6 +34,9 @@ foreach ($mailCustomers as $mailCustomer):
 		</td>
 		<td>
 			<?php echo $mailCustomer['MailCustomer']['nickname']; ?>
+		</td>
+		<td>
+			<?php echo $mailCustomer['MailCustomerCategory']['name']; ?>
 		</td>
 		<td>
 			<?php echo $gender_options[ $mailCustomer['MailCustomer']['gender'] ]; ?>
