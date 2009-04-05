@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-02 21:01+0800\n"
-"PO-Revision-Date: 2009-04-02 21:02+0800\n"
+"POT-Creation-Date: 2009-04-05 12:38+0800\n"
+"PO-Revision-Date: 2009-04-05 12:43+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -224,34 +224,181 @@ msgstr "新增文章分类"
 msgid "User deleted"
 msgstr "文章"
 
-#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:30
+#: ../../../plugins/webmailler/models/mail_template.php:124
+msgid "Mr."
+msgstr "先生"
+
+#: ../../../plugins/webmailler/models/mail_template.php:124
+msgid "Ms."
+msgstr "女士"
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:29
+msgid "Customers"
+msgstr "客户"
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:34
 #, fuzzy
-msgid "Invalid MailServer."
+msgid "New Customer"
+msgstr "系统用户"
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:36
+msgid "Export Customers"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:37
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:139
+msgid "Import Customers"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:46
+#, fuzzy
+msgid "Invalid MailCustomer."
 msgstr "文章"
 
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:58
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:75
+msgid "The MailCustomer has been saved"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:63
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:78
+msgid "The MailCustomer could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:70
+#, fuzzy
+msgid "Invalid MailCustomer"
+msgstr "文章"
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:88
+#, fuzzy
+msgid "Invalid id for MailCustomer"
+msgstr "新增文章分类"
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:92
+#, fuzzy
+msgid "MailCustomer deleted"
+msgstr "文章"
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:112
+#, fuzzy
+msgid "Nickname"
+msgstr "名称"
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:113
+msgid "Gender"
+msgstr "性别"
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:114
+msgid "Email"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:115
+msgid "Tel"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:20
+msgid "MailServer"
+msgstr "发件服务器"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:25
+#, fuzzy
+msgid "New Server"
+msgstr "系统用户"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:27
+#, fuzzy
+msgid "Export Servers"
+msgstr "导出"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:28
+#, fuzzy
+msgid "Import Servers"
+msgstr "导入"
+
 #: ../../../plugins/webmailler/controllers/mail_servers_controller.php:40
-#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:55
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:59
 msgid "The MailServer has been saved"
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:43
-#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:58
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:45
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:64
 msgid "The MailServer could not be saved. Please, try again."
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:50
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:54
 #, fuzzy
 msgid "Invalid MailServer"
 msgstr "文章"
 
-#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:68
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:74
 #, fuzzy
 msgid "Invalid id for MailServer"
 msgstr "新增文章分类"
 
-#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:72
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:78
 #, fuzzy
 msgid "MailServer deleted"
+msgstr "文章"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:98
+msgid "Host"
+msgstr "主机地址"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:99
+msgid "Ssl"
+msgstr "SSL安全连接"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:100
+msgid "Port"
+msgstr "端口号"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:101
+msgid "Account"
+msgstr "帐号"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:102
+msgid "Passwd"
+msgstr "密码"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:127
+#, fuzzy
+msgid "Import MailServer"
+msgstr "文章分类列表"
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:32
+msgid "Templates"
+msgstr "模板"
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:49
+#, fuzzy
+msgid "Invalid MailTemplate."
+msgstr "文章"
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:79
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:121
+msgid "The MailTemplate has been saved"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:82
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:124
+msgid "The MailTemplate could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:94
+#, fuzzy
+msgid "Invalid MailTemplate"
+msgstr "文章"
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:141
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:160
+#, fuzzy
+msgid "Invalid id for MailTemplate"
+msgstr "新增文章分类"
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:145
+#, fuzzy
+msgid "MailTemplate deleted"
 msgstr "文章"
 
 #: ../../../webroot/test.php:99
@@ -286,26 +433,13 @@ msgstr "收入"
 msgid "PayOut"
 msgstr "支出"
 
-#: ../../../controllers/dashboard_controller.php:10
-msgid "System name"
-msgstr "简易CMS管理系统"
+#: ../../../config/common.php:15
+msgid "Male"
+msgstr "男"
 
-#: ../../../controllers/dashboard_controller.php:25
-msgid "Article"
-msgstr "文章"
-
-#: ../../../controllers/dashboard_controller.php:31
-#: ../../../controllers/dashboard_controller.php:37
-msgid "Products"
-msgstr ""
-
-#: ../../../controllers/dashboard_controller.php:43
-msgid "WebMailler"
-msgstr ""
-
-#: ../../../controllers/dashboard_controller.php:45
-msgid "Mail Server"
-msgstr ""
+#: ../../../config/common.php:16
+msgid "Female"
+msgstr "女"
 
 #: ../../../controllers/article_categories_controller.php:17
 #: ../../../controllers/article_categories_controller.php:91
@@ -413,6 +547,27 @@ msgstr "文章"
 msgid "New Article"
 msgstr "文章"
 
+#: ../../../controllers/dashboard_controller.php:10
+msgid "System name"
+msgstr "简易CMS管理系统"
+
+#: ../../../controllers/dashboard_controller.php:25
+msgid "Article"
+msgstr "文章"
+
+#: ../../../controllers/dashboard_controller.php:31
+#: ../../../controllers/dashboard_controller.php:37
+msgid "Products"
+msgstr ""
+
+#: ../../../controllers/dashboard_controller.php:43
+msgid "WebMailler"
+msgstr "邮件群发"
+
+#: ../../../controllers/dashboard_controller.php:47
+msgid "Mail Server"
+msgstr "发件服务器"
+
 #: ../../../views/helpers/modal.php:21
 msgid "Please Wait..."
 msgstr ""
@@ -488,7 +643,7 @@ msgstr "新增文章分类"
 msgid "Add FinanceCategory"
 msgstr "新增文章分类"
 
-#: ../../../plugins/finance/views/financies/admin_edit.ctp:4
+#: ../../../plugins/finance/views/financies/admin_edit.ctp:8
 msgid "Edit Financy"
 msgstr ""
 
@@ -543,10 +698,6 @@ msgstr "简易CMS管理系统"
 msgid "Password"
 msgstr ""
 
-#: ../../../plugins/account/views/users/admin_view.ctp:19
-msgid "Gender"
-msgstr ""
-
 #: ../../../plugins/account/views/users/admin_view.ctp:24
 msgid "Realname"
 msgstr ""
@@ -570,11 +721,7 @@ msgstr "无"
 
 #: ../../../plugins/account/views/users/admin_view.ctp:49
 msgid "Mobile"
-msgstr ""
-
-#: ../../../plugins/account/views/users/admin_view.ctp:54
-msgid "Email"
-msgstr ""
+msgstr "手机"
 
 #: ../../../plugins/account/views/users/admin_view.ctp:59
 msgid "Photo"
@@ -612,34 +759,10 @@ msgstr "系统用户"
 msgid "Add User"
 msgstr "系统用户"
 
-#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:2
-msgid "MailServer"
-msgstr ""
-
-#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:9
-msgid "Host"
-msgstr "主机地址"
-
-#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:14
-msgid "Ssl"
-msgstr "SSL安全连接"
-
-#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:19
-msgid "Port"
-msgstr "端口号"
-
-#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:24
-msgid "Account"
-msgstr "帐号"
-
-#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:29
-msgid "Passwd"
-msgstr "密码"
-
 #: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:43
-#: ../../../plugins/webmailler/views/mail_servers/admin_edit.ctp:4
+#: ../../../plugins/webmailler/views/mail_servers/admin_edit.ctp:8
 msgid "Edit MailServer"
-msgstr ""
+msgstr "修改发件服务器"
 
 #: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:44
 #, fuzzy
@@ -647,19 +770,96 @@ msgid "Delete MailServer"
 msgstr "删除文章分类"
 
 #: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:45
-#: ../../../plugins/webmailler/views/mail_servers/admin_add.ctp:17
-#: ../../../plugins/webmailler/views/mail_servers/admin_edit.ctp:19
 #, fuzzy
 msgid "List MailServers"
 msgstr "文章分类列表"
 
 #: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:46
 msgid "New MailServer"
+msgstr "新增发件服务器"
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_add.ctp:8
+msgid "Add MailServer"
+msgstr "新增发件服务器"
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_edit.ctp:8
+#, fuzzy
+msgid "Edit MailTemplate"
+msgstr "修改部门"
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_edit.ctp:33
+#: ../../../plugins/webmailler/views/mail_templates/admin_add.ctp:31
+msgid "Add Attachments"
+msgstr "添加附件"
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:40
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:25
+msgid "Yes"
+msgstr "<span class='red'>是</span>"
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:40
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:25
+msgid "No"
+msgstr "否"
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:46
+msgid "Send"
+msgstr "发送"
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:46
+msgid "Send Mail"
 msgstr ""
 
-#: ../../../plugins/webmailler/views/mail_servers/admin_add.ctp:4
-msgid "Add MailServer"
-msgstr ""
+#: ../../../plugins/webmailler/views/mail_templates/admin_add.ctp:8
+#, fuzzy
+msgid "Add MailTemplate"
+msgstr "新增部门"
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:8
+msgid "Title"
+msgstr "标题"
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:13
+msgid "Subject"
+msgstr "主题"
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:18
+msgid "Content"
+msgstr "内容"
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:23
+msgid "Plain Text"
+msgstr "纯文本格式"
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_edit.ctp:8
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:43
+#, fuzzy
+msgid "Edit MailCustomer"
+msgstr "编辑"
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_edit.ctp:23
+#: ../../../plugins/webmailler/views/mail_customers/admin_add.ctp:21
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:45
+#, fuzzy
+msgid "List MailCustomers"
+msgstr "文章分类列表"
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_add.ctp:8
+msgid "Add MailCustomer"
+msgstr "新增收件人"
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:2
+msgid "MailCustomer"
+msgstr "收件客户"
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:44
+#, fuzzy
+msgid "Delete MailCustomer"
+msgstr "删除文章分类"
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:46
+msgid "New MailCustomer"
+msgstr "新增收件人"
 
 #: ../../../views/pages/home.ctp:12
 msgid "Your tmp directory is writable."
@@ -732,11 +932,13 @@ msgid "parent_id"
 msgstr "父类"
 
 #: ../../../views/article_categories/view.ctp:14
+#: ../../../views/article_categories/admin_view.ctp:14
 msgid "Name"
 msgstr "名称"
 
 #: ../../../views/article_categories/view.ctp:33
 #: ../../../views/article_categories/edit.ctp:4
+#: ../../../views/article_categories/admin_edit.ctp:4
 msgid "Edit ArticleCategory"
 msgstr "编辑文章分类"
 
@@ -746,6 +948,7 @@ msgstr "删除文章分类"
 
 #: ../../../views/article_categories/view.ctp:35
 #: ../../../views/article_categories/edit.ctp:16
+#: ../../../views/article_categories/add.ctp:14
 msgid "List ArticleCategories"
 msgstr "文章分类列表"
 
@@ -812,19 +1015,15 @@ msgstr ""
 msgid "Article Categories Id"
 msgstr "文章分类"
 
-#: ../../../views/articles/view.ctp:14
-#: ../../../views/articles/admin_view.ctp:14
-msgid "Title"
-msgstr ""
-
 #: ../../../views/articles/view.ctp:19
 #: ../../../views/articles/admin_view.ctp:19
 msgid "Contents"
-msgstr ""
+msgstr "内容"
 
 #: ../../../views/articles/view.ctp:43
 #: ../../../views/articles/admin_edit.ctp:4
 #: ../../../views/articles/admin_view.ctp:43
+#: ../../../views/articles/edit.ctp:4
 #, fuzzy
 msgid "Edit Article"
 msgstr "编辑文章分类"
@@ -838,6 +1037,9 @@ msgstr "删除文章分类"
 #: ../../../views/articles/view.ctp:45
 #: ../../../views/articles/admin_edit.ctp:18
 #: ../../../views/articles/admin_view.ctp:45
+#: ../../../views/articles/edit.ctp:18
+#: ../../../views/articles/add.ctp:16
+#: ../../../views/articles/admin_add.ctp:53
 #, fuzzy
 msgid "List Articles"
 msgstr "文章分类列表"
@@ -857,6 +1059,9 @@ msgstr "文章"
 msgid "Image"
 msgstr "图片"
 
+#, fuzzy
+#~ msgid "New Template"
+#~ msgstr "新增部门"
 #~ msgid "Search"
 #~ msgstr "查找"
 
