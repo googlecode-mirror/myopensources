@@ -18,12 +18,10 @@ class MailCustomersController extends WebmaillerAppController {
 		$this->set("gender_options", $this->gender_options);
 		
 	}
-	
 
 	function admin_index() {
 		$this->MailCustomer->recursive = 0;
 		$this->set('mailCustomers', $this->paginate());
-		
 		$this->breakcrumb = array(
 			'nav' => array(
 				array('text'=> __("Customers", true), 'url'=>'/admin/webmailler/mail_customers' ),
@@ -38,7 +36,6 @@ class MailCustomersController extends WebmaillerAppController {
 				
 			)
 		);
-		
 	}
 
 	function admin_view($id = null) {
@@ -63,9 +60,13 @@ class MailCustomersController extends WebmaillerAppController {
 				$this->Session->setFlash(__('The MailCustomer could not be saved. Please, try again.', true));
 			}
 		}
+		$mailCustomerCategories = $this->MailCustomer->MailCustomerCategory->find('list');
+		$this->set(compact('mailCustomerCategories'));
 	}
 
 	function admin_edit($id = null) {
+		$this->layout = 'ajax';
+		
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid MailCustomer', true));
 			$this->redirect(array('action'=>'index'));
@@ -73,7 +74,9 @@ class MailCustomersController extends WebmaillerAppController {
 		if (!empty($this->data)) {
 			if ($this->MailCustomer->save($this->data)) {
 				$this->Session->setFlash(__('The MailCustomer has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				echo "done";
+				exit;
+//				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The MailCustomer could not be saved. Please, try again.', true));
 			}
@@ -81,6 +84,8 @@ class MailCustomersController extends WebmaillerAppController {
 		if (empty($this->data)) {
 			$this->data = $this->MailCustomer->read(null, $id);
 		}
+		$mailCustomerCategories = $this->MailCustomer->MailCustomerCategory->find('list');
+		$this->set(compact('mailCustomerCategories'));
 	}
 
 	function admin_delete($id = null) {
@@ -110,6 +115,7 @@ class MailCustomersController extends WebmaillerAppController {
 		$data = array();
 		$title_data = array(
 			__("Nickname", true), 
+			__("Categories", true), 
 			__("Gender", true), 
 			__("Email", true), 
 			__("Tel", true), 
@@ -119,6 +125,7 @@ class MailCustomersController extends WebmaillerAppController {
 		foreach ($raw_data as $row){
 			$item = array(
 				$row['MailCustomer']['nickname'],
+				$row['MailCustomer']['mail_customer_category_id'],
 				$row['MailCustomer']['gender'],
 				$row['MailCustomer']['email'],
 				$row['MailCustomer']['tel'],
@@ -159,9 +166,10 @@ class MailCustomersController extends WebmaillerAppController {
 						foreach ($data as $key => $item) {
 							$tmp = array('MailCustomer'=>array(
 								'nickname'=>$item[0],
-								'gender'=>$item[1],
-								'email'=>$item[2],
-								'tel'=>$item[3],
+								'mail_customer_category_id'=>$item[1],
+								'gender'=>$item[2],
+								'email'=>$item[3],
+								'tel'=>$item[4],
 							
 							));
 							unset($data[$key]);
@@ -185,6 +193,6 @@ class MailCustomersController extends WebmaillerAppController {
 		}
 		
 	}
-	
+
 }
 ?>

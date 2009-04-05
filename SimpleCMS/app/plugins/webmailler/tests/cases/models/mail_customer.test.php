@@ -1,11 +1,11 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* MailCustomer Test cases generated on: 2009-04-03 15:04:05 : 1238744945*/
+/* MailCustomer Test cases generated on: 2009-04-05 05:04:45 : 1238909385*/
 App::import('Model', 'Webmailler.MailCustomer');
 
 class MailCustomerTestCase extends CakeTestCase {
 	var $MailCustomer = null;
-	var $fixtures = array('plugin.webmailler.mail_customer');
+	var $fixtures = array('plugin.webmailler.mail_customer', 'plugin.webmailler.mail_customer_category');
 
 	function startTest() {
 		$this->MailCustomer =& ClassRegistry::init('MailCustomer');
@@ -22,6 +22,7 @@ class MailCustomerTestCase extends CakeTestCase {
 
 		$expected = array('MailCustomer' => array(
 			'id'  => 1,
+			'mail_customer_category_id'  => 1,
 			'nickname'  => 'Lorem ipsum dolor sit amet',
 			'gender'  => 'Lorem ipsum dolor sit amet',
 			'email'  => 'Lorem ipsum dolor sit amet',

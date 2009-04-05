@@ -14,8 +14,8 @@ echo $paginator->counter(array(
 <tr>
 	<th width="40px"><input id="select_all" type="checkbox" /></th>
 	<th><?php echo $paginator->sort('id');?></th>
+	<th><?php echo $paginator->sort('Categories', 'mail_customer_category_id');?></th>
 	<th><?php echo $paginator->sort('nickname');?></th>
-	<th><?php echo $paginator->sort('Categories', 'mail_customer_categories_id');?></th>
 	<th><?php echo $paginator->sort('gender');?></th>
 	<th><?php echo $paginator->sort('email');?></th>
 	<th><?php echo $paginator->sort('tel');?></th>
@@ -33,10 +33,10 @@ foreach ($mailCustomers as $mailCustomer):
 			<?php echo $mailCustomer['MailCustomer']['id']; ?>
 		</td>
 		<td>
-			<?php echo $mailCustomer['MailCustomer']['nickname']; ?>
+			<?php echo $mailCustomer['MailCustomerCategory']['name']; ?>
 		</td>
 		<td>
-			<?php echo $mailCustomer['MailCustomerCategory']['name']; ?>
+			<?php echo $mailCustomer['MailCustomer']['nickname']; ?>
 		</td>
 		<td>
 			<?php echo $gender_options[ $mailCustomer['MailCustomer']['gender'] ]; ?>
@@ -64,3 +64,4 @@ foreach ($mailCustomers as $mailCustomer):
  | 	<?php echo $paginator->numbers();?>
 	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
 </div>
+
