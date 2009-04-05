@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* MailCustomersController Test cases generated on: 2009-04-03 15:04:14 : 1238745074*/
+/* MailCustomersController Test cases generated on: 2009-04-05 05:04:37 : 1238909437*/
 App::import('Controller', 'Webmailler.MailCustomers');
 
 class TestMailCustomers extends MailCustomersController {

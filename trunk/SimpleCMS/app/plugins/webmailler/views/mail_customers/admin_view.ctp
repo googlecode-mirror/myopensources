@@ -6,6 +6,11 @@
 			<?php echo $mailCustomer['MailCustomer']['id']; ?>
 			&nbsp;
 		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Mail Customer Category'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $html->link($mailCustomer['MailCustomerCategory']['name'], array('controller'=> 'mail_customer_categories', 'action'=>'view', $mailCustomer['MailCustomerCategory']['id'])); ?>
+			&nbsp;
+		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nickname'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $mailCustomer['MailCustomer']['nickname']; ?>
@@ -44,5 +49,7 @@
 		<li><?php echo $html->link(__('Delete MailCustomer', true), array('action'=>'delete', $mailCustomer['MailCustomer']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $mailCustomer['MailCustomer']['id'])); ?> </li>
 		<li><?php echo $html->link(__('List MailCustomers', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('New MailCustomer', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $html->link(__('List Mail Customer Categories', true), array('controller'=> 'mail_customer_categories', 'action'=>'index')); ?> </li>
+		<li><?php echo $html->link(__('New Mail Customer Category', true), array('controller'=> 'mail_customer_categories', 'action'=>'add')); ?> </li>
 	</ul>
 </div>
