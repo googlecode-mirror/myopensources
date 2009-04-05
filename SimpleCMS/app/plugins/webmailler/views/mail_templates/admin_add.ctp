@@ -1,4 +1,7 @@
-<?php echo $javascript->link( array('attachments') ); ?>
+<?php 
+echo $html->css( array("attachments") );
+echo $javascript->link( array('attachments') ); 
+?>
 <div class="mailTemplates form">
 <?php echo $form->create('MailTemplate', array('id'=>'AddForm','enctype' => 'multipart/form-data' ) );?>
 	<fieldset>
@@ -25,7 +28,7 @@
 		);		
 		
 		echo $form->input('plain_text', array('type'=>'checkbox'));
-		echo $html->link(__("Add Attach", true), "javascript:void(0);", array('id'=>'add_attach'));
+		echo $html->link(__("Add Attachments", true), "javascript:void(0);", array('id'=>'add_attach'));
 	?>
 	<ul id="attachments">
 		

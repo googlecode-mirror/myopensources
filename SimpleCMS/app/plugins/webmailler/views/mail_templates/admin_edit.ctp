@@ -1,4 +1,7 @@
-<?php echo $javascript->link( array('attachments') ); ?>
+<?php 
+echo $html->css( array("attachments") );
+echo $javascript->link( array('attachments') ); 
+?>
 <div class="mailTemplates form">
 <?php echo $form->create('MailTemplate', array('id'=>'AddForm', 'enctype' => 'multipart/form-data') );?>
 	<fieldset>
@@ -27,17 +30,18 @@
 		    )
 		);		
 		echo $form->input('plain_text', array('type'=>'checkbox'));
-		echo $html->link(__("Add Attach", true), "javascript:void(0);", array('id'=>'add_attach'));
+		echo $html->link(__("Add Attachments", true), "javascript:void(0);", array('id'=>'add_attach'));
 	?>
 	<ul id="attachments">
 		<?php foreach ($attachments as $attach): ?>
 		<?php 
 			$path_parts = pathinfo($attach);
 		?>
-		<li class="icon_<?php $path_parts["extension"];?> old_attach">
+		<li>
+		<span class="fileIcos ext<?php echo strtolower($path_parts["extension"]);?>"></span>
 		<INPUT TYPE="hidden" NAME="data[MailTemplate][old_attachments][]" value="<?php echo $attach; ?>">
 		<?php echo $path_parts["basename"]; ?>
-		&nbsp;&nbsp;<a href="javascript:void(0);" class="remove_attach" ><?php __("Remove"); ?></a>
+		&nbsp;&nbsp;<a href="javascript:void(0);" class="remove_attach" ><?php __("Delete"); ?></a>
 		</li>
 		<?php endforeach; ?>
 	</ul>
