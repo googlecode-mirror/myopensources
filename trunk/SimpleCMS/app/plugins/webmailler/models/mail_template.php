@@ -160,7 +160,6 @@ class MailTemplate extends WebmaillerAppModel {
 				$f_pattern = array("../../../../app/webroot/", "/");
 				$f_replace = array(WWW_ROOT, DIRECTORY_SEPARATOR);
 				$dest_file = str_replace($f_pattern, $f_replace, $org_img);
-				print "{$dest_file} <br/>";
 				//-- embed image
 				$email_obj->AddEmbeddedImage($dest_file, $cid, $cid);
 				$i++;
