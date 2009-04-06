@@ -46,6 +46,33 @@
 			
     </target>
 
-	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: ReleaseWebmailer                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="ReleaseWebmailer">
+    	<copy todir="D:/www/pub/webmailer">
+			<fileset dir="./">
+    			<include name=".htaccess"/>
+    			<include name="index.php"/>
+    			<include name="app/*"/>
+    			<include name="app/config/**"/>
+    			<include name="app/webroot/**"/>
+    			<include name="app/locale/**"/>
+    			<include name="app/controllers/**"/>
+    			<include name="app/views/helpers/**"/>
+    			<include name="app/views/users/**"/>
+    			<include name="app/views/pages/**"/>
+    			<include name="app/views/layouts/**"/>
+    			<include name="app/views/elements/**"/>
+    			<include name="app/views/dashboard/**"/>
+    			<include name="app/plugins/webmailler/**"/>
+    			<include name="app/plugins/account/**"/>
+    			<include name="app/tmp/cache"/>
+    			<include name="app/tmp/sessions"/>
+    		</fileset>
+		</copy>
+            
+    </target>
+
 	
 </project>
