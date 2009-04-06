@@ -23,6 +23,17 @@ class TinyMceHelper extends AppHelper {
         $tinyoptions['mode'] = 'exact';
         $tinyoptions['elements'] = $this->__name($fieldName);
         $tinyoptions['file_browser_callback'] = 'tinyBrowser';
+        
+		$default_setting = array (
+		        'theme_advanced_toolbar_location' => 'top',
+		        'theme_advanced_toolbar_align' => 'left',
+		    	'plugins' => "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+		    	'theme_advanced_buttons1'=>"save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+		    	'theme_advanced_buttons2'=>"cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+		    	'theme_advanced_buttons3'=>"tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+		    );
+		$tinyoptions = array_merge($tinyoptions, $default_setting);    
+                
         return $this->Javascript->codeBlock('tinyMCE.init(' . $this->Javascript->object($tinyoptions) . ');');
     }
  
