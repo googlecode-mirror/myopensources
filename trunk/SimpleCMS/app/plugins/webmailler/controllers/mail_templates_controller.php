@@ -21,6 +21,7 @@ class MailTemplatesController extends WebmaillerAppController {
 	) 
 	); 
 	var $attachments_splitor = '\001';
+	var $group_splitor = ',';
 	
 	
 	function admin_index() {
@@ -56,6 +57,10 @@ class MailTemplatesController extends WebmaillerAppController {
 //		$this->layout = 'ajax';
 		
 		if (!empty($this->data)) {
+			if (is_array($this->data['MailTemplate']['to'])) {
+				$this->data['MailTemplate']['to'] = implode($this->group_splitor, $this->data['MailTemplate']['to']);
+			}
+			
 			// do validate
 			$this->MailTemplate->set($this->data);
 			if ( $this->MailTemplate->validates() ) {
@@ -85,18 +90,29 @@ class MailTemplatesController extends WebmaillerAppController {
 			}
 			
 		}
+		
+		//--- get customer groups
+		App::import('Model', 'Webmailler.MailCustomerCategory');
+		$MailCustomerCategory = new MailCustomerCategory();
+		$mailCustomerCategories = $MailCustomerCategory->find('list');
+		$this->set(compact('mailCustomerCategories'));
 	}
 
 	function admin_edit($id = null) {
 //		$this->layout = 'ajax';
 		$attachments = array();
+		$uncheck_groups = $checked_groups = array();
+		
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid MailTemplate', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if (!empty($this->data)) {
-			
 			// do validate
+			if (is_array($this->data['MailTemplate']['to'])) {
+				$this->data['MailTemplate']['to'] = implode($this->group_splitor, $this->data['MailTemplate']['to']);
+			} 
+			
 			$this->MailTemplate->set($this->data);
 			if ( $this->MailTemplate->validates() ) {
 				
@@ -133,6 +149,27 @@ class MailTemplatesController extends WebmaillerAppController {
 			}
 			
 		}
+		//--- get customer groups
+		App::import('Model', 'Webmailler.MailCustomerCategory');
+		$MailCustomerCategory = new MailCustomerCategory();
+		$mailCustomerCategories = $MailCustomerCategory->find('list');
+		if (empty($this->data['MailTemplate']['to'])) {
+			$uncheck_groups = $mailCustomerCategories;
+		}else {
+			$groups = explode($this->group_splitor, $this->data['MailTemplate']['to']);
+			foreach ($mailCustomerCategories as $key=>$value) {
+				if (in_array($key, $groups)) {
+					$checked_groups[$key] = $value;
+				}else {
+					$uncheck_groups[$key] = $value;
+				}
+			}
+			
+		}
+		
+		$this->set('uncheck_groups', $uncheck_groups );
+		$this->set('checked_groups', $checked_groups);
+			
 		$this->set('attachments', $attachments);
 	}
 
@@ -160,7 +197,8 @@ class MailTemplatesController extends WebmaillerAppController {
 			$this->Session->setFlash(__('Invalid id for MailTemplate', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->MailTemplate->sendMail($id);
+		$mail_msg = $this->MailTemplate->sendMail($id);
+		$this->set("mail_msg", $mail_msg);
 	}
 		
 }

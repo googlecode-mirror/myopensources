@@ -3,11 +3,16 @@ class MailTemplate extends WebmaillerAppModel {
 
 	var $name = 'MailTemplate';
 	var $validate = array(
+		'to' => array('notempty'),
+		'from' => array('notempty'),
+		'from_name' => array('notempty'),
 		'title' => array('notempty'),
 		'subject' => array('notempty'),
 		'content' => array('notempty')
 	);
 	var $attachments_splitor = '\001';
+	var $group_splitor = ',';
+	var $mail_msg;
 	
 	/**
 	 * Send email to all customers according provided template id
@@ -18,6 +23,7 @@ class MailTemplate extends WebmaillerAppModel {
 	 * @return	void
 	 */
 	function sendMail($id) {
+		$this->mail_msg = array();
 		$mail_template = $this->read(null, $id);
 		$mail_data = $mail_template['MailTemplate'];
 		
@@ -43,6 +49,7 @@ class MailTemplate extends WebmaillerAppModel {
 				'fields' => array('MailCustomer.nickname', 'MailCustomer.gender', 'MailCustomer.email'),
 				'limit' => $limit,
 				'page' => $page, 
+				'conditions' => array('MailCustomer.mail_customer_category_id'=> explode($this->group_splitor, $mail_data['to']) ),
 			);
 			$customers_list = $mail_customer_obj->find('all', $conditions);
 			$customers = Set::extract($customers_list, '{n}.MailCustomer');
@@ -66,15 +73,18 @@ class MailTemplate extends WebmaillerAppModel {
 					$mail->AddReplyTo($server['account'],"JohnMeng");
 					
 					$mail->From       = $server['account'];
-					$mail->FromName   = "JohnMeng";
+					$mail->FromName   = $mail_data["from"];
+
+					$mail->AddReplyTo($mail_data["from_name"],$mail_data["from"]);
 					
 					$mail->Subject    = $mail_data['subject'];
 					$contents = $this->_parseMailContent( $mail_data['content'], $customer );
 					if ($mail_data['plain_text']) {
-						$mail->Body = $contents;
+						$mail->Body = strip_tags($contents);
 					} else{
 						$contents = $this->_parseEmbedMedia($contents, $mail);
 						$mail->MsgHTML($contents);
+						$mail->AltBody    = strip_tags($contents);
 					}
 					
 					$mail->AddAddress($customer['email'], $customer['nickname']);
@@ -90,9 +100,9 @@ class MailTemplate extends WebmaillerAppModel {
 					
 					
 					if(!$mail->Send()) {
-					  echo "Mailer Error: " . $mail->ErrorInfo . "<br/>";
+					  $this->mail_msg[] = sprintf(__("Send to %s error: %s ", true), $customer['email'], $mail->ErrorInfo);
 					} else {
-					  echo "Message sent! <br/>";//{$server['host']} TO  {$customer['email']}
+					  $this->mail_msg[] = sprintf(__("Send to %s done ", true), $customer['email']);
 					}
 					
 					
@@ -101,7 +111,7 @@ class MailTemplate extends WebmaillerAppModel {
 			}
 			
 		}
-		
+		return $this->mail_msg;
 	}
 	
 	/**

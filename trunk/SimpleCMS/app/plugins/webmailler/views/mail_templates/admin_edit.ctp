@@ -6,8 +6,37 @@ echo $javascript->link( array('attachments') );
 <?php echo $form->create('MailTemplate', array('id'=>'AddForm', 'enctype' => 'multipart/form-data') );?>
 	<fieldset>
  		<legend><?php __('Edit MailTemplate');?></legend>
+ 		
+ 		<div id="mail-to">
+		 <div class="multi-select">
+		  <?php echo $form->input('categories', array( 
+				  'label'=>__("Customer groups", true), 
+	  			  'id'=>'select1', 
+				  'type' => 'select',
+		  		  'options' => $uncheck_groups, 
+				  'multiple' => true 
+			  )); 
+		  ?>  
+		  <a href="#" id="add"><?php __("Add to") ?> &gt;&gt;</a>  
+		 </div>  
+		 
+		 <div class="multi-select" >  
+		  <?php echo $form->input('to', array( 
+				  'label'=>__("Will receive email groups", true), 
+				  'id'=>'select2', 
+				  'type' => 'select',
+		  		  'selected' => true,
+		  		  'options' => $checked_groups, 
+		  		  'multiple' => true 
+		  )); ?>  
+		  <a href="#" id="remove">&lt;&lt; <?php __("Remove") ?></a>  
+		 </div> 
+		 
+		</div> 
 	<?php
 		echo $form->input('id');
+		echo $form->input('from', array('label'=>__("Sender Name", true)) );
+		echo $form->input('from_name', array('label'=>__("Reply Email", true)) );
 		echo $form->input('title', array('size'=>60));
 		echo $form->input('subject', array('size'=>60));
 //		echo $form->input('content');
@@ -21,12 +50,6 @@ echo $javascript->link( array('attachments') );
 		    array (
 		        'mode' => 'textareas',
 		        'theme' => 'advanced',
-		        'theme_advanced_toolbar_location' => 'top',
-		        'theme_advanced_toolbar_align' => 'left',
-		    	'plugins' => "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
-		    	'theme_advanced_buttons1'=>"save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
-		    	'theme_advanced_buttons2'=>"cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-		    	'theme_advanced_buttons3'=>"tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
 		    )
 		);		
 		echo $form->input('plain_text', array('type'=>'checkbox'));
@@ -45,6 +68,8 @@ echo $javascript->link( array('attachments') );
 		</li>
 		<?php endforeach; ?>
 	</ul>
+	<br/>
+	<div><?php __("Template tips"); ?></div>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $form->end('Submit', array('id'=>'select-submit'));?>
 </div>
