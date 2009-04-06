@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2009 年 04 月 05 日 05:18
+-- 生成日期: 2009 年 04 月 06 日 01:45
 -- 服务器版本: 5.1.30
 -- PHP 版本: 5.2.8
 
@@ -28,7 +28,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 DROP TABLE IF EXISTS `mail_customers`;
 CREATE TABLE IF NOT EXISTS `mail_customers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mail_customer_categories_id` int(11) NOT NULL,
+  `mail_customer_category_id` int(11) NOT NULL,
   `nickname` varchar(45) DEFAULT NULL,
   `gender` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
@@ -37,8 +37,8 @@ CREATE TABLE IF NOT EXISTS `mail_customers` (
   `created` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
-  KEY `mail_customer_categories_id` (`mail_customer_categories_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=10 ;
+  KEY `mail_customer_categories_id` (`mail_customer_category_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `mail_customer_categories` (
   `created` int(11) NOT NULL,
   `modified` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC ;
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `mail_servers` (
   `created` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `host` (`host`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
 -- --------------------------------------------------------
 
@@ -85,6 +85,9 @@ CREATE TABLE IF NOT EXISTS `mail_servers` (
 DROP TABLE IF EXISTS `mail_templates`;
 CREATE TABLE IF NOT EXISTS `mail_templates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `to` varchar(120) NOT NULL,
+  `from` varchar(120) NOT NULL,
+  `from_name` varchar(120) NOT NULL,
   `title` varchar(120) NOT NULL,
   `subject` varchar(120) DEFAULT NULL,
   `content` text,
@@ -92,4 +95,4 @@ CREATE TABLE IF NOT EXISTS `mail_templates` (
   `attachments` text NOT NULL,
   `created` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`,`title`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
