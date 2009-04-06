@@ -9,6 +9,7 @@ echo $paginator->counter(array(
 'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
 ));
 ?></p>
+<form id='list-form' action='<?php echo $html->url("/admin/account/departments/delSelected");?>' method='POST'>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo $paginator->sort('id');?></th>
@@ -29,7 +30,6 @@ echo $paginator->counter(array(
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
-$i = 0;
 foreach ($users as $user):
 ?>
 	<tr>
@@ -86,6 +86,7 @@ foreach ($users as $user):
 	</tr>
 <?php endforeach; ?>
 </table>
+</form>
 </div>
 <div class="paging">
 	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
