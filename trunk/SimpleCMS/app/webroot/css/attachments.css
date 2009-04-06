@@ -147,3 +147,23 @@
 .extreg {
 	background-position: -974px 0
 }
+
+.multi-select a {  
+ display: block;  
+ border: 1px solid #aaa;  
+ text-decoration: none;  
+ background-color: #fafafa;  
+ color: #123456;  
+ margin: 2px;  
+ clear:both;  
+}  
+.multi-select {  
+ float:left;  
+ text-align: center;  
+ margin: 10px;
+ clear:none; 
+}  
+.multi-select select {  
+ width: 180px;  
+ height: 80px;  
+}  
