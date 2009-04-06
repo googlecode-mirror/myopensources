@@ -6,7 +6,29 @@ echo $javascript->link( array('attachments') );
 <?php echo $form->create('MailTemplate', array('id'=>'AddForm','enctype' => 'multipart/form-data' ) );?>
 	<fieldset>
  		<legend><?php __('Add MailTemplate');?></legend>
+ 		
+ 		<div id="mail-to">
+		 <div class="multi-select">
+		  <?php echo $form->input('categories', array( 
+				  'label'=>__("Customer groups", true), 
+	  			  'id'=>'select1', 
+				  'type' => 'select',
+		  		  'options' => $mailCustomerCategories, 
+				  'multiple' => true 
+			  )); 
+		  ?>  
+		  <a href="#" id="add"><?php __("Add to") ?> &gt;&gt;</a>  
+		 </div>  
+		 
+		 <div class="multi-select" >  
+		  <?php echo $form->input('to', array( 'label'=>__("Will receive email groups", true), 'id'=>'select2', 'type' => 'select', 'multiple' => true )); ?>  
+		  <a href="#" id="remove">&lt;&lt; <?php __("Remove") ?></a>  
+		 </div> 
+		 
+		</div> 
 	<?php
+		echo $form->input('from', array('label'=>__("Sender Name", true)) );
+		echo $form->input('from_name', array('label'=>__("Reply Email", true)) );
 		echo $form->input('title', array('size'=>60));
 		echo $form->input('subject', array('size'=>60));
 //		echo $form->input('content', array('id'=>'content', 'cols'=>45, 'rows'=>20));
@@ -33,6 +55,9 @@ echo $javascript->link( array('attachments') );
 	<ul id="attachments">
 		
 	</ul>
+	<br/>
+	<div><?php __("Template tips"); ?></div>
+	
 	</fieldset>
 <?php echo $form->end('Submit');?>
 </div>
