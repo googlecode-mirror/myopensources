@@ -2,7 +2,7 @@
 <div id="breakcrumb">
   <div id="b-left"></div>
   <div id="b-main">
-  	<span>当前位置: 首页
+  	<span><?php __("Current Position"); ?>: <?php __("Home"); ?>
   	<?php if( isset($nav) ):?>
   		<?php foreach($nav as $item):?>
   			-&gt;

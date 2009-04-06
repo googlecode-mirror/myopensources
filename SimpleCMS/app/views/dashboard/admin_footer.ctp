@@ -10,8 +10,8 @@ EOD;
 echo $javascript->codeBlock($inline_script);
 ?>
     <div id="footer">
-        <div id="footer-user">用户: <?php echo $authuser['User']['username'] ?></div>
+        <div id="footer-user"><?php __("User"); ?>: <?php echo $authuser['User']['username'] ?></div>
         <em></em> 
-        <div id="footer-user">角色: 管理员</div>
-        <div id="footer-time">日期:<span class="jdate">2008年10月11日　星期六 </span><span class="jclock"></span> </div>
+        <div id="footer-user"><?php __("Role"); ?>: <?php __("Admin"); ?></div>
+        <div id="footer-time"><?php __("Time"); ?>:<span class="jdate">2008-10-11　Sun </span><span class="jclock"></span> </div>
     </div>
