@@ -1,0 +1,737 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webmailer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-06 10:36+0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: ../../..\n"
+
+#: ../../../app_controller.php:87
+msgid "Login failed. Invalid username or password."
+msgstr ""
+
+#: ../../../app_controller.php:88
+msgid "You are not authorized to access that location."
+msgstr ""
+
+#: ../../../app_controller.php:109
+msgid "Deleted select records"
+msgstr ""
+
+#: ../../../views/helpers/modal.php:21
+msgid "Please Wait..."
+msgstr ""
+
+#: ../../../views/helpers/modal.php:55
+msgid "Modal Dialog Title"
+msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:13
+msgid "Department"
+msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:14
+msgid "Listing"
+msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:18
+msgid "New"
+msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:18
+msgid "New Department"
+msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:19
+msgid "Delete"
+msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:32
+#: ../../../plugins/account/controllers/departments_controller.php:51
+msgid "The Department has been saved"
+msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:37
+#: ../../../plugins/account/controllers/departments_controller.php:54
+msgid "The Department could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:46
+msgid "Invalid Department"
+msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:64
+msgid "Invalid id for Department"
+msgstr ""
+
+#: ../../../plugins/account/controllers/departments_controller.php:68
+msgid "Department deleted"
+msgstr ""
+
+#: ../../../plugins/account/controllers/users_controller.php:13
+msgid "Users"
+msgstr ""
+
+#: ../../../plugins/account/controllers/users_controller.php:18
+msgid "New Users"
+msgstr ""
+
+#: ../../../plugins/account/controllers/users_controller.php:28
+msgid "Invalid User."
+msgstr ""
+
+#: ../../../plugins/account/controllers/users_controller.php:40
+#: ../../../plugins/account/controllers/users_controller.php:57
+msgid "The User has been saved"
+msgstr ""
+
+#: ../../../plugins/account/controllers/users_controller.php:43
+#: ../../../plugins/account/controllers/users_controller.php:60
+msgid "The User could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/account/controllers/users_controller.php:52
+msgid "Invalid User"
+msgstr ""
+
+#: ../../../plugins/account/controllers/users_controller.php:70
+msgid "Invalid id for User"
+msgstr ""
+
+#: ../../../plugins/account/controllers/users_controller.php:74
+msgid "User deleted"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:33
+#: ../../../controllers/dashboard_controller.php:28
+msgid "Templates"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:50
+msgid "Invalid MailTemplate."
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:84
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:137
+msgid "The MailTemplate has been saved"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:87
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:140
+msgid "The MailTemplate could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:107
+msgid "Invalid MailTemplate"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:178
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:197
+msgid "Invalid id for MailTemplate"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:182
+msgid "MailTemplate deleted"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:27
+#: ../../../controllers/dashboard_controller.php:29
+msgid "Customers"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:32
+msgid "New Customer"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:34
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:27
+msgid "Export"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:34
+msgid "Export Customers"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:35
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:28
+msgid "Import"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:35
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:146
+msgid "Import Customers"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:43
+msgid "Invalid MailCustomer."
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:55
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:76
+msgid "The MailCustomer has been saved"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:60
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:81
+msgid "The MailCustomer could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:71
+msgid "Invalid MailCustomer"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:93
+msgid "Invalid id for MailCustomer"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:97
+msgid "MailCustomer deleted"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:117
+msgid "Nickname"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:118
+msgid "Categories"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:119
+msgid "Gender"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:120
+msgid "Email"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customers_controller.php:121
+msgid "Tel"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:20
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:14
+msgid "MailServer"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:25
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:19
+msgid "New Server"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:27
+msgid "Export Servers"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:28
+msgid "Import Servers"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:40
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:59
+msgid "The MailServer has been saved"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:45
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:64
+msgid "The MailServer could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:54
+msgid "Invalid MailServer"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:74
+msgid "Invalid id for MailServer"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:78
+msgid "MailServer deleted"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:98
+msgid "Host"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:99
+msgid "Ssl"
+msgstr "SSL"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:100
+msgid "Port"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:101
+msgid "Account"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:102
+msgid "Passwd"
+msgstr "Password"
+
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:127
+msgid "Import MailServer"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:30
+msgid "Invalid MailCustomerCategory."
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:42
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:61
+msgid "The MailCustomerCategory has been saved"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:47
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:66
+msgid "The MailCustomerCategory could not be saved. Please, try again."
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:56
+msgid "Invalid MailCustomerCategory"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:76
+msgid "Invalid id for MailCustomerCategory"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:80
+msgid "MailCustomerCategory deleted"
+msgstr ""
+
+#: ../../../plugins/webmailler/models/mail_template.php:103
+#, php-format
+msgid "Send to %s error: %s "
+msgstr ""
+
+#: ../../../plugins/webmailler/models/mail_template.php:105
+#, php-format
+msgid "Send to %s done "
+msgstr ""
+
+#: ../../../plugins/webmailler/models/mail_template.php:134
+msgid "Mr."
+msgstr ""
+
+#: ../../../plugins/webmailler/models/mail_template.php:134
+msgid "Ms."
+msgstr ""
+
+#: ../../../controllers/dashboard_controller.php:10
+msgid "System name"
+msgstr "WebMailer"
+
+#: ../../../controllers/dashboard_controller.php:26
+msgid "WebMailler"
+msgstr ""
+
+#: ../../../controllers/dashboard_controller.php:30
+msgid "Cust Categories"
+msgstr ""
+
+#: ../../../controllers/dashboard_controller.php:31
+msgid "Mail Server"
+msgstr ""
+
+#: ../../../webroot/test.php:99
+msgid "Debug setting does not allow access to this url."
+msgstr ""
+
+#: ../../../config/common.php:5
+msgid "Live"
+msgstr ""
+
+#: ../../../config/common.php:6
+msgid "Deleted"
+msgstr ""
+
+#: ../../../config/common.php:10
+msgid "Income"
+msgstr ""
+
+#: ../../../config/common.php:11
+msgid "PayOut"
+msgstr ""
+
+#: ../../../config/common.php:15
+msgid "Male"
+msgstr ""
+
+#: ../../../config/common.php:16
+msgid "Female"
+msgstr ""
+
+#: ../../../views/layouts/default.ctp:30
+msgid "CakePHP: the rapid development php framework:"
+msgstr ""
+
+#: ../../../views/layouts/default.ctp:44
+#: ../../../views/layouts/default.ctp:55
+msgid "CakePHP: the rapid development php framework"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:15
+msgid "Main Menu"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:35
+msgid "System"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:37
+msgid "Backup/Restore"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:38
+#: ../../../views/dashboard/admin_top.ctp:9
+msgid "Logout"
+msgstr ""
+
+#: ../../../views/dashboard/admin_left.ctp:38
+#: ../../../views/dashboard/admin_top.ctp:9
+msgid "Are you sure want to logout?"
+msgstr ""
+
+#: ../../../views/users/login.ctp:22
+msgid "Login"
+msgstr ""
+
+#: ../../../views/users/login.ctp:23
+msgid "Reset"
+msgstr ""
+
+#: ../../../views/pages/home.ctp:12
+msgid "Your tmp directory is writable."
+msgstr ""
+
+#: ../../../views/pages/home.ctp:16
+msgid "Your tmp directory is NOT writable."
+msgstr ""
+
+#: ../../../views/pages/home.ctp:26
+#, php-format
+msgid "The %s is being used for caching. To change the config edit APP/config/core.php "
+msgstr ""
+
+#: ../../../views/pages/home.ctp:30
+msgid "Your cache is NOT working. Please check the settings in APP/config/core.php"
+msgstr ""
+
+#: ../../../views/pages/home.ctp:40
+msgid "Your database configuration file is present."
+msgstr ""
+
+#: ../../../views/pages/home.ctp:45
+msgid "Your database configuration file is NOT present."
+msgstr ""
+
+#: ../../../views/pages/home.ctp:47
+msgid "Rename config/database.php.default to config/database.php"
+msgstr ""
+
+#: ../../../views/pages/home.ctp:62
+msgid "Cake is able to connect to the database."
+msgstr ""
+
+#: ../../../views/pages/home.ctp:66
+msgid "Cake is NOT able to connect to the database."
+msgstr ""
+
+#: ../../../views/pages/home.ctp:72
+msgid "Editing this Page"
+msgstr ""
+
+#: ../../../views/pages/home.ctp:75
+#, php-format
+msgid ""
+"To change the content of this page, edit: %s\n"
+"\t\tTo change its layout, edit: %s\n"
+"\t\tYou can also add some CSS styles for your pages at: %s"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_index.ctp:9
+#: ../../../plugins/account/views/departments/admin_index.ctp:9
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:9
+msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_index.ctp:30
+#: ../../../plugins/account/views/departments/admin_index.ctp:20
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:21
+msgid "Actions"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_index.ctp:82
+msgid "View"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_index.ctp:83
+#: ../../../plugins/account/views/departments/admin_index.ctp:43
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:47
+msgid "Edit"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_index.ctp:84
+#: ../../../plugins/account/views/users/admin_edit.ctp:27
+#: ../../../plugins/account/views/users/admin_view.ctp:94
+#: ../../../plugins/account/views/departments/admin_edit.ctp:14
+#: ../../../plugins/account/views/departments/admin_index.ctp:44
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:48
+#, php-format
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_index.ctp:92
+#: ../../../plugins/account/views/departments/admin_index.ctp:52
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:56
+msgid "previous"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_index.ctp:94
+#: ../../../plugins/account/views/departments/admin_index.ctp:54
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:58
+msgid "next"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_edit.ctp:4
+#: ../../../plugins/account/views/users/admin_view.ctp:93
+msgid "Edit User"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_edit.ctp:28
+#: ../../../plugins/account/views/users/admin_view.ctp:95
+msgid "List Users"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:2
+msgid "User"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:4
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:3
+msgid "Id"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:9
+msgid "Username"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:14
+msgid "Password"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:24
+msgid "Realname"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:29
+msgid "Birthday"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:34
+msgid "Marriage"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:39
+msgid "Addrees"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:44
+msgid "Phone"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:49
+msgid "Mobile"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:59
+msgid "Photo"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:64
+msgid "Memo"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:69
+msgid "User Id"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:74
+msgid "Add Ip"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:79
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:28
+msgid "Created"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:84
+msgid "Modified"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:94
+msgid "Delete User"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_view.ctp:96
+msgid "New User"
+msgstr ""
+
+#: ../../../plugins/account/views/users/admin_add.ctp:8
+msgid "Add User"
+msgstr ""
+
+#: ../../../plugins/account/views/departments/admin_edit.ctp:4
+msgid "Edit Department"
+msgstr ""
+
+#: ../../../plugins/account/views/departments/admin_edit.ctp:15
+msgid "List Departments"
+msgstr ""
+
+#: ../../../plugins/account/views/departments/admin_add.ctp:8
+msgid "Add Department"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:8
+msgid "Title"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:13
+msgid "Subject"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:18
+msgid "Content"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:23
+msgid "Plain Text"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:25
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:40
+msgid "Yes"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:25
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:40
+msgid "No"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_add.ctp:8
+msgid "Add MailTemplate"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_add.ctp:13
+msgid "Customer groups"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_add.ctp:20
+msgid "Add to"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_add.ctp:24
+msgid "Will receive email groups"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_add.ctp:25
+msgid "Remove"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_add.ctp:30
+msgid "Sender Name"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_add.ctp:31
+msgid "Reply Email"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_add.ctp:53
+msgid "Add Attachments"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_add.ctp:59
+msgid "Template tips"
+msgstr "Tips：Can use follow placeholde in template<br/>#name   Customer name<br/>#gender Gender Mr./Ms.<br/>#date   Current date time<br/>"
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:46
+msgid "Send"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_templates/admin_edit.ctp:8
+msgid "Edit MailTemplate"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_add.ctp:8
+msgid "Add MailCustomer"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:2
+msgid "MailCustomer"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:9
+msgid "Mail Customer Category"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:48
+#: ../../../plugins/webmailler/views/mail_customers/admin_edit.ctp:8
+msgid "Edit MailCustomer"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:49
+msgid "Delete MailCustomer"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:50
+msgid "List MailCustomers"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:51
+msgid "New MailCustomer"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:52
+msgid "List Mail Customer Categories"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_customers/admin_view.ctp:53
+msgid "New Mail Customer Category"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_edit.ctp:8
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:43
+msgid "Edit MailServer"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_add.ctp:8
+msgid "Add MailServer"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:44
+msgid "Delete MailServer"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:45
+msgid "List MailServers"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_servers/admin_view.ctp:46
+msgid "New MailServer"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_customer_categories/admin_edit.ctp:8
+msgid "Edit MailCustomerCategory"
+msgstr ""
+
+#: ../../../plugins/webmailler/views/mail_customer_categories/admin_add.ctp:8
+msgid "Add MailCustomerCategory"
+msgstr ""
+

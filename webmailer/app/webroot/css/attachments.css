@@ -1,0 +1,169 @@
+@CHARSET "UTF-8";
+
+#attachments ul {
+
+}
+
+#attachments li {
+	clear: both;
+	float: left;
+	height: 25px;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #CCCCCC;
+	line-height: 25px;
+	vertical-align: middle;
+}
+
+#attachments li span {
+	float: left;
+	margin-right: 4px;
+}
+
+#add_attach {
+	background-image: url(../img/stock_attach-16.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+	width: 160px;
+	height: 25px;
+	display: block;
+	line-height: 25px;
+	color: #003366;
+	text-decoration: none;
+	text-align: left;
+	text-indent: 20px;
+}
+
+.remove_attach {
+	color: #993333;
+	text-decoration: none;
+}
+
+.fileIcos {
+	width: 16px;
+	height: 16px;
+	display: block;
+	background-image:url(../img/file_icon.gif);
+	background-repeat: no-repeat;
+}
+
+.extxls {
+	background-position: -10px 0
+}
+
+.extcsv {
+	background-position: -681px 0
+}
+
+
+.extzip {
+	background-position: -52px 0
+}
+
+.extchm {
+	background-position: -94px 0
+}
+
+.extcss {
+	background-position: -136px 0
+}
+
+.exteml {
+	background-position: -179px 0
+}
+
+.extjs {
+	background-position: -220px 0
+}
+
+.extjpg {
+	background-position: -262px 0
+}
+
+.extiso {
+	background-position: -303px 0
+}
+
+.exthtm {
+	background-position: -345px 0
+}
+
+.exthlp {
+	background-position: -387px 0
+}
+
+.extgif {
+	background-position: -429px 0
+}
+
+.extfon {
+	background-position: -472px 0
+}
+
+.extcom {
+	background-position: -513px 0
+}
+
+.extmid {
+	background-position: -555px 0
+}
+
+.extdoc {
+	background-position: -597px 0
+}
+
+.extdef {
+	background-position: -641px 0
+}
+
+.extpdf {
+	background-position: -723px 0
+}
+
+.extexe {
+	background-position: -764px 0
+}
+
+.extukn {
+	background-position: -764px 0
+}
+
+.extppt {
+	background-position: -806px 0
+}
+
+.extbmp {
+	background-position: -848px 0
+}
+
+.extrar {
+	background-position: -890px 0
+}
+
+.exttxt {
+	background-position: -934px 0
+}
+
+.extreg {
+	background-position: -974px 0
+}
+
+.multi-select a {  
+ display: block;  
+ border: 1px solid #aaa;  
+ text-decoration: none;  
+ background-color: #fafafa;  
+ color: #123456;  
+ margin: 2px;  
+ clear:both;  
+}  
+.multi-select {  
+ float:left;  
+ text-align: center;  
+ margin: 10px;
+ clear:none; 
+}  
+.multi-select select {  
+ width: 180px;  
+ height: 80px;  
+}  
