@@ -1,0 +1,86 @@
+* {
+	margin:0;
+	padding:0;
+}
+#doc #bd #footer {
+	background-image: url(images/f-m-bg.png);
+	background-repeat: repeat-x;
+	height: 77px;
+	width: 100%;
+	float: left;
+}
+
+
+
+body {
+	background-attachment: fixed;
+	background-image: url(images/bd-bg.png);
+	background-repeat: repeat-x;
+	background-color: #000000;
+	margin: 0px;
+	padding: 0px;
+	font-size: 12px;
+	margin-right: auto;
+	margin-left: auto;	
+	width: 792px;
+}
+#doc #bd #content {
+	margin: 0px;
+	float: left;
+	width: 450px;
+	padding-bottom: 20px;
+	padding-left: 45px;
+}
+
+#doc #bd #content #r-sidebar {
+	margin-left:545px;
+	padding:20px 0 10px;
+	width:190px;
+}
+#doc #bd #footer #copyright {
+	color: #666666;
+	text-decoration: none;
+	margin-top: 12px;
+	margin-left: 20px;
+	width: 450px;
+	float: left;
+}
+
+
+#doc {
+	background-color: #CCCCCC;
+	padding-right: 6px;
+	padding-left: 6px;
+}
+
+#doc #bd {
+	background-color: #FFFFFF;
+	width: 780px;
+	margin-left: 6px;
+	float: left;
+}
+#doc #bd #header #t-banner-menu-bg {
+	background-image: url(images/t-bg.png);
+	background-repeat: repeat-x;
+	clear: both;
+	height: 131px;
+	width: 100%;
+}
+#doc #bd #footer #left {
+	background-image: url(images/f-l-bg.png);
+	background-repeat: no-repeat;
+	height: 77px;
+	width: 10px;
+	display: block;
+	float: left;
+	margin: 0px;
+	padding: 0px;
+}
+#doc #bd #footer #right {
+	background-image: url(images/f-r-bg.png);
+	background-repeat: no-repeat;
+	height: 77px;
+	width: 10px;
+	display: block;
+	float: right;
+}
