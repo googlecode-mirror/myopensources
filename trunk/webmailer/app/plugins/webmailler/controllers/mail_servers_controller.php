@@ -153,10 +153,13 @@ class MailServersController extends WebmaillerAppController {
 								'passwd'=>$item[4],
 							
 							));
+							if ($tmp['MailServer']['host']) {
+								$this->MailServer->create();
+								$this->MailServer->save($tmp);
+							}
+							
 							unset($data[$key]);
-							$data[$key] = $tmp;
 						}
-						$this->MailServer->saveAll($data);
 						
 					}
 					
