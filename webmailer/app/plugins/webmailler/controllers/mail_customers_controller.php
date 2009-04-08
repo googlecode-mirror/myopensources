@@ -172,10 +172,13 @@ class MailCustomersController extends WebmaillerAppController {
 								'tel'=>$item[4],
 							
 							));
+							if ($tmp['MailCustomer']['email']) {
+								$this->MailCustomer->create();
+								$this->MailCustomer->save($tmp);
+							}
+							
 							unset($data[$key]);
-							$data[$key] = $tmp;
 						}
-						$this->MailCustomer->saveAll($data);
 						
 					}
 					
