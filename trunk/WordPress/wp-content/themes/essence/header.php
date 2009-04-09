@@ -32,5 +32,19 @@ if ( !empty($withcomments) && !is_single() ) {
   <div id="header">
   	<!-- top banner and menu block -->
   	<div id="t-banner-menu-bg">
+        <!--banner -->
+        <div id="banner"></div>
+    	<!--logo -->
+        <div id="logo"></div>
+    	<!--menu -->
+        <div id="main-menu">
+        	<ul>
+            	<li><a href="####">Home</a></li>
+            	<li><a href="####">About Us</a></li>
+            	<li><a href="####">Articles</a></li>
+            	<li><a href="####">Products</a></li>
+            	<li><a href="####">Contact Us</a></li>
+            </ul>
+        </div>
     </div>
   </div>
