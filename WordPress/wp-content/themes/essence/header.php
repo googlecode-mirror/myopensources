@@ -39,11 +39,8 @@ if ( !empty($withcomments) && !is_single() ) {
     	<!--menu -->
         <div id="main-menu">
         	<ul>
-            	<li><a href="####">Home</a></li>
-            	<li><a href="####">About Us</a></li>
-            	<li><a href="####">Articles</a></li>
-            	<li><a href="####">Products</a></li>
-            	<li><a href="####">Contact Us</a></li>
+				<li><a href="<?php echo get_option('home'); ?>/" class="active">Home</a></li>
+				<?php wp_list_pages('title_li='); ?>
             </ul>
         </div>
     </div>
