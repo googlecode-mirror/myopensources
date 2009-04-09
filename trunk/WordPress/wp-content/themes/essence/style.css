@@ -1,0 +1,106 @@
+/*
+Theme Name: Essence
+Theme URI: http://www.35vt.com
+Description: Light and clean Wordpress theme from <a href="http://digitalnature.ro/">digitalnature</a>. <br />Localization support and theme options available
+Version: 2.7
+Author: John.Meng
+Author URI: http://www.35vt.com
+Tags: light, two-columns, fixed-width, flexible-width, right-sidebar, theme-options, threaded-comments, white
+
+	Fusion Wordpress theme
+	  http://digitalnature.ro/projects/fusion
+
+	Theme designed by digitalnature. See the project page for more information and updates
+
+	The CSS, XHTML and design is released under GPL.
+    http://www.opensource.org/licenses/gpl-license.php
+
+*/
+
+
+* {
+	margin:0;
+	padding:0;
+}
+#doc #bd #footer {
+	background-image: url(images/f-m-bg.png);
+	background-repeat: repeat-x;
+	height: 77px;
+	width: 100%;
+	float: left;
+}
+
+
+
+body {
+	background-attachment: fixed;
+	background-image: url(images/bd-bg.png);
+	background-repeat: repeat-x;
+	background-color: #000000;
+	margin: 0px;
+	padding: 0px;
+	font-size: 12px;
+	margin-right: auto;
+	margin-left: auto;	
+	width: 792px;
+}
+#doc #bd #content {
+	margin: 0px;
+	float: left;
+	width: 450px;
+	padding-bottom: 20px;
+	padding-left: 45px;
+}
+
+#doc #bd #r-sidebar {
+	margin-left:545px;
+	padding:20px 0 10px;
+	width:190px;
+}
+#doc #bd #footer #copyright {
+	color: #666666;
+	text-decoration: none;
+	margin-top: 12px;
+	margin-left: 20px;
+	width: 550px;
+	float: left;
+}
+
+
+#doc {
+	background-color: #CCCCCC;
+	padding-right: 6px;
+	padding-left: 6px;
+}
+
+#doc #bd {
+	background-color: #FFFFFF;
+	width: 780px;
+	margin-left: 6px;
+	float: left;
+}
+#doc #bd #header #t-banner-menu-bg {
+	background-image: url(images/t-bg.png);
+	background-repeat: repeat-x;
+	clear: both;
+	height: 131px;
+	width: 100%;
+}
+#doc #bd #footer #left {
+	background-image: url(images/f-l-bg.png);
+	background-repeat: no-repeat;
+	height: 77px;
+	width: 10px;
+	display: block;
+	float: left;
+	margin: 0px;
+	padding: 0px;
+}
+#doc #bd #footer #right {
+	background-image: url(images/f-r-bg.png);
+	background-repeat: no-repeat;
+	height: 77px;
+	width: 10px;
+	display: block;
+	float: right;
+}
