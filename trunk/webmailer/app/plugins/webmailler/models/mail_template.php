@@ -101,16 +101,16 @@ class MailTemplate extends WebmaillerAppModel {
 					
 					
 					if(!$mail->Send()) {
-					  printf(__("Send to %s error: %s <br/>", true), $customer['email'], $mail->ErrorInfo);
-					  $success++;	
-					} else {
-					  printf(__("Send to %s done <br/>", true), $customer['email']);
+					  printf(__("Send to %s error: %s ", true). "<br/>", $customer['email'], $mail->ErrorInfo);
 					  $fail++;
+					} else {
+					  printf(__("Send to %s done ", true). "<br/>", $customer['email']);
+					  $success++;	
 					}
 					$total ++;
 				}
-				echo printf(__("Sent Total:%s Success:%s Fail:%s <br/>", true), $total, $success, $fail);
-				
+				printf(__("Sent Total:%s Success:%s Fail:%s ", true). "<br/>", $total, $success, $fail);
+								
 			}
 			
 		}

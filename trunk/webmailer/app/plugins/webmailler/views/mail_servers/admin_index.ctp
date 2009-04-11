@@ -18,7 +18,6 @@ echo $paginator->counter(array(
 	<th><?php echo $paginator->sort('ssl');?></th>
 	<th><?php echo $paginator->sort('port');?></th>
 	<th><?php echo $paginator->sort('account');?></th>
-	<th><?php echo $paginator->sort('passwd');?></th>
 	<th><?php echo $paginator->sort('created');?></th>
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
@@ -37,16 +36,13 @@ foreach ($mailServers as $mailServer):
 			<?php echo $mailServer['MailServer']['host']; ?>
 		</td>
 		<td>
-			<?php echo $mailServer['MailServer']['ssl']; ?>
+			<?php echo $mailServer['MailServer']['ssl'] ? __("Yes", true) : __("No", true) ; ?>
 		</td>
 		<td>
 			<?php echo $mailServer['MailServer']['port']; ?>
 		</td>
 		<td>
 			<?php echo $mailServer['MailServer']['account']; ?>
-		</td>
-		<td>
-			<?php echo $mailServer['MailServer']['passwd']; ?>
 		</td>
 		<td>
 			<?php echo $time->format('Y-m-d H:i', $mailServer['MailServer']['created']) ; ?>

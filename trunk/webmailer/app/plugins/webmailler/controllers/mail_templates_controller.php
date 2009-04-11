@@ -199,7 +199,7 @@ class MailTemplatesController extends WebmaillerAppController {
 		}
 		$this->autoRender = false;
 		$mail_msg = $this->MailTemplate->sendMail($id);
-		echo __("Done all", true);
+		echo __("All Done");
 	}
 		
 }

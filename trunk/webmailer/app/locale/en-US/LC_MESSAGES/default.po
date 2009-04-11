@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Webmailer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-06 10:36+0800\n"
+"POT-Creation-Date: 2009-04-11 14:42+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -109,36 +109,40 @@ msgstr ""
 msgid "User deleted"
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:33
-#: ../../../controllers/dashboard_controller.php:28
-msgid "Templates"
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:14
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:20
+msgid "MailServer"
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:50
-msgid "Invalid MailTemplate."
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:19
+#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:25
+msgid "New Server"
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:84
-#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:137
-msgid "The MailTemplate has been saved"
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:30
+msgid "Invalid MailCustomerCategory."
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:87
-#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:140
-msgid "The MailTemplate could not be saved. Please, try again."
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:42
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:61
+msgid "The MailCustomerCategory has been saved"
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:107
-msgid "Invalid MailTemplate"
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:47
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:66
+msgid "The MailCustomerCategory could not be saved. Please, try again."
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:178
-#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:197
-msgid "Invalid id for MailTemplate"
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:56
+msgid "Invalid MailCustomerCategory"
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:182
-msgid "MailTemplate deleted"
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:76
+msgid "Invalid id for MailCustomerCategory"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:80
+msgid "MailCustomerCategory deleted"
 msgstr ""
 
 #: ../../../plugins/webmailler/controllers/mail_customers_controller.php:27
@@ -215,16 +219,6 @@ msgstr ""
 msgid "Tel"
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:20
-#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:14
-msgid "MailServer"
-msgstr ""
-
-#: ../../../plugins/webmailler/controllers/mail_servers_controller.php:25
-#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:19
-msgid "New Server"
-msgstr ""
-
 #: ../../../plugins/webmailler/controllers/mail_servers_controller.php:27
 msgid "Export Servers"
 msgstr ""
@@ -279,47 +273,62 @@ msgstr "Password"
 msgid "Import MailServer"
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:30
-msgid "Invalid MailCustomerCategory."
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:33
+#: ../../../controllers/dashboard_controller.php:28
+msgid "Templates"
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:42
-#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:61
-msgid "The MailCustomerCategory has been saved"
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:50
+msgid "Invalid MailTemplate."
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:47
-#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:66
-msgid "The MailCustomerCategory could not be saved. Please, try again."
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:84
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:137
+msgid "The MailTemplate has been saved"
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:56
-msgid "Invalid MailCustomerCategory"
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:87
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:140
+msgid "The MailTemplate could not be saved. Please, try again."
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:76
-msgid "Invalid id for MailCustomerCategory"
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:107
+msgid "Invalid MailTemplate"
 msgstr ""
 
-#: ../../../plugins/webmailler/controllers/mail_customer_categories_controller.php:80
-msgid "MailCustomerCategory deleted"
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:178
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:197
+msgid "Invalid id for MailTemplate"
 msgstr ""
 
-#: ../../../plugins/webmailler/models/mail_template.php:103
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:182
+msgid "MailTemplate deleted"
+msgstr ""
+
+#: ../../../plugins/webmailler/controllers/mail_templates_controller.php:202
+msgid "All Done"
+msgstr ""
+
+#: ../../../plugins/webmailler/models/mail_template.php:104
 #, php-format
 msgid "Send to %s error: %s "
 msgstr ""
 
-#: ../../../plugins/webmailler/models/mail_template.php:105
+#: ../../../plugins/webmailler/models/mail_template.php:107
 #, php-format
 msgid "Send to %s done "
 msgstr ""
 
-#: ../../../plugins/webmailler/models/mail_template.php:134
+#: ../../../plugins/webmailler/models/mail_template.php:112
+#, php-format
+msgid "Sent Total:%s Success:%s Fail:%s "
+msgstr ""
+
+#: ../../../plugins/webmailler/models/mail_template.php:137
 msgid "Mr."
 msgstr ""
 
-#: ../../../plugins/webmailler/models/mail_template.php:134
+#: ../../../plugins/webmailler/models/mail_template.php:137
 msgid "Ms."
 msgstr ""
 
@@ -333,7 +342,7 @@ msgstr ""
 
 #: ../../../controllers/dashboard_controller.php:30
 msgid "Cust Categories"
-msgstr ""
+msgstr "Cust Groups"
 
 #: ../../../controllers/dashboard_controller.php:31
 msgid "Mail Server"
@@ -367,6 +376,19 @@ msgstr ""
 msgid "Female"
 msgstr ""
 
+#: ../../../views/layouts/admin_login.ctp:21
+#: ../../../views/layouts/admin_login.ctp:25
+msgid "System Name"
+msgstr "WebMailler"
+
+#: ../../../views/layouts/admin_login.ctp:22
+msgid "User Login"
+msgstr ""
+
+#: ../../../views/layouts/admin_login.ctp:25
+msgid " V 1.0.0"
+msgstr ""
+
 #: ../../../views/layouts/default.ctp:30
 msgid "CakePHP: the rapid development php framework:"
 msgstr ""
@@ -381,6 +403,7 @@ msgid "Main Menu"
 msgstr ""
 
 #: ../../../views/dashboard/admin_left.ctp:35
+#: ../../../views/dashboard/admin_top.ctp:8
 msgid "System"
 msgstr ""
 
@@ -396,6 +419,35 @@ msgstr ""
 #: ../../../views/dashboard/admin_left.ctp:38
 #: ../../../views/dashboard/admin_top.ctp:9
 msgid "Are you sure want to logout?"
+msgstr ""
+
+#: ../../../views/dashboard/admin_top.ctp:6
+msgid "Article"
+msgstr ""
+
+#: ../../../views/dashboard/admin_footer.ctp:13
+msgid "User"
+msgstr ""
+
+#: ../../../views/dashboard/admin_footer.ctp:15
+msgid "Role"
+msgstr ""
+
+#: ../../../views/dashboard/admin_footer.ctp:15
+msgid "Admin"
+msgstr ""
+
+#: ../../../views/dashboard/admin_footer.ctp:16
+msgid "Time"
+msgstr ""
+
+#: ../../../views/users/login.ctp:14
+msgid "Name"
+msgstr ""
+
+#: ../../../views/users/login.ctp:17
+#: ../../../plugins/account/views/users/admin_view.ctp:14
+msgid "Password"
 msgstr ""
 
 #: ../../../views/users/login.ctp:22
@@ -455,11 +507,19 @@ msgid ""
 "\t\tYou can also add some CSS styles for your pages at: %s"
 msgstr ""
 
+#: ../../../views/elements/breakcrumb.ctp:5
+msgid "Current Position"
+msgstr ""
+
+#: ../../../views/elements/breakcrumb.ctp:5
+msgid "Home"
+msgstr ""
+
 #: ../../../plugins/account/views/users/admin_index.ctp:9
 #: ../../../plugins/account/views/departments/admin_index.ctp:9
 #: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:9
 msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
-msgstr ""
+msgstr "Page <span class='red'>%page%</span> of <span class='red'>%pages%</span>, showing <span class='red'>%current%</span> records out of <span class='red'>%count%</span> total, starting on record <span class='red'>%start%</span>, ending on <span class='red'>%end%</span>"
 
 #: ../../../plugins/account/views/users/admin_index.ctp:30
 #: ../../../plugins/account/views/departments/admin_index.ctp:20
@@ -509,10 +569,6 @@ msgstr ""
 msgid "List Users"
 msgstr ""
 
-#: ../../../plugins/account/views/users/admin_view.ctp:2
-msgid "User"
-msgstr ""
-
 #: ../../../plugins/account/views/users/admin_view.ctp:4
 #: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:3
 msgid "Id"
@@ -520,10 +576,6 @@ msgstr ""
 
 #: ../../../plugins/account/views/users/admin_view.ctp:9
 msgid "Username"
-msgstr ""
-
-#: ../../../plugins/account/views/users/admin_view.ctp:14
-msgid "Password"
 msgstr ""
 
 #: ../../../plugins/account/views/users/admin_view.ctp:24
@@ -618,7 +670,7 @@ msgstr ""
 #: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:25
 #: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:40
 msgid "Yes"
-msgstr ""
+msgstr "<span class='red'>Yes</span>"
 
 #: ../../../plugins/webmailler/views/mail_templates/admin_view.ctp:25
 #: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:40
@@ -659,7 +711,7 @@ msgstr ""
 
 #: ../../../plugins/webmailler/views/mail_templates/admin_add.ctp:59
 msgid "Template tips"
-msgstr "Tips：Can use follow placeholde in template<br/>#name   Customer name<br/>#gender Gender Mr./Ms.<br/>#date   Current date time<br/>"
+msgstr "Tips：Can use follow placeholde in template<br/>\v#name   Customer name<br/>\v#gender Gender Mr./Ms.<br/>\v#date   Current date time<br/>"
 
 #: ../../../plugins/webmailler/views/mail_templates/admin_index.ctp:46
 msgid "Send"

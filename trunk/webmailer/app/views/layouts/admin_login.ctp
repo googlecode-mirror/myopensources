@@ -18,11 +18,11 @@
     <div id="login-contain">
     
    	  <div id="top-container">
-      	<div id="left-text">Testing System</div>
-      	<div id="right-text">User Login</div>
+      	<div id="left-text"><?php __("System Name"); ?></div>
+      	<div id="right-text"><?php __("User Login"); ?></div>
       </div>
       
-      <div id="system-name">Testing Manage System V 1.0.0</div>
+      <div id="system-name"><?php __("System Name"); __(" V 1.0.0"); ?></div>
 	  
 	  <div id="login-container">
 	  	<?php echo $content_for_layout ?>
