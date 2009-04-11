@@ -32,10 +32,10 @@ if ( !empty($withcomments) && !is_single() ) {
   <div id="header">
   	<!-- top banner and menu block -->
   	<div id="t-banner-menu-bg">
-        <!--banner -->
-        <div id="banner"></div>
     	<!--logo -->
         <div id="logo"></div>
+        <!--banner -->
+        <div id="banner"><span></span></div>
     	<!--menu -->
         <div id="main-menu">
         	<ul>
