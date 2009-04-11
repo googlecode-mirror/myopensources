@@ -43,6 +43,7 @@ class MailTemplate extends WebmaillerAppModel {
 		$limit = count($servers);
 		$total = $mail_customer_obj->find('count');
 		$pages = ceil($total/$limit);
+		$total = $success = $fail =0;
 		
 		for ($page=1; $page<=$pages; $page++) {
 			$conditions = array(
@@ -54,7 +55,6 @@ class MailTemplate extends WebmaillerAppModel {
 			$customers_list = $mail_customer_obj->find('all', $conditions);
 			$customers = Set::extract($customers_list, '{n}.MailCustomer');
 			if (is_array($customers)) {
-				$total = $success = $fail =0;
 				foreach ($customers as $key=>$customer) {
 					$server = $servers[$key];
 					$mail = new PHPMailer();
@@ -107,13 +107,13 @@ class MailTemplate extends WebmaillerAppModel {
 					  printf(__("Send to %s done ", true). "<br/>", $customer['email']);
 					  $success++;	
 					}
-					$total ++;
 				}
-				printf(__("Sent Total:%s Success:%s Fail:%s ", true). "<br/>", $total, $success, $fail);
 								
 			}
+			$total ++;
 			
 		}
+		printf(__("Sent Total:%s Success:%s Fail:%s ", true). "<br/>", $total, $success, $fail);
 		return $this->mail_msg;
 	}
 	
