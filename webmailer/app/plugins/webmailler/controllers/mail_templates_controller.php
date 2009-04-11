@@ -197,8 +197,9 @@ class MailTemplatesController extends WebmaillerAppController {
 			$this->Session->setFlash(__('Invalid id for MailTemplate', true));
 			$this->redirect(array('action'=>'index'));
 		}
+		$this->autoRender = false;
 		$mail_msg = $this->MailTemplate->sendMail($id);
-		$this->set("mail_msg", $mail_msg);
+		echo __("Done all", true);
 	}
 		
 }

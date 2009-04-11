@@ -54,6 +54,7 @@ class MailTemplate extends WebmaillerAppModel {
 			$customers_list = $mail_customer_obj->find('all', $conditions);
 			$customers = Set::extract($customers_list, '{n}.MailCustomer');
 			if (is_array($customers)) {
+				$total = $success = $fail =0;
 				foreach ($customers as $key=>$customer) {
 					$server = $servers[$key];
 					$mail = new PHPMailer();
@@ -100,13 +101,15 @@ class MailTemplate extends WebmaillerAppModel {
 					
 					
 					if(!$mail->Send()) {
-					  $this->mail_msg[] = sprintf(__("Send to %s error: %s ", true), $customer['email'], $mail->ErrorInfo);
+					  printf(__("Send to %s error: %s <br/>", true), $customer['email'], $mail->ErrorInfo);
+					  $success++;	
 					} else {
-					  $this->mail_msg[] = sprintf(__("Send to %s done ", true), $customer['email']);
+					  printf(__("Send to %s done <br/>", true), $customer['email']);
+					  $fail++;
 					}
-					
-					
+					$total ++;
 				}
+				echo printf(__("Sent Total:%s Success:%s Fail:%s <br/>", true), $total, $success, $fail);
 				
 			}
 			
