@@ -293,6 +293,15 @@ div#main-menu  ul li a {
 	margin-bottom: 6px;
 }
 
+.post-page {
+	letter-spacing: 2px;
+	line-height: 18px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	font-size:14px;
+	text-indent: 16px;
+}
+
 .post-comments{
 	background-image: url(images/comments_bg.png);
 	background-repeat: no-repeat;
@@ -335,6 +344,37 @@ div#main-menu  ul li a {
 	clear: right;
 	float:left;
 	width:450px;
+}
+
+/*---- single detail --*/
+
+.single-detail h2 {
+	text-align: center;
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: bold;
+}
+
+.single-detail .entry {
+	letter-spacing: 2px;
+	line-height: 18px;
+	margin-top: 20px;
+	margin-bottom: 16px;
+	font-size:14px;
+	text-indent: 16px;
+}
+
+.navigation {
+	width: 540px;
+	clear: both;
+	float: left;
+	margin-top: 20px;
+}
+
+.single-detail .postdata {
+	width: 400px;
+	padding-top:12px;
+	padding-left:120px;
 }
 
 /*--- icons ------*/
