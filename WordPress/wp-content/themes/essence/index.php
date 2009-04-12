@@ -12,17 +12,27 @@
 	
 
 			<div class="post" id="post-<?php the_ID(); ?>">
-			<div class="post-comments">
-						<?php comments_popup_link(__('0'), __('1'), __('%')); ?>
-						</div>
+				<div class="post-comments">
+					<?php comments_popup_link(__('0'), __('1'), __('%')); ?>
+					<span><?php echo __("Comments"); ?></span>
+				</div>
 				<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 				<div class="postdata">
-Posted by <?php the_author() ?> on <?php the_time('M j, Y') ?> in <?php the_category(', ') ?> <?php edit_post_link('Edit', '&#124; ', ''); ?>
-					</div>
+					<span class="author-icon small-icon">
+					<?php echo __("Author"); ?> <?php the_author() ?> 
+					<?php echo __("Date/Time"); ?> <?php the_time('Y/m/d H:i') ?> 
+					</span>
+				</div>
 
 				
 					<?php the_content('Read more... '); ?>
-				<p class="single-meta" style="float:right; margin-top:5px; margin-right:10px; font-size:11px; "> <?php the_tags(); ?></p>
+				<div id="single-meta">
+					<span class="category-icon  small-icon">
+					<?php the_category(', ') ?>
+					</span>
+					<?php edit_post_link(__('Edit post'), '<span class="edit-icon  small-icon">', '</span>'); ?>
+					<?php the_tags('<span class="tag-icon  small-icon">', ',', '</span>'); ?>
+				</div>
 
 				
 			</div>
