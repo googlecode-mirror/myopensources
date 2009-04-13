@@ -246,12 +246,12 @@ div#main-menu {
 	margin-top: 2px;
 	padding-left: 20px;
 }
-div#main-menu  ul {
+div#main-menu  ul, ul.page_item ul {
 	height: 26px;
 	
 }
 
-div#main-menu  ul li {
+div#main-menu  ul li, ul.page_item ul li {
 	display: block;
 	float: left;
 	font-weight: bold;
@@ -272,7 +272,7 @@ div#main-menu  ul li:hover, menu-atived {
 	background-color: #FF9933;
 }
 
-div#main-menu  ul li a {
+div#main-menu  ul li a, ul.page_item ul li  a {
 	text-decoration: none;
 	color: #FFFFFF;
 }

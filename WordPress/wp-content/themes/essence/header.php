@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php wp_title('&laquo;', true, 'right'); ?><?php bloginfo('name'); ?></title>
-<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 <link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name'); ?> Atom Feed" href="<?php bloginfo('atom_url'); ?>" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
@@ -20,7 +19,8 @@ if ( !empty($withcomments) && !is_single() ) {
 <?php } ?>
 
 </style>
-
+<?php wp_head(); ?>
+<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -40,7 +40,7 @@ if ( !empty($withcomments) && !is_single() ) {
         <div id="main-menu">
         	<ul>
 				<li><a href="<?php echo get_option('home'); ?>/" class="active"><?php echo __("Home"); ?></a></li>
-				<?php wp_list_pages('title_li='); ?>
+				<?php wp_list_pages('depth=1&title_li='); ?>
             </ul>
         </div>
     </div>
