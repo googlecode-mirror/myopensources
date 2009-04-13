@@ -69,17 +69,22 @@ function bot_menu()
 function bot_admin_actions()
 {
     // Add a new top-level menu (ill-advised):
-    add_menu_page('Test Toplevel', 'Test Toplevel', 1, __FILE__, 'mt_toplevel_page');
+    add_menu_page('Test Toplevel', 'Test Toplevel', 1, 'bots.php', 'mt_toplevel_page');
     // Add a submenu to the custom top-level menu:
-    add_submenu_page(__FILE__, 'Test Sublevel', 'John Test Sublevel', 1, 'sub-page', 'mt_sublevel_page');
+    add_submenu_page('bots.php', 'Test Sublevel', 'John Test Sublevel', 1, 'sub-page', 'mt_sublevel_page');
     // Add a second submenu to the custom top-level menu:
-    add_submenu_page(__FILE__, 'Test Sublevel 2', 'Test Sublevel 2', 8, 'sub-page2', 'mt_sublevel_page2');
+    add_submenu_page('bots.php', 'Test Sublevel 2', 'Test Sublevel 2', 8, 'sub-page2', 'mt_sublevel_page2');
     // Add a second submenu to the custom top-level menu:
-    add_submenu_page(__FILE__, __('Sub Menu 3'), __('Sub Menu 3'), 8, 'sub-page3', 'mt_options_page');
+    add_submenu_page('bots.php', __('Sub Menu 3'), __('Sub Menu 3'), 8, 'sub-page3', 'mt_options_page');
     
 	add_options_page("Bot Counter", "Bot Counter", 1, "Bot-Counter", "bot_menu");
 	add_management_page('Test Manage', 'Test User Manage', 1, 'testmanage', 'mt_manage_page');
+	add_meta_box( 'sub-page3', __( 'My Post Section Title'), 
+                'myplugin_inner_custom_box', 'sub-page3', 'advanced' );
 	
+    myplugin_add_custom_box();
+    
+	add_meta_box("yourplugin_helloworld", __('Say Hello'), "yourplugin_helloworld_meta_box", "sub-page3");  
     
 }
  
@@ -100,12 +105,66 @@ function mt_sublevel_page() {
 // mt_sublevel_page2() displays the page content for the second submenu
 // of the custom Test Toplevel menu
 function mt_sublevel_page2() {
-    echo "<h2>Test Sublevel 2</h2>";
+	echo "<h2>Test Sublevel 2</h2>";
+    
 }
+
+function nggallery_admin_overview()  {	
+?>
+<div id="dashboard_server_settings" class="dashboard-widget-holder wp_dashboard_empty">
+	<div class="ngg-dashboard-widget">
+	  <?php if (IS_WPMU) {
+	  	if (wpmu_enable_function('wpmuQuotaCheck'))
+			echo ngg_SpaceManager::details();
+		else {
+			//TODO:WPMU message in WP2.5 style
+			echo ngg_SpaceManager::details();
+		}
+	  } else { ?>
+	  	<div class="dashboard-widget-content">
+      		<ul class="settings">
+      		<?php ngg_get_serverinfo(); ?>
+	   		</ul>
+		</div>
+	  <?php } ?>
+    </div>
+</div>
+
+<?php
+}
+///* Prints the inner fields for the custom post/page section */
+//function myplugin_inner_custom_box() {
+//
+//  // Use nonce for verification
+//
+//  echo '<input type="hidden" name="myplugin_noncename" id="myplugin_noncename" value="' . 
+//    wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
+//
+//  // The actual fields for data entry
+//
+//  echo '<label for="myplugin_new_field">' . __("Description for this field", 'myplugin_textdomain' ) . '</label> ';
+//  echo '<input type="text" name="myplugin_new_field" value="whatever" size="25" />';
+//}
+
+	function yourplugin_helloworld_meta_box(){  
+	?>  
+<div id="dashboard_server_settings" class="dashboard-widget-holder">
+	<div class="ngg-dashboard-widget">
+	  	<div class="dashboard-widget-content">
+	  		<ul class="settings">
+			Hello, world!  gdsafdsfd
+			</ul>
+		</div>
+    </div>
+</div>	
+	<?php  
+	}  
 
 // mt_options_page() displays the page content for the Test Options submenu
 function mt_options_page() {
 
+		do_meta_boxes('sub-page3','advanced',null);  
+	
     // variables for the field and option names 
     $opt_name = 'mt_favorite_food';
     $hidden_field_name = 'mt_submit_hidden';
@@ -129,6 +188,7 @@ function mt_options_page() {
 <div class="updated"><p><strong><?php echo __('Options saved.' ); ?></strong></p></div>
 <?php
 
+	
     }
 
     // Now display the options editing screen
@@ -194,7 +254,8 @@ function example_dashboard_widget_function() {
 function example_add_dashboard_widgets() {
 	wp_add_dashboard_widget('example_dashboard_widget', 'Example Dashboard Widget', 'example_dashboard_widget_function');	
 	global $wp_meta_boxes;
-
+	
+	
 	// Remove the quickpress widget
 
 	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
@@ -202,12 +263,109 @@ function example_add_dashboard_widgets() {
 	// Remove the incomming links widget
 
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+	
 } 
 
 // Hoook into the 'wp_dashboard_setup' action to register our other functions
 
 add_action('wp_dashboard_setup', 'example_add_dashboard_widgets' );
 
+//--- short code --------
+// [teachers foo="foo-value"]
+function teachers_func($atts) {
+	extract(shortcode_atts(array(
+		'foo' => 'no foo',
+		'bar' => 'default bar',
+	), $atts));
+
+	return "foo = {$foo}";
+}
+add_shortcode('teachers', 'teachers_func');
+
+
+/* Use the admin_menu action to define the custom boxes */
+//add_action('admin_menu', 'myplugin_add_custom_box');
+
+/* Use the save_post action to do something with the data entered */
+add_action('save_post', 'myplugin_save_postdata');
+
+/* Adds a custom section to the "advanced" Post and Page edit screens */
+function myplugin_add_custom_box() {
+
+  if( function_exists( 'add_meta_box' )) {
+    add_meta_box( 'myplugin_sectionid', __( 'John Meng Title' ), 
+                'myplugin_inner_custom_box', 'bot' );
+    add_meta_box( 'myplugin_sectionid', __( 'My Post Section Title' ), 
+                'myplugin_inner_custom_box', 'page', 'advanced' );
+   } else {
+    add_action('dbx_post_advanced', 'myplugin_old_custom_box' );
+    add_action('dbx_page_advanced', 'myplugin_old_custom_box' );
+  }
+}
+   
+/* Prints the inner fields for the custom post/page section */
+function myplugin_inner_custom_box() {
+
+  // Use nonce for verification
+
+  echo '<input type="hidden" name="myplugin_noncename" id="myplugin_noncename" value="' . 
+    wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
+
+  // The actual fields for data entry
+
+  echo '<label for="myplugin_new_field">' . __("Description for this field", 'myplugin_textdomain' ) . '</label> ';
+  echo '<input type="text" name="myplugin_new_field" value="whatever" size="25" />';
+}
+
+/* Prints the edit form for pre-WordPress 2.5 post/page */
+function myplugin_old_custom_box() {
+
+  echo '<div class="dbx-b-ox-wrapper">' . "\n";
+  echo '<fieldset id="myplugin_fieldsetid" class="dbx-box">' . "\n";
+  echo '<div class="dbx-h-andle-wrapper"><h3 class="dbx-handle">' . 
+        __( 'My Post Section Title', 'myplugin_textdomain' ) . "</h3></div>";   
+   
+  echo '<div class="dbx-c-ontent-wrapper"><div class="dbx-content">';
+
+  // output editing form
+
+  myplugin_inner_custom_box();
+
+  // end wrapper
+
+  echo "</div></div></fieldset></div>\n";
+}
+
+/* When the post is saved, saves our custom data */
+function myplugin_save_postdata( $post_id ) {
+
+  // verify this came from the our screen and with proper authorization,
+  // because save_post can be triggered at other times
+
+  if ( !wp_verify_nonce( $_POST['myplugin_noncename'], plugin_basename(__FILE__) )) {
+    return $post_id;
+  }
+
+  if ( 'page' == $_POST['post_type'] ) {
+    if ( !current_user_can( 'edit_page', $post_id ))
+      return $post_id;
+  } else {
+    if ( !current_user_can( 'edit_post', $post_id ))
+      return $post_id;
+  }
+
+  // OK, we're authenticated: we need to find and save the data
+
+  $mydata = $_POST['myplugin_new_field'];
+
+  // TODO: Do something with $mydata 
+  // probably using add_post_meta(), update_post_meta(), or 
+  // a custom table (see Further Reading section below)
+
+   return $mydata;
+}
 
 
 ?>
