@@ -75,11 +75,6 @@
 
 			<?php endif; ?>
 			
-			<li><h2><?php echo __("Stats"); ?></h2>
-				<ul>
-				<?php echo "ddd". GeneralStatsComplete(); ?>
-				</ul>
-			</li>
 			
 		</ul>
 	</div>
