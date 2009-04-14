@@ -109,29 +109,6 @@ function mt_sublevel_page2() {
     
 }
 
-function nggallery_admin_overview()  {	
-?>
-<div id="dashboard_server_settings" class="dashboard-widget-holder wp_dashboard_empty">
-	<div class="ngg-dashboard-widget">
-	  <?php if (IS_WPMU) {
-	  	if (wpmu_enable_function('wpmuQuotaCheck'))
-			echo ngg_SpaceManager::details();
-		else {
-			//TODO:WPMU message in WP2.5 style
-			echo ngg_SpaceManager::details();
-		}
-	  } else { ?>
-	  	<div class="dashboard-widget-content">
-      		<ul class="settings">
-      		<?php ngg_get_serverinfo(); ?>
-	   		</ul>
-		</div>
-	  <?php } ?>
-    </div>
-</div>
-
-<?php
-}
 ///* Prints the inner fields for the custom post/page section */
 //function myplugin_inner_custom_box() {
 //
@@ -162,7 +139,9 @@ function nggallery_admin_overview()  {
 
 // mt_options_page() displays the page content for the Test Options submenu
 function mt_options_page() {
-
+?>
+<div id="poststuff">
+<?php
 		do_meta_boxes('sub-page3','advanced',null);  
 	
     // variables for the field and option names 
@@ -215,6 +194,7 @@ function mt_options_page() {
 </p>
 
 </form>
+</div>
 </div>
 
 <?php
