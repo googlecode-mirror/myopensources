@@ -94,7 +94,7 @@ class APCView extends GalleryView {
 	}
 						 
 	if ($APCVerified) {
-	    $ret = GalleryCheckoutApi:changeTransactionStatus($transaction, 'clear');
+	    $ret = GalleryCheckoutApi::changeTransactionStatus($transaction, 'clear');
 	    if ($ret) {
 		return $ret;
 	    }
@@ -104,7 +104,7 @@ class APCView extends GalleryView {
 	}
 	
 	/* Post an administrative notification event so the admin can take up events not handled automatically */
-	$event = GalleryCheckoutApi:sendAdminNotification($transaction, $statusMessage);
+	list ($ret, $event) = GalleryCheckoutApi::sendAdminNotification($transaction, $statusMessage);
 	if ($ret) {
 	    return $ret;
 	}
