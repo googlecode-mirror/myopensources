@@ -73,6 +73,7 @@ class AdminCreateUserController extends GalleryController {
 		} else {
 		    $user->setEmail($form['email']);
 		    $user->setFullName($form['fullName']);
+		    $user->setAge($form['age']);
 		    $user->setLanguage($form['language']);
 		    GalleryUtilities::unsanitizeInputValues($form['password1'], false);
 		    $user->changePassword($form['password1']);
@@ -135,6 +136,7 @@ class AdminCreateUserView extends GalleryView {
 	    $form['userName'] = '';
 	    $form['email'] = '';
 	    $form['fullName'] = '';
+	    $form['age'] = '';
 	    $form['language'] = '';
 	    $form['formName'] = 'AdminCreateUser';
 	}

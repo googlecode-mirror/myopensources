@@ -68,7 +68,8 @@ class GalleryUser extends GalleryEntity {
      * @g2 </member>
      */
     var $fullName;
-
+    var $age;
+    
     /**
      * The User's password in a hashed form.
      * @var string
@@ -156,6 +157,7 @@ class GalleryUser extends GalleryEntity {
 
 	$this->setUserName($userName);
 	$this->setFullName(null);
+	$this->setAge(null);
 	$this->setEmail(null);
 	$this->setHashedPassword(null);
 	$this->setLanguage(null);
@@ -358,11 +360,19 @@ class GalleryUser extends GalleryEntity {
     function getFullName() {
 	return $this->fullName;
     }
-
+    
+    function getAge() {
+	return $this->age;
+    }
+    
     function setFullName($fullName) {
 	$this->fullName = $fullName;
     }
-
+    
+    function setAge($age) {
+	$this->age = $age;
+    }
+    
     function getHashedPassword() {
 	return $this->hashedPassword;
     }
