@@ -1,0 +1,1 @@
+ALTER TABLE `g2_user` ADD `g_age` INT( 4 ) NOT NULL AFTER `g_fullName` 
