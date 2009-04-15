@@ -100,6 +100,7 @@
   <table class="gbDataTable">
     <tr>
       <th> {g->text text="Username"} </th>
+      <th> {g->text text="Age"} </th>
       <th> {g->text text="Locked"} </th>
       <th> {g->text text="Failed Logins"} </th>
       <th> {g->text text="Action"} </th>
@@ -109,6 +110,9 @@
     <tr class="{cycle values="gbEven,gbOdd"}">
       <td>
 	{$user.userName}
+      </td>
+      <td>
+	{$user.age}
       </td>
       <td>
 	{if $user.locked}
