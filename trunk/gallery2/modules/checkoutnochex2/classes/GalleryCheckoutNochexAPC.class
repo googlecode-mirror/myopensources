@@ -1,0 +1,246 @@
+<?php
+/*
+ *
+ * Gallery - a web based photo album viewer and editor
+ * Copyright (C) 2000-2008 Bharat Mediratta
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or (at
+ * your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
+
+  
+/**
+ * Classes representing Nochex Automatic Payment Confirmations
+ * @package CheckoutNochex
+ * @author Alec Myers <alec@alecmyers.com>
+ * @version $Revision:  $
+ */
+ 
+
+/**
+ * Load the parent class
+ */
+GalleryCoreApi::requireOnce('modules/core/classes/GalleryChildEntity.class');
+
+/**
+ * A GalleryChildEntity for CheckoutNochex transactions.
+ *
+ * @g2 <class-name>GalleryCheckoutNochexAPC</class-name>
+ * @g2 <parent-class-name>GalleryChildEntity</parent-class-name>
+ * @g2 <schema>
+ * @g2   <schema-major>1</schema-major>
+ * @g2   <schema-minor>0</schema-minor>
+ * @g2 </schema>
+ * @g2 <requires-id/>
+ *
+ * @package CheckoutNochex
+ * @subpackage Classes
+ */
+class GalleryCheckoutNochexAPC extends GalleryChildEntity {
+
+    /*
+     * ****************************************
+     *                 Members
+     * ****************************************
+     */
+
+     /**
+     * To_email
+     *
+     * @g2 <member>
+     * @g2   <member-name>ncToEmail</member-name>
+     * @g2   <member-type>STRING</member-type>
+     * @g2   <member-size>MEDIUM</member-size>
+     * @g2 </member>
+     *
+     * @var $ncToEmail
+     * @access public
+     */
+    var $ncToEmail;
+    
+    /**
+     * From_email
+     *
+     * @g2 <member>
+     * @g2   <member-name>ncFromEmail</member-name>
+     * @g2   <member-type>STRING</member-type>
+     * @g2   <member-size>MEDIUM</member-size>
+     * @g2 </member>
+     *
+     * @var $ncFromEmail
+     * @access public
+     */
+    var $ncFromEmail;
+    
+    /**
+     * transaction ID
+     *
+     * @g2 <member>
+     * @g2   <member-name>ncTransactionId</member-name>
+     * @g2   <member-type>STRING</member-type>
+     * @g2   <member-size>MEDIUM</member-size>
+     * @g2 </member>
+     *
+     * @var $ncTransactionId
+     * @access public
+     */
+    var $ncTransactionId;
+
+    /**
+     * Nochex transaction date
+     *
+     * @g2 <member>
+     * @g2   <member-name>ncDate</member-name>
+     * @g2   <member-type>STRING</member-type>
+     * @g2   <member-size>SMALL</member-size>
+     * @g2 </member>
+     *
+     * @var $ncDate
+     * @access public
+     */
+    var $ncDate;
+
+    /**
+     * Nochex security key
+     *
+     * @g2 <member>
+     * @g2   <member-name>ncKey</member-name>
+     * @g2   <member-type>STRING</member-type>
+     * @g2   <member-size>MEDIUM</member-size>
+     * @g2 </member>
+     *
+     * @var $ncKey
+     * @access public
+     */
+    var $ncKey;
+
+    /**
+     * Transaction Amount
+     *
+     * @g2 <member>
+     * @g2   <member-name>ncAmount</member-name>
+     * @g2   <member-type>STRING</member-type>
+     * @g2   <member-size>SMALL</member-size>
+     * @g2 </member>
+     *
+     * @var $ncAmount
+     * @access public
+     */
+    var $ncAmount;
+    
+    /**
+     * Nochex transaction status information
+     *
+     * @g2 <member>
+     * @g2   <member-name>ncStatus</member-name>
+     * @g2   <member-type>STRING</member-type>
+     * @g2   <member-size>SMALL</member-size>
+     * @g2 </member>
+     *
+     * @var $ncStatus
+     * @access public
+     */
+    var $ncStatus;
+    
+   /**
+     * Transaction notes
+     *
+     * @g2 <member>
+     * @g2   <member-name>notes</member-name>
+     * @g2   <member-type>TEXT</member-type>
+     * @g2 </member>
+     *
+     * @var $notes
+     * @access public
+     */
+    var $notes;
+    
+    /*
+     * ****************************************
+     *                 Methods
+     * ****************************************
+     */
+
+    /**
+     * @see GalleryEntity::getClassName()
+     */
+    function getClassName() {
+	return 'GalleryCheckoutNochexAPC';
+    }
+
+    function getNcToEmail() {
+        return $this->ncToEmail;
+    }
+
+    function setNcToEmail($ncToEmail) {
+        $this->ncToEmail = $ncToEmail;
+    }
+    
+    function getNcFromEmail() {
+        return $this->ncFromEmail;
+    }
+
+    function setNcFromEmail($ncFromEmail) {
+        $this->ncFromEmail = $ncFromEmail;
+    }
+
+    function getNcTransactionId() {
+        return $this->ncTransactionId;
+    }
+
+    function setNcTransactionId($ncTransactionId) {
+        $this->ncTransactionId = $ncTransactionId;
+    }
+
+    function getNcDate() {
+        return $this->ncDate;
+    }
+
+    function setNcDate($ncDate) {
+        $this->ncDate = $ncDate;
+    }
+
+    function getNcAmount() {
+        return $this->ncAmount;
+    }
+
+    function setNcAmount($ncAmount) {
+        $this->ncAmount = $ncAmount;
+    }
+
+    function getNcKey() {
+        return $this->ncKey;
+    }
+
+    function setNcKey($ncKey) {
+        $this->ncKey = $ncKey;
+    }
+  
+    function getNcStatus() {
+        return $this->ncStatus;
+    }
+
+    function setNcStatus($ncStatus) {
+        $this->ncStatus = $ncStatus;
+    }
+
+    function getNotes() {
+        return $this->notes;
+    }
+
+    function setNotes($notes) {
+        $this->notes = $notes;
+    }
+}
+?>
