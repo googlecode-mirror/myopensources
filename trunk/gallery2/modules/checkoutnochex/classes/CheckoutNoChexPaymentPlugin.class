@@ -1,0 +1,109 @@
+<?php
+/*
+ * $RCSfile: CheckoutMBookersPlugin.class,v $
+ *
+ * Gallery - a web based photo album viewer and editor
+ * Copyright (C) 2000-2005 Bharat Mediratta
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or (at
+ * your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
+ 
+/**
+ * @version $Revision: 1.0 $ $Date: 2006/10/27 20:51:48 $
+ * @package CheckoutMBookers
+ * @subpackage Classes
+ * @author Dayo Akanji <info@dakanji.com>
+ */
+
+/**
+ * Required classes
+ */ 
+GalleryCoreApi::requireOnce('modules/checkout/classes/CheckoutHelper.class');
+
+/**
+ * This is an implementation of the checkout module's CheckoutPluginInterface_1_0
+ *
+ * @package CheckoutNoChex
+ * @subpackage Classes
+ */
+
+class CheckoutNoChexPaymentPlugin extends CheckoutPaymentInterface_1_3 {
+
+//    /**
+//     * @see CheckoutPluginInterface_1_0::getPaymentText()
+//     */
+//    function getPaymentText() {
+//	return array(null,
+//	             'Click to be redirected to www.NoChex.com to securely complete this transaction.<br>
+//	              The transaction will be securely encrypted and protected against intrusion.<br>
+//	              You do not need a Nochex account to complete the transaction.');
+//    }
+//
+//    /**
+//     * @see CheckoutPluginInterface_1_0::getPaymentTemplate()
+//     */
+//    function getPaymentTemplate() {
+////		return array(null, dirname(__FILE__) . '/../templates/PaymentButton.tpl');
+//    }
+    /**
+     * @see CheckoutPaymentInterface_1_3::getPaymentTemplate()
+     */
+    function getPaymentTemplate() {
+		return array(null, 'modules/checkoutnochex/templates/PaymentButton.tpl');
+    }
+    
+    /**
+     * @see CheckoutPluginInterface_1_0::getPaymentVariables()
+     */
+    function getVariables() {
+	/* Copy info between the session variables */
+	global $gallery;
+	$session =& $gallery->getSession();
+	
+	list ($ret, $items) = CheckoutHelper::fetchCheckoutItems();
+	if ($ret) {
+//		return array($ret->wrap(__FILE__, __LINE__), null);
+		return array($ret, null);
+	}
+
+	/* Get the product and pricing details */	
+//	list ($ret, $product, $price) = CheckoutHelper::fetchProducts();
+//	if ($ret) {
+////	    return array($ret->wrap(__FILE__, __LINE__), null);
+//		return array($ret, null);
+//	}
+
+	/* Get the paper options */	
+	list ($ret, $paper) = CheckoutHelper::fetchPapers();
+	if ($ret) {
+//	    return array($ret->wrap(__FILE__, __LINE__), null);
+		return array($ret, null);
+	}
+
+	$session->put('checkoutnochex.items', serialize($items));
+//	$session->put('checkoutnochex.product', serialize($product));
+//	$session->put('checkoutnochex.price', serialize($price));
+	$session->put('checkoutnochex.paper', serialize($paper));
+	$session->put('checkoutnochex.transactionId', $session->get('checkout.transactionId'));
+	$session->put('checkoutnochex.total', $session->get('checkout.total'));
+//	return array(null, array('paymentButtonText' => "Check Out By NoChex", 
+//				'paymentText' =>  "Check Out By NoChex",
+//				'active' => true));
+	
+    }
+
+}
+
+?>
