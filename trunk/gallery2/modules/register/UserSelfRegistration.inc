@@ -42,7 +42,7 @@ class UserSelfRegistrationController extends GalleryController {
 	} else if (isset($form['action']['create'])) {
 
 	    /* Validate inputs */
-	    foreach (array('userName', 'email', 'password1', 'password2', 'fullName', 'age') as $key) {
+	    foreach (array('userName', 'email', 'password1', 'password2', 'fullName') as $key) {
 		if (empty($form[$key])) {
 		    $error[] = 'form[error][' . $key . '][missing]';
 		}
@@ -233,7 +233,14 @@ class UserSelfRegistrationView extends GalleryView {
 		$UserSelfRegistration['plugins'][] = $data;
 	    }
 	}
-
+	//-------- add age field John.Meng ----
+//	$age_options = array();
+//	for ($i=0; $i<150; $i++) {
+//		$age_options[$i] = $i;
+//	}
+//	$template->setVariable('age_options', $age_options);
+	//-------- age end -------------
+	
 	$template->setVariable('UserSelfRegistration', $UserSelfRegistration);
 	$template->setVariable('controller', 'register.UserSelfRegistration');
 	return array(null, array('body' => 'modules/register/templates/UserSelfRegistration.tpl'));

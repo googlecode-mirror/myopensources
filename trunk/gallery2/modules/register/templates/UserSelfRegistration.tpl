@@ -43,11 +43,14 @@
     <span class="giSubtitle"> {g->text text="(required)"} </span>
   </h4>
 
-  <input type="text" size="32" name="{g->formVar var="form[age]"}" value="{$form.age}"/>
+	<select name="{g->formVar var="form[age]"}">
+		{html_options options=$age_options selected=$form.age}
+	</select>
 
-  {if isset($form.error.fullName.missing)}
+
+  {if isset($form.error.age.missing)}
   <div class="giError">
-    {g->text text="You must enter your full name"}
+    {g->text text="You must select your age"}
   </div>
   {/if}
 
