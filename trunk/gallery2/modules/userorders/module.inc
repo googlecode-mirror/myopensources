@@ -39,7 +39,7 @@ class UserordersModule extends GalleryModule {
 	$this->setDescription($gallery->i18n('Allow user check order  '));
 	$this->setVersion('1.0.0');
 	$this->_templateVersion = 1;
-	$this->setCallbacks('getUserAdminViews');//getItemLinks|
+	$this->setCallbacks('getUserAdminViews|getSystemLinks');//getItemLinks|
 	$this->setGroup('commerce', $gallery->i18n('Commerce'));
 	$this->setRequiredCoreApi(array(7, 20));
 	$this->setRequiredModuleApi(array(3, 6));
@@ -80,6 +80,20 @@ class UserordersModule extends GalleryModule {
 
         return array(null, $views);
     }
+    
+    /**
+     * @see GalleryModule::getSystemLinks
+     */
+    function getSystemLinks() {
+    	$links = array();
+    	$links['view_order'] = array(
+		'text' => $this->translate('My Orders'),
+		'params' => array('view' => 'userorders.UserOrders',
+				  'return' => 1));
+
+    	return array(null, $links);
+    }
+
     
 }
 ?>
