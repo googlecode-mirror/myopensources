@@ -1,1 +1,0 @@
-ALTER TABLE `g2_user` ADD `g_age` INT NOT NULL DEFAULT '0' AFTER `g_fullName` 
