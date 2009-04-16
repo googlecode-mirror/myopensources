@@ -39,7 +39,7 @@ class UserOrdersController extends GalleryController {
 }
 
 /**
- * View Checkout Transactions
+ * User Orders View
  */
 class UserOrdersView extends GalleryView {
     /**
@@ -60,27 +60,61 @@ class UserOrdersView extends GalleryView {
 	    }
 
 	    //------- get user order ---
-	    GalleryCoreApi::requireOnce('modules/checkout/classes/CheckoutTransactionHelper.class');
-	    $criteria = ' [GalleryCheckoutTransaction::buyerId]  = '.$user->getId();
-	    $orders = CheckoutTransactionHelper::fetchCheckoutTransactions($criteria);
-		$order_list = null;
-		if ( is_array($orders) ) {
-			foreach ($orders[1] as $key=>$order) {
-				$tmp = array(
-					'date' => $order->getDate(),
-					'amount' => $order->getAmount(),
-					'first_name' => $order->getFirstName(),
-					'email' => $order->getEmail(),
-					'recipient_name' => $order->getRecipientName(),
-				
-				);
-				
-				$order_list[] = $tmp;
-			}
-			
+
+		$SQLsortBy = "[GalleryCheckoutTransaction::date]";
+		$order = 'DESC';
+	    $results = array();
+		$query = "SELECT 
+			[GalleryCheckoutTransaction::date], 			
+			[GalleryCheckoutTransaction::id],
+			[GalleryUser::fullName],
+			[GalleryUser::userName],
+			[GalleryCheckoutTransaction::recipientName],
+			[GalleryCheckoutTransaction::host],
+			[GalleryCheckoutTransaction::paymentPlugin],
+			[GalleryCheckoutTransaction::amount],
+			[GalleryCheckoutTransaction::timePaid],		
+			[GalleryCheckoutTransaction::timeCleared],
+			[GalleryCheckoutTransaction::timeFulfil],
+			[GalleryCheckoutTransaction::timeFulfilled],
+			[GalleryCheckoutTransaction::timeCompleted],
+			[GalleryCheckoutTransaction::timeHold],
+			[GalleryCheckoutTransaction::timeProblem]
+			FROM [GalleryCheckoutTransaction]
+			INNER JOIN [GalleryUser]
+			ON [GalleryUser::id] = [GalleryCheckoutTransaction::buyerId]
+			WHERE ( ([GalleryCheckoutTransaction::paymentPlugin] IS NOT NULL)
+			  OR ([GalleryCheckoutTransaction::timeConfirmed] != 0))
+			  AND [GalleryCheckoutTransaction::buyerId]  = {$user->getId()}
+			ORDER BY $SQLsortBy $order
+			";
+		list($ret, $searchResults) = $gallery->search($query);
+		if ($ret) {
+			return array($ret, null);
 		}
-		
-	    $template->setVariable('order_list', $order_list);
+		$txns = array();
+		while ($result = $searchResults->nextResult()) {
+			$txns[]=$result;
+		}
+		$perPage = 50;
+		$countOrders = 0;
+		if (isset ($txns)) {
+			$countOrders = count($txns);
+		}
+		$pageDetails['count'] = $countOrders;
+		$pageDetails['pageSize'] = $countOrders > $perPage ? $perPage : $countOrders;
+		/* Figure out our max pages, make sure our current page fits in it */
+		$pageDetails['maxPages'] = ceil($countOrders / $perPage);
+		$pageDetails['page']  = min ($pageDetails['maxPages'],$page);
+		/* Calculate the next/back pages */
+		$pageDetails['nextPage'] = min($pageDetails['page']+1, $pageDetails['maxPages']);
+		$pageDetails['backPage'] = max(1, $pageDetails['page']-1);
+		/* Calculate which names to show */
+		$pageDetails['start'] = ($pageDetails['page']-1) * $perPage;
+		$template->setVariable('pageDetails', $pageDetails);
+		$template->setVariable('txns', $txns);
+
+
 		return array(null,    array('body' => 'modules/userorders/templates/UserOrders.tpl'));
     }
 	
