@@ -78,6 +78,17 @@ class UserOrderDetailView extends GalleryView {
     function loadTemplate(&$template, &$form) {
 		global $gallery;
 		
+		//--- check login
+	    list ($ret, $isAnonymous) = GalleryCoreApi::isAnonymousUser();
+	    if ($ret) { return array($ret, null); }
+	    
+	    //--- get current user info --
+        $user = $gallery->getActiveUser();
+
+	    if ($isAnonymous || $user->isLocked() /* || !$isOn */) {
+	      return array(GalleryCoreApi::error(ERROR_PERMISSION_DENIED), null);
+	    }
+	    
 		/* Figure out which item we're talking about */
 		$form['transactionId'] = (int)GalleryUtilities::getRequestVariables('transactionId');
 		if (empty($form['transactionId'])) {
