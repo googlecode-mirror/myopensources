@@ -54,30 +54,22 @@
     <table class="gbDataTable">
     <tr>
 
-    <th><a href="{g->url arg1="view=core.SiteAdmin" arg2="subView=checkout.AdminTransactions" arg3="sortBy=date"}">
-    	{if $pageDetails.sortBy == "date"}<i>{/if}{g->text text="date"}{if $pageDetails.sortBy == "date"}</i></a>{/if}</th>
+    <th>{g->text text="Date"}</th>
     	
-    <th><a href="{g->url arg1="view=core.SiteAdmin" arg2="subView=checkout.AdminTransactions" arg3="sortBy=id"}">
-    	{if $pageDetails.sortBy == "id"}<i>{/if}{g->text text="id"}{if $pageDetails.sortBy == "id"}</i>{/if}</a></th>
+    <th>{g->text text="Id"}</a></th>
     	
-    <th><a href="{g->url arg1="view=core.SiteAdmin" arg2="subView=checkout.AdminTransactions" arg3="sortBy=fullName"}">
-    	{if $pageDetails.sortBy == "fullName"}<i>{/if}{g->text text="buyer"}{if $pageDetails.sortBy == "fullName"}</i>{/if}</a></th>
+    <th>{g->text text="Buyer"}</th>
     	
-   {* <th><a href="{g->url arg1="view=core.SiteAdmin" arg2="subView=checkout.AdminTransactions" arg3="sortBy=userId"}">
-     	{if $pageDetails.sortBy == "userId"}<i>{/if}{g->text text="userId"}{if $pageDetails.sortBy == "userId"}</i>{/if}</a></th>  *}
+   {* <th>{g->text text="UserId"}</th>  *}
      	
-    <th><a href="{g->url arg1="view=core.SiteAdmin" arg2="subView=checkout.AdminTransactions" arg3="sortBy=recipientName"}">
-     	{if $pageDetails.sortBy == "recipientName"}<i>{/if}{g->text text="recipient"}{if $pageDetails.sortBy == "recipientName"}</i>{/if}</a></th>
+    <th>{g->text text="Recipient"}</th>
      	
-   {*  <th><a href="{g->url arg1="view=core.SiteAdmin" arg2="subView=checkout.AdminTransactions" arg3="sortBy=host"}">
-      	{if $pageDetails.sortBy == "host"}<i>{/if}{g->text text="host"}{if $pageDetails.sortBy == "host"}</i>{/if}</a></th>	 *}
+   {*  <th>{g->text text="Host"}</th>	 *}
       	
-    <th><a href="{g->url arg1="view=core.SiteAdmin" arg2="subView=checkout.AdminTransactions" arg3="sortBy=paymentPlugin"}">
-       	{if $pageDetails.sortBy == "paymentPlugin"}<i>{/if}{g->text text="payment method"}{if $pageDetails.sortBy == "paymentPlugin"}</i>{/if}</a></th>
+    <th>{g->text text="Payment method"}</a></th>
        	
-    <th align="right"><a href="{g->url arg1="view=core.SiteAdmin" arg2="subView=checkout.AdminTransactions" arg3="sortBy=amount"}">
-        {if $pageDetails.sortBy == "amount"}<i>{/if}{g->text text="total"}{if $pageDetails.sortBy == "amount"}</i>{/if}</a></th>
-    <th align="right">{g->text text="status"}</th> 
+    <th align="right">{g->text text="Total"}</th>
+    <th align="right">{g->text text="Status"}</th> 
     {if $pageDetails.showDelete == 1}
     <th>{g->text text="Delete"}</th>
     {/if}
@@ -85,7 +77,7 @@
     {section name=x loop = $txns start=$pageDetails.start max=$pageDetails.pageSize}
        <tr class="{cycle values="gbEven,gbOdd"}">
        <td>{g->date timestamp=$txns[x][0]}</td>
-       <td><a href="{g->url arg1="view=userorders.UserOrderDetail" arg2="transactionId=`$txns[x][1]`" }">{$txns[x][1]}</a></td>
+       <td><a href="{g->url arg1="view=core.UserAdmin" arg2="subView=userorders.UserOrderDetail" arg3="transactionId=`$txns[x][1]`" }">{$txns[x][1]}</a></td>
        <td>{$txns[x][2]}</td>
     {* <td>{$txns[x][3]}</td>  *}
        <td>{$txns[x][4]}</td>  
