@@ -36,7 +36,7 @@ class UserordersModule extends GalleryModule {
 	global $gallery;
 	$this->setId('userorders');
 	$this->setName($gallery->i18n('User Orders Listing'));
-	$this->setDescription($gallery->i18n('Allow user check order  '));
+	$this->setDescription($gallery->i18n('Allow user check order By: <a href="http://35vt.blogspot.com/" target="_blank" >John.Meng</a> MSN: arzen10132@hotmail.com  '));
 	$this->setVersion('1.0.0');
 	$this->_templateVersion = 1;
 	$this->setCallbacks('getUserAdminViews|getSystemLinks');//getItemLinks|
