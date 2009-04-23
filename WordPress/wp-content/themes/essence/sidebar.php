@@ -7,8 +7,11 @@
 <div id="r-sidebar">
 	<div id="sidebar">
 		<ul>
-			<?php 	/* Widgetized sidebar, if you have the plugin installed. */
-					if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar() ) : ?>
+			<?php 	
+				/* Widgetized sidebar, if you have the plugin installed. */
+				if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar() ) : 
+			?>
+				
 			<li>
 				<?php get_search_form(); ?>
 			</li>
