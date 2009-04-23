@@ -9,7 +9,7 @@
 		<ul>
 			<?php 	
 				/* Widgetized sidebar, if you have the plugin installed. */
-				if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar() ) : 
+				if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar(1) ) : 
 			?>
 				
 			<li>
