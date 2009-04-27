@@ -85,7 +85,7 @@ class UserOrdersView extends GalleryView {
 			ON [GalleryUser::id] = [GalleryCheckoutTransaction::buyerId]
 			WHERE ( ([GalleryCheckoutTransaction::paymentPlugin] IS NOT NULL)
 			  OR ([GalleryCheckoutTransaction::timeConfirmed] != 0))
-			  AND [GalleryCheckoutTransaction::buyerId]  = {$user->getId()}
+			  AND [GalleryCheckoutTransaction::buyerId]  = ".$user->getId()."
 			ORDER BY $SQLsortBy $order
 			";
 		list($ret, $searchResults) = $gallery->search($query);
