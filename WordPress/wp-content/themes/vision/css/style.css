@@ -1,0 +1,324 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin: 0px 0 0 0;
+	background-color:#eee6d6;
+	font-size:12px;
+	line-height:24px;
+	color:#333333;
+	font-family:新細明, 新細明體, Arial, Helvetica, sans-serif, Verdana,;
+}
+
+a{ color:#333333;}
+a:link {color:#333333; text-decoration: none; }
+a:visited {color:#333333; text-decoration: none; }
+a:hover { color:#257721; text-decoration:none; }
+
+#container{
+    margin:0 auto;
+	width:955px;
+}
+
+#footer{
+    background-color:#b59d87;
+	font-size:11px;
+	color:#666666;
+	padding:10px 15px 10px 15px;
+}
+
+#footer img{
+    float:left;
+	margin:0 5px 0 0;
+}
+
+
+.content{
+    background-image:url(../images/container_bm.gif);
+	background-repeat:no-repeat;
+	background-position:bottom left;
+	padding:30px 56px 60px 64px;
+}
+
+.mesg_area{
+    margin:0 0 0 30px;
+	width:495px;
+	background-image:url(../images/from_bg.gif);
+}
+
+.txt_green { color:#50750e;}
+.txt_green a:link {color:#50750e; text-decoration: none; }
+.txt_green a:visited {color:#50750e; text-decoration: none; }
+.txt_green a:hover { color:#50750e; text-decoration:none; }
+
+.form_bm{
+	background-image: url(../images/from_bm.gif);
+	background-repeat:no-repeat;
+	background-position:bottom left;
+	padding:5px 20px 35px 0;
+	height:180px;
+}
+
+.form_bm ul{
+    padding:0 0 0 40px;
+    margin:0;
+	#padding:0 0 0 30px;
+}
+
+.form_bm li{
+	list-style-image:url(../images/icon.gif);
+	background-image: url(../images/li_bg.gif);
+	background-repeat:repeat-x;
+	background-position:bottom;
+	height:30px;
+	padding:0 0 0 5px;
+	#height:20px;
+	#padding:0 0 8px 5px;
+}
+
+.page_list{
+    margin:0;
+	padding:0 30px 0 20px;
+}
+
+.page_list ul{
+    padding:0 0 0 40px;
+    margin:0;
+	#padding:0 0 0 30px;
+}
+
+.page_list li{
+	list-style-image:url(../images/icon.gif);
+	background-image: url(../images/li_bg.gif);
+	background-repeat:repeat-x;
+	background-position:bottom;
+	height:30px;
+	padding:0 0 0 5px;
+	#height:20px;
+	#padding:0 0 10px 5px;
+}
+
+.page_title{
+    background-image:url(../images/title_right.gif);
+	background-repeat:no-repeat;
+	background-position:right 38px;
+	margin:0 -10px 0 -21px;
+}
+
+.page_title_work{
+    background-image:url(../images/title_right02.gif);
+	background-repeat:no-repeat;
+	background-position:right 38px;
+	margin:0 -10px 0 -21px;
+}
+
+.page_content{
+    background-image:url(../images/content_bg.gif);
+	background-repeat:repeat-y;
+	background-position:top left;
+	margin:0 -10px 0 -6px;
+	padding:0 0 20px 0;
+}
+
+.page_bm{
+    background-image:url(../images/content_bm.gif);
+	background-repeat:no-repeat;
+	background-position:top left;
+	height:39px;
+	margin:0 -10px 0 -6px;
+}
+
+.number{
+	height:50px;
+}
+
+.number img{
+    vertical-align:middle;
+}
+
+.num .number_off{width:20px; height:21px; color:#257721; padding:10px 0 0 0; margin:0 2px 0 0; font-weight:bold; display:block; float:left; text-align:center;}
+
+.num a{color:#257721;}
+.num a:link {color:#257721;}
+.num a:visited {color:#257721;}
+.num a:hover {color:#b25822;}
+
+.number_on { 
+     width:20px;
+	 height:21px;
+	 display:block;
+	 float:left;
+	 margin:0 2px 0 0;
+	 text-align:center;
+	 font-weight:bold;
+	 color:#ffffff;
+	 padding:10px 0 0 0;
+	 background-image:url(../images/btn_number_onbg.gif);
+	 background-repeat:no-repeat;
+	 background-position:top left;
+}
+
+.number_on a{ 
+     color:#ffffff !important;
+	 padding:15px 0 0 0 !important;
+}
+
+.page_meat{
+     padding:0 40px 0 40px;
+}
+
+.title_meat{
+     font-size:16px;
+	 font-weight:bold;
+	 color:#866e51;
+	 text-align:center;
+	 border-bottom: 1px solid #d5cfc8;
+	 padding:0 0 5px 0;
+	 margin:0 0 10px 0;
+}
+
+.list_title{
+     font-size:13px;
+	 color:#866e51;
+	 background-image:url(../images/li_bg.gif);
+	 background-repeat:repeat-x;
+	 background-position:top left;
+	 height:30px;
+	 margin:0 0 0 25px;
+}
+
+.list_title a{color:#866e51; font-weight:bold; font-size:13px;}
+.list_title a:link {color:#866e51; font-weight:bold;}
+.list_title a:visited {color:#866e51; font-weight:bold;}
+.list_title a:hover {color:#257721; font-weight:bold;}
+
+.list_title img{
+	vertical-align:middle;
+	margin:0 5px 0 -25px;
+}
+
+.list_title span{
+    display:block;
+	float:right;
+	margin:-25px 0 0 0 ;
+}
+
+.list_note{
+    margin:0 0 20px 25px;
+	padding:20px 20px 20px 43px;
+	background-color:#e5e2e2;
+}
+
+.btn_work{
+    background-image:url(../images/btn_work_right.gif);
+	background-repeat:no-repeat;
+	background-position:right top;
+	margin:0 7px 10px 9px;
+	height:40px;
+}
+
+.btn_work div{
+    float:left;
+}
+
+.list_note .title{ color:#a98457 !important;}
+
+.list_note a{color:#75552d; }
+.list_note a:link {color:#75552d; }
+.list_note a:visited {color:#75552d; }
+.list_note a:hover {color:#257721; }
+
+.list_note ol{
+     margin:0 0 10px 20px;
+	 padding:0;
+}
+
+.list_note li{
+     margin:0;
+	 padding:0;
+}
+
+.page_number{
+     width:120px;
+	 margin:18px 0 0 auto;
+}
+
+.page_number div{
+     float:left;
+	 margin:43px 5px 0 0;
+}
+
+.page_number .number{
+     background-image:url(../images/page_number_bg.gif);
+	 background-repeat:no-repeat;
+	 color:#FFFFFF;
+	 font-weight:bold;
+	 width:20px;
+	 height:21px;
+	 padding:8px 0 0 0;
+	 margin:30px 5px 0 0;
+	 text-align:center;
+}
+
+.talk_list{
+     background-color:#e5e2e2;
+	 margin:0 0 10px 28px;
+	 padding:5px 0 0 0;
+}
+
+.talk_list_bm{
+     background-image:url(../images/talk_list_bm_right.gif);
+	 background-repeat:no-repeat;
+	 background-position:right bottom;
+}
+
+.talk_list ul{
+     margin:0;
+	 padding:0 10px 0 40px;
+	 #padding:0 10px 0 30px;
+}
+
+.talk_list li{
+     list-style-image:url(../images/icon_talk.gif);
+	 padding:7px 0 0 5px;
+	 #padding:8px 0 8px 5px;
+	 
+}
+
+.talk_list .bm_none{ background-image:none;}
+
+.map_list{
+     margin:0 0 20px 0;
+}
+
+.map_list_title div{
+     float:left;
+	 margin:25px 5px 0 0;
+}
+
+.map_list_title .number{
+	 margin:13px 5px 0 0;
+}
+
+.btn_bkhome{
+     background-image:url(../images/btn_bkhome_bg.jpg);
+	 background-repeat:no-repeat;
+	 text-align:right;
+	 height:30px;
+}
+
+
+/*-----ie6----*/
+*html .list_title{
+    margin:0 0 0 0;
+}
+
+*html .list_title img{
+	vertical-align:middle;
+	margin:0 5px 0 0;
+}
+
+*html .list_note{
+    margin:0 0 20px 0;
+	padding:0 0 0 43px;
+}
