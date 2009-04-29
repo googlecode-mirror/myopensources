@@ -9,7 +9,7 @@ include("xmlrpc.inc");
 $xmlrpc_internalencoding='UTF-8';
 	
 
-prepareNews();
+prepareRock();
 
 function prepareHomeArticle() {
 	$num = 20;
@@ -31,6 +31,19 @@ function prepareNews() {
 			'title'=>'测试最新消息标题XMLRPC Post '. $i,
 			'description'=>$i . ' 测试最新消息内容Some content posted using MetaWeblog API',
 			'categories'=>array('最新消息'),
+		);
+		newPost($content);
+		echo "Done {$i} \n";
+	}
+}
+
+function prepareRock() {
+	$num = 20;
+	for ($i=0; $i<$num; $i++){
+		$content = array(
+			'title'=>'测试志工招募标题XMLRPC Post '. $i,
+			'description'=>$i . ' 测试志工招募内容Some content posted using MetaWeblog API',
+			'categories'=>array('志工招募'),
 		);
 		newPost($content);
 		echo "Done {$i} \n";
