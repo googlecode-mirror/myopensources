@@ -19,7 +19,11 @@ if ( !empty($withcomments) && !is_single() ) {
 <?php } ?>
 
 </style>
-<?php wp_head(); ?>
+<?php 
+wp_enqueue_script('jquery');
+wp_head();
+
+?>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 <link href="<?php bloginfo('stylesheet_directory'); ?>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
@@ -45,6 +49,18 @@ function MM_swapImage() { //v3.0
   var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
    if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
 }
+
+function SwapComing(obj){
+	var com = jQuery(obj).find('.comingsoon');
+	com.css('left',jQuery(obj).offset().left+55);
+	//com.css('left',$(obj).css('left')+20);
+	com.show();
+	
+}
+function ComingRestore(){
+	jQuery('.comingsoon').hide();
+}
+
 //-->
 </script>
 <script src="<?php bloginfo('stylesheet_directory'); ?>/Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
@@ -61,12 +77,12 @@ function MM_swapImage() { //v3.0
     <tr>
       <td width="71"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_left.gif" width="71" height="60" /></td>
       <td width="103"><a href="<?php echo get_option('home'); ?>/archives/category/news" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_01_ov.gif',1)"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_01_<?php echo is_category('3') ? 'ov' : 'off'  ?>.gif" name="Image8" width="103" height="60" border="0" id="Image8" /></a></td>
-      <td width="128"><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_02_ov.gif',1)"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_02_off.gif" name="Image9" width="128" height="60" border="0" id="Image9" /></a></td>
-      <td width="136"><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_03_ov.gif',1)"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_03_off.gif" name="Image10" width="136" height="60" border="0" id="Image10" /></a></td>
-      <td width="117"><a href="talk.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_04_ov.gif',1)"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_04_off.gif" name="Image11" width="117" height="60" border="0" id="Image11" /></a></td>
+      <td width="128"><a href="#" onmouseout="MM_swapImgRestore();ComingRestore();" onmouseover="MM_swapImage('Image9','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_02_ov.gif',1);SwapComing(this);"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/coming.gif" class="comingsoon" style="display:none;border:0;position:absolute;left:250px;top:150px"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_02_off.gif" name="Image9" width="128" height="60" border="0" id="Image9" /></a></td>
+      <td width="136"><a href="#" onmouseout="MM_swapImgRestore();ComingRestore();" onmouseover="MM_swapImage('Image10','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_03_ov.gif',1);SwapComing(this);"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/coming.gif" class="comingsoon" style="display:none;border:0;position:absolute;left:383px;top:150px"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_03_off.gif" name="Image10" width="136" height="60" border="0" id="Image10" /></a></td>
+      <td width="117"><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_04_ov.gif',1)"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_04_off.gif" name="Image11" width="117" height="60" border="0" id="Image11" /></a></td>
       <td width="115"><a href="<?php echo get_option('home'); ?>/archives/category/home" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_05_ov.gif',1)"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_05_<?php echo is_category('4') ? 'ov' : 'off'  ?>.gif" name="Image12" width="115" height="60" border="0" id="Image12" /></a></td>
-      <td width="121"><a href="rock.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image13','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_06_ov.gif',1)"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_06_off.gif" name="Image13" width="121" height="60" border="0" id="Image13" /></a></td>
-      <td width="104"><a href="work.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image14','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_07_ov.gif',1)"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_07_off.gif" name="Image14" width="104" height="60" border="0" id="Image14" /></a></td>
+      <td width="121"><a href="<?php echo get_option('home'); ?>/archives/category/rock" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image13','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_06_ov.gif',1)"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_06_<?php echo is_category('5') ? 'ov' : 'off'  ?>.gif" name="Image13" width="121" height="60" border="0" id="Image13" /></a></td>
+      <td width="104"><a href="<?php echo get_option('home'); ?>/archives/category/work" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image14','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_07_ov.gif',1)"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_07_<?php echo is_category(array(6, 7, 8)) ? 'ov' : 'off'  ?>.gif" name="Image14" width="104" height="60" border="0" id="Image14" /></a></td>
       <td><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_right.gif" width="60" height="60" /></td>
     </tr>
   </table>
