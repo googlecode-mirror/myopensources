@@ -3,6 +3,8 @@
 	$top_img = "news";
 	if (in_category('4')) {
 		$top_img = "home";
+	}else if (in_category('5')) {
+		$top_img = "rock";
 	}
 	
 ?>
@@ -19,7 +21,7 @@
       </div>
     </div>
     <div class="page_bm"></div>
-    <div style="text-align:center;"><a href="news.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image17','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_back02_ov.gif',1)"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_back02_off.gif" name="Image17" width="110" height="50" border="0" id="Image17" /></a></div>
+    <div style="text-align:center;"><a href="javascript:history.go(-1);" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image27','','<?php bloginfo('stylesheet_directory'); ?>/images/btn_back02_ov.gif',1)"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/btn_back02_off.gif" name="Image27" width="110" height="50" border="0" id="Image27" /></a></div>
   </div>
 
 
