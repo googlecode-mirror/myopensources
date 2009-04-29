@@ -30,6 +30,9 @@
 #wp_page_numbers li {
 	float: left;
 	display: block;
+	width: 20px;
+
+
 }
 
 #wp_page_numbers a {
