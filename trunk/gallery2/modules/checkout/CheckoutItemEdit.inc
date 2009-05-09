@@ -47,8 +47,7 @@ class CheckoutItemEdit extends ItemEditPlugin {
 	if (isset($form['action']['save'])) {
 		
 	    //---- set album price -
-	    var_dump($form['album']);
-	    $itemId = $productId = $form['album']['id'];
+	    $productId = $form['album']['id'];
 	    $paramValue = $form['album']['price'];
 	    $paramName = 'album_price';
 	    if (isset($form['album']['price']) && $form['album']['price']) {
@@ -58,8 +57,6 @@ class CheckoutItemEdit extends ItemEditPlugin {
 	    	CheckoutProductMapHelper::removeParam($productId, $paramName, $itemId);
 	    }
 	    
-	    exit;
-		
 	    foreach ($form['products'] as $productId => $productParameters) {
 		/* If remove is ticked... */
 		if (isset ($productParameters['remove']) && $productParameters['remove'] == 'true') {
@@ -161,7 +158,6 @@ class CheckoutItemEdit extends ItemEditPlugin {
 	    if ($ret) {
 	        return array($ret, null);
 	    }
-
 	    $form['products'] = array();
 	    /* display *global* Name and productId, but *local* price and visible fields if they exist */
 	    foreach ($products as $productIndex => $product) {
@@ -216,7 +212,7 @@ class CheckoutItemEdit extends ItemEditPlugin {
 	if ($ret) {
 	    return array($ret, null);
 	}
-	$album_price = 15;
+	$album_price = isset($localProdParams[$thisId]['album_price']) ? $localProdParams[$thisId]['album_price'] : '';
 	$template->setVariable('album_price', $album_price);
 	$template->setVariable('album_id', $thisId);
 	$template->setVariable('csymbol', $csymbol);
