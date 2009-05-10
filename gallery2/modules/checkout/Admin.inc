@@ -483,6 +483,7 @@ class AdminView extends GalleryView {
 		    $form['products'][] = array('id' => $product['productId'],
 		    				'name' => $product['name'],
 		    				'price' => $product['price'],
+		    				'albumPrice' => $product['albumPrice'],
 		    				'description' => $product['description'],
 		    				'position' => $displayPos++,
 		    				'visible'=> key_exists('visible',$product) ? $product['visible'] : '',

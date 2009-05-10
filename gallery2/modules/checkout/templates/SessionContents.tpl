@@ -88,7 +88,7 @@
                           {/if}
                         </td>
                     <td class="checkoutProductPriceQuantity" align="right">
-                          {if isset($thisProduct.price)}{$tpl.csymbol}{$thisProduct.price|string_format:$tpl.cformat}{/if}&nbsp;&nbsp;
+                          {if isset($thisProduct.price)}{$tpl.csymbol}{if (isset($thisProduct.albumPrice) AND ($item.fullItemDetails.canContainChildren == 1)) } {$thisProduct.albumPrice|string_format:$tpl.cformat} {else} {$thisProduct.price|string_format:$tpl.cformat} {/if}{/if}&nbsp;&nbsp;
 		    </td>
 		    <td class="checkoutProductPriceQuantity" align="right">
                       <span class="checkoutProductQuantity">

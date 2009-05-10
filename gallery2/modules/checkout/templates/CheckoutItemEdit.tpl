@@ -29,6 +29,7 @@
       <th>{g->text text="Local Name"}</th>
       <th>{g->text text="Description"}</th>
       <th>{g->text text="Price"}</th>
+      <th>{g->text text="Album Price"}</th>
       <th>{g->text text="Visible"}</th>
       <th>{g->text text="Initial Quantity"}</th>
       <th>{g->text text="Quantity Limit"}</th>
@@ -40,6 +41,7 @@
       <td><input type="text" name="{g->formVar var="form[products][`$product.id`][name]"}" value="{$product.name|default:''}" size = "20"></td>
       <td><input type="text" name="{g->formVar var="form[products][`$product.id`][description]"}" value="{$product.description|default:''}" size = "50"></td>
       <td>{$csymbol}<input type="text" name="{g->formVar var="form[products][`$product.id`][price]"}" value="{$product.price|default:''}" size = "6" style="text-align:right;"></td>
+      <td>{$csymbol}<input type="text" name="{g->formVar var="form[products][`$product.id`][albumPrice]"}" value="{$product.albumPrice|default:''}" size = "6" style="text-align:right;"></td>
       <td><input type="radio" name="{g->formVar var="form[products][`$product.id`][visible]"}" value="true" {if isset($product.visible) && $product.visible == "true"}checked{/if}> Yes 
           <input type="radio" name="{g->formVar var="form[products][`$product.id`][visible]"}" value="false" {if isset($product.visible) && $product.visible == "false"}checked{/if}> No</td>
       <td><input type="text" name="{g->formVar var="form[products][`$product.id`][initialQuantity]"}" value="{$product.initialQuantity|default:''}" size = "3" style="text-align:center;"></td>
@@ -64,8 +66,9 @@
  <table class="gbDataTable">
     <tr>
     <th>{g->text text="Option"}</th>
-    <th>{g->text text="Display Order"}</th>
+    <th>{g->text text="Display Order"}sss</th>
     <th>{g->text text="Price"}</th>
+    <th>{g->text text="Album Price"}</th>
     <th>{g->text text="Postage Band"}</th>
     </tr>
   {foreach from=$form.accessories item=accessory name=x }
@@ -74,6 +77,7 @@
       <input type="text" name="{g->formVar var="form[accessories][`$accessory.id`][name]"}" value="{$accessory.name|default:''}" size = "60"></td>
       <td><input type="text" name="{g->formVar var="form[accessories][`$accessory.id`][position]"}" value="{$smarty.foreach.x.iteration}"  size = "3"></td>
       <td>{$csymbol}<input type="text" name="{g->formVar var="form[accessories][`$accessory.id`][price]"}" value="{$accessory.price|default:''}"size = "6" style="text-align:right;"></td>
+      <td>{$csymbol}<input type="text" name="{g->formVar var="form[accessories][`$accessory.id`][albumPrice]"}" value="{$accessory.albumPrice|default:''}"size = "6" style="text-align:right;"></td>
       <td align="center"><select name = "{g->formVar var="form[accessories][`$accessory.id`][postageBand]"}">
 	   <option label="None" value="0" {if $accessory.postageBand == '0'}selected{/if}>{g->text text="None"}</option>
 	   {section name=j loop=$numPostageBands}
@@ -95,13 +99,6 @@
 {include file="gallery:`$plugin.customPageTemplate`" l10Domain=$ItemEdit.pluginL10Domain}
 {/foreach}
     
-<!-- album price setting start -->
-<div> 
-
-	{g->text text="Album Price:"} {$csymbol} <input type="text" name="{g->formVar var="form[album][price]}" value="{$album_price|default:''}" size = "12">
-	<input type="hidden" name="{g->formVar var="form[album][id]}" value="{$album_id}" >
-</div> 
-<!-- album price setting end -->
    
 <div class="gbBlock gcBackground1">
     <input type="submit" name="{g->formVar var="form[action][save]"}"
