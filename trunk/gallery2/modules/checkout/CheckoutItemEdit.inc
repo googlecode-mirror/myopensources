@@ -46,6 +46,7 @@ class CheckoutItemEdit extends ItemEditPlugin {
 	
 	if (isset($form['action']['save'])) {
 		
+		/*
 	    //---- set album price -
 	    $productId = $form['album']['id'];
 	    $paramValue = $form['album']['price'];
@@ -56,6 +57,7 @@ class CheckoutItemEdit extends ItemEditPlugin {
 	    else {
 	    	CheckoutProductMapHelper::removeParam($productId, $paramName, $itemId);
 	    }
+		*/
 	    
 	    foreach ($form['products'] as $productId => $productParameters) {
 		/* If remove is ticked... */
@@ -212,9 +214,9 @@ class CheckoutItemEdit extends ItemEditPlugin {
 	if ($ret) {
 	    return array($ret, null);
 	}
-	$album_price = isset($localProdParams[$thisId]['album_price']) ? $localProdParams[$thisId]['album_price'] : '';
-	$template->setVariable('album_price', $album_price);
-	$template->setVariable('album_id', $thisId);
+//	$album_price = isset($localProdParams[$thisId]['album_price']) ? $localProdParams[$thisId]['album_price'] : '';
+//	$template->setVariable('album_price', $album_price);
+//	$template->setVariable('album_id', $thisId);
 	$template->setVariable('csymbol', $csymbol);
 	$template->setVariable('numPostageBands', $numPostageBands);
 	$template->setVariable('isRootAlbum', $isRootAlbum);

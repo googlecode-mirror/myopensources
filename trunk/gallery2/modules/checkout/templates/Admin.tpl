@@ -50,6 +50,7 @@
       	<th align="center">{g->text text="Delete"}</th>
         <th align="center">{g->text text="Product Name"}</th>
         <th align="center">{g->text text="Price"}</th>
+        <th align="center">{g->text text="Album Price"}</th>
         <th align="center">{g->text text="Postage Band"}</th>
         <th align="center">{g->text text="Display Position"}</th>
         <th align="center">{g->text text="Visible"}</th>
@@ -70,6 +71,7 @@
 	<td align="center">{if $product.id > 0}<input type="checkbox" name="{g->formVar var="form[products][`$product.id`][delete]"}" value = "true">{/if}</td>
 	<td align="center"><input type="text" name="{g->formVar var="form[products][`$product.id`][name]"}" value="{$product.name}"></td>
 	<td align="center">{$form.csymbol}<input type="text" name="{g->formVar var="form[products][`$product.id`][price]"}" value="{$product.price}" size = "6" style="text-align:right;"></td>
+	<td align="center">{$form.csymbol}<input type="text" name="{g->formVar var="form[products][`$product.id`][albumPrice]"}" value="{$product.albumPrice}" size = "6" style="text-align:right;"></td>
 	<td align="center"><select name = "{g->formVar var="form[products][`$product.id`][postageBand]"}">
 	   <option label="None" value="-1" {if $product.postageBand == '-1'}selected{/if}>{g->text text="None"}</option>
 	   {section name=j loop=$form.numPostageBands}
