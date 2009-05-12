@@ -133,13 +133,24 @@ class SelectView extends GalleryView {
 	$offerPostage = false;
 	$tpl['postageOptions'] = array();
 	foreach ($items as $item) {
-	    foreach ($itemProducts[$item['id']] as $product) {
-		if ( isset($item[$product['productId']]['quant'])
-			&& $item[$product['productId']]['quant'] > 0 
-		    	&& $product['postageBand'] >= 0 ) {
-			    $offerPostage = true;
+		//--- album setting ----
+		$is_album = false; 
+		if ($item['fullItemDetails']['canContainChildren'] == 1) {
+			$is_album = true;
 		}
-    	    }
+		
+		foreach ($itemProducts[$item['id']] as $key => $product) {
+			if ( isset($item[$product['productId']]['quant'])
+			&& $item[$product['productId']]['quant'] > 0
+			&& $product['postageBand'] >= 0 ) {
+				$offerPostage = true;
+			}
+			
+			if ($is_album) {
+				$itemProducts[$item['id']][$key]['price'] = $itemProducts[$item['id']][$key]['albumPrice'];
+			}
+			
+		}
 	}
 	if ($offerPostage) {
 	    /* Get the postage options */
