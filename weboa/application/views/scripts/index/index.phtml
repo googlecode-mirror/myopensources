@@ -1,0 +1,39 @@
+<?php
+$this->dojo()->enable();
+
+
+// Container with tabs
+$this->tabContainer()->captureStart('tab1', array(), array('style' => 'width:800px;height:500px;'));
+
+    // First tab "Dates"
+    $this->contentPane()->captureStart('pane1', array(), array('title' => 'Dates'));
+        echo $this->form1;
+    echo $this->contentPane()->captureEnd('pane1');
+   
+    // Second tab "FAQ"
+    $this->contentPane()->captureStart('pane2', array(), array('title' => 'FAQ'));
+        echo '<h1>FAQ</h1>
+        <dl><dt>Question 1?</dt><dd>This is my answer 1!</dd></dl>
+        <dl><dt>Question 2?</dt><dd>Good question, next one.</dd></dl>
+        <dl><dt>Question 3?</dt><dd>Ok, that\'s enough!</dd></dl>
+        ';
+    echo $this->contentPane()->captureEnd('pane2');
+   
+    // Third tab "Closable"
+    $this->contentPane()->captureStart('pane3', array(), array('title' => 'Closable', 'closable' => true));
+        echo 'You can close me!';
+    echo $this->contentPane()->captureEnd('pane3');
+   
+    // Fourth tab "Splitted"
+    $this->contentPane()->captureStart('pane4', array(), array('title' => 'Splitted'));
+        $this->splitContainer()->captureStart('split1', array(), array('style' => 'width:250px;height:250px;'));
+            $this->contentPane()->captureStart('splitpane1', array(), array());
+                echo 'Hey, I am on the left side!';
+            echo $this->contentPane()->captureEnd('splitpane1');
+            $this->contentPane()->captureStart('splitpane2', array(), array());
+                echo 'Cool!';
+            echo $this->contentPane()->captureEnd('splitpane2');
+        echo $this->splitContainer()->captureEnd('split1');
+    echo $this->contentPane()->captureEnd('pane4');
+
+echo $this->tabContainer()->captureEnd('tab1');
