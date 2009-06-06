@@ -27,115 +27,38 @@
 <head>
 	<?php echo $html->charset(); ?>
 	<title>
-		<?php __('CakePHP: the rapid development php framework:'); ?>
+		<?php __('WebOA'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
+		echo $html->css( array("style", 'debug') );
 		echo $scripts_for_layout;
 	?>
 	<link rel="stylesheet" type="text/css" href="<?php echo $html->url('/extjs/resources/css/ext-all.css'); ?>" />
-    
+
     <!-- GC -->
  	<!-- LIBS -->
  	<script type="text/javascript" src="<?php echo $html->url('/extjs/adapter/ext/ext-base.js'); ?>"></script>
  	<!-- ENDLIBS -->
 
     <script type="text/javascript" src="<?php echo $html->url('/extjs/ext-all.js'); ?>"></script>
+	<?php echo $javascript->link(array('layout'));?>
 
-	<style type="text/css">
-	html, body {
-        font:normal 12px verdana;
-        margin:0;
-        padding:0;
-        border:0 none;
-        overflow:hidden;
-        height:100%;
-    }
-	p {
-	    margin:5px;
-	}
-    .settings {
-        background-image:url(<?php echo $html->url('/img/folder_wrench.png'); ?>);
-    }
-    .nav {
-        background-image:url(<?php echo $html->url('/img/folder_go.png'); ?>);
-    }
-    </style>
-	<script type="text/javascript">
-    Ext.onReady(function(){
-
-        // NOTE: This is an example showing simple state management. During development,
-        // it is generally best to disable state management as dynamically-generated ids
-        // can change across page loads, leading to unpredictable results.  The developer
-        // should ensure that stable state ids are set for stateful components in real apps.
-        Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
-        
-       var viewport = new Ext.Viewport({
-            layout:'border',
-            items:[
-                new Ext.BoxComponent({ // raw
-                    region:'north',
-                    el: 'north',
-                    height:32
-                }), {
-                    region:'west',
-                    id:'west-panel',
-                    title:'Menu',
-                    split:true,
-                    width: 200,
-                    minSize: 175,
-                    maxSize: 400,
-                    collapsible: true,
-                    margins:'0 0 0 5',
-                    layout:'accordion',
-                    layoutConfig:{
-                        animate:true
-                    },
-                    items: [{
-                        contentEl: 'west',
-                        title:'Navigation',
-                        border:false,
-                        iconCls:'nav'
-                    },{
-                        title:'Settings',
-                        html:'<p>Some settings in here.</p>',
-                        border:false,
-                        iconCls:'settings'
-                    }]
-                },
-                new Ext.TabPanel({
-                    region:'center',
-                    deferredRender:false,
-                    activeTab:0,
-                    items:[{
-                        contentEl:'center1',
-                        title: 'Main',
-                        closable:false,
-                        autoScroll:true
-                    }]
-                })
-             ]
-        });
-    });
-	</script>
-    
 </head>
 <body>
 
-  <div id="west">
-    <p>Hi. I'm the west panel.</p>
-  </div>
-  <div id="north">
-    <p>north - generally for menus, toolbars and/or advertisements</p>
-  </div>
-  <div id="center1">
+<div id="north">
+<p class="api-title">WebOA System</p>
+</div>
+<div id="west">
+</div>
+<div id="center2">
 			<?php $session->flash(); ?>
 
 			<?php echo $content_for_layout; ?>
 			<?php echo $cakeDebug; ?>
-  </div>
+</div>
 
 
-	
 </body>
 </html>
