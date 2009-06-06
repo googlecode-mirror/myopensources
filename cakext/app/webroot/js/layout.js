@@ -17,7 +17,7 @@ var tree = new Ext.tree.TreePanel({
 	maxSize: 400,
 	margins:'0 0 0 0',
 	layout:'accordion',
-	title:'功能菜单',
+	title:'Navigation',
 	collapsible :true,
 	layoutConfig:{
 		animate:true
@@ -36,7 +36,7 @@ var tab = new Ext.TabPanel({
 	activeTab:0,
 	items:[{
 		contentEl:'center2',
-		title: '首页',
+		title: 'Home',
 		autoScroll:true
 	}]
 });
