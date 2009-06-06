@@ -1,4 +1,5 @@
 var Tree = Ext.tree;
+Ext.BLANK_IMAGE_URL = 'extjs/resources/images/default/s.gif';
 var root = new Tree.AsyncTreeNode({
 	text: 'Ext JS',
 	draggable:false,
