@@ -64,7 +64,7 @@ Ext.onReady(function(){
 	);
 	ds.load({params:{start:0, limit:30}});
 	function newclient() {
-		parent.openWindow('60000201','<?php __('Add Inventory');?>','<?php echo $html->url("/inventory/inventories/add"); ?>');
+		parent.openWindow('60000201','<?php __('Add Inventory');?>','<?php echo $html->url("/inventory/inventories/add"); ?>', 500, 500);
 	}
 	function editclient() {
 		var s = grid.getSelectionModel().getSelections();
