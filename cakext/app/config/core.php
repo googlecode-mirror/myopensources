@@ -43,6 +43,9 @@
  * Application wide charset encoding
  */
 	Configure::write('App.encoding', 'UTF-8');
+	// set default language
+//	Configure::write('Config.language', "zh");
+
 /**
  * To configure CakePHP *not* to use mod_rewrite and to
  * use CakePHP pretty URLs, remove these .htaccess
@@ -70,7 +73,7 @@
  * Turn off all caching application-wide.
  *
  */
-	//Configure::write('Cache.disable', true);
+	Configure::write('Cache.disable', true);
 /**
  * Enable cache checking.
  *
