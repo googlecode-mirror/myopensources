@@ -42,23 +42,12 @@
  	<!-- ENDLIBS -->
 
     <script type="text/javascript" src="<?php echo $html->url('/extjs/ext-all.js'); ?>"></script>
-	<?php echo $javascript->link(array('layout'));?>
 
 </head>
 <body>
+	<?php $session->flash(); ?>
 
-<div id="north">
-<p class="api-title">WebOA System</p>
-</div>
-<div id="west">
-</div>
-<div id="center2">
-			<?php $session->flash(); ?>
-
-			<?php echo $content_for_layout; ?>
-			<?php echo $cakeDebug; ?>
-</div>
-
-
+	<?php echo $content_for_layout; ?>
+	<?php echo $cakeDebug; ?>
 </body>
 </html>
