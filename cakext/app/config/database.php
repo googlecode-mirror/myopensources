@@ -7,7 +7,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'dev',
 		'password' => 'dev6543',
-		'database' => 'dev_cakext',
+		'database' => 'dev_weboa',
 		'encoding' => 'utf8'
 	);
 }
