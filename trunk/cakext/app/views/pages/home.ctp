@@ -52,7 +52,7 @@ function treeClick(node,e) {
 				'id' : node.id,
 				'title' : node.text,
 				closable:true,
-				html : '<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="'+node.attributes.url+'"></iframe>'
+				html : '<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="<?php echo $html->url("/"); ?>'+node.attributes.url+'"></iframe>'
 				});
 		}
 		tab.setActiveTab(n);
