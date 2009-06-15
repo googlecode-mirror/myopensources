@@ -60,5 +60,15 @@ class AppController extends Controller {
 
 	}
 
+	function ajaxSuccess() {
+		echo "{success:true,msg:'OK'}";
+		exit;
+	}
+
+	function ajaxFail($msg="Fail") {
+		echo "{success:true,msg:'{$msg}'}";
+		exit;
+	}
+
 }
 ?>
