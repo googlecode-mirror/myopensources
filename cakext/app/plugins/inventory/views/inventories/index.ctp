@@ -1,24 +1,27 @@
 <script type="text/javascript">
 Ext.onReady(function(){
 	var ds = new Ext.data.Store({
-		proxy : new Ext.data.HttpProxy({url:'<?php echo $html->url("/inventory/inventories/listing"); ?>'}),
+		proxy : new Ext.data.HttpProxy({url:'<?php echo $html->url("/inventory/inventories/getlist"); ?>'}),
         reader: new Ext.data.JsonReader({
 			root: 'topics',
             totalProperty: 'totalCount',
             id: 'id'
 			},[
-			'id','real_name','sex','works','is_invest','create_time'
+			'id','name','address','phone','guard',{name:'created',type:'string', convert: function(v) {
+	                                                 var dt = new Date.parseDate(v, 'U');
+	                                                 return dt.format('Y-m-d H:i:s');}
+                                                  }
       	])
     });
 
 
 	var colModel = new Ext.grid.ColumnModel([
 		 {header:'ID',width:50,sortable:true,dataIndex:'id'},
-		 {id:'title',header:'<?php __("Name"); ?>', width:100,sortable:true,dataIndex:'real_name'},
-		 {header:'<?php __("Address"); ?>',width:100,sortable:true,dataIndex:'sex'},
-		 {header:'<?php __("Phone"); ?>',width:100,sortable:true,dataIndex:'works'},
-		 {header:'<?php __("Guard"); ?>',width:100,sortable:true,dataIndex:'is_invest'},
-		 {header:'<?php __("Created"); ?>',width:150,sortable:true,dataIndex:'create_time'}
+		 {id:'title',header:'<?php __("Name"); ?>', width:100,sortable:true,dataIndex:'name'},
+		 {header:'<?php __("Address"); ?>',width:100,sortable:true,dataIndex:'address'},
+		 {header:'<?php __("Phone"); ?>',width:100,sortable:true,dataIndex:'phone'},
+		 {header:'<?php __("Guard"); ?>',width:100,sortable:true,dataIndex:'guard'},
+		 {header:'<?php __("Created"); ?>',width:150,sortable:true,dataIndex:'created' }
 		]);
 	var tb = new Ext.Toolbar('north-div');//创建一个工具条
 
@@ -32,7 +35,6 @@ Ext.onReady(function(){
         text: '<?php __("Delete"); ?>',
         handler: delclient
 	});
-
 	var grid = new Ext.grid.GridPanel({
 				border:false,
 				region:'center',
@@ -43,7 +45,7 @@ Ext.onReady(function(){
 				cm: colModel,
 				autoScroll: true,
 				bbar: new Ext.PagingToolbar({
-					pageSize: 30,
+					pageSize: perPage(),
 					store: ds,
 					displayInfo: true,
 					displayMsg: '第{0} 到 {1} 条数据 共{2}条',
@@ -62,9 +64,9 @@ Ext.onReady(function(){
 			grid
 		]}
 	);
-	ds.load({params:{start:0, limit:30}});
+	ds.load({params:{start:0, limit:perPage() }});
 	function newclient() {
-		parent.openWindow('60000201','<?php __('Add Inventory');?>','<?php echo $html->url("/inventory/inventories/add"); ?>', 500, 500);
+		parent.openWindow('60000201','<?php __('Add Inventory');?>','<?php echo $html->url("/inventory/inventories/add"); ?>', 500, 350);
 	}
 	function editclient() {
 		var s = grid.getSelectionModel().getSelections();
@@ -82,7 +84,7 @@ Ext.onReady(function(){
 			Ext.Msg.confirm('确认', '真的要删除吗？', function(btn){
 				if (btn == 'yes'){
 					Ext.Ajax.request({
-					   url: 'index.php?model=client&action=delete&ids='+ids,
+					   url: '<?php echo $html->url("/inventory/inventories/delete/"); ?>'+ids,
 					   success: function(result){
 							json = Ext.util.JSON.decode(result.responseText);
 							ds.reload();
