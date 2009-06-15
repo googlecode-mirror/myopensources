@@ -16,7 +16,8 @@ class InventoriesController extends InventoryAppController {
 		$result['totalCount'] = $this->Inventory->find('count');
 		$conditions = array(
 			'offset' => isset($this->params['form']['start']) ? $this->params['form']['start'] : 0 ,
-			'limit' => isset($this->params['form']['limit']) ? $this->params['form']['limit'] : 2 ,
+			'limit' => isset($this->params['form']['limit']) ? $this->params['form']['limit'] : 15 ,
+			'order' => 'id DESC'
 		);
 		$all_data = $this->Inventory->find('all', $conditions);
 		$result['topics'] = Set::extract($all_data, '{n}.Inventory');
@@ -35,13 +36,31 @@ class InventoriesController extends InventoryAppController {
 		}
 	}
 
+	function edit($id = null) {
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid Article', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		if (!empty($this->data)) {
+			if ($this->Inventory->save($this->data)) {
+				$this->ajaxSuccess();
+			} else {
+				$this->ajaxFail();
+			}
+		}
+		if (empty($this->data)) {
+			$this->set('inventory', $this->Inventory->read(null, $id));
+			$this->set('act', "edit");
+			$this->render("add");
+		}
+	}
+
 	function delete($id = null) {
 		$this->autoRender = false;
 		if ($id) {
 			if ( $this->Inventory->del($id) )
 			{
-				echo "{success:true,msg:'OK'}";
-				exit;
+				$this->ajaxSuccess();
 
 			}
 

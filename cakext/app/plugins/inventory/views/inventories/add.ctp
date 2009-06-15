@@ -25,7 +25,7 @@ Ext.onReady(function(){
 						fieldLabel:'<?php __("Name"); ?>',
 						allowBlank:false,
 						name:'data[Inventory][name]',
-						value:'',
+						value:'<?php echo $inventory['Inventory']['name']; ?>',
 						anchor:'90%'
 					}]
 				},{
@@ -35,7 +35,7 @@ Ext.onReady(function(){
 							xtype:'textfield',
 							fieldLabel: '<?php __("Address"); ?>',
 							name:'data[Inventory][address]',
-							value:'',
+							value:'<?php echo $inventory['Inventory']['address']; ?>',
 							anchor:'90%'
 						}]
 					},{
@@ -45,7 +45,7 @@ Ext.onReady(function(){
 							xtype:'textfield',
 							fieldLabel: '<?php __("Phone"); ?>',
 							name:'data[Inventory][phone]',
-							value:'',
+							value:'<?php echo $inventory['Inventory']['phone']; ?>',
 							anchor:'90%'
 						}]
 					},{
@@ -55,10 +55,20 @@ Ext.onReady(function(){
 							xtype:'textfield',
 							fieldLabel: '<?php __("Guard"); ?>',
 							name:'data[Inventory][guard]',
-							value:'',
+							value:'<?php echo $inventory['Inventory']['guard']; ?>',
 							anchor:'90%'
 						}]
-					}]
+					},{
+								//columnWidth:.33,
+								layout:'form',
+								items:[{
+									xtype:'hidden',
+									name:'id',
+									value:'<?php echo $inventory['Inventory']['id']; ?>',
+									anchor:'90%'
+								}]
+							}
+					]
 				}]
 
 		}],
@@ -68,13 +78,12 @@ Ext.onReady(function(){
 						handler:function(){
 							if(top.form.isValid()){
 								top.form.doAction('submit',{
-									url:'<?php echo $html->url("/inventory/inventories/add"); ?>',
+									url:'<?php echo isset($act) ? $html->url("/inventory/inventories/edit/".$inventory['Inventory']['id']) : $html->url("/inventory/inventories/add"); ?>',
 									method:'post',
 									params:'',
 									success:function(form,action){
 										Ext.Msg.alert('操作','保存成功!');
-										parent.ds.reload();
-										if (Ext.get('client_id').dom.value=='') {
+										if (Ext.get('id').dom.value=='') {
 											top.form.reset();
 										}
 									},
