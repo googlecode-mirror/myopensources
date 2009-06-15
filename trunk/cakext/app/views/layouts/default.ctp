@@ -32,6 +32,7 @@
 	</title>
 	<?php
 		echo $html->css( array("style", 'debug') );
+	    echo $javascript->link( array('common') );
 		echo $scripts_for_layout;
 	?>
 	<link rel="stylesheet" type="text/css" href="<?php echo $html->url('/extjs/resources/css/ext-all.css'); ?>" />
