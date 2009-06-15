@@ -75,7 +75,7 @@ Ext.onReady(function(){
 		}
 		for (i=0;i<s.length;i++) {
 			var id = s[i].id;
-			parent.newTab('200042'+id,'编辑用户','index.php?model=client&action=add&client_id='+id);
+			parent.openWindow('200042'+id,'<?php __('Edit Inventory');?>','<?php echo $html->url("/inventory/inventories/edit/"); ?>'+id, 500, 350);
 		}
 	}
 	function delclient() {
