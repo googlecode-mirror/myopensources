@@ -98,7 +98,12 @@ Ext.onReady(function(){
 			        },{
 			        	text: '<?php __("Reset"); ?>',
 						handler:function(){top.form.reset();}
-			        }]
+			        },{
+			            text: 'Cancel',
+			            handler: function(){parent.close();}
+			        }
+
+			      ]
 
 	});
 
