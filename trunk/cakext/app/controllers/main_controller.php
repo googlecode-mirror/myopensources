@@ -9,7 +9,7 @@ class MainController extends AppController {
 		$trees = array(
 			'root'=>array(
 				array('id'=>'100000','text'=>__('Inventory', true),'leaf'=>false, 'cls'=>'folder'),
-				array('id'=>'200000','text'=>__('Customers', true),'leaf'=>false, 'cls'=>'folder'),
+				array('id'=>'200000','text'=>__('Purchases', true),'leaf'=>false, 'cls'=>'folder'),
 				array('id'=>'300000','text'=>__('Sales', true),'leaf'=>false, 'cls'=>'folder'),
 				array('id'=>'400000','text'=>__('Report', true),'leaf'=>false, 'cls'=>'folder'),
 				array('id'=>'500000','text'=>__('Accounts', true),'leaf'=>false, 'cls'=>'folder'),
@@ -19,11 +19,22 @@ class MainController extends AppController {
 			),
 
 			'100000'=>array(
-				array('id'=>'100001','text'=>__('Listing', true),'leaf'=>true, 'cls'=>'file','url'=>'http://www.google.com'),
+				array('id'=>'100001','text'=>__('Stock check sheets', true),'leaf'=>true, 'cls'=>'file','url'=>'http://www.google.com'),
+				array('id'=>'100002','text'=>__('Item Movements', true),'leaf'=>true, 'cls'=>'file','url'=>'http://www.google.com'),
+
 			),
 
 			'200000'=>array(
-				array('id'=>'200010','text'=>__('Listing', true),'leaf'=>true, 'cls'=>'file','url'=>'http://www.baidu.com'),
+				array('id'=>'200001','text'=>__('Purchases Orders', true),'leaf'=>true, 'cls'=>'file','url'=>'http://www.baidu.com'),
+				array('id'=>'200002','text'=>__('Receive Purchases Orders', true),'leaf'=>true, 'cls'=>'file','url'=>'http://www.baidu.com'),
+				array('id'=>'200003','text'=>__('Suppliers', true),'leaf'=>true, 'cls'=>'file','url'=>'http://www.baidu.com'),
+
+			),
+
+			'300000'=>array(
+				array('id'=>'300001','text'=>__('Order or Quotation', true),'leaf'=>true, 'cls'=>'file','url'=>'http://www.baidu.com'),
+				array('id'=>'300002','text'=>__('Customers', true),'leaf'=>true, 'cls'=>'file','url'=>'http://www.baidu.com'),
+
 			),
 
 			'500000'=>array(

@@ -1,3 +1,6 @@
+<?php
+	echo $javascript->link("SearchField");
+?>
 <script type="text/javascript">
 Ext.onReady(function(){
 	var ds = new Ext.data.Store({
@@ -27,14 +30,22 @@ Ext.onReady(function(){
 
 	tb.add({
 		text: '<?php __("New"); ?>',
+		iconCls: 'new-icon',
         handler: newclient
 		},{
         text: '<?php __("Edit"); ?>',
+		iconCls: 'edit-icon',
         handler: editclient
 		},{
         text: '<?php __("Delete"); ?>',
+ 		iconCls: 'del-icon',
         handler: delclient
-	});
+        },'Search: ', ' ',new Ext.app.SearchField({
+        		store: ds,
+                width:320
+            })
+
+    );
 	var grid = new Ext.grid.GridPanel({
 				border:false,
 				region:'center',

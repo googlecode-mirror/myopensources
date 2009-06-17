@@ -83,6 +83,7 @@ Ext.onReady(function(){
 									params:'',
 									success:function(form,action){
 										Ext.Msg.alert('操作','保存成功!');
+										parent.ds.reload();
 										if (Ext.get('id').dom.value=='') {
 											top.form.reset();
 										}
