@@ -31,7 +31,7 @@
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
-		echo $html->css( array("style", 'debug') );
+		echo $html->css( array("style",'menus', 'debug') );
 	    echo $javascript->link( array('common') );
 		echo $scripts_for_layout;
 	?>
