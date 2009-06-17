@@ -12,7 +12,7 @@ class InventoriesController extends InventoryAppController {
 		$this->autoRender = false;
 
 		$result = array();
-		$result['totalCount'] = $this->Inventory->find('count');
+		$countConditions = array();
 		$conditions = array(
 			'offset' => isset($this->params['form']['start']) ? $this->params['form']['start'] : 0 ,
 			'limit' => isset($this->params['form']['limit']) ? $this->params['form']['limit'] : 3 ,
@@ -20,8 +20,9 @@ class InventoriesController extends InventoryAppController {
 		);
 		if (isset($this->params['form']['query']) && $this->params['form']['query']) {
 			$q = $this->params['form']['query'];
-			$conditions['conditions'] = array('name LIKE'=>"%{$q}%");
+			$countConditions['conditions'] = $conditions['conditions'] = array('name LIKE'=>"%{$q}%");
 		}
+		$result['totalCount'] = $this->Inventory->find('count', $countConditions);
 
 		$all_data = $this->Inventory->find('all', $conditions);
 		$result['topics'] = Set::extract($all_data, '{n}.Inventory');
