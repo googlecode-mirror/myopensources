@@ -25,7 +25,7 @@ class MainController extends AppController {
 			),
 
 			'200000'=>array(
-				array('id'=>'200001','text'=>__('Purchases Orders', true),'leaf'=>true, 'cls'=>'file','url'=>'http://www.baidu.com'),
+				array('id'=>'200001','text'=>__('Purchases Orders', true),'leaf'=>true, 'cls'=>'file','url'=>'/purchase/purch_orders/'),
 				array('id'=>'200002','text'=>__('Receive Purchases Orders', true),'leaf'=>true, 'cls'=>'file','url'=>'http://www.baidu.com'),
 				array('id'=>'200003','text'=>__('Suppliers', true),'leaf'=>true, 'cls'=>'file','url'=>'http://www.baidu.com'),
 
