@@ -1,6 +1,6 @@
 <?php
-	$add_title 	= __('Add Inventory', true);
-	$add_url 	= $html->url("/inventory/inventories/add");
+	$add_title 	= __('Add Purchase Order', true);
+	$add_url 	= $html->url("/purchase/purch_orders/add");
 
 
 	$newAction = <<<EOD
@@ -10,15 +10,16 @@
 
 EOD;
 
-	$edit_title 	= __('Edit Inventory', true);
-	$edit_url 	= $html->url("/inventory/inventories/edit/");
-
+	$edit_title = __('Edit Purchase Order', true);
+	$edit_url 	= $html->url("/purchase/purch_orders/edit/");
+	$error 		= __("Error", true);
+	$err_empty_selection = __("Please select a record", true);
 
 	$editAction = <<<EOD
 	function editAction() {
 		var s = grid.getSelectionModel().getSelections();
 		if (s.length==0) {
-			Ext.Msg.alert('出错啦','你还没有选择要操作的记录！');
+			Ext.Msg.alert('{$error}','{$err_empty_selection}');
 		}
 		for (i=0;i<s.length;i++) {
 			var id = s[i].id;

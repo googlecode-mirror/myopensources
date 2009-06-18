@@ -29,5 +29,16 @@ class PurchOrdersController extends PurchaseAppController {
 		echo json_encode($result);
 	}
 
+	function add() {
+		if (!empty($this->data)) {
+			$this->autoRender = false;
+			$this->PurchOrder->create();
+			if ($this->PurchOrder->save($this->data)) {
+				echo "{success:true,msg:'OK'}";
+				exit;
+			}
+		}
+	}
+
 }
 ?>
