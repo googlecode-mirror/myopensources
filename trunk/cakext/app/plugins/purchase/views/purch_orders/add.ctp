@@ -14,6 +14,10 @@ Ext.onReady(function(){
       	])
     });
 
+//	var ds new Ext.data.SimpleStore({
+//					fields: ['name','quantity'],
+//					data: ['','']
+//				});
 
 	var colModel = new Ext.grid.ColumnModel([
 		 {
@@ -139,6 +143,7 @@ Ext.onReady(function(){
 		el:'center',
 		title:'<?php __("Purchase Products");?>',
 		store: ds,
+		//mode: 'local',
 		cm: colModel,
 		autoScroll: true,
 
@@ -163,6 +168,9 @@ Ext.onReady(function(){
         },
 		{
             text: '<?php __("New Product"); ?>',
+            handler : function(){
+				parent.openWindow('20000102','<?php __("New Product"); ?>','<?php echo $html->url("/purchase/products/add");?>', 500, 350);
+           }
         },
 		{
             text: '删除',
