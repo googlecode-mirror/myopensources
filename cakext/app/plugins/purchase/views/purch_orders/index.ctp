@@ -23,7 +23,7 @@ EOD;
 		}
 		for (i=0;i<s.length;i++) {
 			var id = s[i].id;
-			parent.openWindow('200042'+id,'{$edit_title}','{$edit_url}'+id, 500, 350);
+			parent.openWindow('200042'+id,'{$edit_title}','{$edit_url}'+id, 600, 450);
 		}
 	}
 

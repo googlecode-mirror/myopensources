@@ -41,56 +41,27 @@ Ext.onReady(function(){
            {name: 'quantity', type: 'float'},
        ]);
 
-	var grid = new Ext.grid.GridPanel({
-		border:false,
-		region:'center',
-		loadMask: true,
-		el:'center',
-		title:'<?php __("Purchase Products");?>',
-		store: ds,
-		cm: colModel,
-		autoScroll: true,
-
-		buttons:[
-		{
-            text: '<?php __("Select Product"); ?>',
-            handler : function(){
-                var p = new Product({
-                    name: 'New Plant 1',
-                    quantity: 1
-                });
-                ds.insert(0, p);
-            }
-
-        },
-		{
-            text: '<?php __("New Product"); ?>',
-        },
-		{
-            text: '删除',
-			handler:function(){
-				var ids = getIds(grid);
-				if (ids) {
-					Ext.Msg.confirm('确认', '真的要删除1吗？', function(btn){
-						if (btn == 'yes'){
-							Ext.Ajax.request({
-							   url: 'index.php?model=dd&action=delete&ids='+ids,
-							   success: function(result){
-									ds.reload();
-									}
-							});
-						}
-					});
-
-				} else {
-					Ext.Msg.alert('出错啦','你还没有选择要操作的记录！');
-				}
-			}
-        }
-
-
-        ]
+    var proName = new Ext.form.ComboBox({
+        store: ds,
+        displayField:'state',
+        typeAhead: true,
+        mode: 'local',
+        triggerAction: 'all',
+        emptyText:'Select a state...',
+        selectOnFocus:true,
+        width:120
     });
+
+    var ordQuantity = new Ext.form.TextField ({
+		emptyText:'Quantity',
+		width:55
+    });
+
+    var unitPrice = new Ext.form.TextField ({
+		emptyText:'Uint Price',
+		width:60
+    });
+
     Ext.QuickTips.init();
     Ext.form.Field.prototype.msgTarget = 'side';
     var top=new Ext.FormPanel({
@@ -128,30 +99,31 @@ Ext.onReady(function(){
 			},{
 				xtype:'hidden',
 				name: 'dd_id',
-				value: '<!--{$smarty.get.id}-->'
+				value: ''
 			}],
 
         buttons: [{
-            text: '保存',
+            text: '<?php __("Purchase"); ?>',
 				handler:function(){
 					if(top.form.isValid()){
-						top.form.doAction('submit',{
-							 url:'index.php?model=dd&action=save',
-							 method:'post',
-							 params:'',
-							 success:function(form,action){
-							 	if (action.result.msg!='OK') {
-							 		Ext.Msg.alert('出错啦',action.result.msg);
-							 	} else {
-							 		Ext.Msg.alert('操作','保存成功!');
-							 		ds.reload();
-							 		top.form.reset();
-							 	}
-							 },
-							 failure:function(){
-									Ext.Msg.alert('操作','服务器出现错误请稍后再试！');
-							 }
-                      });
+						alert("test");
+//						top.form.doAction('submit',{
+//							 url:'index.php?model=dd&action=save',
+//							 method:'post',
+//							 params:'',
+//							 success:function(form,action){
+//							 	if (action.result.msg!='OK') {
+//							 		Ext.Msg.alert('出错啦',action.result.msg);
+//							 	} else {
+//							 		Ext.Msg.alert('操作','保存成功!');
+//							 		ds.reload();
+//							 		top.form.reset();
+//							 	}
+//							 },
+//							 failure:function(){
+//									Ext.Msg.alert('操作','服务器出现错误请稍后再试！');
+//							 }
+//                      });
 					}
 					}
         },{
@@ -159,12 +131,71 @@ Ext.onReady(function(){
 			handler:function(){top.form.reset();}
         }]
     });
+
+	var grid = new Ext.grid.GridPanel({
+		border:false,
+		region:'center',
+		loadMask: true,
+		el:'center',
+		title:'<?php __("Purchase Products");?>',
+		store: ds,
+		cm: colModel,
+		autoScroll: true,
+
+		buttons:[
+		proName,
+		ordQuantity,
+		unitPrice,
+		{
+            text: '<?php __("Add"); ?>',
+            handler : function(){
+            	var p_name = proName.getRawValue();
+            	var p_quantity = ordQuantity.getRawValue();
+            	var p_u_price = unitPrice.getRawValue();
+                var p = new Product({
+                    name: p_name,
+                    quantity: p_quantity
+                });
+
+                ds.insert(0, p);
+           }
+
+        },
+		{
+            text: '<?php __("New Product"); ?>',
+        },
+		{
+            text: '删除',
+			handler:function(){
+				var ids = getIds(grid);
+				if (ids) {
+					Ext.Msg.confirm('确认', '真的要删除1吗？', function(btn){
+						if (btn == 'yes'){
+							Ext.Ajax.request({
+							   url: 'index.php?model=dd&action=delete&ids='+ids,
+							   success: function(result){
+									ds.reload();
+									}
+							});
+						}
+					});
+
+				} else {
+					Ext.Msg.alert('出错啦','你还没有选择要操作的记录！');
+				}
+			}
+        }
+
+
+        ]
+    });
+
 	var viewport = new Ext.Viewport({
         layout:'border',
         items:[
 			grid,{
 				region:'south',
-				title:'管理字典项',
+				title:'<?php __("Purchase Info"); ?>',
 				collapsible: true,
 				height: 130,
 				border:false,
