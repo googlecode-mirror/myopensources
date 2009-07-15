@@ -29,8 +29,8 @@ Ext.onReady(function(){
 						xtype:'textfield',
 						fieldLabel:'<?php __("Code"); ?>',
 						allowBlank:false,
-						name:'data[Inventory][code]',
-						value:'<?php echo $inventory['Inventory']['code']; ?>',
+						name:'data[Product][code]',
+						value:'<?php echo $product['Product']['code']; ?>',
 					}]
 				},{
 					columnWidth:.50,
@@ -46,8 +46,8 @@ Ext.onReady(function(){
 						forceSelection: true,
 						triggerAction: 'all',
 						mode: 'local',
-						name:'data[Inventory][categoryid]',
-						value:'<?php echo $inventory['Inventory']['categoryid']; ?>',
+						name:'data[Product][categoryid]',
+						value:'<?php echo $product['Product']['categoryid']; ?>',
 					}]
 				},{
 					columnWidth:.40,
@@ -56,8 +56,8 @@ Ext.onReady(function(){
 						xtype:'textfield',
 						fieldLabel:'<?php __("Barcode"); ?>',
 						allowBlank:false,
-						name:'data[Inventory][barcode]',
-						value:'<?php echo $inventory['Inventory']['code']; ?>',
+						name:'data[Product][barcode]',
+						value:'<?php echo $product['Product']['code']; ?>',
 					}]
 				},{
 					labelWidth:35,
@@ -68,8 +68,8 @@ Ext.onReady(function(){
 						fieldLabel:'<?php __("Units"); ?>',
 						allowBlank:false,
 						width:70,
-						name:'data[Inventory][units]',
-						value:'<?php echo $inventory['Inventory']['code']; ?>',
+						name:'data[Product][units]',
+						value:'<?php echo $product['Product']['code']; ?>',
 					}]
 				},{
 					columnWidth:.30,
@@ -80,21 +80,10 @@ Ext.onReady(function(){
 						fieldLabel:'<?php __("Weight"); ?>',
 						allowBlank:false,
 						width:70,
-						name:'data[Inventory][kgs]',
-						value:'<?php echo $inventory['Inventory']['code']; ?>'
+						name:'data[Product][kgs]',
+						value:'<?php echo $product['Product']['code']; ?>'
 					}]
-				},{
-		            xtype: 'fileuploadfield',
-		            id: 'form-file',
-		            emptyText: 'Select an image',
-		            fieldLabel: 'Photo',
-		            name: 'photo-path',
-		            buttonCfg: {
-		                text: '',
-		                iconCls: 'upload-icon'
-		            }
-		        }
-
+				}
 
 			]
 		}],
@@ -104,7 +93,7 @@ Ext.onReady(function(){
 				handler:function(){
 					if(top.form.isValid()){
 						top.form.doAction('submit',{
-							url:'<?php echo isset($act) ? $html->url("/inventory/inventories/edit/".$inventory['Inventory']['id']) : $html->url("/inventory/inventories/add"); ?>',
+							url:'<?php echo isset($act) ? $html->url("/purchase/purch_orders/products/edit/".$product['Product']['id']) : $html->url("/purchase/products/add"); ?>',
 							method:'post',
 							params:'',
 							success:function(form,action){
