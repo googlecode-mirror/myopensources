@@ -55,7 +55,7 @@
  *
  */
 	if (!defined('CAKE_CORE_INCLUDE_PATH')) {
-		define('CAKE_CORE_INCLUDE_PATH', '/media/winD/www/framework/cake-1.2.0.7962');
+		define('CAKE_CORE_INCLUDE_PATH', ROOT);
 	}
 
 /**
