@@ -34,6 +34,7 @@
  * @package       cake
  * @subpackage    cake.app
  */
+App::import("Vendor", "DataFilter", array('file' => 'DataFilter.php') );
 class AppController extends Controller {
 	
 	var $helpers = array('Html', 'Form', 'Javascript', 'Time', 'Modal');

@@ -17,11 +17,55 @@ class MailCustomersController extends WebmaillerAppController {
 		$this->gender_options = Configure::read('gender_options');
 		$this->set("gender_options", $this->gender_options);
 		
+		$this->cust_search_options = Configure::read('cust_search_options');
+		$this->set("cust_search_options", $this->cust_search_options);
+		
 	}
 
 	function admin_index() {
+		
+		$this->paginate = array(
+			'limit' 	=> 1,
+		);
+		
+		$mailCustomerCategories = $this->MailCustomer->MailCustomerCategory->find('list');
+		$this->set(compact('mailCustomerCategories'));
+		
 		$this->MailCustomer->recursive = 0;
-		$this->set('mailCustomers', $this->paginate());
+		$current_category = 0 ;
+		$type = "E" ;
+		$q="";
+		$conditions = array();
+		$search_data = array();
+		if (DataFilter::pick($this->params, 'named')) {
+			$search_data = DataFilter::pick($this->params, 'named');
+		}else if (DataFilter::pick($this->params, 'data') ) {
+			$search_data = DataFilter::pick($this->params, 'data');
+		}
+		if ($form_data = DataFilter::pick($this->params, 'form')) {
+			$search_data += $form_data;
+		}
+		
+		if ( $category = DataFilter::pick($search_data, 'category') ) {
+			$conditions['MailCustomer.mail_customer_category_id'] = $current_category = $category;
+		}
+		if ($q = trim( DataFilter::pick($search_data, 'q') )) {
+			$keyword = "%{$q}%";
+			$type = DataFilter::pick($search_data, 'type');
+			if ($type == "N") {
+				$conditions['MailCustomer.nickname LIKE'] = $keyword;
+			}else{
+				$conditions['MailCustomer.email LIKE'] = $keyword;
+			}
+		}
+		
+		if (!empty($search_data)) {
+			$this->passedArgs = $search_data;
+		}
+		$this->set('mailCustomers', $this->paginate(null, $conditions) );
+		$this->set("current_category", $current_category);
+		$this->set("q", $q);
+		$this->set("type", $type);
 		$this->breakcrumb = array(
 			'nav' => array(
 				array('text'=> __("Customers", true), 'url'=>'/admin/webmailler/mail_customers' ),

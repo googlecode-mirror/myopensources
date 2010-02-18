@@ -11,7 +11,7 @@
 				<td ><?php if  ($session->check('Message.auth')) $session->flash('auth'); ?></td>
 			  </tr>
 			  <tr>
-				<td><?php echo $form->input('username', array('label'=>__("Name", true)) ); ?></td>
+				<td><?php echo $form->input('username', array('type'=>'text', 'label'=>__("Name", true)) ); ?></td>
 			  </tr>
 			  <tr>
 				<td><?php echo $form->input('password', array('label'=>__("Password", true)) ); ?></td>

@@ -16,6 +16,11 @@ $config['gender_options']= array(
 	'F' => __("Female", true),
 );
 
+$config['cust_search_options']= array(
+	'E' => __("Email", true),
+	'N' => __("Nick Name", true),
+);
+
 $config['currency_flag'] = "￥";
 
 ?>
