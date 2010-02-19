@@ -3,7 +3,7 @@ echo $modal->init('ex4');
 ?>
 
 <div class="search">
-<form id="search" action='<?php echo $html->url("/admin/webmailler/mail_customers");?>' method='POST' >
+<form id="search" name='search'  action='<?php echo $html->url("/admin/webmailler/mail_customers");?>' method='POST' >
 <?php __("Search");?> : 
 <input type="text" name="q" id="q" value="<?php echo $q;?>" />
 <?php 
@@ -11,18 +11,12 @@ echo $form->select("type", $cust_search_options, $type, array(), false);
 echo __("Category") . ":" . $form->select("category", $mailCustomerCategories, $current_category, array(), _("None") );
 ?>
 <input type="submit" value="<?php __("Search");?>">
-</from>
+</form>
 </div>
 
 <div class="mailCustomers index">
-<p>
-<?php
-echo $paginator->counter(array(
-'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-));
-$paginator->options(array('url' => $this->passedArgs));
-?></p>
-<form id='list-form' action='<?php echo $html->url("/admin/webmailler/mail_customers/delSelected");?>' method='POST'>
+<?php echo $this->element('paginator_info');?>
+<form id='list-form' name='list-form' action='<?php echo $html->url("/admin/webmailler/mail_customers/delSelected");?>' method='POST'>
 <table cellpadding="0" cellspacing="0" id="listing">
 <tr>
 	<th width="40px"><input id="select_all" type="checkbox" /></th>
@@ -65,16 +59,11 @@ foreach ($mailCustomers as $mailCustomer):
 		</td>
 		<td class="actions">
 			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $mailCustomer['MailCustomer']['id']), array('class'=>'ex4Trigger', 'title' => __('View', true) ) ); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $mailCustomer['MailCustomer']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $mailCustomer['MailCustomer']['id'])); ?>
+			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $mailCustomer['MailCustomer']['id']), null, sprintf(__('Are you sure you want to delete # %s\n, and will be delete all customer under this group?', true), $mailCustomer['MailCustomer']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
 </table>
 </form>
 </div>
-<div class="paging">
-	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
- | 	<?php echo $paginator->numbers();?>
-	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
-</div>
-
+<?php echo $this->element('paginator');?>

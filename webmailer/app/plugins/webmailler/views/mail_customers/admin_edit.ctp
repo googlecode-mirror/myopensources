@@ -8,7 +8,7 @@ echo $modal->modalForm('ex4', "AddForm");
  		<legend><?php __('Edit MailCustomer');?></legend>
 	<?php
 		echo $form->input('id');
-		echo $form->input('mail_customer_category_id');
+		echo $form->input('mail_customer_category_id', array("type"=>"select"));
 		echo $form->input('nickname');
 		echo $form->radio('gender', $gender_options );
 		echo $form->input('email');
