@@ -76,7 +76,7 @@ class MailCustomerCategoriesController extends WebmaillerAppController {
 			$this->Session->setFlash(__('Invalid id for MailCustomerCategory', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if ($this->MailCustomerCategory->del($id)) {
+		if ($this->MailCustomerCategory->del($id, true)) {
 			$this->Session->setFlash(__('MailCustomerCategory deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}

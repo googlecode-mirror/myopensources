@@ -350,7 +350,7 @@ table#listing th, #list-form th {
 	border-right-color: #CCCCCC;
 }
 
-#list-form table td {
+table#listing td, #list-form table td {
 	height: 28px;
 	border-bottom-width: 1px;
 	border-bottom-style: solid;

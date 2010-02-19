@@ -25,7 +25,7 @@ class MailCustomersController extends WebmaillerAppController {
 	function admin_index() {
 		
 		$this->paginate = array(
-			'limit' 	=> 1,
+			'limit' 	=> 20,
 		);
 		
 		$mailCustomerCategories = $this->MailCustomer->MailCustomerCategory->find('list');
@@ -37,13 +37,14 @@ class MailCustomersController extends WebmaillerAppController {
 		$q="";
 		$conditions = array();
 		$search_data = array();
+
 		if (DataFilter::pick($this->params, 'named')) {
 			$search_data = DataFilter::pick($this->params, 'named');
 		}else if (DataFilter::pick($this->params, 'data') ) {
 			$search_data = DataFilter::pick($this->params, 'data');
 		}
 		if ($form_data = DataFilter::pick($this->params, 'form')) {
-			$search_data += $form_data;
+			$search_data['q']= $form_data['q'];
 		}
 		
 		if ( $category = DataFilter::pick($search_data, 'category') ) {

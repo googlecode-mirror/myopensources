@@ -21,7 +21,7 @@ $(document).ready(function(){
 	$(".act-del").parent().click(
 			function(){
 				if ( confirm( $.i18n._('Are you sure delete selected ?') ) ) {
-					$("form").submit();
+					$("#list-form").submit();
 					
 				}
 				return false;
