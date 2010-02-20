@@ -26,9 +26,11 @@ class DashboardController extends AppController {
 			__("WebMailler", true) => array(
 			
 				array('label'=>__("Templates", true), 'url'=>"/admin/webmailler/mail_templates" ),
+				array('label'=>__("Sent Log", true), 'url'=>"/admin/webmailler/mail_logs" ),
 				array('label'=>__("Customers", true), 'url'=>"/admin/webmailler/mail_customers" ),
 				array('label'=>__("Cust Categories", true), 'url'=>"/admin/webmailler/mail_customer_categories" ),
 				array('label'=>__("Mail Server", true), 'url'=>"/admin/webmailler/mail_servers" ),
+				
 			),
 			
 			

@@ -40,6 +40,10 @@ class MailTemplate extends WebmaillerAppModel {
 		App::import('Model', 'Webmailler.MailCustomer');
 		$mail_customer_obj = new MailCustomer();
 		
+		//--- log
+		App::import('Model', 'Webmailler.MailLog');
+		$mail_log_obj = new MailLog();
+		
 		$limit = count($servers);
 		$total = $mail_customer_obj->find('count');
 		$pages = ceil($total/$limit);
@@ -113,7 +117,10 @@ class MailTemplate extends WebmaillerAppModel {
 			$total ++;
 			
 		}
-		printf(__("Sent Total:%s Success:%s Fail:%s ", true). "<br/>", $total, $success, $fail);
+		
+		$log = sprintf(__("Sent Total:%s Success:%s Fail:%s ", true). "\n", $total, $success, $fail);
+		$mail_log_obj->log( $mail_data['subject'] . "[{$log}]");
+		echo nl2br($log);
 		return $this->mail_msg;
 	}
 	
