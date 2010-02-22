@@ -103,7 +103,7 @@ class MailTemplate extends WebmaillerAppModel {
 						
 					}
 					
-					$result = true;//$mail->Send();
+					$result = $mail->Send();
 					
 					if($result) {
 					  printf(__("Send to %s done ", true). "<br/>", $customer['email']);
