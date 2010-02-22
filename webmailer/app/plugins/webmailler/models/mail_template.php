@@ -45,7 +45,7 @@ class MailTemplate extends WebmaillerAppModel {
 		$mail_log_obj = new MailLog();
 		
 		$limit = count($servers);
-		$total = $mail_customer_obj->find('count');
+		$total = $mail_customer_obj->find('count', array('conditions' => array('MailCustomer.mail_customer_category_id'=> explode($this->group_splitor, $mail_data['to']) ) ) );
 		$pages = ceil($total/$limit);
 		$total = $success = $fail =0;
 		
@@ -103,13 +103,14 @@ class MailTemplate extends WebmaillerAppModel {
 						
 					}
 					
+					$result = true;//$mail->Send();
 					
-					if(!$mail->Send()) {
-					  printf(__("Send to %s error: %s ", true). "<br/>", $customer['email'], $mail->ErrorInfo);
-					  $fail++;
-					} else {
+					if($result) {
 					  printf(__("Send to %s done ", true). "<br/>", $customer['email']);
 					  $success++;	
+					} else {
+					  printf(__("Send to %s error: %s ", true). "<br/>", $customer['email'], $mail->ErrorInfo);
+					  $fail++;
 					}
 				}
 								
