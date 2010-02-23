@@ -8,7 +8,7 @@ echo $modal->init('ex4');
 <input type="text" name="q" id="q" value="<?php echo $q;?>" />
 <?php 
 echo $form->select("type", $cust_search_options, $type, array(), false);
-echo __("Category") . ":" . $form->select("category", $mailCustomerCategories, $current_category, array(), _("None") );
+echo __("Category") . ":" . $form->select("category", $mailCustomerCategories, $current_category, array(), __("None") );
 ?>
 <input type="submit" value="<?php __("Search");?>">
 </form>
