@@ -8,11 +8,11 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => '',
 		'password' => '',
-		'database' => 'D:/www/webmailer/app/db/webmailer.sdb',
+		'database' => 'D:/www/webmailer/app/db/myibc.s3db',
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);
-	
-	
+
+
 }
 ?>

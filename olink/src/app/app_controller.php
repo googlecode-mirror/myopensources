@@ -34,84 +34,21 @@
  * @package       cake
  * @subpackage    cake.app
  */
-App::import("Vendor", "DataFilter", array('file' => 'DataFilter.php') );
 class AppController extends Controller {
-	
-	var $helpers = array('Html', 'Form', 'Javascript', 'Time', 'Modal');
-	var $components = array('Auths');
-	var $isAuthorized = false;
-	
+
+	var $helpers = array('Html', 'Form', 'Javascript', 'Time');
+
 	var $breakcrumb = null;
 	var $active_options = null;
-	
-    function beforeFilter() {
-        // Admin area requires authentification
-    	if ($this->isAdminAction()) {
-        	
-            $this->__withLoggedIn();
-        	
-        	$this->layout = 'admin_default';
-        	$this->{$this->modelClass}->AuthUser = $this->Auths->user(); 
-        	$this->set('authuser', $this->Auths->user());
-        	
-        } else {
-        	
-        	$this->__withoutLogin();
-        	
-			$this->layout = 'default';
-			
-        }
-    	
-    }
-    	
-	
+
 	function beforeRender() {
-		
+
 		if (!empty($this->breakcrumb) ) {
 			$this->set("breakcrumb", $this->breakcrumb);
 		}
-		// populate active options
-		Configure::load("common");
-		$this->active_options = Configure::read('active_options');
-		$this->set("active_options", $this->active_options);
-		
-	}
-	
-	/**
-	 * If admin is not logged in redirect to login screen and exit
-	 *
-	 */
-	function __withLoggedIn() {
-		
-        $this->Auths->loginAction = array(Configure::read('Routing.admin') => false, 'controller' => 'users', 'action' => 'login');
-        $this->Auths->logoutRedirect = array(Configure::read('Routing.admin') => false, 'controller' => 'users', 'action' => 'logout');
-        $this->Auths->loginError = __('Login failed. Invalid username or password.', true);
-        $this->Auths->authError = __('You are not authorized to access that location.', true);
-//        $this->Session->delete('Auth.redirect');
-        
-	}
-	
-	function __withoutLogin() {
-		$this->Auths->allow("*");
-	}
-	
-	
-    /**
-     * Tell wheather the current action should be protected
-     *
-     * @return bool
-     */
-    function isAdminAction() {
-        return (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') or isset($this->params['admin']);
-    }
 
-	function admin_delSelected() {
-		if ( $this->{$this->modelClass}->delIds($this->params['form']['all']) ) {
-			$this->Session->setFlash(__('Deleted select records', true));
-			$this->redirect(array('action'=>'index'));
-		}
 	}
-	
-    
+
+
 }
 ?>

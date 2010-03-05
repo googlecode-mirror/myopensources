@@ -1,46 +1,62 @@
-<?php 
-echo $javascript->link( array('jquery','jquery.treeview') );
-echo $html->css( array("jquery.treeview") );
+<?php
+echo $javascript->link( array("jquery", 'jquery.cookie','jquery.treeview') );
+echo $html->css( array('screen','jquery.treeview') );
 
 $inline_script = <<<EOD
-		$(function() {
-			$("#browser").treeview();
+	$(document).ready(function(){
+
+			$("#red").treeview({
+			animated: "fast",
+			collapsed: true,
+			unique: true,
+			persist: "cookie",
+			toggle: function() {
+				window.console && console.log("%o was toggled", this);
+			}
 		});
+	$("ul span").hover(function(){
+	$(this).addClass("highlight");
+	},function(){
+	$(this).removeClass("highlight");
+	});
+	});
 
 EOD;
 echo $javascript->codeBlock($inline_script);
 ?>
-    <div id="left-container">
-   	  <div id="left-top">
-      	<div id="left-text"><?php echo __("Main Menu"); ?></div>
-      	<div id="left-flag">&gt;&gt;</div>
-      </div>
-      
-      <div id="left-main">
-      
-  		<!-- TREE START -->    
-		<ul id="browser" class="filetree">
-		
-			<?php foreach ($menus as $category=>$items): ?>
-			
-			<li><em class="folder"></em> <?php echo $category; ?></span>
-				<ul>
-					<?php foreach ($items as $item): ?>
-					<li><a href="<?php echo $html->url($item['url']); ?>" target="mainFrame"> <em class="file"></em><?php echo $item['label']; ?></a> </li>
-					<?php endforeach; ?>
-				</ul>
-			</li>
-			<?php endforeach; ?>
-			
-			<li><em class="folder"></em> <?php echo __("System"); ?></span>
-				<ul>
-					<li><em class="file"></em><?php echo __("Backup/Restore"); ?> </li>
-					<li><?php echo $html->link('<em class="file"></em>'.__('Logout', true), "/users/logout", array('target'=>'_parent'), __('Are you sure want to logout?', true), false ); ?> </li>
-				</ul>
-			</li>
-
+  <div class = "leftMenu" >
+  <div   onclick="parent.mainFrame.location='<?php echo $html->url("/dashboard/main"); ?>'"><img src="<?php echo $html->url("/images/homeIcon.gif"); ?>"  border="0"   />返回首页</div>
+<ul id="red" class="treeview-red">
+	<li onclick="parent.mainFrame.location='<?php echo $html->url("/administrator"); ?>'">
+		<span>管理员管理</span>
+	</li>
+	<li><span>网络配置</span>
+		<ul>
+			<li onclick="parent.mainFrame.location='wan_ip.html'"><span>WAN网口地址</span></li>
+			<li  onclick="parent.mainFrame.location='lan_ip.html'"><span>LAN网口地址</span></li>
 		</ul>
-      	<!-- TREE END -->
-      	
-      </div>
-    </div>
+	</li>
+	<li><span>系统管理</span>
+		<ul>
+			<li onclick="parent.mainFrame.location='shutdown_restart.html'"><span>停机与重启</span></li>
+			<li onclick="parent.mainFrame.location='sys_resource.html'"><span>系统资源</span></li>
+		</ul>
+	</li>
+	<li><span>接入管理</span>
+		<ul>
+			<li onclick="parent.mainFrame.location='services_manage.html'"><span>服务管理</span></li>
+			<li onclick="parent.mainFrame.location='privatekey_manage.html'"><span>密钥管理</span></li>
+			<li onclick="parent.mainFrame.location='id_wlist_manage.html'"><span>接入标识管理</span></li>
+			<li onclick="parent.mainFrame.location='ip_wlist.html'"><span>接入地址管理</span></li>
+			<li  onclick="parent.mainFrame.location='application_manage.html'"><span>接入应用管理</span></li>
+			<li  onclick="parent.mainFrame.location='current_user.html'"><span>当前接入用户</span></li>
+		</ul>
+	</li>
+	<li><span>日志管理</span>
+		<ul>
+			<li   onclick="parent.mainFrame.location='admin_record.html'"><span>管理员日志</span></li>
+			<li   onclick="parent.mainFrame.location='user_record.html'"><span>用户日志</span></li>
+		</ul>
+	</li>
+</ul>
+</div>
