@@ -27,7 +27,7 @@ echo $javascript->codeBlock($inline_script);
   <div class = "leftMenu" >
   <div   onclick="parent.mainFrame.location='<?php echo $html->url("/dashboard/main"); ?>'"><img src="<?php echo $html->url("/images/homeIcon.gif"); ?>"  border="0"   />返回首页</div>
 <ul id="red" class="treeview-red">
-	<li onclick="parent.mainFrame.location='<?php echo $html->url("/administrator"); ?>'">
+	<li onclick="parent.mainFrame.location='<?php echo $html->url("/users"); ?>'">
 		<span>管理员管理</span>
 	</li>
 	<li><span>网络配置</span>

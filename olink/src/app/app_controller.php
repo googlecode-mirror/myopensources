@@ -37,9 +37,20 @@
 class AppController extends Controller {
 
 	var $helpers = array('Html', 'Form', 'Javascript', 'Time');
+	var $components = array('Auths');
+	var $isAuthorized = false;
 
 	var $breakcrumb = null;
 	var $active_options = null;
+
+    function beforeFilter() {
+        // Admin area requires authentification
+        $this->__withLoggedIn();
+
+        $this->{$this->modelClass}->AuthUser = $this->Auths->user();
+        $this->set('authuser', $this->Auths->user());
+
+    }
 
 	function beforeRender() {
 
@@ -49,6 +60,19 @@ class AppController extends Controller {
 
 	}
 
+	/**
+	 * If admin is not logged in redirect to login screen and exit
+	 *
+	 */
+	function __withLoggedIn() {
+
+        $this->Auths->loginAction = array(Configure::read('Routing') => false, 'controller' => 'users', 'action' => 'login');
+        $this->Auths->logoutRedirect = array(Configure::read('Routing') => false, 'controller' => 'users', 'action' => 'logout');
+        $this->Auths->loginError = __('Login failed. Invalid username or password.', true);
+        $this->Auths->authError = __('You are not authorized to access that location.', true);
+//        $this->Session->delete('Auth.redirect');
+
+	}
 
 }
 ?>

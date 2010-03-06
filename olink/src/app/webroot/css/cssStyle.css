@@ -184,19 +184,10 @@ padding-bottom:20px;
 background-color:#f8f8f8;
 border:1px solid #ededed;
 }
-.spanLoginHead {
-color:#226fd7;
-display:block;
-background:url("../images/loginIcon.gif") left 45% no-repeat;
-text-align:left;
-padding-left:20px;
-padding-top:2px;
-margin:2px 0 0 5px;
-font-size:10.5pt;
-}
+
 .spanLoginTab {
 display:block;
-margin:5px 35px 3px 0px;
+margin:20px 140px 5px 0px;
 text-align:right;
 color:#525252;
 }
@@ -1194,7 +1185,7 @@ width:160px;
 }
 #tableKeyCode #KeyPassWord ,#tableUser #operatorCode,#tableUser #password  {
 background-color:#fff;
-border:1px solid #dfecf3;
+border:1px solid #bbe6af;
 height:20px;
 width:160px;
 }
@@ -1455,4 +1446,87 @@ background:url(../images/gear3.gif) no-repear 5px 50% ;
 }
 .tipStyle {
 color:red;
+}
+
+/* login style*/
+.divMemCenter {
+width:450px;
+margin-left:auto;
+margin-right:auto;
+background-color:#def7d7;
+border:1px solid #cee5c7;
+margin-top:70px;
+}
+.divLoginModeSwitch {
+height:24px;
+margin-top: 20px;
+}
+.divLoginModeSwitch div {
+float:left;
+width:77px;
+height:25px;
+color:#2a6120;
+cursor:pointer;
+text-align:center;
+}
+
+.divLoginModeSwitchOn{
+background:url("../images/loginModeSwitchTabBg.gif");
+font-weight:bold;
+height:25px;
+line-height:25px;
+}
+.divLoginModeSwitchOut {
+background:url("../images/loginModeSwitchTabOnBg.gif");
+height:25px;
+line-height:25px;
+}
+.divMemCenter .divLoginModeSwitch {
+margin-left:auto;
+margin-right:auto;
+padding-left:10px;
+clear:both;
+}
+
+.divMemCenter #divEmailLoginMode ,.divMemCenter #divKeyLoginMode {
+height:160px;
+text-align:right;
+margin-left:auto;
+margin-right:auto;
+border:1px solid #deeadf;
+width:430px;
+margin-bottom:10px;
+margin-top:0px;
+}
+.divMemCenter #divKeyLoginMode select {
+width:160px;
+}
+.divMemCenter #divKeyLoginMode #KeyPassWord  {
+background-color:#fff;
+border:1px solid #bbe6af;
+height:20px;
+width:159px;
+}
+.divMemCenter .textStyle {
+width:159px;
+}
+.divMemCenter #DeviceListDiv div, .divMemCenter #KeyPassWordDiv div ,.divMemCenter #SelectUSBDiv div{
+width:130px;
+}
+.spanLoginHead {
+color:#306e25;
+display:block;
+background:url("../images/loginIcon.gif") left 45% no-repeat;
+text-align:left;
+padding-left:20px;
+padding-top:2px;
+margin:2px 0 0 5px;
+font-size:10.5pt;
+}
+#divKeyLoginSubmitButton {
+text-align:right;
+width:230px;
+margin-left:auto;
+margin-right:auto;
+margin-top:15px;
 }
