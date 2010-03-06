@@ -17,5 +17,6 @@ class Administrator extends AppModel {
 		}
 		return $data;
 	}
+
 }
 ?>

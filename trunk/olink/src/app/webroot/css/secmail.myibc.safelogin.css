@@ -1,0 +1,111 @@
+/*定义在登录页面当中的div=SecmailSafeLoginDiv CSS*/
+
+* {
+font:9pt/150%  arial,helvetica,sans-serif,"宋体";
+margin: 0; 
+padding: 0;
+}
+#SecmailSafeLoginDiv #InsertKeyImageDiv 
+{
+color: #000;
+}
+
+#divEmailLoginMode,#divKeyLoginMode {
+text-align:right;
+margin:0px 8px;
+padding-top:2px;
+}
+
+#divKeyLoginMode,#divIEAlert  {
+text-align:center;
+color:red;
+margin-top:5px;
+}
+#divKeyLoginSubmitButton {
+clear:both;
+}
+
+
+#divKeyLoginMode select {
+width:120px;
+}
+#divKeyLoginMode #KeyPassWord  {
+background-color:#fff;
+border:1px solid #bbe6af;
+height:20px;
+width:120px;
+}
+#SecmailSafeLoginDiv img {
+width:140px;
+height:38px;
+margin-top:30px;
+margin-right:200px;
+
+}
+
+#SecmailSafeLoginDiv #DeviceListDiv #DeviceList
+{
+   background-color:#fff;
+   border:1px solid #bbe6af;
+   height:20px;
+   font-size: 13px;
+}
+
+#DeviceListDiv ,#KeyPassWordDiv ,#SelectUSBDiv ,.divLoginLeftTitle{
+width:295px;
+margin-left:auto;
+margin-right:auto;
+margin-top:15px;
+margin-right:100px;
+}
+#KeyPassWordDiv div,#DeviceListDiv div ,#SelectUSBDiv div,.divLoginLeftTitle {
+height:20px;
+float:left;
+line-height:20px;
+width:60px;
+color:#525252;
+text-align:right;
+}
+
+#KeyPassWord {
+width:110px;
+}
+#SecmailSafeLoginDiv #KeyPassWordDiv #KeyLoginButton 
+{
+	background:url("images/buttonBg.gif");
+	height:25px;
+	border:1px solid #81cde4;
+	margin:0 7px;
+	padding:0 1px;
+	color:#226fd7;
+	/*width:60px;*/
+   
+}
+
+
+#SecmailSafeLoginDiv #SubmitOrCancelDiv #SubmitButton
+{
+	background:url("images/buttonBg.gif");
+	height:25px;
+	border:1px solid #81cde4;
+	margin:0 7px;
+	padding:0 1px;
+	color:#226fd7;
+	width:60px;
+	
+}
+
+#SecmailSafeLoginDiv #SubmitOrCancelDiv #CancelButton
+{
+	background:url("images/buttonBg.gif");
+	height:25px;
+	border:1px solid #81cde4;
+	margin:0 7px;
+	padding:0 1px;
+	color:#226fd7;
+	width:60px;
+}
+
+
+/*---------member center-----------*/
+
