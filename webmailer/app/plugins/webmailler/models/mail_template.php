@@ -48,6 +48,10 @@ class MailTemplate extends WebmaillerAppModel {
 		$total = $mail_customer_obj->find('count', array('conditions' => array('MailCustomer.mail_customer_category_id'=> explode($this->group_splitor, $mail_data['to']) ) ) );
 		$pages = ceil($total/$limit);
 		$total = $success = $fail =0;
+		$charset= "UTF-8";
+		if (Configure::read('Config.language') == "zh-CN") {
+			$charset = "GBK";
+		}
 		
 		for ($page=1; $page<=$pages; $page++) {
 			$conditions = array(
@@ -62,6 +66,7 @@ class MailTemplate extends WebmaillerAppModel {
 				foreach ($customers as $key=>$customer) {
 					$server = $servers[$key];
 					$mail = new PHPMailer();
+					$mail->CharSet = $charset;
 					if ($server['ssl']) {
 						$mail->SMTPSecure = "ssl";
 					}
