@@ -124,3 +124,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `modified` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+INSERT INTO `users` (`id`, `username`, `password`, `gender`, `realname`, `birthday`, `marriage`, `addrees`, `phone`, `mobile`, `email`, `photo`, `memo`, `user_id`, `add_ip`, `created`, `modified`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', '', '0000-00-00', '', '', '', '', '', '', '', 0, 0, 0, 0);
+
+
+--
+-- 表的结构 `mail_logs`
+--
+
+CREATE TABLE IF NOT EXISTS `mail_logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `msg` text,
+  `created` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
