@@ -80,7 +80,7 @@ class MailTemplate extends WebmaillerAppModel {
 					$mail->Username   = $server['account'];
 					$mail->Password   = $server['passwd'];
 					
-					$mail->AddReplyTo($server['account'],"JohnMeng");
+//					$mail->AddReplyTo($server['account'],"JohnMeng");
 					
 					$mail->From       = $server['account'];
 					$mail->FromName   = $mail_data["from"];
@@ -89,6 +89,12 @@ class MailTemplate extends WebmaillerAppModel {
 					
 					$mail->Subject    = $mail_data['subject'];
 					$contents = $this->_parseMailContent( $mail_data['content'], $customer );
+					if ($charset != "UTF-8") {
+						$mail->Subject    = $this->_utf8ToGBK($mail->Subject);
+						$contents = $this->_utf8ToGBK($contents);
+					}
+					
+					
 					if ($mail_data['plain_text']) {
 						$mail->Body = strip_tags($contents);
 					} else{
@@ -185,6 +191,10 @@ class MailTemplate extends WebmaillerAppModel {
 			
 		}
 		return $content;
+	}
+	
+	function _utf8ToGBK($content) {
+		return mb_convert_encoding($content, "GBK", "UTF-8");
 	}
 	
 }
