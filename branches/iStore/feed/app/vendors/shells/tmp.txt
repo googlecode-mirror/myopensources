@@ -1,0 +1,519 @@
+
+				    
+                            <li>
+                                <a href="ProductDetail.aspx?productid=10326" title=""><img src="http://apk.gfan.com/asdf/PImages/2011/1/10326b2e6c7c9-761a-48eb-874e-72060e530138_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=10326" target="_blank" class="title">小米分享<span class="version">Ver:1.0</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">110283</span></span>
+							        <span class="size">大小：<span class="a_i_c">2.08M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-18</span></span>
+						        </div>
+						        <div class="article">
+							         小米分享，一款为Android手机用户提供在线分享手机铃声、壁纸、音乐、电子书、短信的开放平台，在这里，用户可以免费下载铃声、壁纸、音乐、小说、短信。
+- 手机铃声：提供各类热门铃声下载，下载的铃声可以设置为手机来电、短信、闹钟铃声。
+- 手机壁纸：最酷最新最高清壁纸一应俱全，让你的手机不再单一让你做个时代潮人，下载后的壁纸可以马上设置为桌面背景。
+- 短信笑话：提供日常生活祝福短信以及大量幽默笑话，不仅可以方便的群发给自己的联系人，也可以重新编辑加入自己的内容。
+- 小说分享(新增)：小说的下载、分享和阅读功能，提供登录用户的小说收藏夹备份功能。
+- 在线音乐(新增)：海量在线音乐搜索、试听、下载功能，提供登录用户的音乐收藏夹备份功能
+- 分享上传：一份快乐，与他人分享后就成了两份快乐，在这里为您提供便捷、快速的资源分享通道。
+- 一键分享：可以一键分享当前图片和铃声，方便分享给自己的朋友
+- 自动换壁纸：用户可以设置自动更换自己喜欢的壁纸，从此不必为更换壁纸犯愁了。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=4869" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/6/201006251140428931.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=4869" target="_blank" class="title">Root管理器<span class="version">Ver:2.13.4</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">81936</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.20M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-03-04</span></span>
+						        </div>
+						        <div class="article">
+							         需要ROOT权限、新建文件夹、查看/编辑文件、软件安装、RootExplorer具备普通文件管理器的各项基本功能，另外还添加了搜索功能，在手机上找东西变得更加方便。此外，RootExplorer最大的特点在于它能够删除手机中自带的应用程序，如GOOGLEMAP、CONTACTS、MARKET、GTALK等等。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=2964" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/5/201005211359588751.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=2964" target="_blank" class="title">高级任务管理器<span class="version">Ver:5.3</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">46139</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.41M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-03-07</span></span>
+						        </div>
+						        <div class="article">
+							         AdvancedTaskManager是一款简单易用的任务管理软件，它可以使你更加方便的切换和关闭正在运行的程序，显示正在运行的系统文件，方便的在软件之间切换。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=36680" title=""><img src="http://apk.gfan.com/asdf/PImages/2011/1/36680621bb2fa-9997-4cb3-91c8-96af69578944_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=36680" target="_blank" class="title">快手下载<span class="version">Ver:0.1</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">42636</span></span>
+							        <span class="size">大小：<span class="a_i_c">1.02M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-03-29</span></span>
+						        </div>
+						        <div class="article">
+							         免费高清下载看，10000部！
+
+1. 万部高清，一键免费下载。每日更新，精选优质资源。
+2. 移动天地，快手一指！『视频快手』是开放移动互联时代首款移动导视引擎，已发布15款Android终端应用，您可在家族界面按需选择。
+3. 全网精选收录优酷、土豆、QQ、搜狐、新浪、酷六、奇艺、乐视、56、CNTV、PPTV等各大视频网站的电影，电视，连续剧，综艺，短视频等内容。
+
+常见问题：
+1.国内3G资费昂贵，下载、点播请使用Wi-Fi。
+2.您可以在应用设置界面打开下载任务自动完成开关。
+3.高清视频播放需要较高的手机硬件配置支持。
+4.更多详情访问官网：http://www.ikuaishou.com/
+
+◎ 固件要求：Android 1.6
+◎ 终端分辨率：自适应
+
+A video downloading tool for Chinese movies and TV programs from major Chinese video sites, such as youku, tudou, sina, QQ, sohu, qiyi, letv, 56, cntv, pptv, ku6, etc.
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=3560" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/6/201006011135579321.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=3560" target="_blank" class="title">条码扫描仪<span class="version">Ver:3.3</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">37046</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.47M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-02-14</span></span>
+						        </div>
+						        <div class="article">
+							         最强大的条码扫描器,很好用。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=12341" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/12//12341d55b38ef-ac7f-4139-b415-088da610cff6_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=12341" target="_blank" class="title">中华万年历<span class="version">Ver:2.0.0</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">33453</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.86M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-25</span></span>
+						        </div>
+						        <div class="article">
+							         中华万年历，是一款基于Android平台的手机应用软件，提供了与人们生活息息相关的日历查询功能，同时可显示当日黄历信息，为爱好黄历的朋友提供了参考。在附加功能中，集成了节日、黄历、历史年代、星座、生理规律等实用工具。此外，桌面日历小工具可以方便的查看当日详细信息。
+
+有疑问请加Etouch产品官方交流群82016532
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=27780" title=""><img src="http://apk.gfan.com/asdf/PImages/2011/3/27780acb787c4-dc9a-41f8-b662-3e10e17b4748_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=27780" target="_blank" class="title">Quick拍二维码识别软件<span class="version">Ver:1.10</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">31687</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.55M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-03-25</span></span>
+						        </div>
+						        <div class="article">
+							         Quick拍是您手机上不可或缺的一款应用，它将不仅能把您的手机变成一台专业的多功能条码扫描仪，随时随地便快捷的识别商品条形码和二维码(QR code)，更是手机比价软件中的佼佼者，购物时随手拿起一件商品，对准商品条码，商品相关信息即刻显示在手机屏幕上。请立即安装Quick拍，enjoy bar code life……！
+Quick拍二维码识别软件功能介绍
+﹡条码扫描
+﹡条码比价、商品比价
+﹡二维码识别
+﹡手动输入条码查询
+﹡火车票真假辨别
+﹡二维码、条码图片识别
+﹡商品防伪信息、商品实用信息查询
+Quick拍二维码识别软件（1.10）更新说明：
+﹡添加了闪光灯开关
+﹡增加了商品信息纠错
+﹡解决了部分机型ROM适配问题
+﹡解决了部分android2.3的适配问题
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=5887" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/7/201007201839546761.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=5887" target="_blank" class="title">手机SIM卡通讯录同步管理<span class="version">Ver:1.0</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">31666</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.12M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-02-10</span></span>
+						        </div>
+						        <div class="article">
+							         android上无法对本机的sim卡上通讯录做操作,本软件可以自由,添加,删除,修改SIM卡上的联系人,并且还可以与本机通讯录做双向的同步,满足有使用SIM卡用户的需要。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=5424" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/7/201007071731023421.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=5424" target="_blank" class="title">Documents To Go<span class="version">Ver:3.002</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">29682</span></span>
+							        <span class="size">大小：<span class="a_i_c">4.76M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-03-07</span></span>
+						        </div>
+						        <div class="article">
+							         android里最经典的OFFICE软件，可编辑WORD，EXCELL文件等。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=4371" title=""><img src="http://apk.gfan.com/asdf/PImages/253607cfdc655-7b75-4f3b-b666-9a10cf1e6e6a_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=4371" target="_blank" class="title">掌上百度<span class="version">Ver:1.0.13.27</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">28899</span></span>
+							        <span class="size">大小：<span class="a_i_c">1.46M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-03-24</span></span>
+						        </div>
+						        <div class="article">
+							         掌上百度是百度公司面向移动终端的基于搜索的浏览软件。秉承着'百度一下，你就知道'的理念，掌上百度为移动互联网用户提供便捷、快速的网页搜索、知识搜索、以及以贴吧为核心的社区等服务，目前支持国内主流手机操作系统。
+
+最近更新：
+1.修复数个影响体验的bug。
+2.增强稳定性。
+3.优化UI细节。
+
+version:beta3(1.0.13.27)
+2011-3-22
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=3149" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/5/201005261508409531.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=3149" target="_blank" class="title">超频及省电利器 <span class="version">Ver:1.5.4</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">27404</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.09M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-02-12</span></span>
+						        </div>
+						        <div class="article">
+							         SetCPU是一款CPU运行频率锁定软件，能将你手机的CPU运行频率锁定在你设定的一个数值上。另外软件内置了几个状态的设置可以人性化的选择开关，比如当充电时的CPU频率，当电量少于某个百分比时的频率，当待机时的频率等等。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=4048" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/6/201006081600054061.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=4048" target="_blank" class="title">全键盘钢琴 <span class="version">Ver:1.0.3</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">27203</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.18M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-02-09</span></span>
+						        </div>
+						        <div class="article">
+							         最近出了个吉他模拟的软件，下得多，会用的少。现在发一个全键盘的钢琴软件，音色还不错，推荐大家玩玩。下面精心整理的琴谱，大家要是觉得不错就加点分，谢谢了，如果不想加，也帮忙顶一下吧，呵呵
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=4765" title=""><img src="http://apk.gfan.com/asdf/PImages/2011/2/4765d7ae6ac9-2c2b-446c-bafa-e402e3f10bfb_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=4765" target="_blank" class="title">沃达上网管家<span class="version">Ver:2.4.7</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">26587</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.68M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-03-16</span></span>
+						        </div>
+						        <div class="article">
+							         上网管家简介：
+你是否遇到过上网流量超过流量被无辜扣费、不明软件自动联网浪费流量？上网管家可以帮助你解决这些问题，上网管家Android 版是专为为Android手机开发的一款非常适合中国特定国情需要的免费管理上网流量的软件，可以有效管理你的手机流量，防止流量损失和超过流量扣费，让你对上网流量了如指掌。
+
+软件功能：
+1、智能管理分析当天、当月的上网流量
+2、一键设置、备份、恢复网络接入点，简化用户操作
+3、便捷开关联网功能，防止软件自动联网导致流量不足
+4、流量超支报警，防止流量用超，帮您省钱，报警后自动断网
+5、桌面widget工具及浮动窗口帮你快捷管理和了解网络流量
+6、联网监控，时刻了解后台运行的联网程序
+7、网络防火墙，禁止任意程序连接网络（需root权限及2.2系统以上支持）
+
+2.4.7更新内容：
+1、修复三星、M9等部分机型流量不记录的问题
+2、修复个别情况下出现的流量计算中问题
+3、更新网络防火墙，开机后防护墙会自动开启
+4、修复通知栏图标无变化的问题
+5、修复统计图表溢出问题
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=35860" title=""><img src="http://apk.gfan.com/asdf/PImages/35860268e84cd-c217-408d-818f-9a47409390f2_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=35860" target="_blank" class="title">精品便签本 汉化版<span class="version">Ver:1.4</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">23709</span></span>
+							        <span class="size">大小：<span class="a_i_c">5.42M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-26</span></span>
+						        </div>
+						        <div class="article">
+							         韩国Mobiders作品，体现了韩国作品精致的美术设计水准。这款非常漂亮实用的记事本程序，支持手写、文本输入或绘画等记录方式，可当做便签、日记、事务计划、绘画工具、笔记等……其英文名称 Most It 是 Mobile Post It 的缩写，为Android手机带来了功能超级强大、外观超级靓丽的随身效率手册。
+
+其免费版 Most It Lite 限制用户最多记录10条备忘信息，这里提供的是最新全功能付费版。
+
+更新记录：
+
+[1.4]
+
+1. 修改了对SD卡的拷贝或移动
+
+2. 可修改文本便签保存的文件名
+
+3. 载入的照片数量提高到10张
+
+4. 修正了触摸标题日期文本时导致程序退出的问题
+
+[1.3]
+
+修正了对SD卡内容进行移动产生的问题
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=43326" title=""><img src="http://apk.gfan.com/asdf/PImages/2011/2//433267f813ba7-5c94-4582-a018-9761065d78ef_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=43326" target="_blank" class="title">携程无线<span class="version">Ver:2.0</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">22734</span></span>
+							        <span class="size">大小：<span class="a_i_c">1.60M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-03-25</span></span>
+						        </div>
+						        <div class="article">
+							         携程无线手机预订系统由国内领先的在线旅行服务公司携程旅行网出品。 本软件提供了最值得信赖的机票和酒店在线预订专业服务，并能轻松定制个人相关信息，加速操作流程。通过本软件，您查到的航班覆盖国内几乎所有航线；还可在数千家酒店中根据不同需要帮您迅速找到最适合您的一家。整个操作过程便捷和顺畅，自助服务在这里成为一种乐趣和崭新体验；当然，若您愿意还是可以从菜单中一键呼出携程400服务电话让客服人员为您提供专业支持。
+
+拥有携程无线，您在指尖轻划间即可开启一段新的愉快旅程！ 手机上携程，轻松行天下！
+
+携程无线客户端最新促销活动： 
+
+3月1日至3月31日，通过携程无线客户端预订并成交国内机票或者酒店，每周从预订成交的用户中抽取一人，赠送价值4000元东南亚免费游（共5人）。
+
+3月5日～4月30日，使用无线客户端shake功能并预订国内酒店，每间夜赠送10元机票抵用券；并且针对入住成交后使用手机客户端进行酒店点评的用户，每周抽取乐phone手机1台。
+
+详情请见携程网站www.ctrip.com。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=35944" title=""><img src="http://apk.gfan.com/asdf/PImages/39200a62d9da9-5640-47cf-8d5d-62825aef98c5_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=35944" target="_blank" class="title">Android VPN客户端<span class="version">Ver:1.1 build 08</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">21151</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.68M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-12</span></span>
+						        </div>
+						        <div class="article">
+							         中文Android用户必备神器，首个高速Android VPN客户端软件EVOVPN。 官方主页www.evovpn.com
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=5830" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/7/201007201209442091.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=5830" target="_blank" class="title">压缩大师 <span class="version">Ver:1.0.0</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">19480</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.43M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-26</span></span>
+						        </div>
+						        <div class="article">
+							         一款超强解压工具,让你更加方便的解压文件.
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=3107" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/5/201005251505035641.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=3107" target="_blank" class="title">七键开关<span class="version">Ver:1.5</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">19433</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.14M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-24</span></span>
+						        </div>
+						        <div class="article">
+							         七键开关，安装完后，点添加-小插件-switch plus就可以对wifi 3G 蓝牙 GPS 同步 重力感应，亮度进行快速调节了。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=14085" title=""><img src="http://apk.gfan.com/asdf/PImages/14085a2019a4c-048f-4f07-a266-d6c6a6744b29_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=14085" target="_blank" class="title">移动短信营业厅<span class="version">Ver:1.1</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">19420</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.11M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-02-10</span></span>
+						        </div>
+						        <div class="article">
+							         看名字就知道了，不是简单的查询，是可以办理业务的，这下不用记那么多的办理短信代码了，直接一个软件全搞定，比较实用.
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=4790" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/6/201006241651577111.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=4790" target="_blank" class="title">任务终结者<span class="version">Ver:3.3.5 Full</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">19088</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.60M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-25</span></span>
+						        </div>
+						        <div class="article">
+							         很有名的一款软件了是不少人的装机必备软件一键清除内存自动清除内存都是让人省心的工具使用时一定要注意先设好忽略列表否则它一股脑给你清除了。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=36561" title=""><img src="http://apk.gfan.com/asdf/PImages/3656113b3339a-5a8b-4978-84d5-368145178a83_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=36561" target="_blank" class="title">手机迅雷<span class="version">Ver:1.0</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">19003</span></span>
+							        <span class="size">大小：<span class="a_i_c">1.73M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-02-10</span></span>
+						        </div>
+						        <div class="article">
+							         手机迅雷包含了狗狗搜索、迅雷高速下载及下载管理能力、并配备了完善的音乐播放器功能，这是迅雷系列中不可或缺的必备产品。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=3844" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/6/201006031637326241.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=3844" target="_blank" class="title">WIFI传输文件<span class="version">Ver:1.6.1</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">18447</span></span>
+							        <span class="size">大小：<span class="a_i_c">2.03M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-18</span></span>
+						        </div>
+						        <div class="article">
+							         网络共享可以通过WIFI无线局域网共享你手机上的文件，音乐，视频，图像等，你只需要在电脑输入一个地址就能访问和播放。网络共享还可以自定义端口和使用电话信号分享手机文件，除此之外软件还提供了两个账户，分别拥有不同的权限，最大限度保证了你的资料的安全
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=2907" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/5/201005201357203901.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=2907" target="_blank" class="title">科学计算器<span class="version">Ver:1.3.3</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">18319</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.35M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-02-10</span></span>
+						        </div>
+						        <div class="article">
+							         RealCalc是一款实用性超强的科学计算器应用程序，很多Android手机还是学生，RealCalc将会成你学习上最好的帮手之一，强大准确的计算性能，令其和真正的科学计算器一样。从此只要随身带着Android手机，就等于随身携带了一个科学计算器。其功能绝对要比Android系统自带的功能强大很多，支持手动输入算是最后一次性计算结果。可以说是Android平台中最方便最好用的科学计算器了。值得一提的是按键振动回馈功能做的真是人性化。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=3689" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/6/201006021433492311.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=3689" target="_blank" class="title">测谎机<span class="version">Ver:1.0</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">17997</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.20M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-17</span></span>
+						        </div>
+						        <div class="article">
+							         被测谎者用手指按在屏幕指模处，然后发问，之后按result2就可以了。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=4741" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/11/41402117fd16e-7e1c-4232-8dfd-d875580f3aa8_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=4741" target="_blank" class="title">ES 任务管理器<span class="version">Ver:1.1.4</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">14637</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.24M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-30</span></span>
+						        </div>
+						        <div class="article">
+							         释放内存，卸载应用，清除缓存，节约电量，加速手机。
+
+请将重要的程序加入忽略列表中以避免误杀！
+
+任何建议，发送邮件！
+用户QQ群：111453733
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=2444" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/5/201005131224398911.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=2444" target="_blank" class="title">缓存清理<span class="version">Ver:2.0</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">14618</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.01M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-31</span></span>
+						        </div>
+						        <div class="article">
+							         ClearMe是一款可以帮助你快速清理缓存的软件。有了ClearMe，你只需轻轻一点软件图标，便可以快速清理market，Gmail，谷歌地图等缓存，非常方便快捷。软件需要root权限。                                                                                                                                                                                                                                                                                    
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=3673" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/6/201006021416073201.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=3673" target="_blank" class="title">色狼测试 <span class="version">Ver:1.0</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">14401</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.03M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-02-09</span></span>
+						        </div>
+						        <div class="article">
+							         这个软件是专门用来测试您是不是色狼的，如果是，并且只要你如实回答了相关的问题就一定能测试出来，不过也有可能有例外，是不是色狼，试试就知道了
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=14873" title=""><img src="http://apk.gfan.com/asdf/PImages/14873b4cb13ca-90b2-4099-a06c-eefec382e905_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=14873" target="_blank" class="title">夜时钟<span class="version">Ver:1.0.0</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">14208</span></span>
+							        <span class="size">大小：<span class="a_i_c">2.31M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-17</span></span>
+						        </div>
+						        <div class="article">
+							         非常好的夜时钟软件，带闹钟提醒功能。4种主题，8种铃声半夜再也不用你按MENU键来看时间了
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=2265" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/5/201005101802106221.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=2265" target="_blank" class="title">来电自动语音报名<span class="version">Ver:2.5.3</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">13642</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.10M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-01-17</span></span>
+						        </div>
+						        <div class="article">
+							         SayMyName来电自动语音报名，软件可以读取来电号码保存在您的地址簿，并告诉你是谁的电话，非常方便实用。
+						        </div>                                
+                                
+                            </li>
+                        
+                            <li>
+                                <a href="ProductDetail.aspx?productid=47760" title=""><img src="http://apk.gfan.com/asdf/PImages/2010/12//4776035a85de4-f4f8-4bed-96d0-39c3ddaab066_icon.png" class="icon" alt=""></a>
+                                <a href="ProductDetail.aspx?productid=47760" target="_blank" class="title">联通手机营业厅<span class="version">Ver:1.1</span></a>
+                                <div class="article_infor">
+							        <span class="any">本周下载：<span class="a_i_c">13062</span></span>
+							        <span class="size">大小：<span class="a_i_c">0.58M</span></span>
+							        <span class="date">发布日期：<span class="a_i_c">2011-02-11</span></span>
+						        </div>
+						        <div class="article">
+							         联通手机营业厅,它集各种常见查询功能于一身：查话费、查流量、查套餐、查积分、查账单、查缴费记录、查业务受理记录等都能轻松实现。
+						        </div>                                
+                                
+                            </li>
+                        					
+				

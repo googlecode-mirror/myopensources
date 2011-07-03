@@ -1,0 +1,56 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <title>App Store</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+  <link rel="stylesheet" href="external/jquery.mobile-1.0a2.min.css" />
+  <script src="external/jquery.min.js"></script>
+  <script src="external/jquery.mobile-1.0a2.min.js"></script>
+  <script src="host.js"></script>
+  
+  <style>
+  /* Style listviews in item.html */
+  .ui-li-desc { white-space: normal !important; margin-top: -0.1em;}
+  /* Style iframes in submitlink.html and reply.html */
+  iframe.submitlink {width: 100%; min-height: 100%; border: 1px;}
+  iframe.reply {width: 100%; min-height: 100%; border: none;}
+  </style>
+</head> 
+<body> 
+
+  <div data-role="page">
+
+    <div data-role="header">
+      
+    </div>
+					<div data-role="navbar">
+							<ul>
+								<li><a data-icon="home" class="ui-btn-active" id="apps" >应用</a></li>
+								<li><a data-icon="star" id="game" >游戏</a></li>
+								<li><a data-icon="info" id="other" >其它</a></li>
+							</ul>
+						</div><!-- /navbar -->
+
+
+    <div data-role="content">
+		<iframe class="submitlink" scrolling="yes" height="90%"  src="main.html"></iframe>
+      
+      </ul>
+    </div><!-- /content -->
+
+    <div data-role="footer">
+		<div data-role="navbar">
+			<ul>
+				<li><a data-icon="home" href="a.html" class="ui-btn-active">主页</a></li>
+				<li><a data-icon="star" href="b.html">类别</a></li>
+				<li><a data-icon="info" href="b.html">排行</a></li>
+				<li><a href="b.html">搜索</a></li>
+				<li><a href="b.html">下载</a></li>
+			</ul>
+		</div><!-- /navbar -->
+    </div><!-- /header -->
+  </div><!-- /page -->
+  <script src="scriptcache.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

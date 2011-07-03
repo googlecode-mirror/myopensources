@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>AppStore</title>
+		<link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.js"></script>
+		<link rel="stylesheet" href="jquery.mobile-1.0a4.1.css" /> 
+		<script src="jquery-1.5.2.min.js"></script> 
+		<script type="text/javascript" src="mobile.hosts.js"></script>
+		<script type="text/javascript" src="mobile.init.js"></script>
+		<script src="jquery.mobile-1.0a4.1.js"></script> 
+  <script src="webintent.js"></script>
+		
+		
+   </head>
+  <body>
+    <div data-role="page"> 
+                  <div data-role="header">
+                      <h1 id="twi_acc">App Store</h1>   
+                      <a href="#settings" data-icon="gear" class="ui-btn-right">Options</a>   
+                  
+                  </div> 
+					<div data-role="navbar">
+							<ul>
+								<li><a data-icon="home" class="ui-btn-active" id="apps" >应用</a></li>
+								<li><a data-icon="star" id="game" >游戏</a></li>
+								<li><a data-icon="info" id="other" >其它</a></li>
+							</ul>
+						</div><!-- /navbar -->
+                    
+                  <div data-role="content">
+					  <ul data-role="listview" Id="list">
+					  </ul>
+
+                  </div>   
+
+
+
+                  <div data-role="footer">Copyright (c) 2011</div>   
+    </div> 
+    <script src="scriptcache.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
