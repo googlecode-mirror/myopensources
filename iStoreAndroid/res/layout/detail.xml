@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content">
+<LinearLayout android:id="@+id/top" android:layout_width="fill_parent" android:layout_height="@dimen/detail_top_height" android:background="@drawable/detail_bar_background">
+</LinearLayout><ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/middel">
+</ScrollView><LinearLayout android:layout_width="wrap_content" android:layout_height="@dimen/detail_foot_height" android:id="@+id/footer" android:layout_alignParentBottom="true"></LinearLayout>
+</RelativeLayout>
