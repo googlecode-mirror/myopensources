@@ -1,6 +1,7 @@
 package info.arzen.istore.main;
 
 import greendroid.app.GDListActivity;
+import info.arzen.core.ADebug;
 import info.arzen.http.AsyncHttpRequestRunner;
 import info.arzen.istore.adapter.APKListAdapter;
 import info.arzen.istore.common.AConfig;
@@ -8,6 +9,8 @@ import info.arzen.istore.model.AppsListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
+import android.widget.ListView;
 
 public class MainActivity extends GDListActivity {
 	
@@ -25,6 +28,12 @@ public class MainActivity extends GDListActivity {
         (new AsyncHttpRequestRunner()).request(AConfig.FEED_APP_LIST, null, new AppsListener(adapter));
         setListAdapter(adapter);
        
+    }
+    
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+    	super.onListItemClick(l, v, position, id);
+    	ADebug.msg(String.valueOf(adapter.getItemId(position)), this);
     }
     
     private void refreshList() {
