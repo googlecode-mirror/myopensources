@@ -3,7 +3,7 @@ package info.arzen.istore.main;
 import greendroid.app.GDListActivity;
 import info.arzen.http.AsyncHttpRequestRunner;
 import info.arzen.istore.adapter.APKListAdapter;
-import info.arzen.istore.common.Config;
+import info.arzen.istore.common.AConfig;
 import info.arzen.istore.model.AppsListener;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,7 +22,7 @@ public class MainActivity extends GDListActivity {
         singleton = this;
         
         adapter = new APKListAdapter(this);
-        (new AsyncHttpRequestRunner()).request(Config.FEED_APP_LIST, null, new AppsListener(adapter));
+        (new AsyncHttpRequestRunner()).request(AConfig.FEED_APP_LIST, null, new AppsListener(adapter));
         setListAdapter(adapter);
        
     }
