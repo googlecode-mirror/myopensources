@@ -21,7 +21,8 @@ public class APKListAdapter extends ABaseAdapter {
     static class ViewHolder {
         public AsyncImageView imageView;
         public TextView textView;
-        public StringBuilder textBuilder = new StringBuilder();
+        public TextView authorView;
+        public TextView priceView;
     }
 
 	public APKListAdapter(Context context) {
@@ -40,6 +41,8 @@ public class APKListAdapter extends ABaseAdapter {
             holder.imageView = (AsyncImageView) convertView.findViewById(R.id.async_image);
             holder.imageView.setImageProcessor(mImageProcessor);
             holder.textView = (TextView) convertView.findViewById(R.id.text);
+            holder.authorView = (TextView) convertView.findViewById(R.id.author);
+            holder.priceView = (TextView) convertView.findViewById(R.id.price);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -47,6 +50,8 @@ public class APKListAdapter extends ABaseAdapter {
         try {
 			holder.imageView.setUrl(mData.getJSONObject(position).getString("icon"));
 			holder.textView.setText(mData.getJSONObject(position).getString("name"));
+			holder.authorView.setText(mData.getJSONObject(position).getString("author"));
+			holder.priceView.setText(mData.getJSONObject(position).getString("price"));
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}

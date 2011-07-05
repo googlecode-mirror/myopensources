@@ -22,4 +22,7 @@
     <dimen name="thumbnail_size">50dp</dimen>
     <dimen name="thumbnail_radius">5dp</dimen>
     
+	<dimen name="list_name_width">250dp</dimen>
+	<dimen name="single_line_text_height">18dp</dimen>
+	<dimen name="list_price_width">90dp</dimen>
 </resources>
