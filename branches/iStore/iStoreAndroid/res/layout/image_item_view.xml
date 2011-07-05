@@ -17,7 +17,7 @@
 */
 -->
 
-<LinearLayout
+<RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:greendroid="http://schemas.android.com/apk/res/com.cyrilmottier.android.gdcatalog"
 	android:layout_width="fill_parent"
@@ -33,10 +33,10 @@
 
 	<TextView
 		android:id="@+id/text"
-		android:layout_width="0dp"
-		android:layout_height="fill_parent"
 		android:layout_weight="1"
 		android:paddingLeft="10dp"
-		android:gravity="center_vertical|left" />
+		android:gravity="center_vertical|left" android:layout_width="@dimen/list_name_width" android:layout_toRightOf="@id/async_image" android:layout_height="@dimen/single_line_text_height"/>
 
-</LinearLayout>
+<TextView android:layout_below="@id/text" android:layout_height="wrap_content" android:layout_toRightOf="@id/async_image" android:id="@+id/author" android:layout_width="@dimen/list_name_width"></TextView>
+<TextView android:layout_height="wrap_content" android:layout_toRightOf="@id/text" android:id="@+id/price" android:layout_width="@dimen/list_price_width"></TextView>
+</RelativeLayout>
