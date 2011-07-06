@@ -6,6 +6,7 @@ import info.arzen.http.AsyncHttpRequestRunner;
 import info.arzen.istore.adapter.APKListAdapter;
 import info.arzen.istore.common.AConfig;
 import info.arzen.istore.model.AppsListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -33,7 +34,14 @@ public class MainActivity extends GDListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
     	super.onListItemClick(l, v, position, id);
-    	ADebug.msg(String.valueOf(adapter.getItemId(position)), this);
+    	Long item_id = adapter.getItemId(position);
+		Intent intent = new Intent();
+		intent.setClass(MainActivity.this, DetailActivity.class);
+    	Bundle bundle = new Bundle();
+    	bundle.putLong("id", item_id);
+    	intent.putExtras(bundle);
+		startActivity(intent);
+//		MainActivity.this.finish();
     }
     
     private void refreshList() {
