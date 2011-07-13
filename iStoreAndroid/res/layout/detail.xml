@@ -15,7 +15,7 @@
 		android:id="@+id/text"
 		android:layout_weight="1"
 		android:paddingLeft="@dimen/list_text_padding"
-		android:gravity="center_vertical|left" android:layout_width="@dimen/list_name_width" android:layout_toRightOf="@id/async_image" android:layout_height="@dimen/single_line_text_height"/>
+		android:gravity="center_vertical|left" android:layout_width="@dimen/list_name_width" android:layout_toRightOf="@id/async_image" android:layout_height="@dimen/single_line_text_height" style="@style/TextDetailName"/>
 	
 	</RelativeLayout>
 </LinearLayout><ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/middel">
