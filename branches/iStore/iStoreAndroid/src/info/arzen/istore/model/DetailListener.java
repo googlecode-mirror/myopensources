@@ -1,16 +1,13 @@
 package info.arzen.istore.model;
 
-import info.arzen.adapter.ABaseAdapter;
 import info.arzen.core.ADebug;
 import info.arzen.exception.CommonException;
 import info.arzen.http.BaseRequestListener;
 import info.arzen.http.ParseResoneJson;
-import info.arzen.istore.main.MainActivity;
+import info.arzen.istore.main.DetailActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import android.os.Message;
 
 public class DetailListener extends BaseRequestListener {
 	
@@ -20,14 +17,20 @@ public class DetailListener extends BaseRequestListener {
 	public void onComplete(String response, Object state) {
 		super.onComplete(response, state);
         try {
-            JSONObject obj;
 			try {
 //				ADebug.d(TAG, response);
-				obj = ParseResoneJson.parseJson(response);
+				final JSONObject obj = ParseResoneJson.parseJson(response);
 	            // try to cache the result
 
 //	            ADebug.d(TAG, obj.getString("total"));
-				Message.obtain(MainActivity.singleton.getHandler(), 100).sendToTarget();
+				DetailActivity.singleton.runOnUiThread(new Runnable() {
+					
+					@Override
+					public void run() {
+						DetailActivity.singleton.setData(obj);
+						
+					}
+				});
 //	            obj.getJSONArray("row");
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
