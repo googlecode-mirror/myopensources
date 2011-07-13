@@ -11,12 +11,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class DetailActivity extends GDActivity {
 	
 	private static final String TAG="DetailActivity";
 	public static DetailActivity singleton;
     private AsyncImageView imageView;
+    private TextView textView;
+    private TextView authorView;
+    private TextView priceView;
 	
 	
 	@Override
@@ -27,6 +31,7 @@ public class DetailActivity extends GDActivity {
         singleton = this;
         
         imageView = (AsyncImageView) findViewById(R.id.async_image);
+        textView = (TextView) findViewById(R.id.text);
         
         Bundle bundle = this.getIntent().getExtras();
         Long item_id = bundle.getLong("id");
@@ -37,9 +42,11 @@ public class DetailActivity extends GDActivity {
 	
 	public void setData(JSONObject obj) {
 		try {
-			String icon = obj.getJSONObject("Application").getString("icon");
+			JSONObject item = obj.getJSONObject("Application");
+			String icon = item.getString("icon");
 			ADebug.d(TAG, icon);
 			imageView.setUrl(icon);
+			textView.setText(item.getString("name"));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
