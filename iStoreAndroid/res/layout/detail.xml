@@ -1,27 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content">
-<LinearLayout android:id="@+id/top" android:layout_width="fill_parent" android:layout_height="@dimen/detail_top_height" android:background="@drawable/detail_bar_background">
-<RelativeLayout android:id="@+id/RelativeLayout01"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="wrap_content" android:layout_height="wrap_content">
-	<greendroid.widget.AsyncImageView
-		android:id="@+id/async_image"
-		android:layout_width="@dimen/thumbnail_size"
-		android:layout_height="@dimen/thumbnail_size"
-		/>
-	<TextView
-		android:id="@+id/text"
-		android:layout_weight="1"
-		android:paddingLeft="@dimen/list_text_padding"
-		android:gravity="center_vertical|left" android:layout_width="@dimen/list_name_width" android:layout_toRightOf="@id/async_image" android:layout_height="@dimen/single_line_text_height" style="@style/TextDetailName"/>
-	
-	<TextView android:text="@+id/TextView01" android:layout_below="@id/text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/author" android:layout_toRightOf="@id/async_image"></TextView>
-</RelativeLayout>
-</LinearLayout><ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/middel" android:layout_below="@id/top"><LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_height="fill_parent"><TextView android:text="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/content" style="@style/DetailBody"></TextView><Gallery android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/photos"></Gallery></LinearLayout>
+	<LinearLayout android:id="@+id/top" android:layout_width="fill_parent"
+		android:layout_height="@dimen/detail_top_height" android:background="@drawable/detail_bar_background">
+		<RelativeLayout android:id="@+id/RelativeLayout01"
+			android:layout_width="wrap_content" android:layout_height="wrap_content">
+			<greendroid.widget.AsyncImageView
+				android:id="@+id/async_image" android:layout_width="@dimen/thumbnail_size"
+				android:layout_height="@dimen/thumbnail_size" />
+			<TextView android:id="@+id/text" android:layout_weight="1"
+				android:paddingLeft="@dimen/list_text_padding" android:gravity="center_vertical|left"
+				android:layout_width="@dimen/list_name_width"
+				android:layout_toRightOf="@id/async_image" android:layout_height="@dimen/single_line_text_height"
+				style="@style/TextDetailName" />
+
+			<TextView android:text="@+id/TextView01"
+				android:layout_below="@id/text" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/author"
+				android:layout_toRightOf="@id/async_image"></TextView>
+		</RelativeLayout>
+	</LinearLayout>
+	<ScrollView android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:id="@+id/middel"
+		android:layout_below="@id/top">
+		<LinearLayout android:id="@+id/LinearLayout01"
+			android:layout_width="wrap_content" android:layout_height="fill_parent">
+			<TextView android:text="@+id/TextView01"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/content" style="@style/DetailBody"></TextView>
+			
+				<greendroid.widget.PagedView
+					android:id="@+id/paged_view"
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent" />
+			
+			
+			
+				<greendroid.widget.PageIndicator
+					android:id="@+id/page_indicator_other"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="top|center_horizontal"
+					android:paddingTop="10dp" />
+		</LinearLayout>
 
 
-</ScrollView><LinearLayout android:layout_height="@dimen/detail_foot_height" android:id="@+id/footer" android:layout_alignParentBottom="true" android:layout_width="fill_parent" android:background="@drawable/detail_bar_background" android:gravity="center"><Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:id="@+id/installBtn" android:text="@string/str_install" style="@style/ButtonSimple"></Button>
-</LinearLayout>
+	</ScrollView>
+	<LinearLayout android:layout_height="@dimen/detail_foot_height"
+		android:id="@+id/footer" android:layout_alignParentBottom="true"
+		android:layout_width="fill_parent" android:background="@drawable/detail_bar_background"
+		android:gravity="center">
+		<Button android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:gravity="center"
+			android:id="@+id/installBtn" android:text="@string/str_install"
+			style="@style/ButtonSimple"></Button>
+	</LinearLayout>
 </RelativeLayout>
