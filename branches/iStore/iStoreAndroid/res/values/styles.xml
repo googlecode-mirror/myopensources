@@ -29,7 +29,10 @@
 		<item name="android:textStyle">bold</item>
 	</style>
 	<style name="ButtonSimple">
-		<item name="android:layout_width">150dp</item>
-		<item name="android:layout_margin">8dp</item>
+		<item name="android:layout_width">300dp</item>
 	</style>
+	<style name="DetailBody">
+		<item name="android:background">@android:color/white</item>  
+	</style>
+	
 </resources>

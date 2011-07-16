@@ -25,7 +25,6 @@
 		<item name="gdActionBarBackground">@drawable/action_bar_background</item>
 		<item name="gdActionBarDividerDrawable">@drawable/action_bar_divider</item>
 		<item name="gdActionBarDividerWidth">2px</item>
-	
 	</style>
 
     <style name="Theme.GDCatalog.TweakedItems" parent="@style/Theme.GDCatalog">

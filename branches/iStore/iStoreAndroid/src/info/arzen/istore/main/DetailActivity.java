@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
+import android.widget.Gallery;
 import android.widget.TextView;
 
 public class DetailActivity extends GDActivity {
@@ -21,6 +22,8 @@ public class DetailActivity extends GDActivity {
     private TextView textView;
     private TextView authorView;
     private TextView priceView;
+    private TextView contentView;
+    private Gallery photosGallery;
 	
 	
 	@Override
@@ -32,6 +35,8 @@ public class DetailActivity extends GDActivity {
         
         imageView = (AsyncImageView) findViewById(R.id.async_image);
         textView = (TextView) findViewById(R.id.text);
+        authorView = (TextView) findViewById(R.id.author);
+        contentView = (TextView) findViewById(R.id.content);
         
         Bundle bundle = this.getIntent().getExtras();
         Long item_id = bundle.getLong("id");
@@ -47,6 +52,9 @@ public class DetailActivity extends GDActivity {
 			ADebug.d(TAG, icon);
 			imageView.setUrl(icon);
 			textView.setText(item.getString("name"));
+			authorView.setText(item.getString("author"));
+			contentView.setText(item.getString("content"));
+			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
