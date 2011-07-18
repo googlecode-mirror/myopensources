@@ -9,6 +9,7 @@ import greendroid.widget.PagedView.OnPagedViewChangeListener;
 import info.arzen.core.ADebug;
 import info.arzen.http.AsyncHttpRequestRunner;
 import info.arzen.istore.common.AConfig;
+import info.arzen.istore.model.ApkDownload;
 import info.arzen.istore.model.DetailListener;
 
 import org.json.JSONArray;
@@ -18,6 +19,7 @@ import org.json.JSONObject;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class DetailActivity extends GDActivity {
@@ -31,6 +33,7 @@ public class DetailActivity extends GDActivity {
     private TextView contentView;
     private PageIndicator mPageIndicatorOther;
     private PagedView pagedView;
+    private Button installBtn;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class DetailActivity extends GDActivity {
 		setActionBarContentView(R.layout.detail);
 		
         singleton = this;
+        
+        installBtn = (Button) findViewById(R.id.installBtn);
         
         imageView = (AsyncImageView) findViewById(R.id.async_image);
         textView = (TextView) findViewById(R.id.text);
@@ -71,6 +76,17 @@ public class DetailActivity extends GDActivity {
 			
 			mPageIndicatorOther.setDotCount(page_count);
 			ADebug.d(TAG, String.format("Images:%d", page_count));
+			
+			//install click
+			
+			installBtn.setOnClickListener(new Button.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					ApkDownload dl = new ApkDownload();
+//					dl.addDownload(item.getString("content"), save_name)
+				}
+			});
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
