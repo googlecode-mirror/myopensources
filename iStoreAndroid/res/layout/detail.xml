@@ -40,8 +40,7 @@
 					android:id="@+id/page_indicator_other"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_gravity="top|center_horizontal"
-					android:paddingTop="10dp" />
+					android:paddingTop="10dp" android:layout_gravity="center_horizontal"/>
 		</LinearLayout>
 
 
