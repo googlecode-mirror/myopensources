@@ -150,6 +150,27 @@ public class ClientHttpRequest {
         return sb.toString();
     }
     
+	/**
+	 * get file's size at given url (using http header)
+	 * 
+	 * @param url
+	 * @return -1 when failed
+	 */
+	public static int getFileSizeAtURL(URL url)
+	{
+		int filesize = -1;
+		try
+		{
+	    	HttpURLConnection http = (HttpURLConnection)url.openConnection();
+	    	filesize = http.getContentLength();
+	    	http.disconnect();
+		}
+		catch(Exception e)
+		{
+			ADebug.d(TAG, e.toString());
+		}
+    	return filesize;
+	}
     
 
 }
