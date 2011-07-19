@@ -20,7 +20,7 @@ public class ApkDownload extends FileDownloadService {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		Bundle extras = intent.getExtras();
-		String remote_url = extras.getString("url");
+		String remote_url = "http://download.idreamsky.com:82/StyledHome.apk";//extras.getString("url");
 		String sd_folder = "istore";
 		SDCardUtils.createFileDirToSDCard(sd_folder);
 		String local_url = "/sdcard/"+sd_folder+"/dl_" +System.currentTimeMillis()+".apk";//+FileUtils.getFileFullName(remote_url);
