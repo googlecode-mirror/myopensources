@@ -7,15 +7,16 @@ import greendroid.widget.PagedAdapter;
 import greendroid.widget.PagedView;
 import greendroid.widget.PagedView.OnPagedViewChangeListener;
 import info.arzen.core.ADebug;
+import info.arzen.files.FileUtils;
 import info.arzen.http.AsyncHttpRequestRunner;
 import info.arzen.istore.common.AConfig;
-import info.arzen.istore.model.ApkDownload;
 import info.arzen.istore.model.DetailListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +63,7 @@ public class DetailActivity extends GDActivity {
 	
 	public void setData(JSONObject obj) {
 		try {
-			JSONObject item = obj.getJSONObject("Application");
+			final JSONObject item = obj.getJSONObject("Application");
 			String icon = item.getString("icon");
 			ADebug.d(TAG, icon);
 			imageView.setUrl(icon);
@@ -72,11 +73,12 @@ public class DetailActivity extends GDActivity {
 			
 			JSONArray images = obj.getJSONArray("Image");
 			int page_count = images.length();
-	        pagedView.setAdapter(new PhotoSwipeAdapter(images));
+//	        pagedView.setAdapter(new PhotoSwipeAdapter(images));
 			
 			mPageIndicatorOther.setDotCount(page_count);
 			ADebug.d(TAG, String.format("Images:%d", page_count));
 			
+//	        setActivePage(pagedView.getCurrentPage());
 			//install click
 			
 			installBtn.setOnClickListener(new Button.OnClickListener() {
@@ -84,7 +86,17 @@ public class DetailActivity extends GDActivity {
 				@Override
 				public void onClick(View v) {
 					ApkDownload dl = new ApkDownload();
-//					dl.addDownload(item.getString("content"), save_name)
+					String remote_url;
+					try {
+						remote_url = item.getString("content");
+						String local_url = "/sdcard/"+FileUtils.getFileFullName(remote_url);
+						ADebug.d(TAG, String.format("Download URL:%s, Local URL:%s", remote_url, local_url));
+						dl.addDownload(remote_url, local_url);
+						getApplicationContext().startService(new Intent(getApplicationContext(), ApkDownload.class));
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			});
 			
