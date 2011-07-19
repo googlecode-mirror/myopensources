@@ -7,7 +7,6 @@ import greendroid.widget.PagedAdapter;
 import greendroid.widget.PagedView;
 import greendroid.widget.PagedView.OnPagedViewChangeListener;
 import info.arzen.core.ADebug;
-import info.arzen.files.FileUtils;
 import info.arzen.http.AsyncHttpRequestRunner;
 import info.arzen.istore.common.AConfig;
 import info.arzen.istore.model.DetailListener;
@@ -88,11 +87,10 @@ public class DetailActivity extends GDActivity {
 					ApkDownload dl = new ApkDownload();
 					String remote_url;
 					try {
-						remote_url = item.getString("content");
-						String local_url = "/sdcard/"+FileUtils.getFileFullName(remote_url);
-						ADebug.d(TAG, String.format("Download URL:%s, Local URL:%s", remote_url, local_url));
-						dl.addDownload(remote_url, local_url);
-						getApplicationContext().startService(new Intent(getApplicationContext(), ApkDownload.class));
+						remote_url = item.getString("apk_url");
+						Intent intent = new Intent(getApplicationContext(), ApkDownload.class);
+						intent.putExtra("url", remote_url);
+						getApplicationContext().startService(intent);
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
