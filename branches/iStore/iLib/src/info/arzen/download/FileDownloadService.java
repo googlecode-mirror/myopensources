@@ -74,7 +74,7 @@ public abstract class FileDownloadService extends Service
 
 	private NotificationManager notificationManager;
 	private final IBinder binder = new FileDownloadBinder();
-	private AsyncDownloadTask task = null;
+	protected AsyncDownloadTask task = null;
 
 	protected static boolean isRunning = false;
 
@@ -106,8 +106,8 @@ public abstract class FileDownloadService extends Service
 		notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 
 		//start downloading immediately
-		task = new AsyncDownloadTask();
-		task.execute();
+//		task = new AsyncDownloadTask();
+//		task.execute();
 
 		ADebug.d(TAG, "service created");
 	}
@@ -306,7 +306,7 @@ public abstract class FileDownloadService extends Service
 	 * last update 11.03.13.
 	 *
 	 */
-	private class AsyncDownloadTask extends AsyncTask<Void, Void, Void>
+	public class AsyncDownloadTask extends AsyncTask<Void, Void, Void>
 	{
 		private int successCount;
 		private int numTotalFiles;
@@ -346,6 +346,7 @@ public abstract class FileDownloadService extends Service
 
 					URL url = new URL(remoteFilepath);
 					int filesize = ClientHttpRequest.getFileSizeAtURL(url);
+					ADebug.d(TAG, String.format("File size: %d", filesize));
 					
 					int loopCount = 0;
 					if(filesize > 0)
