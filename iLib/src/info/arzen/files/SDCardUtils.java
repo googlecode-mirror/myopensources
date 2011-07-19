@@ -1,15 +1,34 @@
 package info.arzen.files;
 
+import info.arzen.core.ADebug;
+
+import java.io.File;
+
 import android.os.Environment;
 
 public class SDCardUtils {
+	private static final String TAG="SDCardUtils";
 	private static android.os.StatFs statfs = new android.os.StatFs(
 			android.os.Environment.getExternalStorageDirectory()
 					.getAbsolutePath());
 
 	public static String GetPath() {
 		return android.os.Environment.getExternalStorageDirectory()
-				.getAbsolutePath();
+				.getAbsolutePath() + "/";
+	}
+	
+	public static void createFileDirToSDCard(String filePath){
+		String new_dir = SDCardUtils.GetPath()+filePath;
+		ADebug.d(TAG, String.format("Create dir:%s", new_dir));
+		if (!SDCardUtils.isDirExist(filePath)) {
+			File file = new File(new_dir);
+			file.mkdir();
+		}
+	}
+	
+	public static Boolean isDirExist(String filePath){
+		File file = new File(SDCardUtils.GetPath() + filePath);
+		return file.exists();
 	}
 
 	/**
