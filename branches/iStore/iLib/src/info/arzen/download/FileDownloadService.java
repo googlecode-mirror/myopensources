@@ -114,7 +114,7 @@ public abstract class FileDownloadService extends Service
 
 	public int onStartCommand(Intent intent, int flags, int startId)
 	{
-		return 0;//START_STICKY
+		return START_STICKY;//START_STICKY
 	}
 
 	@Override
