@@ -1,4 +1,4 @@
-package info.arzen.istore.model;
+package info.arzen.istore.main;
 
 import info.arzen.download.FileDownloadService;
 
