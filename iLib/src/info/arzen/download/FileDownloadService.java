@@ -38,12 +38,14 @@ import java.io.FileOutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
+import java.util.Vector;
 import java.util.Map.Entry;
 
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Binder;
@@ -77,6 +79,8 @@ public abstract class FileDownloadService extends Service
 	protected AsyncDownloadTask task = null;
 
 	protected static boolean isRunning = false;
+	
+	protected Vector<String> mDoneList = new Vector<String>();
 
     public class FileDownloadBinder extends Binder
     {
@@ -253,9 +257,9 @@ public abstract class FileDownloadService extends Service
 	 * @param title
 	 * @param content
 	 */
-	protected void showNotification(String ticker, String title, String content)
+	protected void showNotification(String ticker, String title, String content, int icon)
 	{
-		Notification notification = new Notification(getNotificationIcon(), ticker, System.currentTimeMillis());
+		Notification notification = new Notification(icon, ticker, System.currentTimeMillis());
 		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, getIntentForLatestInfo()), Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		notification.setLatestEventInfo(getApplicationContext(), title, content, contentIntent);
 		notification.flags = getNotificationFlag();
@@ -270,7 +274,7 @@ public abstract class FileDownloadService extends Service
 	 */
 	protected void showNotification(RemoteViews remoteView, String ticker)
 	{
-		Notification notification = new Notification(getNotificationIcon(), ticker, System.currentTimeMillis());
+		Notification notification = new Notification(android.R.drawable.stat_sys_download, ticker, System.currentTimeMillis());
 		notification.contentView = remoteView;
 		notification.contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, getIntentForLatestInfo()), Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		notification.flags = getNotificationFlag();
@@ -332,81 +336,91 @@ public abstract class FileDownloadService extends Service
 		protected Void doInBackground(Void... params)
 		{
 			String remoteFilepath, localFilepath;
-			for(Entry<String, String> entry: targetFiles.entrySet())
-			{
-				remoteFilepath = entry.getKey();
-				localFilepath = entry.getValue();
+			if (targetFiles.size() > 0) {
+				// Start download Notification
+				showNotification("Downloading File(s)", "Downloading File(s)" , "Downloading File(s)", android.R.drawable.stat_sys_download);
 				
-				ADebug.d(TAG, "downloading: '" + remoteFilepath + "' => '" + localFilepath + "'");
-
-				try
+				for(Entry<String, String> entry: targetFiles.entrySet())
 				{
-					if(isCancelled())
-						return null;
-
-					URL url = new URL(remoteFilepath);
-					int filesize = ClientHttpRequest.getFileSizeAtURL(url);
-					ADebug.d(TAG, String.format("File size: %d", filesize));
+					remoteFilepath = entry.getKey();
+					localFilepath = entry.getValue();
 					
-					int loopCount = 0;
-					if(filesize > 0)
+					ADebug.d(TAG, "downloading: '" + remoteFilepath + "' => '" + localFilepath + "'");
+
+					try
 					{
-						URLConnection connection = url.openConnection();
-						connection.setConnectTimeout(getConnectTimeout());
-						connection.setReadTimeout(getReadTimeout());
-
-						BufferedInputStream bis = new BufferedInputStream(connection.getInputStream());
-						FileOutputStream fos = new FileOutputStream(new File(localFilepath));
-						int bytesRead, totalBytesRead = 0;
-						byte[] bytes = new byte[BYTES_BUFFER_SIZE];
-						String progress, kbytes;
-						while(!isCancelled() && (bytesRead = bis.read(bytes)) != -1)
-						{
-							totalBytesRead += bytesRead;
-							fos.write(bytes, 0, bytesRead);
-
-							//don't show notification too often
-							if(!isCancelled() && loopCount++ % 20 == 0)
-							{
-								RemoteViews progressView = getProgressView(successCount + 1, numTotalFiles, totalBytesRead, filesize);
-								if(progressView == null)
-								{
-									progress = String.format("Download Progress (%d / %d)", successCount + 1, numTotalFiles);
-									kbytes = String.format("%s / %s", getStringByteSize(totalBytesRead), getStringByteSize(filesize));
-
-									if(!isCancelled())
-										showNotification("Downloading File(s)", progress , kbytes);
-								}
-								else
-								{
-									if(!isCancelled())
-										showNotification(progressView, "Downloading File(s)");
-								}
-							}
-						}
-						fos.close();
-						bis.close();
-						
 						if(isCancelled())
 							return null;
+
+						URL url = new URL(remoteFilepath);
+						int filesize = ClientHttpRequest.getFileSizeAtURL(url);
+						ADebug.d(TAG, String.format("File size: %d", filesize));
 						
-						successCount ++;
+						int loopCount = 0;
+						if(filesize > 0)
+						{
+							URLConnection connection = url.openConnection();
+							connection.setConnectTimeout(getConnectTimeout());
+							connection.setReadTimeout(getReadTimeout());
+
+							BufferedInputStream bis = new BufferedInputStream(connection.getInputStream());
+							FileOutputStream fos = new FileOutputStream(new File(localFilepath));
+							int bytesRead, totalBytesRead = 0;
+							byte[] bytes = new byte[BYTES_BUFFER_SIZE];
+							String progress, kbytes;
+							while(!isCancelled() && (bytesRead = bis.read(bytes)) != -1)
+							{
+								totalBytesRead += bytesRead;
+								fos.write(bytes, 0, bytesRead);
+
+								//don't show notification too often
+								if(!isCancelled() && loopCount++ % 20 == 0)
+								{
+									RemoteViews progressView = getProgressView(successCount + 1, numTotalFiles, totalBytesRead, filesize);
+									if(progressView == null)
+									{
+										progress = String.format("Download Progress (%d / %d)", successCount + 1, numTotalFiles);
+										kbytes = String.format("%s / %s", getStringByteSize(totalBytesRead), getStringByteSize(filesize));
+
+										if(!isCancelled())
+											showNotification("Downloading File(s)", progress , kbytes, android.R.drawable.stat_sys_download);
+									}
+									else
+									{
+										if(!isCancelled())
+											showNotification(progressView, "Downloading File(s)");
+									}
+								}
+							}
+							fos.close();
+							bis.close();
+							
+							if(isCancelled())
+								return null;
+							
+							successCount ++;
+							
+							//install
+//							ApkUtils.installOrUpdateApk(Context ctx, File apkFile);
+							mDoneList.add(localFilepath);
+						}
+						else
+						{
+							ADebug.d(TAG, "file size unknown for remote file: " + remoteFilepath);
+							
+							failedFiles.put(remoteFilepath, localFilepath);
+						}
 					}
-					else
+					catch(Exception e)
 					{
-						ADebug.d(TAG, "file size unknown for remote file: " + remoteFilepath);
+						ADebug.d(TAG, e.toString());
+
+						showNotification("Download Failed", "Download Progress", "Failed: " + (new File(remoteFilepath)).getName(), android.R.drawable.stat_sys_download);
 						
 						failedFiles.put(remoteFilepath, localFilepath);
 					}
 				}
-				catch(Exception e)
-				{
-					ADebug.d(TAG, e.toString());
-
-					showNotification("Download Failed", "Download Progress", "Failed: " + (new File(remoteFilepath)).getName());
-					
-					failedFiles.put(remoteFilepath, localFilepath);
-				}
+				
 			}
 			return null;
 		}
@@ -418,7 +432,7 @@ public abstract class FileDownloadService extends Service
 			
 			ADebug.d(TAG, "download task cancelled");
 			
-			showNotification("Download Cancelled", "Download Progress", "Cancelled");
+			showNotification("Download Cancelled", "Download Progress", "Cancelled", android.R.drawable.stat_sys_download);
 		}
 
 		@Override
@@ -433,7 +447,7 @@ public abstract class FileDownloadService extends Service
 				finished = String.format("Finished (%d download(s) failed)", numTotalFiles - successCount);
 			else
 				finished = "Finished";
-			showNotification("Download Finished", "Download Progress", finished);
+			showNotification("Download Finished", "Download Progress", finished, android.R.drawable.stat_sys_download_done);
 			
 			ADebug.d(TAG, "download task finished");
 		}
