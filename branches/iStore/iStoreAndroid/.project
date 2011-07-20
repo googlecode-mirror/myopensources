@@ -37,9 +37,19 @@
 			<locationURI>_android_GreenDroid/src</locationURI>
 		</link>
 		<link>
+			<name>GreenDroid_src</name>
+			<type>2</type>
+			<locationURI>_android_GreenDroid_612cb559/src</locationURI>
+		</link>
+		<link>
 			<name>iLib</name>
 			<type>2</type>
 			<locationURI>_android_iLib/src</locationURI>
+		</link>
+		<link>
+			<name>iLib_src</name>
+			<type>2</type>
+			<locationURI>_android_iLib_30e55c/src</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

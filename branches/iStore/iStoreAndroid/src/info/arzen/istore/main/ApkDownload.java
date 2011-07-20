@@ -43,13 +43,12 @@ public class ApkDownload extends FileDownloadService {
 
 	@Override
 	protected int getNotificationFlag() {
-		return Notification.FLAG_AUTO_CANCEL | Notification.DEFAULT_LIGHTS;
+		return Notification.DEFAULT_LIGHTS;
 	}
 
 	@Override
 	protected int getNotificationIcon() {
-		// TODO Auto-generated method stub
-		return 0;
+		return android.R.drawable.stat_sys_download;
 	}
 
 	@Override
@@ -60,8 +59,9 @@ public class ApkDownload extends FileDownloadService {
 	@Override
 	protected void onFinishDownload(int successCount,
 			HashMap<String, String> failedFiles) {
-		// TODO Auto-generated method stub
 
 	}
+	
+	
 
 }
