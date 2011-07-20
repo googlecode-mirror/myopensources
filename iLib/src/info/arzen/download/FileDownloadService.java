@@ -30,6 +30,7 @@ package info.arzen.download;
  */
 
 import info.arzen.core.ADebug;
+import info.arzen.files.ApkUtils;
 import info.arzen.http.ClientHttpRequest;
 
 import java.io.BufferedInputStream;
@@ -38,14 +39,13 @@ import java.io.FileOutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
-import java.util.Vector;
 import java.util.Map.Entry;
+import java.util.Vector;
 
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Binder;
@@ -400,8 +400,7 @@ public abstract class FileDownloadService extends Service
 							
 							successCount ++;
 							
-							//install
-//							ApkUtils.installOrUpdateApk(Context ctx, File apkFile);
+							
 							mDoneList.add(localFilepath);
 						}
 						else
@@ -447,9 +446,24 @@ public abstract class FileDownloadService extends Service
 				finished = String.format("Finished (%d download(s) failed)", numTotalFiles - successCount);
 			else
 				finished = "Finished";
+			//install
+//			for (int i = 0; i < mDoneList.size(); i++) {
+//				String local_apk = mDoneList.get(i);
+//				ApkUtils.installOrUpdateApk(getApplicationContext(), local_apk);
+//				showNotification("install apk", local_apk, finished, android.R.drawable.stat_sys_upload);
+//				
+//			}
+			for (String local_apk : mDoneList) {
+				ApkUtils.installOrUpdateApk(getApplicationContext(), local_apk);
+				showNotification("install apk", local_apk, finished, android.R.drawable.stat_sys_upload);
+
+			}
+			
 			showNotification("Download Finished", "Download Progress", finished, android.R.drawable.stat_sys_download_done);
 			
 			ADebug.d(TAG, "download task finished");
+			
+			stopSelf();
 		}
 	}
 
