@@ -1,7 +1,6 @@
 package info.arzen.http;
 
-import info.arzen.cache.AbstractCache;
-import info.arzen.cache.HttpResponseCache;
+import info.arzen.cache.FileCache;
 import info.arzen.core.ADebug;
 
 import java.io.BufferedOutputStream;
@@ -16,70 +15,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import android.content.Context;
 import android.os.Bundle;
 
 public class ClientHttpRequest {
 	
 	private static final String TAG="HttpRequest";
-    private static HttpResponseCache responseCache;
     private static ResponseData cachedData;
     private static boolean cached = true;
-    
-    /**
-     * Enables caching of HTTP responses. This will only enable the in-memory cache. If you also
-     * want to enable the disk cache, see {@link #enableResponseCache(Context, int, long, int, int)}
-     * .
-     * 
-     * @param initialCapacity
-     *            the initial element size of the cache
-     * @param expirationInMinutes
-     *            time in minutes after which elements will be purged from the cache
-     * @param maxConcurrentThreads
-     *            how many threads you think may at once access the cache; this need not be an exact
-     *            number, but it helps in fragmenting the cache properly
-     * @see HttpResponseCache
-     */
-    public static void enableResponseCache(int initialCapacity, long expirationInMinutes,
-            int maxConcurrentThreads) {
-        responseCache = new HttpResponseCache(initialCapacity, expirationInMinutes,
-                maxConcurrentThreads);
-    }
-	
-    /**
-     * Enables caching of HTTP responses. This will also enable the disk cache.
-     * 
-     * @param context
-     *            the current context
-     * @param initialCapacity
-     *            the initial element size of the cache
-     * @param expirationInMinutes
-     *            time in minutes after which elements will be purged from the cache (NOTE: this
-     *            only affects the memory cache, the disk cache does currently NOT handle element
-     *            TTLs!)
-     * @param maxConcurrentThreads
-     *            how many threads you think may at once access the cache; this need not be an exact
-     *            number, but it helps in fragmenting the cache properly
-     * @param diskCacheStorageDevice
-     *            where files should be cached persistently (
-     *            {@link AbstractCache#DISK_CACHE_INTERNAL}, {@link AbstractCache#DISK_CACHE_SDCARD}
-     *            )
-     * @see HttpResponseCache
-     */
-    public static void enableResponseCache(Context context, int initialCapacity,
-            long expirationInMinutes, int maxConcurrentThreads, int diskCacheStorageDevice) {
-        enableResponseCache(initialCapacity, expirationInMinutes, maxConcurrentThreads);
-        responseCache.enableDiskCache(context, diskCacheStorageDevice);
-    }
-    
-    /**
-     * @return the response cache, if enabled, otherwise null
-     */
-    public static HttpResponseCache getResponseCache() {
-        return responseCache;
-    }
-    
-    /**
+    private static String folder = ".istore_cache";
+   
+   /**
      * Generate the multi-part post body providing the parameters and boundary
      * string
      * 
@@ -134,11 +79,12 @@ public class ClientHttpRequest {
      */
     public static String openUrl(String url, String method, Bundle params)
           throws IOException {
+        String response = "";
+    	FileCache cache = new FileCache(360, folder);
     	
-        if (cached && responseCache != null && responseCache.containsKey(url)) {
-        	cachedData = responseCache.get(url);
-            return new String(cachedData.getResponseBody());
-        }
+    	if ( (response = cache.get(url)) !=null) {
+			return response;
+		}
     	
         // random string as boundary for multi-part http post
         String strBoundary = "3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f";
@@ -194,15 +140,13 @@ public class ClientHttpRequest {
             os.flush();
         }
 
-        String response = "";
         try {
             response = read(conn.getInputStream());
         } catch (FileNotFoundException e) {
             // Error Stream contains JSON that we can parse to a FB error
             response = read(conn.getErrorStream());
         }
-        cachedData = new ResponseData(0, response.getBytes());
-        responseCache.put(url, cachedData);
+        cache.set(url, response);
         return response;
     }
     
