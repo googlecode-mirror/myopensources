@@ -49,7 +49,6 @@ public class AsyncHttpRequestRunner {
         new Thread() {
             @Override public void run() {
                 try {
-                	ClientHttpRequest.enableResponseCache(1024, 5, 1);
                 	
                     String resp = ClientHttpRequest.openUrl(url, httpMethod, parameters);
                     listener.onComplete(resp, state);
