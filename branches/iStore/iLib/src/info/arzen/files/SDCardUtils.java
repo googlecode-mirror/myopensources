@@ -19,15 +19,16 @@ public class SDCardUtils {
 	
 	public static void createFileDirToSDCard(String filePath){
 		String new_dir = SDCardUtils.GetPath()+filePath;
-		ADebug.d(TAG, String.format("Create dir:%s", new_dir));
-		if (!SDCardUtils.isDirExist(filePath)) {
+		if (!SDCardUtils.isExists(new_dir)) {
+			ADebug.d(TAG, String.format("Create dir:%s", new_dir));
 			File file = new File(new_dir);
 			file.mkdir();
 		}
 	}
 	
-	public static Boolean isDirExist(String filePath){
-		File file = new File(SDCardUtils.GetPath() + filePath);
+	
+	public static boolean isExists(String filePath){
+		File file = new File(filePath);
 		return file.exists();
 	}
 
