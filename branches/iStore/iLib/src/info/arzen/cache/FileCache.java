@@ -2,6 +2,7 @@ package info.arzen.cache;
 
 import info.arzen.core.ADebug;
 import info.arzen.files.SDCardUtils;
+import info.arzen.files.Serializer;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -69,7 +70,7 @@ public class FileCache extends AbstractCache {
 		        istream.read(responseBody, 0, responseDataLength);
 				istream.close();
 				ADebug.d(TAG, String.format("Get data from cache file: %s", cache_file));
-		        return new String(responseBody);
+		        return (String) Serializer.unserialize(responseBody);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -100,7 +101,7 @@ public class FileCache extends AbstractCache {
 
         try {
             BufferedOutputStream ostream = new BufferedOutputStream(new FileOutputStream(file));
-			ostream.write(data.getBytes());
+			ostream.write(Serializer.serialize(data));
 	        ostream.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
