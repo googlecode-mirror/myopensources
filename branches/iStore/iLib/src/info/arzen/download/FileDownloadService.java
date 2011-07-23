@@ -463,7 +463,6 @@ public abstract class FileDownloadService extends Service
 			
 			ADebug.d(TAG, "download task finished");
 			
-			stopSelf();
 		}
 	}
 
