@@ -22,7 +22,7 @@ public class ClientHttpRequest {
 	private static final String TAG="HttpRequest";
     private static ResponseData cachedData;
     private static boolean cached = true;
-    private static String folder = ".istore_cache";
+    private static String folder = "istore_cache";
    
    /**
      * Generate the multi-part post body providing the parameters and boundary
@@ -80,9 +80,10 @@ public class ClientHttpRequest {
     public static String openUrl(String url, String method, Bundle params)
           throws IOException {
         String response = "";
+        String cache_key = url;
     	FileCache cache = new FileCache(360, folder);
     	
-    	if ( (response = cache.get(url)) !=null) {
+    	if ( (response = cache.get(cache_key)) !=null) {
 			return response;
 		}
     	
@@ -146,7 +147,7 @@ public class ClientHttpRequest {
             // Error Stream contains JSON that we can parse to a FB error
             response = read(conn.getErrorStream());
         }
-        cache.set(url, response);
+        cache.set(cache_key, response);
         return response;
     }
     

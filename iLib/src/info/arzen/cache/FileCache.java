@@ -10,6 +10,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 public class FileCache extends AbstractCache {
@@ -17,10 +20,12 @@ public class FileCache extends AbstractCache {
     private boolean isDiskCacheEnabled;
 
     protected String diskCacheDirectory;
+    protected String diskCacheFolder;
     
 	public FileCache(long expire, String folder) {
 		super(expire);
 		isDiskCacheEnabled = isEnableDiskCache();
+		diskCacheFolder = folder;
 		if (isDiskCacheEnabled) {
 			diskCacheDirectory = SDCardUtils.GetPath() + folder + "/" ;
 			SDCardUtils.createFileDirToSDCard(folder);
@@ -39,7 +44,7 @@ public class FileCache extends AbstractCache {
 	public String get(String key) {
 		String cache_file = getCacheFileName(key);
 		ADebug.d(TAG, String.format("Get cache file: %s", cache_file));
-		if (!exists(cache_file)) {
+		if (!SDCardUtils.isExists(cache_file)) {
 			ADebug.d(TAG, String.format("Not found cache file: %s", cache_file));
 			return null;
 		}
@@ -49,7 +54,7 @@ public class FileCache extends AbstractCache {
     	Date now = new Date();
     	long ageInMinutes = ((now.getTime() - lastModified) / (1000*60));
     	if (ageInMinutes >= expirationInMinutes) {
-    		ADebug.d(TAG, String.format("DISK cache expiration for file: %s", cache_file));
+    		ADebug.d(TAG, String.format("DISK cache expiration for file: %s, minutes:%l", cache_file, ageInMinutes));
     		file.delete();
     		return null;
     	}
@@ -57,7 +62,7 @@ public class FileCache extends AbstractCache {
         BufferedInputStream istream;
 		try {
 			istream = new BufferedInputStream(new FileInputStream(file));
-	        int responseDataLength = (int) fileSize - 1;
+	        int responseDataLength = (int) fileSize;
 	        byte[] responseBody = new byte[responseDataLength];
 	        
 	        try {
@@ -106,16 +111,44 @@ public class FileCache extends AbstractCache {
 	}
 
 	@Override
-	public boolean exists(String cache_file) {
-		File file = new File(cache_file);
-		boolean res = file.exists();
-		ADebug.d(TAG, String.format("Check cache File: %s Result:%b ", cache_file, res));
-		return res;
+	public boolean exists(String file_name) {
+		return SDCardUtils.isExists(file_name);
 	}
 	
     public String getFileNameFromUrl(String url) {
-        return url.replaceAll("[.:/,%?&=]", "+").replaceAll("[+]+", "+");
+        return getMD5Str(url);//url.replaceAll("[.:/,%?&=]", "_").replaceAll("[+]+", "_");
     }
 	
-
+    /* 
+    * MD5加密 
+    */  
+      private String getMD5Str(String str) {       
+          MessageDigest messageDigest = null;       
+         
+          try {       
+              messageDigest = MessageDigest.getInstance("MD5");       
+         
+              messageDigest.reset();       
+         
+              messageDigest.update(str.getBytes("UTF-8"));       
+          } catch (NoSuchAlgorithmException e) {       
+              System.out.println("NoSuchAlgorithmException caught!");       
+              System.exit(-1);       
+          } catch (UnsupportedEncodingException e) {       
+              e.printStackTrace();       
+          }       
+         
+          byte[] byteArray = messageDigest.digest();       
+         
+          StringBuffer md5StrBuff = new StringBuffer();       
+            
+          for (int i = 0; i < byteArray.length; i++) {                   
+              if (Integer.toHexString(0xFF & byteArray[i]).length() == 1)       
+                  md5StrBuff.append("0").append(Integer.toHexString(0xFF & byteArray[i]));       
+              else       
+                  md5StrBuff.append(Integer.toHexString(0xFF & byteArray[i]));       
+          }       
+        //16位加密，从第9位到25位  
+          return md5StrBuff.substring(8, 24).toString().toUpperCase();      
+      }
 }
