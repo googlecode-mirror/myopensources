@@ -29,6 +29,11 @@
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:id="@+id/content" style="@style/DetailBody"></TextView>
 			
+				<greendroid.widget.PageIndicator
+					android:id="@+id/page_indicator_other"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingTop="10dp" android:layout_gravity="center_horizontal"/>
 				<greendroid.widget.PagedView
 					android:id="@+id/paged_view"
 					android:layout_width="fill_parent"
@@ -36,11 +41,6 @@
 			
 			
 			
-				<greendroid.widget.PageIndicator
-					android:id="@+id/page_indicator_other"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:paddingTop="10dp" android:layout_gravity="center_horizontal"/>
 		</LinearLayout>
 
 

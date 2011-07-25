@@ -74,10 +74,10 @@ public class DetailActivity extends GDActivity {
 			int page_count = images.length();
 //	        pagedView.setAdapter(new PhotoSwipeAdapter(images));
 			
-			mPageIndicatorOther.setDotCount(page_count);
+			mPageIndicatorOther.setDotCount(10);
 			ADebug.d(TAG, String.format("Images:%d", page_count));
 			
-//	        setActivePage(pagedView.getCurrentPage());
+	        setActivePage(1);
 			//install click
 			
 			installBtn.setOnClickListener(new Button.OnClickListener() {
