@@ -26,22 +26,25 @@
 		<LinearLayout android:id="@+id/LinearLayout01"
 			android:layout_width="wrap_content" android:layout_height="fill_parent">
 			<TextView android:text="@+id/TextView01"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:id="@+id/content" style="@style/DetailBody"></TextView>
+				android:layout_width="wrap_content" android:id="@+id/content" style="@style/DetailBody" android:layout_height="150dp"></TextView>
+
+
+			<LinearLayout android:id="@+id/LinearLayout02"
+				android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<TextView android:text="@+id/TextView01" android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView><greendroid.widget.PageIndicator
+					android:id="@+id/page_indicator_other" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:paddingTop="10dp"
+					android:layout_gravity="center_horizontal" />
+
 			
-				<greendroid.widget.PageIndicator
-					android:id="@+id/page_indicator_other"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:paddingTop="10dp" android:layout_gravity="center_horizontal"/>
-				<greendroid.widget.PagedView
-					android:id="@+id/paged_view"
-					android:layout_width="fill_parent"
-					android:layout_height="fill_parent" />
+</LinearLayout>
+			<greendroid.widget.PagedView android:id="@+id/paged_view"
+				android:layout_width="fill_parent" android:layout_height="fill_parent" />
 			
 			
 			
-		</LinearLayout>
+		
+</LinearLayout>
 
 
 	</ScrollView>
