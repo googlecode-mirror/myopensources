@@ -18,6 +18,7 @@ public class MainActivity extends GDListActivity {
 	private static final String TAG = "MainActivity";
 	public static MainActivity singleton;
 	private APKListAdapter adapter;
+	private int pid=1, cid=4, page=1, rows=10; 
 	
    /** Called when the activity is first created. */
     @Override
@@ -26,7 +27,9 @@ public class MainActivity extends GDListActivity {
         singleton = this;
         
         adapter = new APKListAdapter(this);
-        (new AsyncHttpRequestRunner()).request(AConfig.FEED_APP_LIST, null, new AppsListener(adapter));
+        
+        
+        (new AsyncHttpRequestRunner()).request(AConfig.getListUrl(pid, cid, page, rows), null, new AppsListener(adapter));
         setListAdapter(adapter);
        
     }
