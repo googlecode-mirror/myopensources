@@ -55,7 +55,7 @@ public class FileCache extends AbstractCache {
     	Date now = new Date();
     	long ageInMinutes = ((now.getTime() - lastModified) / (1000*60));
     	if (ageInMinutes >= expirationInMinutes) {
-    		ADebug.d(TAG, String.format("DISK cache expiration for file: %s, minutes:%l", cache_file, ageInMinutes));
+    		ADebug.d(TAG, String.format("DISK cache expiration for file: %s, minutes:%d", cache_file, ageInMinutes));
     		file.delete();
     		return null;
     	}
@@ -117,39 +117,7 @@ public class FileCache extends AbstractCache {
 	}
 	
     public String getFileNameFromUrl(String url) {
-        return getMD5Str(url);//url.replaceAll("[.:/,%?&=]", "_").replaceAll("[+]+", "_");
+        return Md5Util.md5(url);//getMD5Str(url) url.replaceAll("[.:/,%?&=]", "_").replaceAll("[+]+", "_");
     }
 	
-    /* 
-    * MD5加密 
-    */  
-      private String getMD5Str(String str) {       
-          MessageDigest messageDigest = null;       
-         
-          try {       
-              messageDigest = MessageDigest.getInstance("MD5");       
-         
-              messageDigest.reset();       
-         
-              messageDigest.update(str.getBytes("UTF-8"));       
-          } catch (NoSuchAlgorithmException e) {       
-              System.out.println("NoSuchAlgorithmException caught!");       
-              System.exit(-1);       
-          } catch (UnsupportedEncodingException e) {       
-              e.printStackTrace();       
-          }       
-         
-          byte[] byteArray = messageDigest.digest();       
-         
-          StringBuffer md5StrBuff = new StringBuffer();       
-            
-          for (int i = 0; i < byteArray.length; i++) {                   
-              if (Integer.toHexString(0xFF & byteArray[i]).length() == 1)       
-                  md5StrBuff.append("0").append(Integer.toHexString(0xFF & byteArray[i]));       
-              else       
-                  md5StrBuff.append(Integer.toHexString(0xFF & byteArray[i]));       
-          }       
-        //16位加密，从第9位到25位  
-          return md5StrBuff.substring(8, 24).toString().toUpperCase();      
-      }
 }
