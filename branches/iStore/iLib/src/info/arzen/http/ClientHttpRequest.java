@@ -147,7 +147,9 @@ public class ClientHttpRequest {
             // Error Stream contains JSON that we can parse to a FB error
             response = read(conn.getErrorStream());
         }
-        cache.set(cache_key, response);
+        if (response != null) {
+            cache.set(cache_key, response);
+		}
         return response;
     }
     
