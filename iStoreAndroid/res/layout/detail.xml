@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:greendroid="http://schemas.android.com/apk/res/com.cyrilmottier.android.gdcatalog"
 	android:layout_width="wrap_content" android:layout_height="wrap_content">
 	<LinearLayout android:id="@+id/top" android:layout_width="fill_parent"
 		android:layout_height="@dimen/detail_top_height" android:background="@drawable/detail_bar_background">
@@ -23,28 +24,20 @@
 	<ScrollView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" android:id="@+id/middel"
 		android:layout_below="@id/top">
-		<LinearLayout android:id="@+id/LinearLayout01"
+		<RelativeLayout android:id="@+id/LinearLayout01"
 			android:layout_width="wrap_content" android:layout_height="fill_parent">
 			<TextView android:text="@+id/TextView01"
-				android:layout_width="wrap_content" android:id="@+id/content" style="@style/DetailBody" android:layout_height="150dp"></TextView>
+				android:layout_width="wrap_content" android:id="@+id/content" style="@style/DetailBody"
+				android:layout_height="150dp"></TextView>
 
 
-			<LinearLayout android:id="@+id/LinearLayout02"
-				android:layout_width="wrap_content" android:layout_height="wrap_content">
-				<TextView android:text="@+id/TextView01" android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView><greendroid.widget.PageIndicator
+				<greendroid.widget.PageIndicator
 					android:id="@+id/page_indicator_other" android:layout_width="wrap_content"
 					android:layout_height="wrap_content" android:paddingTop="10dp"
-					android:layout_gravity="center_horizontal" />
+					android:layout_below="@id/content"/>
+				<ListView android:layout_width="180dp" android:layout_height="180dp" android:id="@+id/images" android:layout_below="@id/page_indicator_other" android:background="#FF0000" android:paddingBottom="200dp" android:scrollbarAlwaysDrawHorizontalTrack="true" android:scrollbars="horizontal"></ListView>
 
-			
-</LinearLayout>
-			<greendroid.widget.PagedView android:id="@+id/paged_view"
-				android:layout_width="fill_parent" android:layout_height="fill_parent" />
-			
-			
-			
-		
-</LinearLayout>
+		</RelativeLayout>
 
 
 	</ScrollView>
@@ -53,7 +46,8 @@
 		android:layout_width="fill_parent" android:background="@drawable/detail_bar_background"
 		android:gravity="center">
 		<Button android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:gravity="center"
+			android:layout_height="wrap_content" 
+			android:gravity="center"
 			android:id="@+id/installBtn" android:text="@string/str_install"
 			style="@style/ButtonSimple"></Button>
 	</LinearLayout>
