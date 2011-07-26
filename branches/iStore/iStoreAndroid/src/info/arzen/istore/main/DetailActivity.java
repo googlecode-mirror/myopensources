@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,7 +34,8 @@ public class DetailActivity extends GDActivity {
     private TextView contentView;
     private PageIndicator mPageIndicatorOther;
     private Button installBtn;
-	private ListView mPhotos;
+	private Gallery mPhotos;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class DetailActivity extends GDActivity {
         authorView = (TextView) findViewById(R.id.author);
         contentView = (TextView) findViewById(R.id.content);
         
-        mPhotos = (ListView) findViewById(R.id.images);
+        mPhotos = (Gallery) findViewById(R.id.photos);
 
         mPageIndicatorOther = (PageIndicator) findViewById(R.id.page_indicator_other);
         
