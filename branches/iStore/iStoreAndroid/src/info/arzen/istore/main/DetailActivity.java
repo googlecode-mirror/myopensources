@@ -3,9 +3,6 @@ package info.arzen.istore.main;
 import greendroid.app.GDActivity;
 import greendroid.widget.AsyncImageView;
 import greendroid.widget.PageIndicator;
-import greendroid.widget.PagedAdapter;
-import greendroid.widget.PagedView;
-import greendroid.widget.PagedView.OnPagedViewChangeListener;
 import info.arzen.core.ADebug;
 import info.arzen.http.AsyncHttpRequestRunner;
 import info.arzen.istore.common.AConfig;
@@ -19,7 +16,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class DetailActivity extends GDActivity {
@@ -32,8 +32,8 @@ public class DetailActivity extends GDActivity {
     private TextView priceView;
     private TextView contentView;
     private PageIndicator mPageIndicatorOther;
-    private PagedView pagedView;
     private Button installBtn;
+	private ListView mPhotos;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +48,10 @@ public class DetailActivity extends GDActivity {
         textView = (TextView) findViewById(R.id.text);
         authorView = (TextView) findViewById(R.id.author);
         contentView = (TextView) findViewById(R.id.content);
+        
+        mPhotos = (ListView) findViewById(R.id.images);
 
         mPageIndicatorOther = (PageIndicator) findViewById(R.id.page_indicator_other);
-        pagedView = (PagedView) findViewById(R.id.paged_view);
-        pagedView.setOnPageChangeListener(mOnPagedViewChangedListener);
         
         Bundle bundle = this.getIntent().getExtras();
         Long item_id = bundle.getLong("id");
@@ -72,10 +72,11 @@ public class DetailActivity extends GDActivity {
 			
 			JSONArray images = obj.getJSONArray("Image");
 			int page_count = images.length();
-//	        pagedView.setAdapter(new PhotoSwipeAdapter(images));
 			
-			mPageIndicatorOther.setDotCount(10);
+			mPageIndicatorOther.setDotCount(page_count);
 			ADebug.d(TAG, String.format("Images:%d", page_count));
+			mPhotos.setAdapter(new PhotoSwipeAdapter(images));
+			
 			
 	        setActivePage(1);
 			//install click
@@ -108,56 +109,50 @@ public class DetailActivity extends GDActivity {
         mPageIndicatorOther.setActiveDot(page);
     }
 	
-    private OnPagedViewChangeListener mOnPagedViewChangedListener = new OnPagedViewChangeListener() {
-
-        @Override
-        public void onStopTracking(PagedView pagedView) {
-        }
-
-        @Override
-        public void onStartTracking(PagedView pagedView) {
-        }
-
-        @Override
-        public void onPageChanged(PagedView pagedView, int previousPage, int newPage) {
-            setActivePage(newPage);
-        }
-    };
-    
-    private class PhotoSwipeAdapter extends PagedAdapter {
-        
-    	public JSONArray mPhotos;
+    private class PhotoSwipeAdapter extends BaseAdapter {
     	
-    	public PhotoSwipeAdapter(JSONArray photos) {
-    		mPhotos = photos;
+    	private JSONArray mImages;
+        private AsyncImageView mImageView;
+    	
+    	
+    	public PhotoSwipeAdapter(JSONArray images) {
+    		mImages = images;
 		}
-    	
-        @Override
-        public int getCount() {
-            return mPhotos.length();
-        }
 
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
+		@Override
+		public int getCount() {
+			return mImages.length();
+		}
 
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
+		@Override
+		public Object getItem(int arg0) {
+			return null;
+		}
 
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = getLayoutInflater().inflate(R.layout.paged_view_item, parent, false);
-            }
+		@Override
+		public long getItemId(int arg0) {
+			return 0;
+		}
 
-            ((TextView) convertView).setText(Integer.toString(position));
-
-            return convertView;
-        }
-
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			if (mImageView == null) {
+	            convertView = getLayoutInflater().inflate(R.layout.list_item, parent, false);
+	            mImageView = (AsyncImageView) convertView.findViewById(R.id.async_photo);
+				
+			}
+            try {
+				String uri = mImages.getJSONObject(position).getString("uri");
+				mImageView.setUrl(uri);
+				ADebug.d(TAG, String.format("Image URL: %s", uri));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            		
+//	    	((AsyncImageView) convertView).set
+			return mImageView;
+		}
+        
     }
-	
-	
 }

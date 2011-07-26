@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<greendroid.widget.AsyncImageView
+  	xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/async_photo"
+		android:layout_width="180dp"
+		android:layout_height="180dp"
+		/>
+
