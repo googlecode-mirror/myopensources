@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -54,19 +55,6 @@ public class DetailActivity extends GDActivity {
         contentView = (TextView) findViewById(R.id.content);
         
         mPhotos = (Gallery) findViewById(R.id.photos);
-        mPhotos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int position, long id) {
-				setActivePage(position);
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-				
-			}
-		});
 
         mPageIndicatorOther = (PageIndicator) findViewById(R.id.page_indicator_other);
         
@@ -88,12 +76,28 @@ public class DetailActivity extends GDActivity {
 			contentView.setText(item.getString("content"));
 			
 			JSONArray images = obj.getJSONArray("Image");
-			int page_count = images.length();
+			final int page_count = images.length();
 			
 			mPageIndicatorOther.setDotCount(page_count);
 			ADebug.d(TAG, String.format("Images:%d", page_count));
 			mPhotos.setAdapter(new PhotoSwipeAdapter(images));
 			
+	        mPhotos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+				@Override
+				public void onItemSelected(AdapterView<?> arg0, View arg1,
+						int position, long id) {
+					int index = position % page_count;
+					setActivePage(index);
+					ADebug.d(TAG, String.format("Scroll Image position: %d", index));
+					
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView<?> arg0) {
+					
+				}
+			});
 			
 	        setActivePage(1);
 			//install click
@@ -129,7 +133,7 @@ public class DetailActivity extends GDActivity {
     private class PhotoSwipeAdapter extends BaseAdapter {
     	
     	private JSONArray mImages;
-        private ImageView mImageView;
+        private AsyncImageView mImageView;
     	
     	
     	public PhotoSwipeAdapter(JSONArray images) {
@@ -138,7 +142,7 @@ public class DetailActivity extends GDActivity {
 
 		@Override
 		public int getCount() {
-			return mImages.length();
+			return Integer.MAX_VALUE;
 		}
 
 		@Override
@@ -150,28 +154,33 @@ public class DetailActivity extends GDActivity {
 		public long getItemId(int arg0) {
 			return 0;
 		}
+		
+		
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (mImageView == null) {
-	            convertView = getLayoutInflater().inflate(R.layout.gallery_image, parent, false);
-	            mImageView = (ImageView) convertView.findViewById(R.id.async_photo);
+	            convertView = getLayoutInflater().inflate(R.layout.list_item, parent, false);
+	            mImageView = (AsyncImageView) convertView.findViewById(R.id.async_photo);
 				
 			}
             try {
-				String uri = mImages.getJSONObject(position).getString("uri");
-				AsyncImageDownloadTask task = new AsyncImageDownloadTask(mImageView, null);
-				task.execute(uri);
+            	int id = position % mImages.length();
+				String uri = mImages.getJSONObject(id).getString("uri");
+				mImageView.setUrl(uri);
+				mImageView.setTag(id);
+//				AsyncImageDownloadTask task = new AsyncImageDownloadTask(mImageView, null);
+//				task.execute(uri);
 //				mImageView.setImageBitmap(ImageUtils.downloadBitmap(uri));
+//				mImageView.setImageDrawable(getResources().getDrawable(R.drawable.detail1));
 				ADebug.d(TAG, String.format("Image URL: %s", uri));
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
             		
-//	    	((AsyncImageView) convertView).set
 			return mImageView;
 		}
-        
+		
     }
 }
