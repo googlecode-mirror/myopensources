@@ -5,7 +5,6 @@ import greendroid.widget.AsyncImageView;
 import greendroid.widget.PageIndicator;
 import info.arzen.core.ADebug;
 import info.arzen.files.AsyncImageDownloadTask;
-import info.arzen.files.ImageUtils;
 import info.arzen.http.AsyncHttpRequestRunner;
 import info.arzen.istore.common.AConfig;
 import info.arzen.istore.model.DetailListener;
@@ -16,9 +15,10 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -55,6 +55,16 @@ public class DetailActivity extends GDActivity {
         contentView = (TextView) findViewById(R.id.content);
         
         mPhotos = (Gallery) findViewById(R.id.photos);
+        MotionEvent e1 = MotionEvent.obtain(
+        	    SystemClock.uptimeMillis(), 
+        	    SystemClock.uptimeMillis(),  
+        	    MotionEvent.ACTION_DOWN, 89.333336f, 265.33334f, 0);
+    	MotionEvent e2 = MotionEvent.obtain(
+        	    SystemClock.uptimeMillis(), 
+        	    SystemClock.uptimeMillis(), 
+        	    MotionEvent.ACTION_UP, 300.0f, 238.00003f, 0);
+
+    	mPhotos.onFling(e1, e2, 800, 0);
 
         mPageIndicatorOther = (PageIndicator) findViewById(R.id.page_indicator_other);
         
@@ -133,7 +143,7 @@ public class DetailActivity extends GDActivity {
     private class PhotoSwipeAdapter extends BaseAdapter {
     	
     	private JSONArray mImages;
-        private AsyncImageView mImageView;
+        private ImageView mImageView;
     	
     	
     	public PhotoSwipeAdapter(JSONArray images) {
@@ -160,15 +170,16 @@ public class DetailActivity extends GDActivity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (mImageView == null) {
-	            convertView = getLayoutInflater().inflate(R.layout.list_item, parent, false);
-	            mImageView = (AsyncImageView) convertView.findViewById(R.id.async_photo);
+	            convertView = getLayoutInflater().inflate(R.layout.gallery_image, parent, false);
+	            mImageView = (ImageView) convertView.findViewById(R.id.async_photo);
 				
 			}
             try {
             	int id = position % mImages.length();
 				String uri = mImages.getJSONObject(id).getString("uri");
-				mImageView.setUrl(uri);
-				mImageView.setTag(id);
+//				mImageView.setUrl(uri);
+				mImageView.setImageResource(R.drawable.scenic_id);
+//				mImageView.setTag(id);
 //				AsyncImageDownloadTask task = new AsyncImageDownloadTask(mImageView, null);
 //				task.execute(uri);
 //				mImageView.setImageBitmap(ImageUtils.downloadBitmap(uri));
