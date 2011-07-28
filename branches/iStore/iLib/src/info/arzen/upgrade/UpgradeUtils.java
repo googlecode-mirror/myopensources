@@ -1,13 +1,18 @@
 package info.arzen.upgrade;
 
+import info.arzen.common.CommonUtils;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 
 public class UpgradeUtils {
-	private UpgradeUtils instance = new UpgradeUtils();
 	
-	public void name() {
-//		PackageInfo pinfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-//		int versionNumber = pinfo.versionCode;
-//		String versionName = pinfo.versionName;		
+	public static PackageInfo getVerInfo() {
+		try {
+			return CommonUtils.getContext().getPackageManager().getPackageInfo(CommonUtils.getContext().getPackageName(), 0);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
