@@ -5,6 +5,7 @@ import greendroid.widget.AsyncImageView;
 import info.arzen.adapter.ABaseAdapter;
 import info.arzen.istore.main.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 
 import android.content.Context;
@@ -28,6 +29,18 @@ public class APKListAdapter extends ABaseAdapter {
 	public APKListAdapter(Context context) {
 		super(context);
 		mInflater = LayoutInflater.from(context);
+	}
+	
+	public int getTotal() {
+		return total;
+	}
+	
+	public void setTotal(int val) {
+		total = val;
+	}
+	
+	public int getPages() {
+		return pages;
 	}
 	
 	@Override

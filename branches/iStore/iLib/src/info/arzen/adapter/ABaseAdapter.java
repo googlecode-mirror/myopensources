@@ -18,6 +18,7 @@ public abstract class ABaseAdapter extends BaseAdapter {
 	protected Context mContext;
 	protected JSONObject mJObject = null;
 	protected JSONArray mData = null;
+	protected int total = 0, pages = 1;
 	
     public ABaseAdapter(Context context) {
 		mContext = context;
@@ -26,7 +27,18 @@ public abstract class ABaseAdapter extends BaseAdapter {
 	public void setData(JSONObject obj) {
 		mJObject = obj;
 		try {
-			mData = mJObject.getJSONArray("rows");
+			if (mData == null) {
+				mData = mJObject.getJSONArray("rows");
+				
+			}else {
+				JSONArray tmp = mJObject.getJSONArray("rows");
+				for (int i = 0; i < tmp.length(); i++) {
+					mData.put(tmp.get(i));
+				}
+				
+			}
+			total = mJObject.getInt("total");
+			pages = mJObject.getInt("pageCount");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
