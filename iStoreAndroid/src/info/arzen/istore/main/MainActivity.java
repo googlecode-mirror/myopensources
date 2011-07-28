@@ -1,6 +1,7 @@
 package info.arzen.istore.main;
 
 import greendroid.app.GDListActivity;
+import info.arzen.common.CommonUtils;
 import info.arzen.core.ADebug;
 import info.arzen.http.AsyncHttpRequestRunner;
 import info.arzen.istore.adapter.APKListAdapter;
@@ -36,7 +37,10 @@ public class MainActivity extends GDListActivity {
         super.onCreate(savedInstanceState);
         singleton = this;
         
+        CommonUtils.setContext(getApplicationContext());
+        
         adapter = new APKListAdapter(this);
+        
         
         loadingView = loading();
         
