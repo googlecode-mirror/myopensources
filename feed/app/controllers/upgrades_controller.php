@@ -14,7 +14,7 @@ class UpgradesController extends AppController {
 		
 		$upgrade = array(
 			'appName'=>"istore",
-			'appPath'=>"http://download.idreamsky.com:81/upgrade/ego.apk",
+			'appPath'=>"http://download.idreamsky.com:82/upgrade/iStoreAndroid.apk",
 			'versionName'=>"1.0.1",
 			'versionCode'=>2,
 			'force'=>1,
