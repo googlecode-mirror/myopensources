@@ -7,7 +7,17 @@ import info.arzen.http.AsyncHttpRequestRunner;
 import info.arzen.istore.adapter.APKListAdapter;
 import info.arzen.istore.common.AConfig;
 import info.arzen.istore.model.AppsListener;
+import info.arzen.istore.model.UpgradeListener;
+import info.arzen.ui.MsgUI;
+import info.arzen.upgrade.UpgradeUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -38,6 +48,7 @@ public class MainActivity extends GDListActivity {
         singleton = this;
         
         CommonUtils.setContext(getApplicationContext());
+        CommonUtils.setActivity(this);
         
         adapter = new APKListAdapter(this);
         
@@ -49,6 +60,10 @@ public class MainActivity extends GDListActivity {
         
         listener  = new AppsListener(adapter);
         mRequestRunner = new AsyncHttpRequestRunner();
+        
+        //check upgrade
+        mRequestRunner.request(AConfig.FEED_UPGRADE, null, new UpgradeListener());
+        
         
         mRequestRunner.request(AConfig.getListUrl(pid, cid, page, rows), null, listener);
         setListAdapter(adapter);
@@ -110,6 +125,9 @@ public class MainActivity extends GDListActivity {
 					case 100:
 						refreshList();
 						break;
+					case 200:
+						refreshList();
+						break;
 					
 				}
 				
@@ -151,6 +169,50 @@ public class MainActivity extends GDListActivity {
 		loadingLayout.addView(layout, mLayoutParams);  
 		loadingLayout.setGravity(Gravity.CENTER);
 		return loadingLayout;
+	}
+	
+	public void checkUpgrade(JSONObject obj) {
+		try {
+			String appName = obj.getString("appName");
+			String versionName = obj.getString("versionName");
+			final String appPath = obj.getString("appPath");
+			int versionCode = obj.getInt("versionCode");
+			int force = obj.getInt("force");
+			PackageInfo pinfo = UpgradeUtils.getVerInfo();
+			
+			if (versionCode > pinfo.versionCode) {
+				DialogInterface.OnClickListener cancel_listener = null, ok_listener=null;
+				
+				ok_listener = new OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						Intent intent = new Intent(getApplicationContext(), ApkDownload.class);
+						intent.putExtra("url", appPath);
+						getApplicationContext().startService(intent);
+						
+					}
+				};
+				
+				if (force == 1) {
+					cancel_listener = new OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							CommonUtils.quitApplication();
+						}
+					};
+				} 
+				
+				String ver_msg = String.format("%s Found new version:%s current Version %s", appName, versionName, pinfo.versionName);
+				MsgUI.showDailog("Update", ver_msg, ok_listener, cancel_listener, "OK", "Cancel");
+				
+			}
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
     
 }
