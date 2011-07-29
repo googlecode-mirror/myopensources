@@ -16,8 +16,8 @@ class UpgradesController extends AppController {
 			'appName'=>"istore",
 			'appPath'=>"http://download.idreamsky.com:81/upgrade/ego.apk",
 			'versionName'=>"1.0.1",
-			'versionCode'=>"2",
-			'force'=>"0",
+			'versionCode'=>2,
+			'force'=>0,
 		);
 		$this->set('data', $upgrade);
 		$this->render("/categories/json/index");
