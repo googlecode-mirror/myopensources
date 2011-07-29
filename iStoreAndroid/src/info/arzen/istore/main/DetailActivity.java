@@ -4,8 +4,8 @@ import greendroid.app.GDActivity;
 import greendroid.widget.AsyncImageView;
 import greendroid.widget.PageIndicator;
 import info.arzen.core.ADebug;
-import info.arzen.files.AsyncImageDownloadTask;
 import info.arzen.http.AsyncHttpRequestRunner;
+import info.arzen.istore.adapter.LazyAdapter;
 import info.arzen.istore.common.AConfig;
 import info.arzen.istore.model.DetailListener;
 
@@ -90,7 +90,16 @@ public class DetailActivity extends GDActivity {
 			
 			mPageIndicatorOther.setDotCount(page_count);
 			ADebug.d(TAG, String.format("Images:%d", page_count));
-			mPhotos.setAdapter(new PhotoSwipeAdapter(images));
+			String[] mStrings=new String[page_count];
+			for (int i = 0; i < page_count; i++) {
+				mStrings[i] = images.getJSONObject(i).getString("uri");
+			}
+		    LazyAdapter adapter;
+	        adapter=new LazyAdapter(this, mStrings);
+			mPhotos.setAdapter(adapter);//new PhotoSwipeAdapter(images)
+			if (page_count >= 2) {
+				mPhotos.setSelection(2, true);
+			}
 			
 	        mPhotos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -140,58 +149,4 @@ public class DetailActivity extends GDActivity {
         mPageIndicatorOther.setActiveDot(page);
     }
 	
-    private class PhotoSwipeAdapter extends BaseAdapter {
-    	
-    	private JSONArray mImages;
-        private ImageView mImageView;
-    	
-    	
-    	public PhotoSwipeAdapter(JSONArray images) {
-    		mImages = images;
-		}
-
-		@Override
-		public int getCount() {
-			return Integer.MAX_VALUE;
-		}
-
-		@Override
-		public Object getItem(int arg0) {
-			return null;
-		}
-
-		@Override
-		public long getItemId(int arg0) {
-			return 0;
-		}
-		
-		
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			if (mImageView == null) {
-	            convertView = getLayoutInflater().inflate(R.layout.gallery_image, parent, false);
-	            mImageView = (ImageView) convertView.findViewById(R.id.async_photo);
-				
-			}
-            try {
-            	int id = position % mImages.length();
-				String uri = mImages.getJSONObject(id).getString("uri");
-//				mImageView.setUrl(uri);
-				mImageView.setImageResource(R.drawable.scenic_id);
-//				mImageView.setTag(id);
-//				AsyncImageDownloadTask task = new AsyncImageDownloadTask(mImageView, null);
-//				task.execute(uri);
-//				mImageView.setImageBitmap(ImageUtils.downloadBitmap(uri));
-//				mImageView.setImageDrawable(getResources().getDrawable(R.drawable.detail1));
-				ADebug.d(TAG, String.format("Image URL: %s", uri));
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-            		
-			return mImageView;
-		}
-		
-    }
 }
