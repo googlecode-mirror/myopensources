@@ -27,15 +27,13 @@ public class ImageLoader {
         photoLoaderThread.setPriority(Thread.NORM_PRIORITY-1);
         
         //Find the dir to save cached images
-        if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
-            cacheDir=new File(android.os.Environment.getExternalStorageDirectory(),"LazyList");
-        else
-            cacheDir=context.getCacheDir();
-        if(!cacheDir.exists())
-            cacheDir.mkdirs();
+        String folder = ".istore_android", cache_path;
+        cache_path = SDCardUtils.GetPath() + folder + "/" ;
+		SDCardUtils.createFileDirToSDCard(folder);
+		cacheDir=new File(cache_path);
     }
     
-    final int stub_id=R.drawable.stub;
+    final int stub_id=android.R.drawable.gallery_thumb;
     public void DisplayImage(String url, Activity activity, ImageView imageView)
     {
         if(cache.containsKey(url))
