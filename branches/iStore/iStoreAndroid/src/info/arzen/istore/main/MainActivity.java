@@ -177,7 +177,7 @@ public class MainActivity extends GDListActivity {
 			String versionName = obj.getString("versionName");
 			final String appPath = obj.getString("appPath");
 			int versionCode = obj.getInt("versionCode");
-			int force = obj.getInt("force");
+			int force = 0;//obj.getInt("force");
 			PackageInfo pinfo = UpgradeUtils.getVerInfo();
 			
 			if (versionCode > pinfo.versionCode) {
