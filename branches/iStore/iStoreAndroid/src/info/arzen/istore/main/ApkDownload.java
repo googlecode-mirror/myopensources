@@ -3,6 +3,7 @@ package info.arzen.istore.main;
 import info.arzen.core.ADebug;
 import info.arzen.download.FileDownloadService;
 import info.arzen.download.FileDownloadService.AsyncDownloadTask;
+import info.arzen.files.ApkUtils;
 import info.arzen.files.FileUtils;
 import info.arzen.files.SDCardUtils;
 
@@ -60,6 +61,12 @@ public class ApkDownload extends FileDownloadService {
 	@Override
 	protected void onFinishDownload(int successCount,
 			HashMap<String, String> failedFiles) {
+		
+		for (String local_apk : mDoneList) {
+			ApkUtils.installOrUpdateApk(getApplicationContext(), local_apk);
+			showNotification("install apk", local_apk, "finished", android.R.drawable.stat_sys_upload);
+
+		}
 
 	}
 	
