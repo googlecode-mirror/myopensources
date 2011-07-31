@@ -453,11 +453,6 @@ public abstract class FileDownloadService extends Service
 //				showNotification("install apk", local_apk, finished, android.R.drawable.stat_sys_upload);
 //				
 //			}
-			for (String local_apk : mDoneList) {
-				ApkUtils.installOrUpdateApk(getApplicationContext(), local_apk);
-				showNotification("install apk", local_apk, finished, android.R.drawable.stat_sys_upload);
-
-			}
 			
 			showNotification("Download Finished", "Download Progress", finished, android.R.drawable.stat_sys_download_done);
 			
