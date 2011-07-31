@@ -189,7 +189,7 @@ public class MainActivity extends GDListActivity {
 					public void onClick(DialogInterface dialog, int which) {
 						Intent intent = new Intent(getApplicationContext(), ApkDownload.class);
 						intent.putExtra("url", appPath);
-						getApplicationContext().startService(intent);
+						startService(intent);
 //						CommonUtils.quitApplication();
 						
 					}
