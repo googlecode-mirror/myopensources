@@ -7,6 +7,9 @@ public class AConfig {
 	public static String FEED_APP_DETAIL = AConfig.FEED_HOST+"applications/view/%d.json";
 	public static String FEED_UPGRADE = AConfig.FEED_HOST+"upgrades/index.json";
 	
+	
+	public static String DOWNLOAD_UPGRADE = "info.arzen.istore.upgrade";
+	
 	private AConfig() {}
 
 	public static AConfig getInstance()
