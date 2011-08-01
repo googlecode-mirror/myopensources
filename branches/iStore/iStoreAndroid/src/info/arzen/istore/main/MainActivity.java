@@ -7,6 +7,7 @@ import info.arzen.http.AsyncHttpRequestRunner;
 import info.arzen.istore.adapter.APKListAdapter;
 import info.arzen.istore.common.AConfig;
 import info.arzen.istore.model.AppsListener;
+import info.arzen.istore.model.DownloadReceiver;
 import info.arzen.istore.model.UpgradeListener;
 import info.arzen.ui.MsgUI;
 import info.arzen.upgrade.UpgradeUtils;
@@ -17,6 +18,7 @@ import org.json.JSONObject;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,6 +42,7 @@ public class MainActivity extends GDListActivity {
 	private AppsListener listener;
 	private AsyncHttpRequestRunner mRequestRunner;
 	private View loadingView;
+	private DownloadReceiver down_receiver;
 	
    /** Called when the activity is first created. */
     @Override
@@ -96,6 +99,8 @@ public class MainActivity extends GDListActivity {
 				}
 			}
 		});
+        
+        registerIntentReceivers();
     }
     
    
@@ -215,5 +220,23 @@ public class MainActivity extends GDListActivity {
 			e.printStackTrace();
 		}
 	}
-    
+
+	private void registerIntentReceivers() {
+		down_receiver =  new DownloadReceiver();
+        IntentFilter downlaodFilter = new IntentFilter();
+        downlaodFilter.addAction(AConfig.DOWNLOAD_UPGRADE);
+		registerReceiver(down_receiver, downlaodFilter);
+	}
+	
+	private void unregisterIntentReceivers() {
+		unregisterReceiver(down_receiver);
+		Intent intent = new Intent(getApplicationContext(), ApkDownload.class);
+		stopService(intent);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		unregisterIntentReceivers();
+	}
 }

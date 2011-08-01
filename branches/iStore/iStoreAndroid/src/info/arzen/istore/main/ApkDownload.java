@@ -6,6 +6,7 @@ import info.arzen.download.FileDownloadService.AsyncDownloadTask;
 import info.arzen.files.ApkUtils;
 import info.arzen.files.FileUtils;
 import info.arzen.files.SDCardUtils;
+import info.arzen.istore.common.AConfig;
 
 import java.util.HashMap;
 
@@ -63,11 +64,18 @@ public class ApkDownload extends FileDownloadService {
 			HashMap<String, String> failedFiles) {
 		
 		for (String local_apk : mDoneList) {
-			ApkUtils.installOrUpdateApk(getApplicationContext(), local_apk);
+			
+			
+//			ApkUtils.installOrUpdateApk(getApplicationContext(), local_apk);
 			showNotification("install apk", local_apk, "finished", android.R.drawable.stat_sys_upload);
 
 		}
 
+        Intent intent = new Intent(AConfig.DOWNLOAD_UPGRADE);
+		intent.putExtra("dones", mDoneList);
+		//发送广播
+		sendBroadcast(intent);
+		ADebug.d(TAG, "send Broadcast");
 	}
 	
 	

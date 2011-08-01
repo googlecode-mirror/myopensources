@@ -38,6 +38,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Vector;
@@ -80,7 +81,7 @@ public abstract class FileDownloadService extends Service
 
 	protected static boolean isRunning = false;
 	
-	protected Vector<String> mDoneList = new Vector<String>();
+	protected ArrayList<String> mDoneList = new ArrayList<String>();
 
     public class FileDownloadBinder extends Binder
     {
