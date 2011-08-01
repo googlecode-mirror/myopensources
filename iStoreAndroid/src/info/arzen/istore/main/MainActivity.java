@@ -3,6 +3,7 @@ package info.arzen.istore.main;
 import greendroid.app.GDListActivity;
 import info.arzen.common.CommonUtils;
 import info.arzen.core.ADebug;
+import info.arzen.files.ApkUtils;
 import info.arzen.http.AsyncHttpRequestRunner;
 import info.arzen.istore.adapter.APKListAdapter;
 import info.arzen.istore.common.AConfig;
@@ -139,6 +140,13 @@ public class MainActivity extends GDListActivity {
 		}
 
 	};
+	
+	public void installUpgrade(String path) {
+		ADebug.d(TAG, "install apk in main " + path);
+		ADebug.msg(path, getApplicationContext());
+		ApkUtils.installOrUpdateApk(getApplicationContext(), path);
+	}
+	
 	public Handler getHandler() {
 		return mHandler;
 	}
@@ -219,6 +227,12 @@ public class MainActivity extends GDListActivity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void stopServiceIntent() {
+		Intent intent = new Intent(getApplicationContext(), ApkDownload.class);
+		stopService(intent);
+
 	}
 
 	private void registerIntentReceivers() {

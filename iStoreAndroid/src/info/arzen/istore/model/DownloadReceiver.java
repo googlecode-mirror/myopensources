@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import info.arzen.core.ADebug;
 import info.arzen.istore.common.AConfig;
+import info.arzen.istore.main.MainActivity;
 import info.arzen.ui.MsgUI;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -23,9 +24,19 @@ public class DownloadReceiver extends BroadcastReceiver {
 			MsgUI.showMsg("upgrade braodcast");
 			Bundle exts = intent.getExtras();
         	ArrayList<String> mDoneList =  exts.getStringArrayList("dones");
-    		for (String local_apk : mDoneList) {
-    			ADebug.d(TAG, "install apk " + local_apk);
-//    			MsgUI.showMsg(local_apk);
+    		for (final String local_apk : mDoneList) {
+    			ADebug.d(TAG, "install apk is " + local_apk);
+    			MainActivity.singleton.stopServiceIntent();
+    			MainActivity.singleton.runOnUiThread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+		    			MsgUI.showMsg(local_apk);
+		    			MainActivity.singleton.installUpgrade(local_apk);
+						
+					}
+				});
 
     		}
 		} else {
