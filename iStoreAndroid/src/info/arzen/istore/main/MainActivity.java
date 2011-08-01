@@ -13,25 +13,35 @@ import info.arzen.istore.model.UpgradeListener;
 import info.arzen.ui.MsgUI;
 import info.arzen.upgrade.UpgradeUtils;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.LinearLayout.LayoutParams;
 
 public class MainActivity extends GDListActivity {
 	
@@ -200,9 +210,10 @@ public class MainActivity extends GDListActivity {
 					
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						Intent intent = new Intent(getApplicationContext(), ApkDownload.class);
-						intent.putExtra("url", appPath);
-						startService(intent);
+						Update(appPath);
+//						Intent intent = new Intent(getApplicationContext(), ApkDownload.class);
+//						intent.putExtra("url", appPath);
+//						startService(intent);
 //						CommonUtils.quitApplication();
 						
 					}
@@ -253,4 +264,40 @@ public class MainActivity extends GDListActivity {
 		super.onDestroy();
 		unregisterIntentReceivers();
 	}
+	
+	public void Update(String apkurl){
+	      try {
+	            URL url = new URL(apkurl);
+	            HttpURLConnection c = (HttpURLConnection) url.openConnection();
+	            c.setRequestMethod("GET");
+	            c.setDoOutput(true);
+	            c.connect();
+
+	            String PATH = Environment.getExternalStorageDirectory() + "/download/";
+	            File file = new File(PATH);
+	            file.mkdirs();
+	            File outputFile = new File(file, "app.apk");
+	            FileOutputStream fos = new FileOutputStream(outputFile);
+
+	            InputStream is = c.getInputStream();
+
+	            byte[] buffer = new byte[1024];
+	            int len1 = 0;
+	            while ((len1 = is.read(buffer)) != -1) {
+	                fos.write(buffer, 0, len1);
+	            }
+	            fos.close();
+	            is.close();//till here, it works fine - .apk is download to my sdcard in download file
+	            
+//	            ApkUtils.installOrUpdateApk(getApplicationContext(), PATH+"app.apk");
+	            Intent promptInstall = new Intent(Intent.ACTION_VIEW)
+	            .setDataAndType(Uri.fromFile(new File(PATH+"app.apk")), "application/vnd.android.package-archive");	
+//	            .setData(Uri.parse(PATH+"app.apk"))
+//	            .setType("application/android.com.app");
+	            startActivity(promptInstall);//installation is not working
+
+	        } catch (IOException e) {
+	            Toast.makeText(getApplicationContext(), "Update error!", Toast.LENGTH_LONG).show();
+	        }
+	  }  	
 }
