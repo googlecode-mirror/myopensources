@@ -17,9 +17,9 @@ public class ApkUtils {
      */
     public static void installOrUpdateApk(Context ctx, String file_path) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.setDataAndType(Uri.fromFile(new File(file_path)), "application/vnd.android.package-archive");
-//        ADebug.d(TAG, String.format("will install %s", file_path));
+        ADebug.d(TAG, String.format("will install %s", file_path));
         ctx.startActivity(intent);
     }
 
