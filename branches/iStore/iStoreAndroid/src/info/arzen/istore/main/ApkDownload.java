@@ -66,16 +66,16 @@ public class ApkDownload extends FileDownloadService {
 		for (String local_apk : mDoneList) {
 			
 			
-//			ApkUtils.installOrUpdateApk(getApplicationContext(), local_apk);
+			ApkUtils.installOrUpdateApk(getApplicationContext(), local_apk);
 			showNotification("install apk", local_apk, "finished", android.R.drawable.stat_sys_upload);
 
 		}
 
-        Intent intent = new Intent(AConfig.DOWNLOAD_UPGRADE);
-		intent.putExtra("dones", mDoneList);
-		//发送广播
-		sendBroadcast(intent);
-		ADebug.d(TAG, "send Broadcast");
+//        Intent intent = new Intent(AConfig.DOWNLOAD_UPGRADE);
+//		intent.putExtra("dones", mDoneList);
+//		//发送广播
+//		sendBroadcast(intent);
+//		ADebug.d(TAG, "send Broadcast");
 	}
 	
 	

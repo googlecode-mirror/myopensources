@@ -210,10 +210,10 @@ public class MainActivity extends GDListActivity {
 					
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						Update(appPath);
-//						Intent intent = new Intent(getApplicationContext(), ApkDownload.class);
-//						intent.putExtra("url", appPath);
-//						startService(intent);
+//						Update(appPath);
+						Intent intent = new Intent(getApplicationContext(), ApkDownload.class);
+						intent.putExtra("url", appPath);
+						startService(intent);
 //						CommonUtils.quitApplication();
 						
 					}
