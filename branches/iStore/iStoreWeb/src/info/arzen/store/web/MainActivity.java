@@ -1,5 +1,6 @@
 package info.arzen.store.web;
 
+import info.arzen.ilib.web.WebClient;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,7 @@ public class MainActivity extends Activity {
         navClick();
         
         mWebView = (WebView) findViewById(R.id.middle);
-        mWebView.setWebViewClient(new StoreClient() );
+        mWebView.setWebViewClient(new WebClient() );
         openPage("index.html");
     }
     
