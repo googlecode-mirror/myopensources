@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="bottom_bar_radio">
+		<item name="android:textSize">12.0sp</item>
+		<item name="android:textColor">@drawable/bottom_bar_text_color_selector</item>
+		<item name="android:gravity">center</item>
+		<item name="android:button">@null</item>
+		<item name="android:lines">1</item>
+		<item name="android:paddingTop">0.0dip</item>
+		<item name="android:background">@drawable/bottom_bar_btn_bg_selector</item>
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_weight">1</item>
+	</style>
+    
+</resources>
