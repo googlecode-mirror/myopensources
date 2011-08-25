@@ -4,6 +4,7 @@ import info.arzen.ilib.web.WebClient;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class MainActivity extends Activity {
@@ -20,6 +21,8 @@ public class MainActivity extends Activity {
         
         mWebView = (WebView) findViewById(R.id.middle);
         mWebView.setWebViewClient(new WebClient() );
+        WebSettings setting = mWebView.getSettings();
+        setting.setJavaScriptEnabled(true);
         openPage("index.html");
     }
     
