@@ -13,7 +13,8 @@ function refresh() {
 	    $.each(lists, function(index, item) {
 	      var url = 'item.html?pid=1&cid=' + index;
 	      var title = '<a href="' + url + '">' + item.name + '</a>';
-	      var item = '<li>' + title  + '</li>';
+	      var image = '<img src="' + item.icon + '"/>';
+	      var item = '<li>' + image +  title  + '</li>';
 	      $('#news').append(item);
 	    });
 	    

@@ -2,6 +2,7 @@ package info.arzen.store.web;
 
 import info.arzen.ilib.web.WebClient;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -21,8 +22,11 @@ public class MainActivity extends Activity {
         
         mWebView = (WebView) findViewById(R.id.middle);
         mWebView.setWebViewClient(new WebClient() );
+        mWebView.setBackgroundColor(Color.parseColor("#333333"));
         WebSettings setting = mWebView.getSettings();
         setting.setJavaScriptEnabled(true);
+        setting.setBlockNetworkImage(true);
+        setting.setBlockNetworkLoads(true);
         openPage("index.html");
     }
     
