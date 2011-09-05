@@ -25,8 +25,8 @@ public class MainActivity extends Activity {
         mWebView.setBackgroundColor(Color.parseColor("#333333"));
         WebSettings setting = mWebView.getSettings();
         setting.setJavaScriptEnabled(true);
-        setting.setBlockNetworkImage(true);
-        setting.setBlockNetworkLoads(true);
+        setting.setPluginsEnabled(false);
+        setting.setCacheMode(WebSettings.LOAD_NO_CACHE);
         openPage("index.html");
     }
     

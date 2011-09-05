@@ -1,5 +1,60 @@
 @CHARSET "UTF-8";
-body { 
-	height: 100%; 
-background: 			#333333;	
+
+body {
+	height: 100%;
+	background: #333333;
+}
+
+.ui-body-c {
+	background: -moz-linear-gradient(center top, #EEEEEE, #DDDDDD) repeat
+		scroll 0 0 #F0F0F0;
+	border: 1px solid #B3B3B3;
+	color: #333333;
+	text-shadow: 0 1px 0 #FFFFFF;
+}
+
+.ui-listview,.ui-li {
+	list-style: none outside none;
+	padding: 0;
+}
+
+.ui-shadow {
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ui-corner-tl,.ui-corner-tr,.ui-corner-bl,.ui-corner-br,.ui-corner-top,.ui-corner-bottom,.ui-corner-right,.ui-corner-left,.ui-corner-all,.ui-btn-corner-tl,.ui-btn-corner-tr,.ui-btn-corner-bl,.ui-btn-corner-br,.ui-btn-corner-top,.ui-btn-corner-bottom,.ui-btn-corner-right,.ui-btn-corner-left,.ui-btn-corner-all
+	{
+	-moz-background-clip: padding;
+}
+
+.ui-corner-all {
+	-moz-border-radius: 0.6em 0.6em 0.6em 0.6em;
+}
+
+.ui-listview-inset .ui-li {
+	border-left-width: 1px;
+	border-right-width: 1px;
+}
+
+.ui-li,.ui-li.ui-field-contain {
+	border-width: 1px 0 0;
+	display: block;
+	margin: 0;
+	overflow: visible;
+	position: relative;
+	text-align: left;
+}
+
+.ui-listview,.ui-li {
+	list-style: none outside none;
+	padding: 0;
+}
+
+.ui-btn-up-a {
+	background: -moz-linear-gradient(center top, #555555, #333333) repeat
+		scroll 0 0 #333333;
+	border: 1px solid #222222;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-shadow: 0 -1px 1px #000000;
 }
