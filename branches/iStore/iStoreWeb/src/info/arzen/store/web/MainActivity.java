@@ -1,5 +1,6 @@
 package info.arzen.store.web;
 
+import info.arzen.cache.FileCache;
 import info.arzen.ilib.web.WebClient;
 import android.app.Activity;
 import android.graphics.Color;
@@ -23,6 +24,8 @@ public class MainActivity extends Activity {
         mWebView = (WebView) findViewById(R.id.middle);
         mWebView.setWebViewClient(new WebClient() );
         mWebView.setBackgroundColor(Color.parseColor("#333333"));
+        mWebView.addJavascriptInterface(new FileCache(10, "istoreweb"), "filecache");
+        
         WebSettings setting = mWebView.getSettings();
         setting.setJavaScriptEnabled(true);
         setting.setPluginsEnabled(false);
