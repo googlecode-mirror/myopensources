@@ -4,4 +4,5 @@
     <string name="menu_installed">已安装</string>
     <string name="menu_recommand">推荐</string>
     <string name="menu_more">更多</string>
+    <string name="loading">加载中，请稍侯...</string>
 </resources>

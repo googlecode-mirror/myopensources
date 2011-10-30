@@ -8,7 +8,7 @@ function refresh() {
 	  // on initialization, make a JSONP call to the HN API
 		var cache_data= filecache.get(RequestURL.BestApp);
 		if (cache_data != null) {
-			alert(cache_data);
+//			alert(cache_data);
 			var data = JSON.parse(cache_data);
 			var lists = data.rows;
 			appendToDiv(lists);
