@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">雅致育才</string>
     <string name="menu_new">最新</string>
     <string name="menu_installed">已安装</string>
     <string name="menu_recommand">推荐</string>
