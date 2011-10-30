@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, MainActivity!</string>
-    <string name="s_bestapp">精选推荐</string>
+    <string name="menu_new">最新</string>
+    <string name="menu_installed">已安装</string>
+    <string name="menu_recommand">推荐</string>
+    <string name="menu_more">更多</string>
 </resources>

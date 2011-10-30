@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
         mWebView = (WebView) findViewById(R.id.middle);
         mWebView.setWebViewClient(new WebClient() );
         mWebView.setBackgroundColor(Color.parseColor("#333333"));
+        mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         mWebView.addJavascriptInterface(new FileCache(10, "istoreweb"), "filecache");
         
         WebSettings setting = mWebView.getSettings();
