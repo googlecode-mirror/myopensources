@@ -12,6 +12,7 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
@@ -39,6 +40,8 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        ((TextView)findViewById(R.id.header_title)).setText(R.string.app_name);
         
         navClick();
         

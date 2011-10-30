@@ -4,7 +4,9 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-    <LinearLayout android:layout_alignParentTop="true" android:orientation="vertical" android:layout_width="fill_parent" android:id="@+id/header" android:layout_height="46dp" android:background="@drawable/header_bg" ></LinearLayout>
+    <LinearLayout android:layout_alignParentTop="true" android:orientation="vertical" android:layout_width="fill_parent" android:id="@+id/header" android:layout_height="46dp" android:background="@drawable/header_bg" android:gravity="center">
+        <TextView android:text="TextView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/header_title" style="@style/header_title" android:textStyle="bold"></TextView>
+    </LinearLayout>
     <LinearLayout android:id="@+id/footer" android:layout_width="fill_parent" android:background="@drawable/footer_bg" android:orientation="vertical" android:layout_alignParentBottom="true" android:layout_height="48dp">
     	<include layout="@layout/footer"     
     	android:layout_width="fill_parent"
