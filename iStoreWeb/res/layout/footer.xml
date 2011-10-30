@@ -5,7 +5,7 @@
 	android:layout_height="fill_parent" android:padding="1dp">
 	<RadioButton android:id="@+id/best_app"
 		android:text="@string/menu_new" style="@style/bottom_bar_radio"
-		android:drawableTop="@drawable/footer_btn1_icon_selector" />
+		android:drawableTop="@drawable/footer_btn1_icon_selector" android:checked="true"/>
 	<RadioButton android:id="@+id/new_app"
 		android:text="@string/menu_installed" style="@style/bottom_bar_radio"
 		android:drawableTop="@drawable/footer_btn1_icon_selector" />
