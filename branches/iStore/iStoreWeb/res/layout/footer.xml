@@ -12,7 +12,7 @@
 	<RadioButton android:id="@+id/hot_app"
 		android:text="@string/menu_recommand" style="@style/bottom_bar_radio"
 		android:drawableTop="@drawable/footer_btn1_icon_selector" />
-	<RadioButton android:id="@+id/friends_dynamic"
+	<RadioButton android:id="@+id/more"
 		android:text="@string/menu_more" style="@style/bottom_bar_radio"
 		android:drawableTop="@drawable/footer_btn1_icon_selector" />
 </RadioGroup>

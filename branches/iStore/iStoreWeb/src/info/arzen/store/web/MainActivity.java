@@ -74,6 +74,12 @@ public class MainActivity extends Activity {
 			}
 		});
 		
+		findViewById(R.id.more).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				openPage("more.html");
+			}
+		});
+		
 	}
     
     private void openPage(String page) {
