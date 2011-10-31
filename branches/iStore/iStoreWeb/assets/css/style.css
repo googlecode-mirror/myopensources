@@ -43,6 +43,14 @@
 
 }
 
+.option-hr{
+    width:99%;
+    height:12px;
+   // background:-moz-linear-gradient(top, #93A4BA, #C4CDDA);
+	font-weight: normal;
+}
+
+
 ul li{
 	height:70px;
 }
