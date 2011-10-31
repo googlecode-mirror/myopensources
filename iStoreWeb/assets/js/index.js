@@ -6,21 +6,21 @@ $(document).ready(function() {
 function refresh() {
 	  $('#news').empty();
 	  // on initialization, make a JSONP call to the HN API
-		var cache_data= filecache.get(RequestURL.BestApp);
-		if (cache_data != null) {
-//			alert(cache_data);
-			var data = JSON.parse(cache_data);
-			var lists = data.rows;
-			appendToDiv(lists);
-			
-		} else {
+//		var cache_data= filecache.get(RequestURL.BestApp);
+//		if (cache_data != null) {
+////			alert(cache_data);
+//			var data = JSON.parse(cache_data);
+//			var lists = data.rows;
+//			appendToDiv(lists);
+//			
+//		} else {
 			  $.getJSON(RequestURL.BestApp, function(data) {
-					filecache.set(RequestURL.BestApp, JSON.stringify(data));
+	//				filecache.set(RequestURL.BestApp, JSON.stringify(data));
 					var lists = data.rows;
 					appendToDiv(lists);
 				  });
 	
-		}
+//		}
 	};
 
 function appendToDiv(lists) {
