@@ -1,12 +1,14 @@
 package info.arzen.store.web;
 
-import info.arzen.ilib.web.WebClient;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -88,7 +90,42 @@ public class MainActivity extends Activity {
 		
 	}
     
+    
+    
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    	if (event.getAction() == KeyEvent.ACTION_DOWN) {
+			if (keyCode == KeyEvent.KEYCODE_BACK) {
+				if (mWebView.canGoBack()) {
+					mWebView.goBack();
+				} else {
+			        new AlertDialog.Builder(this)
+			        .setIcon(android.R.drawable.ic_dialog_alert)
+			        .setTitle(R.string.msg_quit)
+			        .setMessage(R.string.msg_really_quit)
+			        .setPositiveButton(R.string.msg_yes, new DialogInterface.OnClickListener() {
+
+			            @Override
+			            public void onClick(DialogInterface dialog, int which) {
+
+			                //Stop the activity
+			            	MainActivity.this.finish();    
+			            }
+
+			        })
+			        .setNegativeButton(R.string.msg_no, null)
+			        .show();
+
+
+				}
+				return true;
+			}
+		}
+    	return super.onKeyDown(keyCode, event);
+    }
+    
     private void openPage(String page) {
+ 	   mWebView.clearHistory();
 	   handler.sendEmptyMessage(1);
        mWebView.loadUrl("file:///android_asset/" + page);
 		
