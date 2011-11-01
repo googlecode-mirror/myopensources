@@ -74,7 +74,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		findViewById(R.id.more).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.menu_more).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				openPage("more.html");
 			}
