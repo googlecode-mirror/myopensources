@@ -3,13 +3,13 @@
 	android:layout_width="fill_parent"
 	android:orientation="horizontal"
 	android:layout_height="fill_parent" android:padding="1dp">
-	<RadioButton android:id="@+id/best_app"
+	<RadioButton android:id="@+id/menu_new"
 		android:text="@string/menu_new" style="@style/bottom_bar_radio"
 		android:drawableTop="@drawable/footer_btn1_icon_selector" android:checked="true"/>
-	<RadioButton android:id="@+id/new_app"
+	<RadioButton android:id="@+id/menu_installed"
 		android:text="@string/menu_installed" style="@style/bottom_bar_radio"
 		android:drawableTop="@drawable/footer_btn1_icon_selector" />
-	<RadioButton android:id="@+id/hot_app"
+	<RadioButton android:id="@+id/menu_recommand"
 		android:text="@string/menu_recommand" style="@style/bottom_bar_radio"
 		android:drawableTop="@drawable/footer_btn1_icon_selector" />
 	<RadioButton android:id="@+id/menu_more"
