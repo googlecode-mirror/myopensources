@@ -5,10 +5,13 @@
 <title>最新</title>
 <link rel="stylesheet" href="css/iphone.css" />
 <link rel="stylesheet" href="css/style.css" />
+<script src="js/zepto/zepto.js"></script>
+<script src="js/zepto/event.js"></script>
+<script src="js/zepto/touch.js"></script>
 </head>
 <body>
-      <section id="menu" class="current">
-        <ul id="news" class="option" >
+      <section id="menu" >
+        <ul id="news" class="option menu" >
           <li class="option-hr">推荐</li>
           <li class="arrow"><a href="#menu_1">推荐给好友</a></li>
           <li class="arrow"><a href="#menu_1">意见反馈</a></li>
@@ -27,6 +30,19 @@
           </li>
         </ul>
       </section>
+      <script>
+        $(document).ready(function(){
+          var activate = ('createTouch' in document) ? 'touchstart' : 'click';
+
+          $("body > section").first().addClass("current")
+
+          $(".menu a[href]").live(activate, function(event) {
+            var link = $(this), section = link.closest('section'),
+              prev_element = "#"+(section.removeClass("current").addClass("reverse").attr("id"));
+            $(link.attr("href")).addClass("current");
+          });
+        });
+      </script>
 
 </body>
 </html>
