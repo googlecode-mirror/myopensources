@@ -62,15 +62,21 @@ public class MainActivity extends Activity {
     }
     
     private void navClick() {
-		findViewById(R.id.best_app).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.menu_new).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				openPage("index.html");
 			}
 		});
 		
-		findViewById(R.id.new_app).setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.menu_installed).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				openPage("detail.html");
+				openPage("install.html");
+			}
+		});
+		
+		findViewById(R.id.menu_recommand).setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				openPage("recommend.html");
 			}
 		});
 		
