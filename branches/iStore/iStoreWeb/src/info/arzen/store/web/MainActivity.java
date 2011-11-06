@@ -15,10 +15,13 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import com.flurry.android.FlurryAgent;
+
 public class MainActivity extends Activity {
 	
 	private WebView mWebView;
 	private ProgressDialog dialog;
+	private String mFlurryKey = "V4MXNV6JS1MF1MCP89WT";
 	
 	private Handler handler = new Handler(){
 		@Override
@@ -90,7 +93,18 @@ public class MainActivity extends Activity {
 		
 	}
     
+    @Override
+    protected void onStart() {
+    	super.onStart();
+    	FlurryAgent.onStartSession(this, mFlurryKey);
+    }
     
+    @Override
+    protected void onStop() {
+    	super.onStop();
+    	FlurryAgent.setReportLocation(false);
+    	FlurryAgent.onEndSession(this);
+    }
     
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
