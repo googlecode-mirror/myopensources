@@ -74,3 +74,20 @@ ul li{
 		color-stop(1, 		#C4CDDA));
 	font-weight: normal;
 }
+
+.option .detail-top{
+    height:78px;
+	background: -moz-linear-gradient(top, 
+							#f4f4f4, 
+							#b6bab8);
+
+    background:-webkit-gradient(linear,left top,left bottom,
+		color-stop(0, 	#93A4BA),
+		color-stop(1, 		#C4CDDA));
+	font-weight: normal;
+}
+
+.option .info{
+	font-: normal;
+	font-weight: normal;
+}
