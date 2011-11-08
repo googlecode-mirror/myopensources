@@ -82,12 +82,33 @@ ul li{
 							#b6bab8);
 
     background:-webkit-gradient(linear,left top,left bottom,
-		color-stop(0, 	#93A4BA),
-		color-stop(1, 		#C4CDDA));
+		color-stop(0, 	#f4f4f4),
+		color-stop(1, 		#b6bab8));
 	font-weight: normal;
 }
 
 .option .info{
-	font-: normal;
+    float: left;
+    padding-left: 5px;
+	font-size: 12px;
 	font-weight: normal;
+    line-height: 18px;
+}
+
+.option .detail-content{
+    height:90%;
+	font-size: 14px;
+	font-weight: normal;
+    line-height: 22px;
+}
+
+.detail .votes-0{
+    float: left;
+    margin-left: 20px;
+    margin-top: 60px;
+}
+
+.detail .download{
+    float: left;
+    margin-left: -55px;
 }
