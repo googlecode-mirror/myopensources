@@ -102,13 +102,15 @@ ul li{
     line-height: 22px;
 }
 
-.detail .votes-0{
-    float: left;
-    margin-left: 20px;
-    margin-top: 60px;
-}
-
 .detail .download{
     float: left;
-    margin-left: -55px;
+    margin-left: 260px;
+    margin-top: -60px;
 }
+
+.detail .votes-0{
+    float: left;
+    margin-left: 180px;
+    margin-top: -20px;
+}
+
