@@ -1,21 +1,13 @@
 <?php
-class ArticleController extends Zend_Controller_Action
+class ArticleController extends Arzen_Rest_Controller
 {
 
-	public function init()
-	{
-		$this->_helper->viewRenderer->setNoRender(true);
-	}
-	
-	protected function getJsonBody($body) {
-		return Zend_Json::encode($body);
-	}
 	
 	public function indexAction()
 	{
 		$data = array("result"=>"From indexAction() returning all articles");
-		$this->getResponse()
-		->appendBody($this->getJsonBody($data));
+		$this->sendResponse($data);
+		
 	}
 
 	public function getAction()
