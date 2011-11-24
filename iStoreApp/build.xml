@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ZF">
+	<description>
+		zend framework
+	</description>
+	<property file="build.properties"/>
+
+
+	
+	<!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" description="default">
+        <echo>Run zf test</echo>
+		<exec executable="${phpunit}" dir="${test-path}"></exec>
+    </target>
+
+
+</project>
