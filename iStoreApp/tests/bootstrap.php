@@ -17,3 +17,4 @@ set_include_path(implode(PATH_SEPARATOR, array(
 require_once 'Zend/Loader/Autoloader.php';
 $autoloader =Zend_Loader_Autoloader::getInstance();
 $autoloader->registerNamespace('Arzen_');
+$config = new Zend_Config_Ini(APPLICATION_PATH . '/configs/application.ini', 'development');

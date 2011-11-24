@@ -8,8 +8,10 @@ class Arzen_Oauth_ServerTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	public function testBase() {
+		global $config;
 		$requestToken = $this->_model->getRequestToken();
 		echo $requestToken;
+		echo $config->sina->appid;
 		$this->assertEquals("dd", $requestToken);
 	}
 	
