@@ -8,7 +8,7 @@ abstract class Arzen_Rest_Controller extends Zend_Rest_Controller
 	private $contexts = array(
         'get' => array('xml', 'json')
     );
-    
+
 	public function init()
 	{
 		$this->_helper->viewRenderer->setNoRender(true);
@@ -43,12 +43,20 @@ abstract class Arzen_Rest_Controller extends Zend_Rest_Controller
 	protected function sendResponse($data) {
 		
 		$format = $this->_getParam('format', 'json');
+		$callback = $this->_getParam('callback');
 		
 		if ($format=='xml') {
 			header('Content-type: text/xml');
 			echo $this->formatXmlString($this->toXml( $data ));			
 		} else {
-			echo $this->_helper->json($data, array('enableJsonExprFinder' => true));
+			
+			if ($callback) {
+				$this->getResponse()->setHeader('Content-Type', 'application/javascript; charset=utf-8', false);
+				echo sprintf('%s(%s);', $callback, Zend_Json::encode($data) );
+			}else {
+				echo $this->_helper->json($data, array('enableJsonExprFinder' => true));
+				
+			}
 		}
 		
 		exit;
