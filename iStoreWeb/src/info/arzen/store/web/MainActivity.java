@@ -5,12 +5,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -56,6 +59,17 @@ public class MainActivity extends Activity {
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         mWebView.addJavascriptInterface(new PluginManager(), "nativeJS");
 		mWebView.setWebChromeClient(new MyWebChromeClient());
+		mWebView.setDownloadListener(new DownloadListener() {
+			
+			@Override
+			public void onDownloadStart(String url, String userAgent,
+					String contentDisposition, String mimetype, long contentLength) {
+		            Uri uri = Uri.parse(url);  
+		            Intent intent = new Intent(Intent.ACTION_VIEW, uri);  
+		            startActivity(intent);  
+					
+			}
+		});
         
         WebSettings setting = mWebView.getSettings();
         setting.setJavaScriptEnabled(true);
