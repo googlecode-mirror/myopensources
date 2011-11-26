@@ -1,5 +1,6 @@
 package info.arzen.store.web;
 
+import info.arzen.store.plugin.PluginManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -53,7 +54,7 @@ public class MainActivity extends Activity {
 //        mWebView.setWebViewClient(new WebClient() );
         mWebView.setBackgroundColor(Color.parseColor("#333333"));
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-//        mWebView.addJavascriptInterface(new FileCache(10, "istoreweb"), "filecache");
+        mWebView.addJavascriptInterface(new PluginManager(), "nativeJS");
 		mWebView.setWebChromeClient(new MyWebChromeClient());
         
         WebSettings setting = mWebView.getSettings();

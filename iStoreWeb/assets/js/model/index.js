@@ -5,28 +5,14 @@ $(document).ready(function() {
 
 function refresh() {
 	  $('#news').empty();
-	  // on initialization, make a JSONP call to the HN API
-//		var cache_data= filecache.get(RequestURL.BestApp);
-//		if (cache_data != null) {
-////			alert(cache_data);
-//			var data = JSON.parse(cache_data);
-//			var lists = data.rows;
-//			appendToDiv(lists);
-//			
-//		} else {
-			  $.getJSON(RequestURL.BestApp, function(data) {
-	//				filecache.set(RequestURL.BestApp, JSON.stringify(data));
-					var lists = data.rows;
-					appendToDiv(lists);
-				  });
-	
-//		}
+	  var data = JSON.parse(nativeJS.exec(http_plugin, "getUrl", null, "[\""+RequestURL.BestApp+"\"]", false));
+	  appendToDiv(data);
 	};
 
 function appendToDiv(lists) {
     // from each item, make an entry in the list
     $.each(lists, function(index, item) {
-      var url = 'detail.html?pid=1&cid=' + index;
+      var url = 'detail.html?pid=1&cid=' + item.id;
       var price = '<span class="price">' + item.price + '元</span>';
       var votes = '<span class="votes votes-0"></span>';
       var author = '<a id="item-auth" >' + item.author + '</a>';
