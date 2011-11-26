@@ -53,11 +53,14 @@ public class MainActivity extends Activity {
         
         navClick();
         
+        PluginManager nativeJS = new PluginManager();
+        nativeJS.setContext(getApplicationContext());
+        
         mWebView = (WebView) findViewById(R.id.middle);
 //        mWebView.setWebViewClient(new WebClient() );
         mWebView.setBackgroundColor(Color.parseColor("#333333"));
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        mWebView.addJavascriptInterface(new PluginManager(), "nativeJS");
+        mWebView.addJavascriptInterface(nativeJS, "nativeJS");
 		mWebView.setWebChromeClient(new MyWebChromeClient());
 		mWebView.setDownloadListener(new DownloadListener() {
 			
