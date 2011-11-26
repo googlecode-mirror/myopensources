@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 function refresh() {
 	  $('#news').empty();
-	  var data = JSON.parse(nativeJS.exec(http_plugin, "getUrl", null, "[\""+RequestURL.BestApp+"\"]", false));
+	  var data = JSON.parse(HttpPlugin.getUrl(RequestURL.BestApp));
 	  appendToDiv(data);
 	};
 
