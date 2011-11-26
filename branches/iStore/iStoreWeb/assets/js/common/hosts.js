@@ -1,3 +1,3 @@
 var RequestURL = {};
-RequestURL.RequestURLPrefix = "http://www.35cn.info:82/";
-RequestURL.BestApp = RequestURL.RequestURLPrefix + "applications/index.json?pid=1&cid=4&page=1&rows=10&callback=?";
+RequestURL.RequestURLPrefix = "http://192.168.1.100";
+RequestURL.BestApp = RequestURL.RequestURLPrefix + "/iStore/iStoreFeed/public/article";
