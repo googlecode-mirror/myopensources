@@ -5,10 +5,23 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import android.content.Context;
 import android.util.Log;
 
 public class PluginManager {
 	private HashMap<String, Plugin> plugins = new HashMap<String,Plugin>();
+	protected Context ctx;
+
+	/**
+	 * Sets the context of the Plugin. This can then be used to do things like
+	 * get file paths associated with the Activity.
+	 * 
+	 * @param ctx The context of the main Activity.
+	 */
+	public void setContext(Context ctx) {
+		this.ctx = ctx;
+	}
+	
 	
     /**
      * Add plugin to be loaded and cached.  This creates an instance of the plugin.
@@ -77,10 +90,13 @@ public class PluginManager {
 	}
 
 
-	public String exec(final String className, final String action, final String callbackId, final String jsonArgs, final boolean async) {
+	public String exec(final String className, final String action, final String callbackId, final String jsonArgs, final boolean passContext) {
 		try {
 			final JSONArray args = new JSONArray(jsonArgs);
 			Plugin plugin = getPlugin(className);
+			if (passContext) {
+				plugin.setContext(this.ctx);
+			}
 			return plugin.execute(action, args, callbackId);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

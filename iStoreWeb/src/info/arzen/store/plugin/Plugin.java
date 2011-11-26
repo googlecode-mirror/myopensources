@@ -9,6 +9,7 @@ package info.arzen.store.plugin;
 
 import org.json.JSONArray;
 
+import android.content.Context;
 import android.content.Intent;
 import android.webkit.WebView;
 
@@ -19,6 +20,16 @@ import android.webkit.WebView;
  */
 public abstract class Plugin implements IPlugin {
 
+	protected Context ctx;
+	/**
+	 * Sets the context of the Plugin. This can then be used to do things like
+	 * get file paths associated with the Activity.
+	 * 
+	 * @param ctx The context of the main Activity.
+	 */
+	public void setContext(Context ctx) {
+		this.ctx = ctx;
+	}
 
 	/**
 	 * Identifies if action to be executed returns a value and should be run synchronously.
