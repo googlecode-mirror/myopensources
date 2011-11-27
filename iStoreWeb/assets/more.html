@@ -8,6 +8,10 @@
 <script src="js/zepto/zepto.js"></script>
 <script src="js/zepto/event.js"></script>
 <script src="js/zepto/touch.js"></script>
+<script src="js/common/hosts.js"></script>
+<script src="js/plugin/http.js"></script>
+<script src="js/plugin/upgradeinfo.js"></script>
+<script src="js/model/upgrade.js"></script>
 </head>
 <body>
       <section id="menu" >
@@ -16,7 +20,7 @@
           <li class="arrow"><a href="#menu_1">推荐给好友</a></li>
           <li class="arrow"><a href="#menu_1">意见反馈</a></li>
           <li class="option-hr">常规</li>
-          <li class="arrow"><a href="#menu_1">检查升级</a></li>
+          <li class="arrow"><a href="javascript:chcekUpdate ();">检查升级</a></li>
           <li class="arrow"><a href="#menu_1">关于我们</a></li>
         </ul>
       </section>
@@ -32,15 +36,16 @@
       </section>
       <script>
         $(document).ready(function(){
-          var activate = ('createTouch' in document) ? 'touchstart' : 'click';
+//          var activate = ('createTouch' in document) ? 'touchstart' : 'click';
 
           $("body > section").first().addClass("current")
-
+/*
           $(".menu a[href]").live(activate, function(event) {
             var link = $(this), section = link.closest('section'),
               prev_element = "#"+(section.removeClass("current").addClass("reverse").attr("id"));
             $(link.attr("href")).addClass("current");
           });
+          */
         });
       </script>
 

@@ -61,6 +61,7 @@ public class MainActivity extends Activity {
         mWebView = (WebView) findViewById(R.id.middle);
 //        mWebView.setWebViewClient(new WebClient() );
         mWebView.setBackgroundColor(Color.parseColor("#333333"));
+        mWebView.requestFocus(View.FOCUS_DOWN);
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         mWebView.addJavascriptInterface(nativeJS, "nativeJS");
 		mWebView.setWebChromeClient(new MyWebChromeClient(MainActivity.this));
