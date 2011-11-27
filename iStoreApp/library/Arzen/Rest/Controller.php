@@ -92,6 +92,10 @@ abstract class Arzen_Rest_Controller extends Zend_Rest_Controller
 	public function putAction() {
 
 	}
+	
+	public function getAction() {
+		;
+	}
 
 	/**
 	 * The delete action handles DELETE requests and receives an 'id'
