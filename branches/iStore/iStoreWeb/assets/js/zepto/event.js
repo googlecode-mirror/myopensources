@@ -29,15 +29,19 @@
     return new RegExp('(?:^| )' + ns.replace(' ', ' .* ?') + '(?: |$)');
   }
 
-  function add(element, events, fn, selector, delegate){
+  function eachEvent(events, fn, iterator){
+    if ($.isObject(events)) $.each(events, iterator);
+    else events.split(/\s/).forEach(function(type){ iterator(type, fn) });
+  }
+
+  function add(element, events, fn, selector, getDelegate){
     var id = zid(element), set = (handlers[id] || (handlers[id] = []));
-    events.split(/\s/).forEach(function(event){
-      var callback = delegate || fn;
+    eachEvent(events, fn, function(event, fn){
+      var delegate = getDelegate && getDelegate(fn, event),
+        callback = delegate || fn;
       var proxyfn = function (event) {
         var result = callback.apply(element, [event].concat(event.data));
-        if (result === false) {
-          event.preventDefault();
-        }
+        if (result === false) event.preventDefault();
         return result;
       };
       var handler = $.extend(parse(event), {fn: fn, proxy: proxyfn, sel: selector, del: delegate, i: set.length});
@@ -47,7 +51,7 @@
   }
   function remove(element, events, fn, selector){
     var id = zid(element);
-    (events || '').split(/\s/).forEach(function(event){
+    eachEvent(events || '', fn, function(event, fn){
       findHandlers(element, event, fn, selector).forEach(function(handler){
         delete handlers[id][handler.i];
         element.removeEventListener(handler.e, handler.proxy, false);
@@ -68,11 +72,13 @@
     });
   };
   $.fn.one = function(event, callback){
-    return this.each(function(){
-      var self = this;
-      add(this, event, function wrapper(evt){
-        callback.call(self, evt);
-        remove(self, event, arguments.callee);
+    return this.each(function(i, element){
+      add(this, event, callback, null, function(fn, type){
+        return function(){
+          var result = fn.apply(element, arguments);
+          remove(element, type, fn);
+          return result;
+        }
       });
     });
   };
@@ -110,13 +116,13 @@
 
   $.fn.delegate = function(selector, event, callback){
     return this.each(function(i, element){
-      add(element, event, callback, selector, function(e, data){
-        var target = e.target, nodes = $$(element, selector);
-        while (target && nodes.indexOf(target) < 0) target = target.parentNode;
-        if (target && !(target === element) && !(target === document)) {
-          return callback.call(target, $.extend(createProxy(e), {
-            currentTarget: target, liveFired: element
-          }), data);
+      add(element, event, callback, selector, function(fn){
+        return function(e){
+          var evt, match = $(e.target).closest(selector, element).get(0);
+          if (match) {
+            evt = $.extend(createProxy(e), {currentTarget: match, liveFired: element});
+            return fn.apply(match, [evt].concat([].slice.call(arguments, 1)));
+          }
         }
       });
     });
@@ -134,6 +140,15 @@
   $.fn.die = function(event, callback){
     $(document.body).undelegate(this.selector, event, callback);
     return this;
+  };
+
+  $.fn.on = function(event, selector, callback){
+    return selector === undefined || $.isFunction(selector) ?
+      this.bind(event, selector) : this.delegate(selector, event, callback);
+  };
+  $.fn.off = function(event, selector, callback){
+    return selector === undefined || $.isFunction(selector) ?
+      this.unbind(event, selector) : this.undelegate(selector, event, callback);
   };
 
   $.fn.trigger = function(event, data){
@@ -174,9 +189,9 @@
   });
 
   $.Event = function(type, props) {
-    var event = document.createEvent(specialEvents[type] || 'Events');
-    if (props) $.extend(event, props);
-    event.initEvent(type, !(props && props.bubbles === false), true, null, null, null, null, null, null, null, null, null, null, null, null);
+    var event = document.createEvent(specialEvents[type] || 'Events'), bubbles = true;
+    if (props) for (var name in props) (name == 'bubbles') ? (bubbles = !!props[name]) : (event[name] = props[name]);
+    event.initEvent(type, bubbles, true, null, null, null, null, null, null, null, null, null, null, null, null);
     return event;
   };
 
