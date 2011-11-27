@@ -1,4 +1,4 @@
-var http_plugin="info.arzen.store.plugin.HttpPlugin";
+var http_plugin="HttpPlugin";
 nativeJS.addPlugin(http_plugin);
 var HttpPlugin = function(){
 };
