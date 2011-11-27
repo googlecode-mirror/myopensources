@@ -6,5 +6,3 @@ var DeviceInfoPlugin = function(){
 DeviceInfoPlugin.getTel = function() {
 	return nativeJS.exec(deviceinfo_plugin, "getImie", null, "[]", true)
 };
-
-alert(DeviceInfoPlugin.getTel());

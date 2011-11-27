@@ -1,7 +1,9 @@
 $(document).ready(function() {
 
   refresh();
+  chcekUpdate ();
 });
+
 
 function refresh() {
 	  $('#news').empty();
@@ -22,4 +24,9 @@ function appendToDiv(lists) {
       $('#news').append(item);
     });
 	
+};
+
+function chcekUpdate (){
+	var versionStr = "当前版本为"+UpgradeInfoPlugin.getVersionName()+"版本号"+UpgradeInfoPlugin.getVersionCode();
+	alert(versionStr);
 };
