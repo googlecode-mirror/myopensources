@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>关于我们</title>
+<link rel="stylesheet" href="css/iphone.css" />
+<link rel="stylesheet" href="css/style.css" />
+<script src="js/zepto/zepto.js"></script>
+<script src="js/zepto/event.js"></script>
+<script src="js/zepto/form.js"></script>
+<script src="js/zepto/ajax.js"></script>
+
+<script src="js/common/hosts.js"></script>
+</head>
+<script type="text/javascript">
+$(document).ready(function() {
+		$('#sug_form').attr("action", RequestURL.Suggest);
+		$('#sug_form').submit(function (e) {
+			var content = $("#contents");
+			if(content.val() == ""){
+				alert('请输入建议内容');
+				content.focus();
+				return false;
+			}
+			e.preventDefault();
+			return true;
+		});
+		
+	});
+
+
+</script>
+<body>
+      <section id="menu" class="current">
+        <ul id="news" >
+          <li class="contents" id="content">
+          	<h1>意见与建议</h1>
+          	<span>
+          	
+			  <form id="sug_form" name="sug_form" method="post" action="">
+				<table>
+				<tr>
+					<td><textarea id="contents" name="contents" rows="5" cols="40"></textarea></td>
+				</tr>
+				<tr>
+					<td align="center"><input type="submit" name="submit" ></td>
+				</tr>
+				</table>
+			  </form>
+          	
+          	</span>
+          </li>
+        </ul>
+      </section>
+
+</body>
+</html>
