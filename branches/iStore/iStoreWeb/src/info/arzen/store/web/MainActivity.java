@@ -1,6 +1,6 @@
 package info.arzen.store.web;
 
-import info.arzen.store.plugin.PluginManager;
+import info.arzen.webview.plugin.PluginManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
