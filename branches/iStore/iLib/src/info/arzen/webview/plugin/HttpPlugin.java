@@ -33,7 +33,7 @@ public class HttpPlugin extends Plugin {
 	public String execute(String action, JSONArray args, String callbackId) {
 		
 		if (cache == null) {
-			cache = new FileCache(360, folder);
+			cache = new FileCache(0, folder);
 		}
 		
 		if (action.equals("getUrl")) {
