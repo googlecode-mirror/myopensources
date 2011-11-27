@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   refresh();
-  if (randomRate(2)) {
+  if (randomRate(10)) {
 	  chcekUpdate ();
 	
   }

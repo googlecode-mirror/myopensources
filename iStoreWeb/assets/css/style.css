@@ -95,6 +95,14 @@ ul li{
     line-height: 18px;
 }
 
+.contents{
+    height:90%;
+	font-size: 14px;
+	font-weight: normal;
+    line-height: 22px;
+}
+
+
 .option .detail-content{
     height:90%;
 	font-size: 14px;

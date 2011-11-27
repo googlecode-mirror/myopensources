@@ -19,6 +19,7 @@ import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.flurry.android.FlurryAgent;
@@ -59,7 +60,7 @@ public class MainActivity extends Activity {
         nativeJS.setContext(getApplicationContext());
         
         mWebView = (WebView) findViewById(R.id.middle);
-//        mWebView.setWebViewClient(new WebClient() );
+        mWebView.setWebViewClient(new MyWebClient(MainActivity.this) );
         mWebView.setBackgroundColor(Color.parseColor("#333333"));
         mWebView.requestFocus(View.FOCUS_DOWN);
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
@@ -227,6 +228,119 @@ public class MainActivity extends Activity {
             dlg.create();
             dlg.show();
             return true;
+    	}
+    	
+    	
+    }
+    
+    class MyWebClient extends WebViewClient{
+    	private MainActivity ctx;
+    	
+    	public MyWebClient(MainActivity ctx) {
+    		this.ctx = ctx;
+		}
+    	
+    	@Override
+    	public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        	// If dialing phone (tel:5551212)
+        	if (url.startsWith(WebView.SCHEME_TEL)) {
+        		try {
+        			Intent intent = new Intent(Intent.ACTION_DIAL);
+        			intent.setData(Uri.parse(url));
+        			startActivity(intent);
+        		} catch (android.content.ActivityNotFoundException e) {
+        			System.out.println("Error dialing "+url+": "+ e.toString());
+        		}
+        		return true;
+        	}
+        	
+        	// If displaying map (geo:0,0?q=address)
+        	else if (url.startsWith("geo:")) {
+           		try {
+        			Intent intent = new Intent(Intent.ACTION_VIEW);
+        			intent.setData(Uri.parse(url));
+        			startActivity(intent);
+        		} catch (android.content.ActivityNotFoundException e) {
+        			System.out.println("Error showing map "+url+": "+ e.toString());
+        		}
+        		return true;        		
+        	}
+			
+        	// If sending email (mailto:abc@corp.com)
+        	else if (url.startsWith(WebView.SCHEME_MAILTO)) {
+           		try {
+        			Intent intent = new Intent(Intent.ACTION_VIEW);
+        			intent.setData(Uri.parse(url));
+        			startActivity(intent);
+        		} catch (android.content.ActivityNotFoundException e) {
+        			System.out.println("Error sending email "+url+": "+ e.toString());
+        		}
+        		return true;        		
+        	}
+        	
+        	// If sms:5551212?body=This is the message
+        	else if (url.startsWith("sms:")) {
+        		try {
+        			Intent intent = new Intent(Intent.ACTION_VIEW);
+
+        			// Get address
+        			String address = null;
+        			int parmIndex = url.indexOf('?');
+        			if (parmIndex == -1) {
+        				address = url.substring(4);
+        			}
+        			else {
+        				address = url.substring(4, parmIndex);
+
+        				// If body, then set sms body
+        				Uri uri = Uri.parse(url);
+        				String query = uri.getQuery();
+        				if (query != null) {
+        					if (query.startsWith("body=")) {
+        						intent.putExtra("sms_body", query.substring(5));
+        					}
+        				}
+        			}
+        			intent.setData(Uri.parse("sms:"+address));
+        			intent.putExtra("address", address);
+        			intent.setType("vnd.android-dir/mms-sms");
+        			startActivity(intent);
+        		} catch (android.content.ActivityNotFoundException e) {
+        			System.out.println("Error sending sms "+url+":"+ e.toString());
+        		}
+        		return true;
+        	}
+
+        	// All else
+        	else {
+
+        		int i = url.lastIndexOf('/');
+        		String newBaseUrl = url;
+        		if (i > 0) {
+        			newBaseUrl = url.substring(0, i);
+        		}
+
+        		// If our app or file:, then load into our webview
+        		// NOTE: This replaces our app with new URL.  When BACK is pressed,
+        		//       our app is reloaded and restarted.  All state is lost.
+        		if (url.startsWith("file://")) {
+        			this.ctx.mWebView.loadUrl(url);
+        		}
+  		
+        		// If not our application, let default viewer handle
+        		else {
+        			try {
+        				Intent intent = new Intent(Intent.ACTION_VIEW);
+        				intent.setData(Uri.parse(url));
+        				startActivity(intent);
+                	} catch (android.content.ActivityNotFoundException e) {
+                		System.out.println("Error loading url "+url+":"+ e.toString());
+                	}
+        		}
+        		return true;
+        	}
+
+//    		return super.shouldOverrideUrlLoading(view, url);
     	}
     }
     
