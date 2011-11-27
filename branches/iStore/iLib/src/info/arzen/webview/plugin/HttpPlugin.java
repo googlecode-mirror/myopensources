@@ -1,5 +1,7 @@
 package info.arzen.webview.plugin;
 
+import info.arzen.cache.FileCache;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,9 +26,15 @@ import org.json.JSONObject;
 
 public class HttpPlugin extends Plugin {
 
-
+    private static String folder = ".istore_cache";
+	private FileCache cache;
+	
 	@Override
 	public String execute(String action, JSONArray args, String callbackId) {
+		
+		if (cache == null) {
+			cache = new FileCache(360, folder);
+		}
 		
 		if (action.equals("getUrl")) {
 			String url = getArgument(args, 0, "");
@@ -43,12 +51,22 @@ public class HttpPlugin extends Plugin {
 	 */
 	{
 		String body=null;
+		String cache_key = url;
 		try {
 			DefaultHttpClient httpclient = new DefaultHttpClient();
 			HttpGet httpget = new HttpGet(url);
 			HttpResponse response = httpclient.execute(httpget);
 			body = read(response.getEntity().getContent());
+	        if (body != null) {
+	            cache.set(cache_key, body);
+			}
+			
 		} catch (Exception e) { e.printStackTrace(); return null; }
+		
+        if (body == null) {
+        	body = cache.get(cache_key);
+		}
+		
 		return body;
 	}
 	
