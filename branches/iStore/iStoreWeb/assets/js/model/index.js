@@ -1,7 +1,10 @@
 $(document).ready(function() {
 
   refresh();
-  chcekUpdate ();
+  if (randomRate(2)) {
+	  chcekUpdate ();
+	
+  }
 });
 
 
@@ -26,8 +29,3 @@ function appendToDiv(lists) {
 	
 };
 
-function chcekUpdate (){
-	var versionStr = "当前版本为"+UpgradeInfoPlugin.getVersionName()+"版本号"+UpgradeInfoPlugin.getVersionCode();
-//	alert(versionStr);
-	confirm(versionStr);
-};
