@@ -40,7 +40,7 @@ public class FileCache extends AbstractCache {
 	public boolean isEnableDiskCache() {
 		return SDCardUtils.isSDCardEnable();
 	}
-
+	
 	@Override
 	public String get(String key) {
 		String cache_file = getCacheFileName(key);
@@ -54,7 +54,7 @@ public class FileCache extends AbstractCache {
     	long lastModified = file.lastModified();
     	Date now = new Date();
     	long ageInMinutes = ((now.getTime() - lastModified) / (1000*60));
-    	if (ageInMinutes >= expirationInMinutes) {
+    	if ((ageInMinutes >= expirationInMinutes) && expirationInMinutes >0) {
     		ADebug.d(TAG, String.format("DISK cache expiration for file: %s, minutes:%d", cache_file, ageInMinutes));
     		file.delete();
     		return null;
