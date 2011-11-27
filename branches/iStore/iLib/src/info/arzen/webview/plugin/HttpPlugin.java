@@ -31,6 +31,8 @@ public class HttpPlugin extends Plugin {
 		if (action.equals("getUrl")) {
 			String url = getArgument(args, 0, "");
 			return getUrl(url);
+		}else if (action.equals("postUrl")) {
+			return postUrl(args);
 		}
 		return null;
 	}
@@ -59,7 +61,6 @@ public class HttpPlugin extends Plugin {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 			try {
 				JSONObject params = (JSONObject) args.opt(1);
-				
 			    Iterator iter = params.keys();
 			    while(iter.hasNext()){
 			        String key = (String)iter.next();
