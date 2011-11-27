@@ -8,28 +8,10 @@
 <script src="js/zepto/zepto.js"></script>
 <script src="js/zepto/event.js"></script>
 <script src="js/zepto/form.js"></script>
-<script src="js/zepto/ajax.js"></script>
-
 <script src="js/common/hosts.js"></script>
+<script src="js/plugin/http.js"></script>
+<script src="js/model/feedback.js"></script>
 </head>
-<script type="text/javascript">
-$(document).ready(function() {
-		$('#sug_form').attr("action", RequestURL.Suggest);
-		$('#sug_form').submit(function (e) {
-			var content = $("#contents");
-			if(content.val() == ""){
-				alert('请输入建议内容');
-				content.focus();
-				return false;
-			}
-			e.preventDefault();
-			return true;
-		});
-		
-	});
-
-
-</script>
 <body>
       <section id="menu" class="current">
         <ul id="news" >
@@ -40,7 +22,7 @@ $(document).ready(function() {
 			  <form id="sug_form" name="sug_form" method="post" action="">
 				<table>
 				<tr>
-					<td><textarea id="contents" name="contents" rows="5" cols="40"></textarea></td>
+					<td><textarea id="contents" name="contents" rows="5" cols="32"></textarea></td>
 				</tr>
 				<tr>
 					<td align="center"><input type="submit" name="submit" ></td>
