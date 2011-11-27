@@ -1,4 +1,4 @@
-var deviceinfo_plugin="info.arzen.store.plugin.DeviceInfoPlugin";
+var deviceinfo_plugin="DeviceInfoPlugin";
 nativeJS.addPlugin(deviceinfo_plugin);
 var DeviceInfoPlugin = function(){
 };
