@@ -28,5 +28,6 @@ function appendToDiv(lists) {
 
 function chcekUpdate (){
 	var versionStr = "当前版本为"+UpgradeInfoPlugin.getVersionName()+"版本号"+UpgradeInfoPlugin.getVersionCode();
-	alert(versionStr);
+//	alert(versionStr);
+	confirm(versionStr);
 };

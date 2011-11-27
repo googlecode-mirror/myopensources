@@ -10,4 +10,6 @@
     <string name="msg_really_quit">请确认真的要退出</string>
     <string name="msg_yes">确认</string>
     <string name="msg_no">取消</string>
+    <string name="msg_alert">提示</string>
+    <string name="msg_comfirm">确认</string>
 </resources>

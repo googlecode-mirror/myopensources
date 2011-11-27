@@ -4,6 +4,7 @@ import info.arzen.webview.plugin.PluginManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,6 +15,7 @@ import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.DownloadListener;
+import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -61,7 +63,7 @@ public class MainActivity extends Activity {
         mWebView.setBackgroundColor(Color.parseColor("#333333"));
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         mWebView.addJavascriptInterface(nativeJS, "nativeJS");
-		mWebView.setWebChromeClient(new MyWebChromeClient());
+		mWebView.setWebChromeClient(new MyWebChromeClient(MainActivity.this));
 		mWebView.setDownloadListener(new DownloadListener() {
 			
 			@Override
@@ -164,7 +166,12 @@ public class MainActivity extends Activity {
 	}
     
     private class MyWebChromeClient extends WebChromeClient {
-    	
+        private Context ctx;
+        
+        public MyWebChromeClient(Context ctx) {
+        	this.ctx = ctx;
+		}
+        
     	@Override
     	public void onProgressChanged(WebView view, int newProgress) {
     		super.onProgressChanged(view, newProgress);
@@ -177,6 +184,48 @@ public class MainActivity extends Activity {
     	public void onReceivedTitle(WebView view, String title) {
     		super.onReceivedTitle(view, title);
 //    		setWinTitle(title);
+    	}
+    	
+    	@Override
+    	public boolean onJsAlert(WebView view, String url, String message,
+    			final JsResult result) {
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this.ctx);
+            dlg.setMessage(message);
+            dlg.setTitle(R.string.msg_alert);
+            dlg.setCancelable(false);
+            dlg.setPositiveButton(android.R.string.ok,
+            	new AlertDialog.OnClickListener() {
+                	public void onClick(DialogInterface dialog, int which) {
+                		result.confirm();
+                	}
+            	});
+            dlg.create();
+            dlg.show();
+            return true;
+    	}
+    	
+    	@Override
+    	public boolean onJsConfirm(WebView view, String url, String message,
+    			final JsResult result) {
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this.ctx);
+            dlg.setMessage(message);
+            dlg.setTitle(R.string.msg_comfirm);
+            dlg.setCancelable(false);
+            dlg.setPositiveButton(android.R.string.ok, 
+            	new DialogInterface.OnClickListener() {
+                	public void onClick(DialogInterface dialog, int which) {
+                		result.confirm();
+                    }
+                });
+            dlg.setNegativeButton(android.R.string.cancel, 
+            	new DialogInterface.OnClickListener() {
+                	public void onClick(DialogInterface dialog, int which) {
+                		result.cancel();
+                    }
+                });
+            dlg.create();
+            dlg.show();
+            return true;
     	}
     }
     
