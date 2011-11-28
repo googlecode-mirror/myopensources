@@ -35,6 +35,18 @@
     	</svn>    	
     </target>
 
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: sync2web                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="sync2web">
+    	<input addproperty="passwd"/>
+    	<sshexec host="${ssh.host}"
+    		username="${ssh.user}"
+    		port="${ssh.port}"
+    		password="${passwd}"
+    		trust="yes"
+    		command="${ssh.update.feed.cmd}"/>
+    </target>
 
 
 </project>
