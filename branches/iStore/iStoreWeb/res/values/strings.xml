@@ -7,7 +7,7 @@
     <string name="menu_more">更多</string>
     <string name="loading">加载中，请稍侯...</string>
     <string name="msg_quit">退出应用</string>
-    <string name="msg_really_quit">请确认真的要退出</string>
+    <string name="msg_really_quit">是否要退出</string>
     <string name="msg_yes">确认</string>
     <string name="msg_no">取消</string>
     <string name="msg_alert">提示</string>
