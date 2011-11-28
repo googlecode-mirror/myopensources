@@ -9,7 +9,9 @@ class SuggestController extends Arzen_Rest_Controller
 	
 	public function postAction() {
 		$contents = $this->_getParam("contents");
-// 		file_put_contents("d:/test.txt", urldecode ( $contents ) );
+		$contents = urldecode ( $contents );
+		$feedback = new Application_Model_DbTable_Feedback();
+		$feedback->addFeedback($contents);
 		$data = array("status"=>"ok");
 		$this->sendResponse($data);
 	}	
