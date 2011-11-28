@@ -61,7 +61,7 @@ public class HttpPlugin extends Plugin {
 	            cache.set(cache_key, body);
 			}
 			
-		} catch (Exception e) { e.printStackTrace(); return null; }
+		} catch (Exception e) { e.printStackTrace(); }
 		
         if (body == null) {
         	body = cache.get(cache_key);
