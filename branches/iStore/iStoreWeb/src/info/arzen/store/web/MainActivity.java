@@ -34,7 +34,7 @@ public class MainActivity extends WebAppActivity {
         navClick();
         
         PluginManager nativeJS = new PluginManager();
-        nativeJS.setContext(getApplicationContext());
+        nativeJS.setContext(MainActivity.this);
         
         mWebView = (WebView) findViewById(R.id.middle);
         mWebView.setWebViewClient(new MyWebClient(MainActivity.this) );

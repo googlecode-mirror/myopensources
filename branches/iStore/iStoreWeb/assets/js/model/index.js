@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
   refresh();
-  if (randomRate(10)) {
-	  chcekUpdate ();
+//  if (randomRate(10)) {
+//	  chcekUpdate ();
 	
-  }
+//  }
 });
 
 
