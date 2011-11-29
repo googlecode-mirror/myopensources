@@ -7,8 +7,6 @@
  */
 package info.arzen.gps;
 
-import com.phonegap.api.PhonegapActivity;
-
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
@@ -21,7 +19,7 @@ import android.os.Bundle;
  */
 public class GpsListener implements LocationListener {
 	
-	private PhonegapActivity mCtx;				// PhonegapActivity object
+	private Context mCtx;				// PhonegapActivity object
 	
 	private LocationManager mLocMan;			// Location manager object
 	private GeoListener owner;					// Geolistener object (parent)
@@ -37,7 +35,7 @@ public class GpsListener implements LocationListener {
 	 * @param interval
 	 * @param m
 	 */
-	public GpsListener(PhonegapActivity ctx, int interval, GeoListener m) {
+	public GpsListener(Context ctx, int interval, GeoListener m) {
 		this.owner = m;
 		this.mCtx = ctx;
 		this.mLocMan = (LocationManager) this.mCtx.getSystemService(Context.LOCATION_SERVICE);

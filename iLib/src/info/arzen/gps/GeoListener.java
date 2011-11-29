@@ -7,10 +7,11 @@
  */
 package info.arzen.gps;
 
+import info.arzen.network.NetworkListener;
+import info.arzen.webview.plugin.GeoBrokerPlugin;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
-import android.webkit.WebView;
 
 public class GeoListener {
 	public static int PERMISSION_DENIED = 1;
@@ -24,7 +25,7 @@ public class GeoListener {
     NetworkListener mNetwork;			// Network listener
     LocationManager mLocMan;			// Location manager
     
-    private GeoBroker broker;			// GeoBroker object
+    private GeoBrokerPlugin broker;			// GeoBroker object
 	
 	int interval;
 	
@@ -36,7 +37,7 @@ public class GeoListener {
 	 * @param time			Sampling period in msec
 	 * @param appView
 	 */
-	GeoListener(GeoBroker broker, String id, int time) {
+	public GeoListener(GeoBrokerPlugin broker, String id, int time) {
 		this.id = id;
 		this.interval = time;
 		this.broker = broker;
@@ -76,7 +77,7 @@ public class GeoListener {
 		if (id == "global") {
 			this.stop();
 		}
-		this.broker.sendJavascript("navigator._geo.success('" + id + "'," +  params + ");");
+//		this.broker.sendJavascript("navigator._geo.success('" + id + "'," +  params + ");");
 	}
 	
 	/**
@@ -86,7 +87,7 @@ public class GeoListener {
 	 * @param msg			The error message
 	 */
 	void fail(int code, String msg) {
-		this.broker.sendJavascript("navigator._geo.fail('" + this.id + "', '" + code + "', '" + msg + "');");
+//		this.broker.sendJavascript("navigator._geo.fail('" + this.id + "', '" + code + "', '" + msg + "');");
 		this.stop();
 	}
 	
@@ -95,7 +96,7 @@ public class GeoListener {
 	 * 
 	 * @param interval
 	 */
-	void start(int interval) {
+	public void start(int interval) {
 		if (this.mGps != null) {
 			this.mGps.start(interval);
 		}
@@ -110,7 +111,7 @@ public class GeoListener {
 	/**
 	 * Stop listening for location.
 	 */
-	void stop() {
+	public void stop() {
 		if (this.mGps != null) {
 			this.mGps.stop();
 		}
