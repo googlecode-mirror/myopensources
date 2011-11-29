@@ -10,7 +10,7 @@ import android.util.Log;
 
 public class PluginManager {
 	private HashMap<String, Plugin> plugins = new HashMap<String,Plugin>();
-	protected Context ctx;
+	protected WebAppActivity ctx;
 
 	/**
 	 * Sets the context of the Plugin. This can then be used to do things like
@@ -18,7 +18,7 @@ public class PluginManager {
 	 * 
 	 * @param ctx The context of the main Activity.
 	 */
-	public void setContext(Context ctx) {
+	public void setContext(WebAppActivity ctx) {
 		this.ctx = ctx;
 	}
 	

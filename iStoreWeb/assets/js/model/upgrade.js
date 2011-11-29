@@ -11,6 +11,8 @@ function chcekUpdate (){
 		var alterStr = appName +"最新版本为"+newVName+"\n您当前使用的是"+currentVName+"\n立即升级？";
 		if (confirm(alterStr)) {
 			window.location=apkUrl;
+		}else {
+			AppPlugin.exitApp();
 		}
 	}
 	
