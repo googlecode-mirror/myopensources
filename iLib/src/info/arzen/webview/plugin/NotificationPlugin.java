@@ -40,10 +40,13 @@ public class NotificationPlugin extends Plugin {
 			public void run() {
 				
 				AlertDialog.Builder dlg = new AlertDialog.Builder(ctx);
-				String[] items = new String[2];
-				callbackJS = new String[2];
+				int len;
+				String[] items;
 				try {
 					JSONObject params = (JSONObject) args.opt(0);
+					len = params.length();
+					items = new String[len];
+					callbackJS = new String[len];
 				    Iterator iter = params.keys();
 				    int i=0;
 				    while(iter.hasNext()){
@@ -53,44 +56,27 @@ public class NotificationPlugin extends Plugin {
 				        callbackJS[i] = value;
 						i++;
 				    }
+					dlg.setItems(items, new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							String js =callbackJS[which];
+							callJs(js);
+							dialog.dismiss();
+							
+						}
+					});
+					dlg.setCancelable(true);
+
+					dlg.create();
+					dlg.show();
+				    
 				} catch (JSONException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-//				String[] items = {"Red", "Green", "Blue"}; 
-				dlg.setItems(items, new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						String js =callbackJS[which];
-						callJs(js);
-						dialog.dismiss();
-						
-					}
-				});
-				dlg.setCancelable(true);
+				
 
-				dlg.create();
-				dlg.show();
-				
-//				String[] items = new String[2];
-//				try {
-//					JSONObject params = (JSONObject) args.opt(0);
-//				    Iterator iter = params.keys();
-//				    int i=0;
-//				    while(iter.hasNext()){
-//				        String key = (String)iter.next();
-//				        String value = params.getString(key);
-//						items[i] =key;
-//						i++;
-//				    }
-//				} catch (JSONException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//		
-//				new AlertDialog.Builder(ctx.getApplicationContext()).setItems(items, null).create().show();
-				
 			};
 		};
 		this.ctx.runOnUiThread(runnable);
