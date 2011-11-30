@@ -69,7 +69,7 @@ public class NetworkPlugin extends Plugin {
 	 * 
 	 * @param ctx The context of the main Activity.
 	 */
-	public void setContext(Context ctx) {
+	public void setContext(WebAppActivity ctx) {
 		super.setContext(ctx);
 		this.sockMan = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);		
 		this.telephonyManager = ((TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE));

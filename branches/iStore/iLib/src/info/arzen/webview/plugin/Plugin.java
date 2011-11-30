@@ -20,14 +20,14 @@ import android.webkit.WebView;
  */
 public abstract class Plugin implements IPlugin {
 
-	public Context ctx;
+	public WebAppActivity ctx;
 	/**
 	 * Sets the context of the Plugin. This can then be used to do things like
 	 * get file paths associated with the Activity.
 	 * 
 	 * @param ctx The context of the main Activity.
 	 */
-	public void setContext(Context ctx) {
+	public void setContext(WebAppActivity ctx) {
 		this.ctx = ctx;
 	}
 
