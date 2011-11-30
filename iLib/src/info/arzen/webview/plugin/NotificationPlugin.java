@@ -29,9 +29,6 @@ public class NotificationPlugin extends Plugin {
 		Toast.makeText(ctx.getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 	}
 	
-	public void callJs(String str) {
-		ctx.mWebView.loadUrl("javascript:" +str);
-	}
 	
 	public void popupMenu(final JSONArray args) {
 		final WebAppActivity ctx = this.ctx;

@@ -41,6 +41,9 @@ public abstract class Plugin implements IPlugin {
 		return false;
 	}
 
+	public void callJs(String str) {
+		ctx.mWebView.loadUrl("javascript:" +str);
+	}
 
     /**
      * Called when the system is about to start resuming a previous activity. 

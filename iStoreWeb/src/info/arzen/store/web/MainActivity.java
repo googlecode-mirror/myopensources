@@ -1,5 +1,6 @@
 package info.arzen.store.web;
 
+import info.arzen.webview.plugin.Plugin;
 import info.arzen.webview.plugin.PluginManager;
 import info.arzen.webview.plugin.WebAppActivity;
 import android.app.AlertDialog;
@@ -21,6 +22,10 @@ import com.flurry.android.FlurryAgent;
 public class MainActivity extends WebAppActivity {
 	
 	private String mFlurryKey = "V4MXNV6JS1MF1MCP89WT";
+	// Keep app running when pause is received. (default = true)
+	// If true, then the JavaScript and native code continue to run in the background
+	// when another application (activity) is started.
+	protected boolean keepRunning = true;
 	
 
 	/** Called when the activity is first created. */
@@ -137,6 +142,29 @@ public class MainActivity extends WebAppActivity {
     	return super.onKeyDown(keyCode, event);
     }
     
+    /**
+     * Launch an activity for which you would like a result when it finished. When this activity exits, 
+     * your onActivityResult() method will be called.
+     *  
+     * @param command			The command object
+     * @param intent			The intent to start
+     * @param requestCode		The request code that is passed to callback to identify the activity
+     */
+
+	@Override
+    public void startActivityForResult(Plugin command, Intent intent, int requestCode) {
+//    	this.activityResultCallback = command;
+//    	this.activityResultKeepRunning = this.keepRunning;
+    	
+    	// If multitasking turned on, then disable it for activities that return results
+    	if (command != null) {
+    		this.keepRunning = false;
+    	}
+    	
+    	// Start activity
+    	super.startActivityForResult(intent, requestCode);
+    }
+
     
     
 }
