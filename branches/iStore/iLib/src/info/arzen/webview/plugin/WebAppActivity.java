@@ -33,6 +33,8 @@ public abstract class WebAppActivity extends Activity {
 			}
 		}
 	};
+
+    abstract public void startActivityForResult(Plugin command, Intent intent, int requestCode);
 	
 	public class MyWebChromeClient extends WebChromeClient {
         private Context ctx;

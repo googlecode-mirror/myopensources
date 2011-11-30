@@ -13,6 +13,7 @@
 <script src="js/plugin/http.js"></script>
 <script src="js/plugin/upgradeinfo.js"></script>
 <script src="js/plugin/notification.js"></script>
+<script src="js/plugin/capture.js"></script>
 
 <script src="js/model/upgrade.js"></script>
 </head>
@@ -22,7 +23,7 @@
           <li class="option-hr">推荐</li>
           <li class="arrow"><a href="sms:?body=您好，向你推荐雅致育才这款安卓程序，下载地址为:http://www.google.com">推荐给好友</a></li>
           <li class="arrow"><a href='javascript:NotificationPlugin.msg("[\"还有吧？\"]")'>测试</a></li>
-          <li class="arrow"><a href='javascript:NotificationPlugin.popupMenu("[{\"ddd\":\"NotificationPlugin.ccd()\", \"ffff\":\"fff\"}]")'>菜单</a></li>
+          <li class="arrow"><a href='javascript:popupMenu()'>菜单</a></li>
           <li class="arrow"><a id="touch_test" >长按</a></li>
           <li class="arrow"><a href="feedback.html">意见反馈</a></li>
           <li class="option-hr">常规</li>
@@ -31,27 +32,30 @@
         </ul>
       </section>
       <script>
-        $(document).ready(function(){
-//          var activate = ('createTouch' in document) ? 'touchstart' : 'click';
-	$('#touch_test')
-      .tap(function(){
-    	  NotificationPlugin.msg("[\"这是单击\"]");
-      })
-	
-      .longTap(function(){
-    	  NotificationPlugin.popupMenu("[{\"菜单1\":\"NotificationPlugin.ccd()\", \"菜单2\":\"fff\"}]");
-      })
+		function popupMenu() {
+			NotificationPlugin.popupMenu("[{\"照相\":\"CapturePlugin.captureImage()\",\"录音\":\"CapturePlugin.captureAudio()\",\"视频\":\"CapturePlugin.captureVideo()\"}]");
+		}
+		
+		$(document)
+		.ready(
+				function() {
+					$('#touch_test')
+							.tap(
+									function() {
+										NotificationPlugin
+												.msg("[\"这是单击\"]");
+									})
 
-          $("body > section").first().addClass("current")
-/*
-          $(".menu a[href]").live(activate, function(event) {
-            var link = $(this), section = link.closest('section'),
-              prev_element = "#"+(section.removeClass("current").addClass("reverse").attr("id"));
-            $(link.attr("href")).addClass("current");
-          });
-          */
-        });
-      </script>
+							.longTap(
+									function() {
+										NotificationPlugin
+												.popupMenu("[{\"菜单1\":\"NotificationPlugin.ccd()\", \"菜单2\":\"fff\"}]");
+									})
+
+					$("body > section").first()
+							.addClass("current")
+				});
+		</script>
 
 </body>
 </html>
