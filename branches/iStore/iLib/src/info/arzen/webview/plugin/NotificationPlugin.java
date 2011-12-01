@@ -6,8 +6,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.R;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.widget.Toast;
 
 
@@ -77,6 +83,17 @@ public class NotificationPlugin extends Plugin {
 			};
 		};
 		this.ctx.runOnUiThread(runnable);
+		
+	}
+	
+	public void notification(String phone_num, String msg) {
+		NotificationManager notificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
+		Notification notification = new Notification(R.drawable.stat_notify_voicemail, ticker, System.currentTimeMillis());
+		PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0, new Intent(ctx, ctx.getIntentForLatestInfo()), Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		notification.setLatestEventInfo(ctx, phone_num, msg, contentIntent);
+		notification.flags = getNotificationFlag();
+		
+		notificationManager.notify(SERVICE_ID, notification);
 		
 	}
 
