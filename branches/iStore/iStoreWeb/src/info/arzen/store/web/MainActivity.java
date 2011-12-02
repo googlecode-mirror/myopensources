@@ -68,6 +68,7 @@ public class MainActivity extends WebAppActivity {
 		dialog = new ProgressDialog(this);
 		dialog.setMessage(getResources().getString(R.string.loading));
         openPage("index.html");
+	
     }
     
     private void navClick() {

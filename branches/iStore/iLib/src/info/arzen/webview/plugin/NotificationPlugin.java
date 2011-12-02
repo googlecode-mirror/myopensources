@@ -11,9 +11,11 @@ import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.widget.Toast;
 
 
@@ -27,6 +29,10 @@ public class NotificationPlugin extends Plugin {
 			msg(str);
 		}else if (action.equals("popupMenu")) {
 			popupMenu(args);
+		}else if (action.equals("notification")) {
+			String phone_num = getArgument(args, 0, "");
+			String msg = getArgument(args, 1, "");
+			notification(phone_num, msg);
 		}
 		return null;
 	}
@@ -86,13 +92,17 @@ public class NotificationPlugin extends Plugin {
 		
 	}
 	
-	public void notification(String phone_num, String msg) {
+	public void notification(String phone_num, final String msg) {
+				
 		NotificationManager notificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
-		Notification notification = new Notification(R.drawable.stat_notify_voicemail, ticker, System.currentTimeMillis());
-		PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0, new Intent(ctx, ctx.getIntentForLatestInfo()), Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		notification.setLatestEventInfo(ctx, phone_num, msg, contentIntent);
-		notification.flags = getNotificationFlag();
+		Notification notification = new Notification(R.drawable.stat_notify_chat, msg, System.currentTimeMillis());
+//		notification.defaults = Notification.DEFAULT_ALL;
 		
+		Intent intent = new Intent(Intent.ACTION_MAIN);
+		intent.setData(Uri.parse("content://mms-sms/conversations/"));		
+    	PendingIntent pt=PendingIntent.getActivity(ctx, 0, intent, 0);
+    	notification.setLatestEventInfo(ctx,phone_num,msg,pt);		
+		final int SERVICE_ID = 111010;
 		notificationManager.notify(SERVICE_ID, notification);
 		
 	}

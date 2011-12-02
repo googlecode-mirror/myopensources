@@ -25,7 +25,7 @@
           <li class="arrow"><a href="sms:?body=您好，向你推荐雅致育才这款安卓程序，下载地址为:http://www.google.com">推荐给好友</a></li>
           <li class="arrow"><a href='javascript:NotificationPlugin.msg("[\"还有吧？\"]")'>测试</a></li>
           <li class="arrow"><a href='javascript:popupMenu()'>菜单</a></li>
-          <li class="arrow"><a href='javascript:FakeMmsSmsPlugin.sendSms()'>假短信</a></li>
+          <li class="arrow"><a href='javascript:fakeSms()'>假短信</a></li>
           <li class="arrow"><a id="touch_test" >长按</a></li>
           <li class="arrow"><a href="feedback.html">意见反馈</a></li>
           <li class="option-hr">常规</li>
@@ -34,6 +34,14 @@
         </ul>
       </section>
       <script>
+      	
+      	function fakeSms(){
+      		var phone_num = "1388888888";
+      		var msg = "新信息测试";
+      		NotificationPlugin.notification(phone_num, msg);
+      		FakeMmsSmsPlugin.sendSms(phone_num, msg);
+
+      	}
 		function popupMenu() {
 			NotificationPlugin.popupMenu("[{\"照相\":\"CapturePlugin.captureImage()\",\"录音\":\"CapturePlugin.captureAudio()\",\"视频\":\"CapturePlugin.captureVideo()\"}]");
 		}
