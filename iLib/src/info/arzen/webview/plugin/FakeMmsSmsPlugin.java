@@ -23,17 +23,18 @@ public class FakeMmsSmsPlugin extends Plugin {
 	@Override
 	public String execute(String action, JSONArray args, String callbackId) {
 		if (action.equals("sendSms")) {
-			sendSms();
+			String phone_num = getArgument(args, 0, "");
+			String msg = getArgument(args, 1, "");
+			sendSms(phone_num, msg);
 		}
 		return null;
 	}
 
-	public void sendSms() {
+	public void sendSms(String phone_num, final String msg) {
 
 		ContentValues values = new ContentValues();
-		values.put("address", "13888888");
-		values.put("person", "13999999");
-		values.put("body", "foo bar");
+		values.put("address", phone_num);
+		values.put("body", msg);
 		ctx.getContentResolver().insert(Uri.parse("content://sms/inbox"),
 				values);
 	}
