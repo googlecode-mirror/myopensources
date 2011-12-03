@@ -11,7 +11,8 @@ public class MmsSmsReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		if (intent.equals(SMS_RECEIVED)) {
+		if (intent.getAction().equals(SMS_RECEIVED)) {
+			ADebug.d("@@@@@", "got message");
 			ADebug.msg("new message", context);
 		}
 	}
