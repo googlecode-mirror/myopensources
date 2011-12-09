@@ -233,7 +233,7 @@ public class CapturePlugin extends Plugin {
 
 					// Add compressed version of captured image to returned media store Uri
 					OutputStream os  = this.ctx.getContentResolver().openOutputStream(uri);
-					bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
+					bitmap.compress(Bitmap.CompressFormat.JPEG, 80, os);
 					os.close();
 
 					bitmap.recycle();
