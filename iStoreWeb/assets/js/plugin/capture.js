@@ -14,3 +14,7 @@ CapturePlugin.captureAudio = function() {
 CapturePlugin.captureVideo = function() {
 	return nativeJS.exec(capture_plugin, "captureVideo", null, "[]", true)
 };
+
+CapturePlugin.selectImage = function(successCallback) {
+	return nativeJS.exec(capture_plugin, "selectImage", successCallback, "[]", true)
+};
