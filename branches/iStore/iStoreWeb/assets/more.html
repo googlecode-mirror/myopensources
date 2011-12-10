@@ -24,15 +24,15 @@
       <section id="menu" >
         <ul id="news" class="option menu" >
           <li class="option-hr">推荐</li>
-          <li class="arrow"><a href="sms:?body=您好，向你推荐雅致育才这款安卓程序，下载地址为:http://www.google.com">推荐给好友</a></li>
-          <li class="arrow"><a href='javascript:NotificationPlugin.msg("[\"还有吧？\"]")'>测试</a></li>
-          <li class="arrow"><a href='javascript:popupMenu()'>菜单</a></li>
-          <li class="arrow"><a href='javascript:fakeSms()'>假短信</a></li>
-          <li class="arrow"><a id="touch_test" >长按</a></li>
-          <li class="arrow"><a href="feedback.html">意见反馈</a></li>
+          <li class="arrow" onclick="javascript:window.location='sms:?body=您好，向你推荐雅致育才这款安卓程序，下载地址为:http://www.google.com'"><a href="####">推荐给好友</a></li>
+          <li class="arrow" onclick='javascript:NotificationPlugin.msg("[\"还有吧？\"]")'><a href='###'>测试</a></li>
+          <li class="arrow" onclick='javascript:popupMenu()'><a href='####'>菜单</a></li>
+          <li class="arrow" onclick='javascript:fakeSms()'><a href='###'>假短信</a></li>
+          <li class="arrow" id="touch_test" ><a >长按</a></li>
+          <li class="arrow" onclick="javascript:window.location='feedback.html'"><a >意见反馈</a></li>
           <li class="option-hr">常规</li>
-          <li class="arrow"><a href="javascript:chcekUpdate ();">检查升级</a></li>
-          <li class="arrow"><a href="about.html">关于我们</a></li>
+          <li class="arrow" onclick="javascript:chcekUpdate ();"><a >检查升级</a></li>
+          <li class="arrow" onclick="javascript:window.location='about.html'"><a >关于我们</a></li>
         </ul>
       </section>
       <script>
@@ -62,12 +62,22 @@
 
       	}
 		function popupMenu() {
-			NotificationPlugin.popupMenu("[{\"照相\":\"CapturePlugin.captureImage('captureSuccess')\",\"录音\":\"CapturePlugin.captureAudio()\",\"视频\":\"CapturePlugin.captureVideo()\"}]");
+			NotificationPlugin.popupMenu("[{\"选择图片\":\"CapturePlugin.selectImage('captureSuccess')\",\"照相\":\"CapturePlugin.captureImage('captureSuccess')\",\"录音\":\"CapturePlugin.captureAudio()\",\"视频\":\"CapturePlugin.captureVideo()\"}]");
 		}
 		
 		$(document)
 		.ready(
 				function() {
+					$(".arrow").tap(
+							function() {
+//								$(this).children('a').bind("onclick");
+								/*
+								var link = $(this).children('a');
+								alert(link);
+								*/
+							}
+					)
+					
 					$('#touch_test')
 							.tap(
 									function() {

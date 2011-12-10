@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -27,12 +28,17 @@ public class CapturePlugin extends Plugin {
 	private static final int CAPTURE_AUDIO = 0;		// Constant for capture audio
 	private static final int CAPTURE_IMAGE = 1;		// Constant for capture image
 	private static final int CAPTURE_VIDEO = 2;		// Constant for capture video
+	private static final int SELECT_IMAGE = 3;		// Constant for capture video
+	private static final int SELECT_VIDEO = 4;		// Constant for capture video
 	private static final String TAG = "Capture";
 	private String callbackId;						// The ID of the callback to be invoked with our result
 	private long limit;								// the number of pics/vids/clips to take
 	private double duration;						// optional duration parameter for video recording
 	private JSONArray results;						// The array of results to be returned to the user
 	private Uri imageUri;							// Uri of captured image 
+    public final String IMAGE_UNSPECIFIED = "image/*";
+    public final String AUDIO_UNSPECIFIED = "audio/*";
+    public final String VIDEO_UNSPECIFIED = "video/*";
 
 	@Override
 	public String execute(String action, JSONArray args, String callbackId) {
@@ -62,7 +68,10 @@ public class CapturePlugin extends Plugin {
 			this.captureImage();
 		}
 		else if (action.equals("captureVideo")) {
-			this.captureVideo(duration);	
+			this.captureVideo(duration);
+			
+		} else if (action.equals("selectImage")) {
+			this.selectImage();
 		}
 		
 		PluginResult r = new PluginResult(PluginResult.Status.NO_RESULT);
@@ -191,7 +200,6 @@ public class CapturePlugin extends Plugin {
      * @throws JSONException 
      */
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-		ADebug.d("@@@@@@@", "go capture plugin ");
 		// Result received okay
 		if (resultCode == Activity.RESULT_OK) {
 			// An audio clip was requested
@@ -251,7 +259,6 @@ public class CapturePlugin extends Plugin {
 					if (results.length() >= limit) {
 						// Send Uri back to JavaScript for viewing image
 						String res = results.toString();
-						ADebug.d("@@@@@@@", "res  :"+res);
 						this.success(res, this.callbackId);
 					} else {
 						// still need to capture more images
@@ -274,7 +281,24 @@ public class CapturePlugin extends Plugin {
 					// still need to capture more video clips
 					captureVideo(duration);
 				}
+			} else if (requestCode == SELECT_IMAGE) {
+				Uri uri = intent.getData();
+				// Add image to results
+				results.put(createMediaFile(uri));
+				
+				if (results.length() >= limit) {
+					// Send Uri back to JavaScript for viewing image
+					String res = results.toString();
+					this.success(res, this.callbackId);
+				} else {
+					// still need to capture more images
+					selectImage();
+				}
+				
+			} else if (requestCode == SELECT_VIDEO) {
+				
 			}
+			
 		}
 		// If canceled
 		else if (resultCode == Activity.RESULT_CANCELED) {
@@ -348,5 +372,21 @@ public class CapturePlugin extends Plugin {
 	public void fail(String err) {
 //		this.error(new PluginResult(PluginResult.Status.ERROR, err), this.callbackId);
 	}
+	
+	
+    public void selectVideo() {
+        selectMediaByType(SELECT_VIDEO, VIDEO_UNSPECIFIED);
+    }
+
+    public void selectImage() {
+        selectMediaByType(SELECT_IMAGE, IMAGE_UNSPECIFIED);
+    }
+
+    private void selectMediaByType(int requestCode, String contentType) {
+        Intent innerIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        innerIntent.setType(contentType);
+        Intent wrapperIntent = Intent.createChooser(innerIntent, null);   
+        this.ctx.startActivityForResult((Plugin) this, wrapperIntent, requestCode);
+    }
 
 }
