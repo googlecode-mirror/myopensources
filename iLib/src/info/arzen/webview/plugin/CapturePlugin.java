@@ -1,5 +1,7 @@
 package info.arzen.webview.plugin;
 
+import info.arzen.core.ADebug;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -162,6 +164,8 @@ public class CapturePlugin extends Plugin {
         File photo = new File(Environment.getExternalStorageDirectory(),  "Capture.jpg");
         intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, Uri.fromFile(photo));
         this.imageUri = Uri.fromFile(photo);
+        
+        ADebug.d("@@@@@@@", "Save file to :"+this.imageUri.toString());
 
         this.ctx.startActivityForResult((Plugin) this, intent, CAPTURE_IMAGE);
     }
@@ -187,7 +191,7 @@ public class CapturePlugin extends Plugin {
      * @throws JSONException 
      */
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-
+		ADebug.d("@@@@@@@", "go capture plugin ");
 		// Result received okay
 		if (resultCode == Activity.RESULT_OK) {
 			// An audio clip was requested
@@ -230,6 +234,7 @@ public class CapturePlugin extends Plugin {
 							return;
 						}
 					}
+			        ADebug.d("@@@@@@@", "Get file from  :"+uri.toString());
 
 					// Add compressed version of captured image to returned media store Uri
 					OutputStream os  = this.ctx.getContentResolver().openOutputStream(uri);
@@ -245,7 +250,9 @@ public class CapturePlugin extends Plugin {
 					
 					if (results.length() >= limit) {
 						// Send Uri back to JavaScript for viewing image
-//						this.success(new PluginResult(PluginResult.Status.OK, results, "navigator.device.capture._castMediaFile"), this.callbackId);
+						String res = results.toString();
+						ADebug.d("@@@@@@@", "res  :"+res);
+						this.success(res, this.callbackId);
 					} else {
 						// still need to capture more images
 						captureImage();

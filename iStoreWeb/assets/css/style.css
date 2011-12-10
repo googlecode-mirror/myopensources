@@ -121,4 +121,7 @@ ul li{
     margin-left: 180px;
     margin-top: -20px;
 }
-
+/*处理链接有黄框*/
+* {
+   -webkit-tap-highlight-color:rgba(0,0,0,0); 
+}

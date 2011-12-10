@@ -143,29 +143,6 @@ public class MainActivity extends WebAppActivity {
     	return super.onKeyDown(keyCode, event);
     }
     
-    /**
-     * Launch an activity for which you would like a result when it finished. When this activity exits, 
-     * your onActivityResult() method will be called.
-     *  
-     * @param command			The command object
-     * @param intent			The intent to start
-     * @param requestCode		The request code that is passed to callback to identify the activity
-     */
 
-	@Override
-    public void startActivityForResult(Plugin command, Intent intent, int requestCode) {
-//    	this.activityResultCallback = command;
-//    	this.activityResultKeepRunning = this.keepRunning;
-    	
-    	// If multitasking turned on, then disable it for activities that return results
-    	if (command != null) {
-    		this.keepRunning = false;
-    	}
-    	
-    	// Start activity
-    	super.startActivityForResult(intent, requestCode);
-    }
-
-    
     
 }

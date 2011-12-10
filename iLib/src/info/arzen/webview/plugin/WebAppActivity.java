@@ -1,5 +1,6 @@
 package info.arzen.webview.plugin;
 
+import info.arzen.core.ADebug;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -17,6 +18,7 @@ import android.webkit.WebViewClient;
 public abstract class WebAppActivity extends Activity {
 	protected WebView mWebView;
 	protected ProgressDialog dialog;
+	protected Plugin activityResultCallback = null;
 	
 	private Handler handler = new Handler(){
 		@Override
@@ -34,7 +36,22 @@ public abstract class WebAppActivity extends Activity {
 		}
 	};
 
-    abstract public void startActivityForResult(Plugin command, Intent intent, int requestCode);
+    /**
+     * Launch an activity for which you would like a result when it finished. When this activity exits, 
+     * your onActivityResult() method will be called.
+     *  
+     * @param command			The command object
+     * @param intent			The intent to start
+     * @param requestCode		The request code that is passed to callback to identify the activity
+     */
+    public void startActivityForResult(Plugin command, Intent intent, int requestCode) {
+		ADebug.d("@@@@@@@", "start at main ");
+
+    	this.activityResultCallback = command;
+    	
+    	// Start activity
+    	super.startActivityForResult(intent, requestCode);
+    }
 	
 	public class MyWebChromeClient extends WebChromeClient {
         private Context ctx;
@@ -217,5 +234,16 @@ public abstract class WebAppActivity extends Activity {
 //    		return super.shouldOverrideUrlLoading(view, url);
     	}
     }
-
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+ 		ADebug.d("@@@@@@@", "call back at main ");
+    	
+	   	 Plugin callback = this.activityResultCallback;
+	   	 if (callback != null) {
+	   		 callback.onActivityResult(requestCode, resultCode, intent);
+	   	 }        
+    	super.onActivityResult(requestCode, resultCode, intent);
+    	
+    }
 }

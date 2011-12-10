@@ -7,6 +7,8 @@
  */
 package info.arzen.webview.plugin;
 
+import info.arzen.core.ADebug;
+
 import org.json.JSONArray;
 
 import android.content.Context;
@@ -92,5 +94,30 @@ public abstract class Plugin implements IPlugin {
 		}
 		return arg;
 	}
+    /**
+     * Call the JavaScript success callback for this plugin.
+     * 
+     * This can be used if the execute code for the plugin is asynchronous meaning
+     * that execute should return null and the callback from the async operation can
+     * call success(...) or error(...)
+     * 
+     * @param pluginResult		The result to return.
+	 * @param callbackId		The callback id used when calling back into JavaScript.
+     */
+    public void success(String result, String callbackId) {
+    	String js = callbackId+"('"+result+"')";
+    	ADebug.d("@@@@@@", "success call back:" + js);
+    	callJs(js);
+    }
+
+    /**
+     * Call the JavaScript error callback for this plugin.
+     * 
+     * @param pluginResult		The result to return.
+	 * @param callbackId		The callback id used when calling back into JavaScript.
+     */
+    public void error(PluginResult pluginResult, String callbackId) {
+    	
+    }
 
 }
