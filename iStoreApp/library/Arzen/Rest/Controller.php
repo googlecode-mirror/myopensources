@@ -3,7 +3,7 @@
 abstract class Arzen_Rest_Controller extends Zend_Rest_Controller
 {
 	const EXCEPTION_NO_CONTROLLER = 'EXCEPTION_NO_CONTROLLER';
-	
+	protected $config;
 	
 	private $contexts = array(
         'get' => array('xml', 'json')
@@ -11,6 +11,7 @@ abstract class Arzen_Rest_Controller extends Zend_Rest_Controller
 
 	public function init()
 	{
+		$this->config = Zend_Registry::get('config');
 		$this->_helper->viewRenderer->setNoRender(true);
 		$this->no_results = array('status' => 'NO_RESULTS');
 

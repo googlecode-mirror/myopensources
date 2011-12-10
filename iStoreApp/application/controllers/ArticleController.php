@@ -65,5 +65,20 @@ class ArticleController extends Arzen_Rest_Controller
 		
 		
 	}
+	
+	function postAction() {
+		$uploaddir = $this->config->upload->path;
+		if (!file_exists($uploaddir)) {
+			mkdir($uploaddir, 0755, true);
+		}
+		$key = "file";
+		$file_name = basename($_FILES[$key]['name']);
+		$uploadfile = $uploaddir .$file_name;
+		if ( !copy($_FILES[$key]['tmp_name'], $uploadfile) ) {
+			return false;
+		}
+		$this->sendResponse($sub_dir . $file_name);
+		
+	}
 
 }
