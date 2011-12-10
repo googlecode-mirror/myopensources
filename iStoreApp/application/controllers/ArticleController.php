@@ -77,7 +77,7 @@ class ArticleController extends Arzen_Rest_Controller
 		if ( !copy($_FILES[$key]['tmp_name'], $uploadfile) ) {
 			return false;
 		}
-		$this->sendResponse($sub_dir . $file_name);
+		$this->sendResponse($uploadfile);
 		
 	}
 
