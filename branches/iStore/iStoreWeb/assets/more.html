@@ -16,6 +16,7 @@
 <script src="js/plugin/capture.js"></script>
 <script src="js/plugin/app.js"></script>
 <script src="js/plugin/fakesms.js"></script>
+<script src="js/plugin/file_upload.js"></script>
 
 <script src="js/model/upgrade.js"></script>
 </head>
@@ -40,6 +41,9 @@
     	  var item = data[0];
     	  var image = '<li class="arrow"><img id="item-pic" src="' + item.fullPath + '"/></li>';
     	  $('#news').append(image);
+    	  alert("upload"+item.fullPath);
+    	  var res = FileUploadPlugin.upload(item.fullPath, RequestURL.Upload, { fileName: item.name });
+    	  alert(res);
       }
 
       // Called if something bad happens.
