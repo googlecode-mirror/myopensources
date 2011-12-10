@@ -14,6 +14,7 @@
 <script src="js/plugin/upgradeinfo.js"></script>
 <script src="js/plugin/notification.js"></script>
 <script src="js/plugin/capture.js"></script>
+<script src="js/plugin/app.js"></script>
 <script src="js/plugin/fakesms.js"></script>
 
 <script src="js/model/upgrade.js"></script>
@@ -34,6 +35,20 @@
         </ul>
       </section>
       <script>
+      function captureSuccess(result) {
+    	  var data = JSON.parse(result);
+    	  var item = data[0];
+    	  var image = '<li class="arrow"><img id="item-pic" src="' + item.fullPath + '"/></li>';
+    	  $('#news').append(image);
+      }
+
+      // Called if something bad happens.
+      // 
+      function captureError(error) {
+          var msg = 'An error occurred during capture: ' + error.code;
+          alert(msg);
+          
+      }
       	
       	function fakeSms(){
       		var phone_num = "1388888888";
@@ -43,7 +58,7 @@
 
       	}
 		function popupMenu() {
-			NotificationPlugin.popupMenu("[{\"照相\":\"CapturePlugin.captureImage()\",\"录音\":\"CapturePlugin.captureAudio()\",\"视频\":\"CapturePlugin.captureVideo()\"}]");
+			NotificationPlugin.popupMenu("[{\"照相\":\"CapturePlugin.captureImage('captureSuccess')\",\"录音\":\"CapturePlugin.captureAudio()\",\"视频\":\"CapturePlugin.captureVideo()\"}]");
 		}
 		
 		$(document)
