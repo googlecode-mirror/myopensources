@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="iLib" default="main">
+	<description>
+		lib package
+	</description>
+	<property file="build.properties"/> 
+	<taskdef resource="proguard/ant/task.properties"
+		classpath="${android_proguard_dir}\lib\proguard.jar" />
+
+	<target name="main" depends="compile, jar, toJar"
+		description="Create project">
+		<echo>Creating project.</echo>
+	</target>
+	
+	<target name="compile" description="Compile target">
+		<javac srcdir="src" destdir="bin" includeantruntime="false" classpath="${android_sdk_dir}/android.jar" >
+			<compilerarg value="-Xlint"/>
+		</javac>
+	</target>
+	
+	<target name="jar" description="Jar target">
+		<jar jarfile="${dest_dir}/ilib_dev.jar"
+			basedir="bin" includes="**">
+		</jar>
+	</target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: toJar                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="toJar" depends="jar">
+    	<proguard configuration="proguard.cfg"> 
+    		-libraryjar "${android_sdk_dir}/android.jar"
+    		-injars      "${dest_dir}/ilib_dev.jar"
+    		-outjars     "${dest_dir}/ilib.jar"
+    		
+    	</proguard>
+    </target>
+
+
+</project>
