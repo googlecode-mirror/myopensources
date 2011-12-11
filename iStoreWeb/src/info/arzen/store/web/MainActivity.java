@@ -21,6 +21,9 @@ import com.flurry.android.FlurryAgent;
 
 public class MainActivity extends WebAppActivity {
 	
+	protected String app_id = "88888888";
+	protected String app_key = "666666";
+	
 	private String mFlurryKey = "V4MXNV6JS1MF1MCP89WT";
 	// Keep app running when pause is received. (default = true)
 	// If true, then the JavaScript and native code continue to run in the background
@@ -33,8 +36,11 @@ public class MainActivity extends WebAppActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+        initLicense(app_id, app_key);
+
+
         ((TextView)findViewById(R.id.header_title)).setText(R.string.app_name);
+        
         
         navClick();
         

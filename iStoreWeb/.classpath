@@ -4,6 +4,6 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="lib" path="libs/FlurryAgent.jar"/>
-	<classpathentry kind="lib" path="libs/ilib.jar"/>
+	<classpathentry kind="src" path="iLib_src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
