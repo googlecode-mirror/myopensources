@@ -1,6 +1,10 @@
 package info.arzen.webview.plugin;
 
+import info.arzen.common.CommonUtils;
 import info.arzen.core.ADebug;
+import info.arzen.http.HttpRequestFactory;
+import info.arzen.http.LicenseListener;
+import info.arzen.ui.MsgUI;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -8,17 +12,24 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 public abstract class WebAppActivity extends Activity {
 	protected WebView mWebView;
 	protected ProgressDialog dialog;
 	protected Plugin activityResultCallback = null;
+	protected String appid;
+	protected String appkey;
+	private String invaildLicense = "invaild license!";
+	
+	protected boolean runLicenseChecked = false;
 	
 	private Handler handler = new Handler(){
 		@Override
@@ -35,7 +46,23 @@ public abstract class WebAppActivity extends Activity {
 			}
 		}
 	};
-
+	
+	protected void initLicense(String app_id, String app_key) {
+		runLicenseChecked = true;
+		appid = app_id;
+		appkey = app_key;
+		
+	}
+	protected void checkLicense() {
+		if ((int)(Math.random()*20) == 1) {
+			HttpRequestFactory requestFactory = new HttpRequestFactory();
+			LicenseListener listener = new LicenseListener();
+			listener.setActivity(WebAppActivity.this);
+			String licenseUrl = String.format("%s?app_id=%s&app_key=%s", "http://feed.35cn.info:82/applications/", appid, appkey);
+			requestFactory.asyncRequest(licenseUrl, listener);
+			
+		}
+	}
     /**
      * Launch an activity for which you would like a result when it finished. When this activity exits, 
      * your onActivityResult() method will be called.
@@ -45,7 +72,6 @@ public abstract class WebAppActivity extends Activity {
      * @param requestCode		The request code that is passed to callback to identify the activity
      */
     public void startActivityForResult(Plugin command, Intent intent, int requestCode) {
-		ADebug.d("@@@@@@@", "start at main ");
 
     	this.activityResultCallback = command;
     	
@@ -65,6 +91,11 @@ public abstract class WebAppActivity extends Activity {
     		super.onProgressChanged(view, newProgress);
     		if (newProgress == 100) {
     			handler.sendEmptyMessage(0);
+    			checkLicense();
+    			if (!runLicenseChecked) {
+    				noLicense();
+    			}
+    			
 			}
     	}
     	
@@ -117,10 +148,21 @@ public abstract class WebAppActivity extends Activity {
     	
     }
 	
+	public void noLicense() {
+		runOnUiThread(new Runnable() {
+			
+			@Override
+			public void run() {
+				finish();
+			}
+		});
+		
+	}
+	
     protected void openPage(String page) {
   	   mWebView.clearHistory();
  	   handler.sendEmptyMessage(1);
-        mWebView.loadUrl("file:///android_asset/" + page);
+       mWebView.loadUrl("file:///android_asset/" + page);
  		
  	}
     
