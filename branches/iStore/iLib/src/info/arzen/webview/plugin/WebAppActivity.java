@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.webkit.GeolocationPermissions;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -85,6 +86,10 @@ public abstract class WebAppActivity extends Activity {
         public MyWebChromeClient(Context ctx) {
         	this.ctx = ctx;
 		}
+        
+        public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+            callback.invoke(origin, true, false);
+        }
         
     	@Override
     	public void onProgressChanged(WebView view, int newProgress) {

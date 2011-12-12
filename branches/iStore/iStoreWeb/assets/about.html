@@ -5,24 +5,80 @@
 <title>关于我们</title>
 <link rel="stylesheet" href="css/iphone.css" />
 <link rel="stylesheet" href="css/style.css" />
+<script src="js/zepto/zepto.js"></script>
+<script type="text/javascript">
+	if (typeof navigator.geolocation == 'undefined')
+
+	{
+
+		alert("Sorry, your browser doesn't support Geolocation.")
+
+	}
+
+	else
+
+	{
+
+		navigator.geolocation.getCurrentPosition(granted, denied)
+
+		function granted(position)
+
+		{
+
+			var gmap = 'geo:' +
+
+			position.coords.latitude + ',' +
+
+			position.coords.longitude+'?q=当前位置'
+			alert(gmap);
+
+			$("#my_map").attr("href", gmap);
+		}
+
+		function denied(error)
+
+		{
+			var message
+
+			switch (error.code)
+
+			{
+
+			case 1:
+				message = 'Permission Denied';
+				break
+
+			case 2:
+				message = 'Position Unavailable';
+				break
+
+			case 3:
+				message = 'Operation Timed Out';
+				break
+
+			case 4:
+				message = 'Unknown Error'
+
+			}
+			alert(message);
+
+		}
+
+	}
+</script>
 </head>
 <body>
-      <section id="menu" class="current">
-        <ul id="news" >
-          <li class="contents" id="content">
-          	<h1>关于我们</h1>
-          	<span>
-          	深圳雅致科技公司，致力于帮助客户快速开发出智能移动终端的应用程序，提供全套的应该解决方案。
-          	包括Android客户端的极速开发、UI设计、数据服务端的搭建等。帮助企业快速进入移动互联网领域。
-          	联系方式，QQ:3440895<br/>
-          	Email:<a href="mailto:arzen1013@gmail.com">给我们发邮件</a>
-          	短信：<a href="sms:13684987661">给我们发短信</a>
-          	电话：<a href="tel:13684987661">直接打电话吧</a>
-          	办公室：<a href="geo:22.1231,103.2231?q=广东省深圳市南山科技园">打开地图查找我们</a>
-          	</span>
-          </li>
-        </ul>
-      </section>
+	<section id="menu" class="current">
+	<ul id="news">
+		<li class="contents" id="content">
+			<h1>关于我们</h1> <span>
+				深圳雅致科技公司，致力于帮助客户快速开发出智能移动终端的应用程序，提供全套的应该解决方案。
+				包括Android客户端的极速开发、UI设计、数据服务端的搭建等。帮助企业快速进入移动互联网领域。 联系方式，QQ:3440895<br />
+				Email:<a href="mailto:arzen1013@gmail.com">给我们发邮件</a> 短信：<a
+				href="sms:13684987661">给我们发短信</a> 电话：<a href="tel:13684987661">直接打电话吧</a>
+				办公室：<a id="my_map" href="geo:22.1231,103.2231?q=广东省深圳市南山科技园">打开地图查找我们</a> </span></li>
+	</ul>
+	</section>
 
 </body>
 </html>

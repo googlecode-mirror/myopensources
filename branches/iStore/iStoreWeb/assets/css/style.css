@@ -76,7 +76,7 @@ ul li{
 }
 
 .option .detail-top{
-    height:78px;
+    height:400px;
 	background: -moz-linear-gradient(top, 
 							#f4f4f4, 
 							#b6bab8);
@@ -104,10 +104,11 @@ ul li{
 
 
 .option .detail-content{
-    height:90%;
+    height:2400px;
 	font-size: 14px;
 	font-weight: normal;
     line-height: 22px;
+    background-color:#fff;
 }
 
 .detail .download{
