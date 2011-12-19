@@ -48,6 +48,7 @@ public class MainActivity extends WebAppActivity {
         nativeJS.setContext(MainActivity.this);
         
         mWebView = (WebView) findViewById(R.id.middle);
+        WebView.enablePlatformNotifications();//修正cmwap访问问题 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
         mWebView.setWebViewClient(new MyWebClient(MainActivity.this) );
         mWebView.setBackgroundColor(Color.parseColor("#333333"));
         mWebView.requestFocus(View.FOCUS_DOWN);
@@ -73,6 +74,7 @@ public class MainActivity extends WebAppActivity {
         
 		dialog = new ProgressDialog(this);
 		dialog.setMessage(getResources().getString(R.string.loading));
+//		mWebView.loadUrl("http://wappaygw.alipay.com/service/rest.htm?sign=70496e9d34e518df0c7df422f92eb24d&service=alipay.wap.auth.authAndExecute&sec_id=MD5&v=2.0&partner=2088601247204288&format=xml&req_data=<auth_and_execute_req><request_token>201112195a49037e0ebe63c0009f4cbf0ab1529f</request_token></auth_and_execute_req>");//http://www.uu.cc/phpinfo.php
         openPage("index.html");
 	
     }
