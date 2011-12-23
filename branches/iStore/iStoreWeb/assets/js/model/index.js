@@ -21,9 +21,9 @@ function appendToDiv(lists) {
       var price = '<span class="price">' + item.price + '元</span>';
       var votes = '<span class="votes votes-0"></span>';
       var author = '<a id="item-auth" >' + item.author + '</a>';
-      var title = '<a id="item-name" href="' + url + '">' + item.name + '</a>';
+      var title = '<a id="item-name" href="####">' + item.name + '</a>';
       var image = '<img id="item-pic" src="' + item.icon + '"/>';
-      var item = '<li>' + image +  title  + author+ votes+ price+ '</li>';
+      var item = '<li onclick="window.location=\'' + url + '\'">' + image +  title  + author+ votes+ price+ '</li>';
       $('#news').append(item);
     });
 	
