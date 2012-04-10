@@ -1,10 +1,11 @@
 package info.arzen.webview.plugin;
 
-import info.arzen.common.CommonUtils;
 import info.arzen.core.ADebug;
 import info.arzen.http.HttpRequestFactory;
 import info.arzen.http.LicenseListener;
-import info.arzen.ui.MsgUI;
+
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -12,15 +13,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
+import android.net.http.SslError;
 import android.os.Handler;
 import android.os.Message;
 import android.webkit.GeolocationPermissions;
 import android.webkit.JsResult;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 public abstract class WebAppActivity extends Activity {
 	protected WebView mWebView;
@@ -29,6 +30,12 @@ public abstract class WebAppActivity extends Activity {
 	protected String appid;
 	protected String appkey;
 	private String invaildLicense = "invaild license!";
+	
+	private String mCallback = "auth://tauth.qq.com/";
+	private String mAuthResult;
+	private String mAccessToken;
+	private String mExpiresIn;
+	public String AUTH_BROADCAST = "com.tencent.auth.BROWSER";
 	
 	protected boolean runLicenseChecked = false;
 	
@@ -171,6 +178,57 @@ public abstract class WebAppActivity extends Activity {
  		
  	}
     
+    protected void openUrl(String url) {
+   	   	handler.sendEmptyMessage(1);
+    	mWebView.loadUrl(url);
+	}
+	/**
+	 * 解析返回结果，提取出Access token
+	 * @param	String	url
+	 * @author John.Meng<arzen1013@gmail> QQ:3440895
+	 * @date 2011-9-1
+	 */
+	private void parseResult(String url) {
+		mAuthResult = url;
+		String tmp = url;
+		tmp = tmp.replace(mCallback + "?#", "");
+		String[] arr = tmp.split("&");
+		HashMap<String, String> res = new HashMap<String, String>();
+		for (String item : arr) {
+			String[] data = item.split("=");
+			res.put(data[0], data[1]);
+		}
+		mAccessToken = res.get("access_token");
+		mExpiresIn = res.get("expires_in");
+		
+	}
+	
+	private void returnResult() {
+//		Intent i = new Intent();  
+//		  
+//		Bundle b = new Bundle();  
+//		b.putString("url", mAuthResult);  
+//		i.putExtras(b);  
+//		setResult(RESULT_OK, i);
+		sendBroadcastResult();
+//		finish();
+	}
+	
+	/**
+	 * 以广播的形式把返回结果及access token发送，以便调用者接收处理
+	 * 
+	 * @author John.Meng<arzen1013@gmail> QQ:3440895
+	 * @date 2011-9-5
+	 */
+	private void sendBroadcastResult() {
+		Intent intent = new Intent(AUTH_BROADCAST);
+		intent.putExtra("raw", mAuthResult);
+		intent.putExtra("access_token", mAccessToken);
+		intent.putExtra("expires_in", mExpiresIn);
+		sendBroadcast(intent);
+		
+	}
+    
     public class MyWebClient extends WebViewClient{
     	private WebAppActivity ctx;
     	
@@ -179,9 +237,24 @@ public abstract class WebAppActivity extends Activity {
 		}
     	
     	@Override
+    	public void onReceivedSslError(WebView view, SslErrorHandler handler,
+    			SslError error) {
+    		handler.proceed();
+    		//super.onReceivedSslError(view, handler, error);
+    	}
+    	
+    	@Override
     	public boolean shouldOverrideUrlLoading(WebView view, String url) {
+    		
+            if (Uri.parse(url).getScheme().equals("auth")) {
+                // 拦截回调结果
+        	    parseResult(url);
+        	    returnResult();
+                return false;
+            }
+    		
         	// If dialing phone (tel:5551212)
-        	if (url.startsWith(WebView.SCHEME_TEL)) {
+            else if (url.startsWith(WebView.SCHEME_TEL)) {
         		try {
         			Intent intent = new Intent(Intent.ACTION_DIAL);
         			intent.setData(Uri.parse(url));
@@ -267,13 +340,15 @@ public abstract class WebAppActivity extends Activity {
   		
         		// If not our application, let default viewer handle
         		else {
-        			try {
-        				Intent intent = new Intent(Intent.ACTION_VIEW);
-        				intent.setData(Uri.parse(url));
-        				startActivity(intent);
-                	} catch (android.content.ActivityNotFoundException e) {
-                		System.out.println("Error loading url "+url+":"+ e.toString());
-                	}
+        			view.loadUrl(url);
+        			return false;
+//        			try {
+//        				Intent intent = new Intent(Intent.ACTION_VIEW);
+//        				intent.setData(Uri.parse(url));
+//        				startActivity(intent);
+//                	} catch (android.content.ActivityNotFoundException e) {
+//                		System.out.println("Error loading url "+url+":"+ e.toString());
+//                	}
         		}
         		return true;
         	}
