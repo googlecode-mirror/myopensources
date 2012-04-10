@@ -13,6 +13,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
 
 import android.os.Bundle;
 
@@ -74,71 +82,102 @@ public class ClientHttpRequest {
      * @throws IOException - if a network problem occurs
      */
     public static String openUrl(String url, String method, Bundle params)
-          throws IOException {
-        String response = "";
-    	
-        // random string as boundary for multi-part http post
-        String strBoundary = "3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f";
-        String endLine = "\r\n";
+            throws IOException {
+          String response = "";
+      	
+          // random string as boundary for multi-part http post
+          String strBoundary = "3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f";
+          String endLine = "\r\n";
 
-        OutputStream os;
+          OutputStream os;
 
-        if (method.equals("GET")) {
-            url = url +  encodeUrl(params);
-        }
-        ADebug.d(TAG, method + " URL: " + url);
-        HttpURLConnection conn =
-            (HttpURLConnection) new URL(url).openConnection();
-        conn.setRequestProperty("User-Agent", System.getProperties().
-                getProperty("http.agent") + " ArzenAndroidSDK");
-        if (!method.equals("GET")) {
-            Bundle dataparams = new Bundle();
-            for (String key : params.keySet()) {
-                if (params.getByteArray(key) != null) {
-                        dataparams.putByteArray(key, params.getByteArray(key));
-                }
-            }
+          if (method.equals("GET")) {
+//              url = url + "?" + encodeUrl(params);
+              url = url + encodeUrl(params);
+          }
+          
+          
+          HttpURLConnection conn;
+          if (url.startsWith("https")) {
+              conn = (HttpsURLConnection) new URL(url).openConnection();
+          	
+              try {
+                  TrustManager easyTrustManager = new X509TrustManager() {
+                      public void checkClientTrusted(X509Certificate[] chain,
+                              String authType) throws CertificateException
+                      {
+                      }
+                      public void checkServerTrusted(X509Certificate[] chain,
+                              String authType) throws CertificateException
+                      {
+                      }
+                      public X509Certificate[] getAcceptedIssuers()
+                      {
+                          return null;
+                      }
+                  };
+                  SSLContext sslcontext = SSLContext.getInstance("TLS");
+                  sslcontext.init(null, new TrustManager[] { easyTrustManager }, null);
+                  ((HttpsURLConnection)conn).setSSLSocketFactory(sslcontext.getSocketFactory());
+  			} catch (Exception e) {
+  				// TODO: handle exception
+  			}
+              
+  			
+  		}else {
+  	        conn = (HttpURLConnection) new URL(url).openConnection();
+  			
+  		}
+          conn.setRequestProperty("User-Agent", System.getProperties().
+                  getProperty("http.agent") + " ArzenAndroidSDK");
+          if (!method.equals("GET")) {
+              Bundle dataparams = new Bundle();
+              for (String key : params.keySet()) {
+                  if (params.getByteArray(key) != null) {
+                          dataparams.putByteArray(key, params.getByteArray(key));
+                  }
+              }
 
-            // use method override
-            if (!params.containsKey("method")) {
-                params.putString("method", method);
-            }
+              // use method override
+              if (!params.containsKey("method")) {
+                  params.putString("method", method);
+              }
 
-           conn.setRequestMethod("POST");
-            conn.setRequestProperty(
-                    "Content-Type",
-                    "multipart/form-data;boundary="+strBoundary);
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
-            conn.setRequestProperty("Connection", "Keep-Alive");
-            conn.connect();
-            os = new BufferedOutputStream(conn.getOutputStream());
+             conn.setRequestMethod("POST");
+             conn.setRequestProperty(
+                      "Content-Type",
+                      "multipart/form-data;boundary="+strBoundary);
+              conn.setDoOutput(true);
+              conn.setDoInput(true);
+              conn.setRequestProperty("Connection", "Keep-Alive");
+              conn.connect();
+              os = new BufferedOutputStream(conn.getOutputStream());
 
-            os.write(("--" + strBoundary +endLine).getBytes());
-            os.write((encodePostBody(params, strBoundary)).getBytes());
-            os.write((endLine + "--" + strBoundary + endLine).getBytes());
+              os.write(("--" + strBoundary +endLine).getBytes());
+              os.write((encodePostBody(params, strBoundary)).getBytes());
+              os.write((endLine + "--" + strBoundary + endLine).getBytes());
 
-            if (!dataparams.isEmpty()) {
+              if (!dataparams.isEmpty()) {
 
-                for (String key: dataparams.keySet()){
-                    os.write(("Content-Disposition: form-data; filename=\"" + key + "\"" + endLine).getBytes());
-                    os.write(("Content-Type: content/unknown" + endLine + endLine).getBytes());
-                    os.write(dataparams.getByteArray(key));
-                    os.write((endLine + "--" + strBoundary + endLine).getBytes());
+                  for (String key: dataparams.keySet()){
+                      os.write(("Content-Disposition: form-data; filename=\"" + key + "\"" + endLine).getBytes());
+                      os.write(("Content-Type: content/unknown" + endLine + endLine).getBytes());
+                      os.write(dataparams.getByteArray(key));
+                      os.write((endLine + "--" + strBoundary + endLine).getBytes());
 
-                }
-            }
-            os.flush();
-        }
+                  }
+              }
+              os.flush();
+          }
 
-        try {
-            response = read(conn.getInputStream());
-        } catch (FileNotFoundException e) {
-            // Error Stream contains JSON that we can parse to a FB error
-            response = read(conn.getErrorStream());
-        }
-        return response;
-    }
+          try {
+              response = read(conn.getInputStream());
+          } catch (FileNotFoundException e) {
+              // Error Stream contains JSON that we can parse to a FB error
+              response = read(conn.getErrorStream());
+          }
+          return response;
+      }
     
     private static String read(InputStream in) throws IOException {
         StringBuilder sb = new StringBuilder();
