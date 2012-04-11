@@ -29,27 +29,17 @@ public class FileUtilsPlugin extends Plugin {
 			return null;
 		}
 		File file = new File(file_path);
-        long fileSize = file.length();
-        BufferedInputStream istream;
-		try {
-			istream = new BufferedInputStream(new FileInputStream(file));
-	        int responseDataLength = (int) fileSize;
-	        byte[] responseBody = new byte[responseDataLength];
-	        
-	        try {
-		        istream.read(responseBody, 0, responseDataLength);
-				istream.close();
-				String content = responseBody.toString();
-				ADebug.d("ccccc", content);
-		        return content;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+        try {  
+            FileInputStream inputStream = new FileInputStream(file);  
+            byte[] b = new byte[inputStream.available()];  
+            inputStream.read(b);  
+			String content = new String(b);
+	        return content;
+        } catch (Exception e) {  
+        	e.printStackTrace();  
+        }  
+		
+		
 		return null;
 	}
 	
