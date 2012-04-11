@@ -1,5 +1,6 @@
 package info.arzen.http;
 
+
 import info.arzen.exception.CommonException;
 
 import org.json.JSONException;
@@ -19,6 +20,12 @@ public class ParseResoneJson {
   if (response.equals("true")) {
       response = "{value : true}";
   }
+  
+  if (response.endsWith(");")) {
+	  response = response.replaceAll("([a-z]*)\\(([^\\)]*)\\);", "$2");
+	  response = response.trim();
+  }
+  
   JSONObject json = new JSONObject(response);
 
   // errors set by the server are not consistent
