@@ -37,6 +37,8 @@ public abstract class WebAppActivity extends Activity {
 	private String mExpiresIn;
 	public String AUTH_BROADCAST = "com.tencent.auth.BROWSER";
 	
+	private String mNotFoundPage = "";
+	
 	protected boolean runLicenseChecked = false;
 	
 	private Handler handler = new Handler(){
@@ -54,6 +56,10 @@ public abstract class WebAppActivity extends Activity {
 			}
 		}
 	};
+	
+	public void setNotFoundPage(String page) {
+		mNotFoundPage = "file:///android_asset/" + page;
+	}
 	
 	protected void initLicense(String app_id, String app_key) {
 		runLicenseChecked = true;
@@ -235,6 +241,17 @@ public abstract class WebAppActivity extends Activity {
     	public MyWebClient(WebAppActivity ctx) {
     		this.ctx = ctx;
 		}
+    	
+    	@Override
+    	public void onReceivedError(WebView view, int errorCode,
+    			String description, String failingUrl) {
+    		if (!mNotFoundPage.equals("")) {
+				view.loadUrl(mNotFoundPage);
+			}
+    		else
+    			
+				super.onReceivedError(view, errorCode, description, failingUrl);
+    	}
     	
     	@Override
     	public void onReceivedSslError(WebView view, SslErrorHandler handler,
